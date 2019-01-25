@@ -1,0 +1,53 @@
+.Category {
+    position: relative;
+    display: inline-block;
+    min-width: 195px;
+    margin-right: 45px;
+    min-height: 240px;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform .5s;
+    cursor: pointer;
+
+    &:hover {
+        .CategoryImg {
+            transform: scale(1.1)
+        }
+    }
+    .CategoryImg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background-size: cover;
+        background-repeat: no-repeat;
+        transition: all .5s;
+    }
+    .TitleWrp {
+        display: flex;
+        justify-content: center;
+        min-height: inherit;
+        position: relative;
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: rgba(0, 0, 0, .2);
+        }
+        .Title {
+            align-self: center;
+            position: relative;
+            color: #eee;
+            font-size: 1.5em;
+        }
+    }
+}
+
+.Checked {
+    transform: scale(1.15);
+}

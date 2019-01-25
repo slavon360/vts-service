@@ -1,0 +1,1 @@
+export const imgCategoriesPath = 'src/assets/images/catalog';

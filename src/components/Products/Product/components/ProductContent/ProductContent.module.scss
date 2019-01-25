@@ -1,0 +1,31 @@
+.ProductContent {
+    padding: 0 15px 10px;
+    .Header {
+        margin-bottom: 12px;
+        padding-bottom: 15px;
+        border-bottom: 1px solid #ededed;
+        font-size: 20px;
+    }
+    .Stats {
+        padding: 5px 0;
+    }
+    .Header, .Stats {
+        display: flex;
+        justify-content: space-between;
+    }
+    .Title {
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+        color: #555;
+    }
+    .Price {
+        color: #333;
+    }
+    .Key {
+        text-align: left;
+    }
+    .BriefInfo {
+        color: #777;
+    }
+}

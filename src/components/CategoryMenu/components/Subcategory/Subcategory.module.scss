@@ -1,0 +1,13 @@
+.Subcategory {
+    padding: 20px 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    color: #888;
+    cursor: pointer;
+
+    &:hover {
+        color: #ff0053;
+        border-color: #ff0053;
+    }
+}

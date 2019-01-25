@@ -1,0 +1,21 @@
+.ProductsWrp {
+    column-count: 4;
+    column-gap: 1em;
+    padding: 0;
+
+    @media only screen and (min-width: 1365px) {
+        padding: 0 10vw;
+    }
+    @media only screen and (max-width: 1365px) {
+        padding: 0 2vw;
+    }
+    @media only screen and (max-width: 1023px) and (min-width: 768px) {
+        column-count: 3;
+      }
+    @media only screen and (max-width: 767px) and (min-width: 540px) {
+        column-count: 2;
+    }
+    @media only screen and (max-width: 539px) {
+        column-count: 1;
+    }
+}

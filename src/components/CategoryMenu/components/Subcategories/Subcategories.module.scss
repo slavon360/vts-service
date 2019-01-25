@@ -1,0 +1,13 @@
+.SubcategoriesWrp {
+    margin: 75px 0 30px;
+
+    .Head {
+        font-weight: 100;
+        font-size: 30px;
+        margin-bottom: 30px;
+    }
+    .Subcategories {
+        display: flex;
+        justify-content: space-around;
+    }
+}
