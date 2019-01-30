@@ -31,7 +31,7 @@ class ProductPage extends Component {
         addToCart(product);
     }
     renderComponent = () => {
-        const { addToCart, product } = this.props;
+        const { product } = this.props;
         if (product) {
             return (
                 <div className={styles.ProductPage}>
