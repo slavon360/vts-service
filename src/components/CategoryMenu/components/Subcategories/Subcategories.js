@@ -7,7 +7,7 @@ import styles from './Subcategories.module.scss';
 const Subcategories = ({ category }) => {
     return (
         <div className={styles.SubcategoriesWrp}>
-            <div className={styles.Head} >Подкатегории</div>
+            <div className={styles.Head} >{category.categName}</div>
             <div className={styles.Subcategories}>
                 {category.subCategNames.map(subcateg => (
                     <Subcategory

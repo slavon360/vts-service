@@ -1,0 +1,42 @@
+.SizesShoppingCart {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 25px;
+    padding-top: 1em;
+    border-bottom: 1px solid #dde3ea;
+
+    .Sizes .Dimensions {
+        font-weight: 100;
+        margin-top: 0;
+    }
+    .Sizes .SizesContent {
+        display: flex;
+        padding: 5px 0;
+        justify-content: space-between;
+        min-width: 240px;
+        color: #555;
+
+        .Key {
+            margin-right: 35px;
+        }
+        .Key, .Value {
+            display: inline-block;
+        }
+    }
+    .AddToCartArea .Price {
+        font-size: 24px;
+        padding-bottom: 20px;
+    }
+    .AddToCartArea .AddToCart {
+        font-size: 14px;
+        border-radius: 23px;
+        box-shadow: none;
+        font-weight: 400;
+        line-height: 36px;
+        padding: 0 30px;
+        color: #fff;
+        border: none;
+        background-color: #ff115f;
+        cursor: pointer;
+    }
+}

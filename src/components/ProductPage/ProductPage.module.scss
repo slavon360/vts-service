@@ -1,0 +1,22 @@
+.ProductPage {
+    padding: 15px 25px;
+    text-align: left;
+
+    .ImageAreaWrp, .DetailsWrp {
+        display: inline-block;
+    }
+    .ImageAreaWrp {
+        width: 40%;
+        vertical-align: top;
+
+        > img {
+
+            @media only screen and (max-width: 1200px) {
+                width: 100%;
+            }
+        }
+    }
+    .DetailsWrp {
+        width: 60%;
+    }
+}

@@ -6,7 +6,13 @@ import styles from './HomePage.module.scss';
 
 class HomePage extends Component{
     componentDidMount() {
-        this.props.getCatalogMenu();
+        //this.props.revertCurrentPage();
+        this.fetchCurrencyRateAndCatalog();
+    }
+    fetchCurrencyRateAndCatalog = async () => {
+        const { getCatalogMenu, getCurrencyRate, currencyRate } = this.props;
+        if (!currencyRate) await getCurrencyRate();
+        getCatalogMenu();
     }
     render() {
         const {
@@ -15,7 +21,8 @@ class HomePage extends Component{
             activeIndex,
             productsList,
             productsLoading,
-            makeProductsRequest
+            makeProductsRequest,
+            perPage
         } = this.props;
         return(
             <div className={styles.HomePage}>
@@ -24,9 +31,11 @@ class HomePage extends Component{
                         categories={catalog}
                         activeIndex={activeIndex}
                         switchCheckedCategory={switchCheckedCategory}
+                        makeProductsRequest={makeProductsRequest}
                 />
                 }
                 <Products
+                    perPage={perPage}
                     productsLoading={productsLoading}
                     products={productsList}
                     makeProductsRequest={makeProductsRequest}

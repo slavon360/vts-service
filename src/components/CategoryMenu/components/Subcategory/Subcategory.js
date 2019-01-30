@@ -5,7 +5,7 @@ import styles from './Subcategory.module.scss';
 
 class Subcategory extends Component {
     onSwitchSubcategory = () => {
-        const { link, switchSubcategory } = this.props;
+        const { link, switchSubcategory, makeProductsRequest } = this.props;
         switchSubcategory(link);
     }
     render() {

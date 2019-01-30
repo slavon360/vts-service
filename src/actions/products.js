@@ -1,24 +1,46 @@
 import { createTypes } from 'redux-compose-reducer';
-import { get } from '../utils/apiRequester';
+import { routes as routeNames } from '../routes';
+import { getFromAxios } from '../utils/apiRequester';
+import { updateProductPrices } from '../utils/dataConverter';
 import _get from 'lodash/get';
 
 const PRODUCTS_TYPES = createTypes('products', [
     'makeProductsRequest',
-    'switchProductsLoading'
+    'switchProductsLoading',
+    'revertCurrentPage',
+    'getProduct'
 ]);
 
+export const getProduct = (slug) => async (dispatch, getState) => {
+    const { currencyRate } = getState().outerAPIdata;
+    const data = await getFromAxios(`${routeNames.PRODUCT_DETAILS}/${slug}`);
+    const product = _get(data, 'data', {});
+    const updProduct = { ...product, 'Цена': currencyRate ? Math.round(currencyRate * product['Цена']) : product['Цена'] };
+    dispatch({ type: PRODUCTS_TYPES.getProduct, product: updProduct });
+}
+
+export const revertCurrentPage = () => ({
+    type: PRODUCTS_TYPES.revertCurrentPage
+})
+
 export const makeProductsRequest = () => async (dispatch, getState) => {
-    const { currentPage } = getState().products;
-    const { selectedSubcategoryId, activeIndex, catalog } = getState().menus;
-    console.log(catalog, getState().menus);
+    const { currentPage, nextPage } = getState().products;
+    const { currencyRate } = getState().outerAPIdata;
+    const { selectedSubcategoryId, selectedCategoryId } = getState().menus;
     dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: true });
+    const page = nextPage ? currentPage + 1 : currentPage;
     let json;
     if (selectedSubcategoryId) {
-        json = await get('/list-products', { subcategid: selectedSubcategoryId, page: currentPage });
+        if (nextPage) json = await getFromAxios('/list-products', { subcategid: selectedSubcategoryId, page });
     } else {
-        json = await get('/list-products', { categid: catalog[activeIndex]._id, page: currentPage });
+        if (nextPage) json = await getFromAxios('/list-products', { categid: selectedCategoryId, page });
     }
     const products = _get(json, 'data.results', []);
-    dispatch({ type: PRODUCTS_TYPES.makeProductsRequest, products });
+    const updProducts = updateProductPrices(products, currencyRate);
+    const next = _get(json, 'data.next', false);
+    const last = _get(json, 'data.last', 0);
+    const first = _get(json, 'data.first', 0);
+    const perPage = last - first + 1;
+    dispatch({ type: PRODUCTS_TYPES.makeProductsRequest, products: updProducts, currentPage: page, next, perPage });
     dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
 }

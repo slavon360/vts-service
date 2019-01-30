@@ -1,0 +1,21 @@
+.Properties {
+    padding: 20px 0;
+
+    .Head {
+        background-color: #212125;
+        color: #dde3ea;
+        padding: 5px 10px;
+        display: inline-block;
+        text-align: center;
+        font-size: 18px;
+    }
+    .PropertiesContent {
+        padding: 15px 40px 0 0;
+
+        .KeyValueWrp {
+            display: flex;
+            justify-content: space-between;
+            padding: 5px 0;
+        }
+    }
+}

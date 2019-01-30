@@ -6,12 +6,13 @@ import Subcategories from './components/Subcategories';
 
 import styles from './CategoryMenu.module.scss';
 
-const CategoryMenu = ({ categories, switchCheckedCategory, activeIndex }) => {
+const CategoryMenu = ({ categories, switchCheckedCategory, activeIndex, makeProductsRequest }) => {
     return (
         <div className={styles.CategoryMenu}>
             <Categories
                 categories={categories}
                 switchCheckedCategory={switchCheckedCategory}
+                makeProductsRequest={makeProductsRequest}
             />
             <Subcategories
                 category={categories[activeIndex]}

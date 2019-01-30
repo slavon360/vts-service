@@ -6,7 +6,9 @@ import styles from './ProductImage.module.scss';
 class ProductImage extends Component {
     imgLoadHanlder = () => {
         const { productsLength, productIndex, makeProductsRequest } = this.props;
-        if (productIndex === productsLength - 1) makeProductsRequest();
+        if (productIndex === productsLength - 1) {
+            makeProductsRequest();
+        }
     }
     render() {
         const { secure_url, scrollPosition } = this.props;

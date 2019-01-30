@@ -4,10 +4,11 @@ import { Map, List, fromJS } from 'immutable';
 const initialState = fromJS({
     catalog: [],
     activeIndex: 0,
-    selectedSubcategoryId: null
+    selectedSubcategoryId: null,
+    selectedCategoryId: null
 });
 
-function getCatalogMenu(state, { catalog }) {
+function getCatalogMenu(state, { catalog, selectedCategoryId }) {
     if (catalog && catalog.length) {
         catalog[0].checked = true;
         const updatedCatalog = catalog.map(item => {
@@ -24,12 +25,12 @@ function getCatalogMenu(state, { catalog }) {
         item.subCategNames = newSubcatNames;
         return item;
     });
-    return state.setIn(['catalog'], fromJS(updatedCatalog));
+    return state.merge({ catalog: fromJS(updatedCatalog), selectedCategoryId });
     }
 }
 
 function switchCheckedCategory(state, { id, index }) {
-    const newState = state.set('activeIndex', index)
+    const newState = state.merge({ activeIndex: index, selectedCategoryId: id });
     return newState.update('catalog', catalog => catalog.map(item => {
         let newItem;
         if (item.get('_id') === id) {
