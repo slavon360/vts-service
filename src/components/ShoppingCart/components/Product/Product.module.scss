@@ -1,0 +1,30 @@
+.Product {
+    padding: 30px 0;
+    display: flex;
+    justify-content: space-between;
+
+    .ProductImage, .Title, .Price, .Delete {
+        display: inline-block;
+    }
+    .ProductImage {
+        width: 72px;
+        height: 72px;
+        margin-right: 12px;
+    }
+    .Title {
+        font-size: 20px;
+        color: #555;
+    }
+    .Price {
+        color: #888;
+    }
+    .Delete {
+        background-color: #c1c1c1;
+        width: 22px;
+        height: 22px;
+        margin-left: 10px;
+        font-size: 14px;
+        color: #fff;
+        border-radius: 50%;
+    }
+}

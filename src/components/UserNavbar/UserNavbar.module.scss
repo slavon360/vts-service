@@ -1,0 +1,20 @@
+.UserNavbar {
+    display: inline-block;
+    margin-right: 25px;
+    height: 100%;
+}
+.Link {
+    height: 100%;
+    border-right: 1px solid #e5e9ee;
+    padding: 0 10px;
+    display: inline-block;
+    line-height: 3;
+    vertical-align: top;
+    color: #555;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        color: #ff115f;
+    }
+}

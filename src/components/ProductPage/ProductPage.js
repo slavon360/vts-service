@@ -14,16 +14,23 @@ class ProductPage extends Component {
         product: {}
     }
     componentDidMount(){
-        this.getCurrencyAndProduct();
+        if (this.props.currencyRate) this.getProductInfo();
     }
-    shouldComponentUpdate(nextProps){
-        const { product } = this.props;
-        return !product || product.title !== nextProps.product.title;
+    shouldComponentUpdate(nextProps, nextState){
+        const { product, match: { params: { productSlug } }, currencyRate } = this.props;
+        console.log(this.props, nextProps);
+        if (currencyRate !== nextProps.currencyRate) this.getProductInfo();
+        return !product || productSlug !== nextProps.match.params.productSlug || product.title !== nextProps.product.title;
     }
-    getCurrencyAndProduct = async () => {
-        const { getCurrencyRate, getProduct, currencyRate } = this.props;
+    componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
-        if (!currencyRate) await getCurrencyRate();
+        if (productSlug !== prevProps.match.params.productSlug) {
+            this.props.getProduct(productSlug);
+        }
+    }
+    getProductInfo = async () => {
+        const { getProduct } = this.props;
+        const { productSlug } = this.props.match.params;
         getProduct(productSlug);
     }
     onAddToCart = () => {

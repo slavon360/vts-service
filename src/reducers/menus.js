@@ -10,7 +10,6 @@ const initialState = fromJS({
 
 function getCatalogMenu(state, { catalog, selectedCategoryId }) {
     if (catalog && catalog.length) {
-        catalog[0].checked = true;
         const updatedCatalog = catalog.map(item => {
         const newSubcatNames = item.subCategNames.reduce((result, current, index) => {
             const obj = {
@@ -23,6 +22,7 @@ function getCatalogMenu(state, { catalog, selectedCategoryId }) {
             return result;
         }, []);
         item.subCategNames = newSubcatNames;
+        item.checked = item._id === selectedCategoryId;
         return item;
     });
     return state.merge({ catalog: fromJS(updatedCatalog), selectedCategoryId });

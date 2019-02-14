@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
+import { Header } from '../containers'
+import { Layer, ContactForm } from '../components';
 import Routes from './Routes';
 
 class Router extends Component {
@@ -12,9 +14,17 @@ class Router extends Component {
     render() {
   
       return (
-        <BrowserRouter>
-          <div>{renderRoutes(Routes)}</div>
-        </BrowserRouter>
+        <Layer>
+          <BrowserRouter>
+              <Fragment>
+                <Header />
+                <div className="contentWrapper">
+                  {renderRoutes(Routes)}
+                </div>
+      {/*<ContactForm />*/}
+              </Fragment>
+          </BrowserRouter>
+        </Layer>
       );
     }
   }

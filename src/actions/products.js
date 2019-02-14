@@ -8,8 +8,47 @@ const PRODUCTS_TYPES = createTypes('products', [
     'makeProductsRequest',
     'switchProductsLoading',
     'revertCurrentPage',
-    'getProduct'
+    'getProduct',
+    'searchProducts',
+    'searchProductsLoading',
+    'clearSearchedProducts',
+    'toggleSearchedProductsVisibility'
 ]);
+
+export const toggleSearchedProductsVisibility = (data) => ({
+    type: PRODUCTS_TYPES.toggleSearchedProductsVisibility,
+    data
+})
+
+export const clearSearchedProducts = () => ({
+    type: PRODUCTS_TYPES.clearSearchedProducts
+})
+
+export const searchProductsLoading = (data) => ({
+    type: PRODUCTS_TYPES.searchProductsLoading,
+    data
+})
+
+export const searchProducts = (product) => {
+    const thunk = async (dispatch, getState) => {
+        const { selectedCategoryId } = getState().menus;
+        const json = await getFromAxios('/search?', { product, categid: selectedCategoryId });
+        const searchedProducts = _get(json, 'data', []);
+        dispatch({
+            type: PRODUCTS_TYPES.searchProducts,
+            searchedProducts
+        });
+        return searchedProducts;
+    }
+    thunk.meta = {
+        type: PRODUCTS_TYPES.searchProductsLoading,
+        debounce: {
+          time: 2000,
+          key: PRODUCTS_TYPES.searchProducts
+        }
+      };
+    return thunk;
+}
 
 export const getProduct = (slug) => async (dispatch, getState) => {
     const { currencyRate } = getState().outerAPIdata;

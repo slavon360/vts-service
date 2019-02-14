@@ -1,18 +1,13 @@
 import React, { Component } from 'react';
 import CategoryMenu from '../CategoryMenu';
 import Products from '../Products';
+import HomeBanners from '../HomeBanners/HomeBanners';
 
 import styles from './HomePage.module.scss';
 
 class HomePage extends Component{
     componentDidMount() {
-        //this.props.revertCurrentPage();
-        this.fetchCurrencyRateAndCatalog();
-    }
-    fetchCurrencyRateAndCatalog = async () => {
-        const { getCatalogMenu, getCurrencyRate, currencyRate } = this.props;
-        if (!currencyRate) await getCurrencyRate();
-        getCatalogMenu();
+        this.props.getHomeBanners();
     }
     render() {
         const {
@@ -22,17 +17,19 @@ class HomePage extends Component{
             productsList,
             productsLoading,
             makeProductsRequest,
-            perPage
+            perPage,
+            homeBanners
         } = this.props;
         return(
             <div className={styles.HomePage}>
-                {catalog && catalog.length &&
+                <HomeBanners homeBanners={homeBanners} />
+                {catalog && catalog.length ?
                     <CategoryMenu
                         categories={catalog}
                         activeIndex={activeIndex}
                         switchCheckedCategory={switchCheckedCategory}
                         makeProductsRequest={makeProductsRequest}
-                />
+                /> : <div />
                 }
                 <Products
                     perPage={perPage}

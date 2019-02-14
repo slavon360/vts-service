@@ -1,0 +1,24 @@
+.Header {
+    background-color: hsla(0, 0%, 100%, 0.95);
+    height: 50px;
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 100;
+    text-align: left;
+    padding: 0 25px;
+    box-shadow: 0 0 5px #ddd;
+
+    .HomeLink {
+        display: inline-block;
+        margin: 0 8px;
+        transform: translateY(-2px);
+
+        &:hover > svg {
+            fill: #ff115f;
+        }
+    }
+}

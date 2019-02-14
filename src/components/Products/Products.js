@@ -7,7 +7,7 @@ import styles from './Products.module.scss'
 
 const Products = ({ products, productsLoading, scrollPosition, makeProductsRequest, perPage }) => (
         <ul className={styles.ProductsWrp}>
-            {products && products.length &&
+            {products && products.length ?
                 products.map((product, index) => (
                     <Product
                         perPage={perPage}
@@ -18,7 +18,7 @@ const Products = ({ products, productsLoading, scrollPosition, makeProductsReque
                         key={product._id}
                         product={product}
                     />
-                ))
+                )) : <div />
             }
             {productsLoading &&
                 <Preloader/>

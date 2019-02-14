@@ -1,6 +1,7 @@
 import { createTypes } from 'redux-compose-reducer';
 import { getFromAxios } from '../utils/apiRequester';
 import { updateProductPrices } from '../utils/dataConverter';
+import { SITE_TYPES } from '../actions/site';
 import _get from 'lodash/get';
 
 const MENU_TYPES = createTypes('menus', [
@@ -22,7 +23,7 @@ export const getCatalogMenu = () => async (dispatch, getState) => {
         const { currencyRate } = getState().outerAPIdata;
         const json = await getFromAxios('/getCatalog');
         const catalog = _get(json, 'data', []);
-        const categid = catalog[0]._id;
+        const categid = selectedCategoryId || catalog[0]._id;
         if (!productsList.size && productsList.getIn([0, 'productCategory']) !== selectedCategoryId) {
             const jsonProducts = await getFromAxios('/list-products', { categid });
             const products = _get(jsonProducts, 'data.results', []);
@@ -34,6 +35,7 @@ export const getCatalogMenu = () => async (dispatch, getState) => {
         }
         dispatch({ type: MENU_TYPES.getCatalogMenu, catalog, selectedCategoryId: categid });
         dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
+        dispatch({ type: SITE_TYPES.setLoadingState, loading: false });
     } catch (e) {
         console.error(e);
     }

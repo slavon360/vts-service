@@ -1,0 +1,11 @@
+.Name {
+    cursor: pointer;
+    padding: 10px 0;
+
+    &:hover {
+        color: #ff115f;
+    }
+}
+.Name.Active {
+    color: #ff115f;
+}

@@ -7,8 +7,27 @@ const initialState = fromJS({
     currentPage: 1,
     nextPage: true,
     product: null,
-    perPage: null
+    perPage: null,
+    searchedProducts: [],
+    searchedProductsLoading: false,
+    showSearchedProducts: false
 });
+
+function toggleSearchedProductsVisibility(state, { data }) {
+    return state.set('showSearchedProducts', data);
+}
+
+function clearSearchedProducts(state) {
+    return state.set('searchedProducts', []);
+}
+
+function searchProductsLoading(state, { data }) {
+    return state.set('searchedProductsLoading', data);
+}
+
+function searchProducts(state, { searchedProducts }) {
+    return state.set('searchedProducts', List(searchedProducts));
+}
 
 function listProducts(state, { products, perPage }) {
     return state.merge({ 'productsList': fromJS(products), 'perPage': perPage });
@@ -53,7 +72,11 @@ export default composeReducer(
         switchNextPage,
         changeCurrentPage,
         clearProductsList,
-        getProduct
+        getProduct,
+        searchProducts,
+        searchProductsLoading,
+        clearSearchedProducts,
+        toggleSearchedProductsVisibility
     },
     initialState
 );

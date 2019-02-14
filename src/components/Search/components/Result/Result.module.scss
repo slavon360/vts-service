@@ -1,0 +1,18 @@
+.Result {
+    cursor: pointer;
+    padding: 10px 0 15px;
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-bottom: 1px solid #eee;
+    &:hover {
+        color: #ff115f;
+    }
+    &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+    }
+    &:first-child {
+        padding-top: 0;
+    }
+}

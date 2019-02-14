@@ -1,0 +1,26 @@
+.CartButton {
+    position: relative;
+    background-color: transparent;
+    border: none;
+    outline: none;
+    top: 15px;
+    right: 15px;;
+    cursor: pointer;
+
+    &:hover {
+        > svg {
+            fill: #ff115f;
+        }
+    }
+
+    .Qty {
+        position: absolute;
+        top: -7px;
+        font-size: 15px;
+        right: -5px;
+        padding: 2px 5px;
+        color: #fff;
+        background-color: #ff115f;
+        border-radius: 10px;
+    }
+}

@@ -1,9 +1,11 @@
 // DEV env only
 import { createStore, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
+import createDebounce from 'redux-debounced';
 import rootReducer from '../reducers';
+import checkAuth from '../middlewares/checkAuth';
 
-const middleware = [thunk];
+const middleware = [createDebounce(), checkAuth, thunk];
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?

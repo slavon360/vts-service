@@ -9,11 +9,17 @@ const axios = Axios.create({
     responseType: 'json'
 });
 
+axios.interceptors.request.use((config) => {
+    console.log(config);
+    return config;
+  });
+
 axios.interceptors.response.use(
     response => response,
     async (err) => {
         const { error, config, code, request, response } = err;
-        console.log(error, config, code, request, response);
+        console.log(error, config, code, request, response, new Error(err));
+        return response;
     }
 );
 

@@ -4,11 +4,13 @@ import { HomePage } from '../../components';
 import { getCatalogMenu, switchCheckedCategory } from '../../actions/menus';
 import { makeProductsRequest, revertCurrentPage } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
+import { getHomeBanners } from '../../actions/banners';
 
 const mapStateToProps = ({
     menus,
     products,
-    outerAPIdata: { currencyRate }
+    outerAPIdata: { currencyRate },
+    banners: { homeBanners }
 }) => {
     return {
          catalog: menus.get('catalog'),
@@ -16,7 +18,8 @@ const mapStateToProps = ({
          productsList: products.get('productsList'),
          productsLoading: products.get('productsLoading'),
          perPage: products.get('perPage'),
-         currencyRate
+         currencyRate,
+         homeBanners
     }
 };
 
@@ -25,7 +28,8 @@ const mapDispatchToProps = {
     switchCheckedCategory,
     makeProductsRequest,
     getCurrencyRate,
-    revertCurrentPage
+    revertCurrentPage,
+    getHomeBanners
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(HomePage));
