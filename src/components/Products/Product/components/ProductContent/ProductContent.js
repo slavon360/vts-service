@@ -1,4 +1,5 @@
 import React from 'react';
+import CurrencyFormat from 'react-currency-format';
 
 import styles from './ProductContent.module.scss';
 
@@ -8,7 +9,14 @@ const ProductContent = ({ title, Цена, briefInfo }) => (
         >
             <div className={styles.Header}>
                 <div className={styles.Title}>{title}</div>
-                <div className={styles.Price}>{Цена}</div>
+                <div className={styles.Price}>
+                    <CurrencyFormat
+                        value={Цена}
+                        displayType={'text'}
+                        thousandSeparator={true}
+                        prefix={'₴'}
+                    />
+                </div>
             </div>
             <div className={styles.BriefInfo}>
                 {briefInfo.map(info => (

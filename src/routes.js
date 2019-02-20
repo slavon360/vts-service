@@ -4,5 +4,6 @@ export const routes = {
     SIGN_IN: '/client-sign-in',
     LOGIN: '/client-login',
     DASHBOARD: '/dashboard',
-    LOGOUT: '/logout'
+    LOGOUT: '/logout',
+    SHOPPING_CART: '/shopping-cart'
 }

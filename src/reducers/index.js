@@ -6,7 +6,8 @@ import products from './products';
 import outerAPIdata from './outerAPIdata';
 import user from './user';
 import banners from './banners';
-import site from './site'
+import site from './site';
+import cart from './cart';
 
 Iterable.prototype[Symbol.for('get')] = function(value) {return this.get(value); };
 
@@ -17,7 +18,8 @@ const rootReducer = combineReducers({
     user,
     banners,
     form: formReducer,
-    site
+    site,
+    cart
 });
 
 export default rootReducer;

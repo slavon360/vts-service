@@ -13,6 +13,9 @@ class ProductPage extends Component {
     static defaultProps = {
         product: {}
     }
+    componentWillMount(){
+        this.props.setLoadingState(true);
+    }
     componentDidMount(){
         if (this.props.currencyRate) this.getProductInfo();
     }
@@ -31,11 +34,14 @@ class ProductPage extends Component {
     getProductInfo = async () => {
         const { getProduct } = this.props;
         const { productSlug } = this.props.match.params;
-        getProduct(productSlug);
+        await getProduct(productSlug);
+        this.props.setLoadingState(false);
     }
     onAddToCart = () => {
-        const { addToCart, product } = this.props;
+        const { addToCart, product, setProductsQty } = this.props;
         addToCart(product);
+        // we can add only one product
+        setProductsQty(1);
     }
     renderComponent = () => {
         const { product } = this.props;

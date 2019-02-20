@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { routes as routeNames } from '../../../routes';
 import ProductContent from './components/ProductContent';
 import ProductImage from './components/ProductImage';
+import { Button } from '../../UI';
 import ShoppingCartIcon from '../../Icons/ShoppingCart';
 import { showAdditionalInfo } from '../../../utils/dataConverter';
 
@@ -12,6 +13,12 @@ class Product extends Component {
     shouldComponentUpdate(nextProps) {
         const { perPage, productsLength, productIndex } = this.props;
         return (productsLength - perPage) < productIndex && productsLength < nextProps.productsLength;
+    }
+    onAddToCart = () => {
+        const { product, addToCart, setProductsQty } = this.props;
+        addToCart(product);
+        // we can add only one product
+        setProductsQty(1);
     }
     render() {
         const {
@@ -44,9 +51,12 @@ class Product extends Component {
                         briefInfo={briefInfo}
                     />
                 </Link>
-                <button className={styles.ShoppingCart}>
+                <Button
+                    onClick={this.onAddToCart}
+                    clsName={styles.ShoppingCart}
+                >
                         <ShoppingCartIcon style={{ fontSize: '40px' }} />
-                </button>
+                </Button>
             </li>
         );
     }

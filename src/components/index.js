@@ -7,3 +7,6 @@ export ContactForm from './Form';
 export Layer from './Layer';
 export Registration from './Registration';
 export UserNavbar from './UserNavbar';
+export Dashboard from './Dashboard';
+export ShoppingCart from './ShoppingCart';
+export Filters from './Filters';

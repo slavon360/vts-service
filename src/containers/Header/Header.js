@@ -14,6 +14,7 @@ import { setLoadingState } from '../../actions/site';
 import { logout } from  '../../actions/user';
 
 const mapStateToProps = ({
+    cart,
     user,
     menus,
     products,
@@ -21,7 +22,7 @@ const mapStateToProps = ({
 }) => {
     return {
         userData: user.get('userData'),
-        cart: user.get('cart'),
+        productsQty: cart.get('productsQty'),
         catalog: menus.get('catalog'),
         activeIndex: menus.get('activeIndex'),
         searchedProducts: products.get('searchedProducts'),

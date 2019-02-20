@@ -5,7 +5,9 @@ import {
     Home,
     Product,
     SignIn,
-    Login
+    Login,
+    Dashboard,
+    ShoppingCart
 } from '../containers';
 
 const routes = [
@@ -25,6 +27,14 @@ const routes = [
     {
         path: `${routeNames.LOGIN}`,
         component: Login
+    },
+    {
+        path: `${routeNames.DASHBOARD}`,
+        component: RequireAuth(Dashboard)
+    },
+    {
+        path: `${routeNames.SHOPPING_CART}`,
+        component: ShoppingCart
     }
 ]
 

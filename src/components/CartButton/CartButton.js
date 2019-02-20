@@ -1,19 +1,22 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { routes as routeNames } from '../../routes';
 import ShoppingCart from '../Icons/ShoppingCart';
 
 import styles from './CartButton.module.scss';
 
-const CartButton = ({ showHideCart, cart: { products } }) => (
-        <button
+const CartButton = ({ showHideCart, productsQty }) => (
+        <Link
+            to={routeNames.SHOPPING_CART}
             className={styles.CartButton}
             onClick={showHideCart}
         >
             <ShoppingCart style={{ fontSize: '23px' }} />
-            {products.length ?
-                <div className={styles.Qty}>{products.length}</div>
+            {productsQty ?
+                <div className={styles.Qty}>{productsQty}</div>
                 : <div />
             }
-        </button>
+        </Link>
     );
 
 export default CartButton;

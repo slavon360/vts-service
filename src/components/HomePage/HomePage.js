@@ -18,7 +18,9 @@ class HomePage extends Component{
             productsLoading,
             makeProductsRequest,
             perPage,
-            homeBanners
+            homeBanners,
+            addToCart,
+            setProductsQty
         } = this.props;
         return(
             <div className={styles.HomePage}>
@@ -36,6 +38,8 @@ class HomePage extends Component{
                     productsLoading={productsLoading}
                     products={productsList}
                     makeProductsRequest={makeProductsRequest}
+                    addToCart={addToCart}
+                    setProductsQty={setProductsQty}
                 />
             </div>
         )

@@ -6,17 +6,11 @@ import localStorage from '../utils/localStorage';
 import { postFromAxios } from '../utils/apiRequester';
 
 export const USER_TYPES = createTypes('user', [
-    'addToCart',
     'signInNewUser',
     'setUserData',
     'syncUserData',
     'deleteUserData'
 ]);
-
-export const addToCart = (product) => ({
-    type: USER_TYPES.addToCart,
-    product
-});
 
 export const syncUserData = (userData, isChecked) => (dispatch) => {
     dispatch({ type: USER_TYPES.syncUserData, userData, isChecked });

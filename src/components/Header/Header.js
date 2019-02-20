@@ -50,7 +50,7 @@ class Header extends PureComponent {
     render() {
         const { searchActive, searchedText } = this.state;
         const {
-            cart,
+            productsQty,
             catalog,
             activeIndex,
             switchCheckedCategory,
@@ -88,7 +88,7 @@ class Header extends PureComponent {
                         </div>
                         <div className={styles.RightSide}>
                             <UserNavbar logout={logout} userData={userData} />
-                            <CartButton cart={cart} />
+                            <CartButton productsQty={productsQty} />
                         </div>
                     </Fragment> : <div />
                 }
