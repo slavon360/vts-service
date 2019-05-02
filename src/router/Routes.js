@@ -7,7 +7,8 @@ import {
     SignIn,
     Login,
     Dashboard,
-    ShoppingCart
+    ShoppingCart,
+    // Order
 } from '../containers';
 
 const routes = [
@@ -35,7 +36,11 @@ const routes = [
     {
         path: `${routeNames.SHOPPING_CART}`,
         component: ShoppingCart
-    }
+    },
+    // {
+    //     path: `${routeNames.ORDER}`,
+    //     component: Order
+    // }
 ]
 
 export default routes;

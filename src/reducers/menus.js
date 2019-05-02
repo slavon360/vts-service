@@ -1,12 +1,23 @@
 import { composeReducer } from 'redux-compose-reducer';
 import { Map, List, fromJS } from 'immutable';
 
+
 const initialState = fromJS({
     catalog: [],
     activeIndex: 0,
     selectedSubcategoryId: null,
-    selectedCategoryId: null
+    selectedCategoryId: null,
+    filters: { },
+    activeFilters: { }
 });
+
+function setActiveFilter(state, { filterName, filterValue }) {
+    return state.updateIn(['activeFilters', filterName], (filters) => !filters ? [filterValue] : [...filters, filterValue]);
+}
+
+function deleteActiveFilter(state, { filterName, filterValue }) {
+    return state.updateIn(['activeFilters', filterName], (filters) => filters.filter(item => item !== filterValue));
+}
 
 function getCatalogMenu(state, { catalog, selectedCategoryId }) {
     if (catalog && catalog.length) {
@@ -43,11 +54,33 @@ function switchCheckedCategory(state, { id, index }) {
     }))
 }
 
+function getFilters(state, { filters }) {
+    const entries = Object.entries(filters);
+    const updFilters = entries.reduce((result, current) => {
+        if (typeof current[1] === 'number') {
+            result = {
+                ...result,
+                ranges: [...result.ranges, current]
+            }
+        } else {
+            result = {
+                ...result,
+                values: [...result.values, current]
+            }
+        }
+        return result;
+    }, { ranges: [], values: [] });
+    return state.set('filters', fromJS(updFilters));
+}
+
 export default composeReducer(
     'menus',
     {
         getCatalogMenu,
-        switchCheckedCategory
+        switchCheckedCategory,
+        getFilters,
+        setActiveFilter,
+        deleteActiveFilter
     },
     initialState
 );

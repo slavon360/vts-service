@@ -1,0 +1,41 @@
+.Params {
+    text-align: left;
+    .Head {
+        cursor: pointer;
+
+        span {
+            padding-left: 15px;
+        }
+    }
+    .Content {
+        padding: 0;
+        margin: 10px 0;
+        list-style: none;
+        overflow: hidden;
+        max-height: 0;
+        transition: max-height .7s ease-out;
+
+        .ContentItem {
+            margin: 6px 0;
+
+            input {
+                transform: translateY(2px);
+            }
+            label {
+                margin-left: 10px;
+            }
+        }
+    }
+    .HeadCheckBox:checked ~ .Content {
+        max-height: 100px;
+    }
+    .HeadCheckBox:checked + .Head .Icon {
+        transform: rotate(180deg);
+        color: #ff115f;
+    }
+    .Icon {
+        display: inline-block;
+        transition: all .5s;
+        transform-origin: 60% 65%;
+    }
+}

@@ -1,8 +1,8 @@
 import { connect } from 'react-redux';
-import { getProductsWithTotals, getTotalSum, getProducts, getProductsQty } from '../../utils/selectors';
+import { getTotalSum, getProducts, getProductsQty } from '../../utils/selectors';
 import { removeFromCart, setQty, setProductsQty, setDynamicProductsQty } from '../../actions/cart';
 import { toJS } from '../../components/HOC/toJS';
-import { ShoppingCart } from '../../components';
+import { Order } from '../../components';
 
 const mapStateToProps = (state) => {
     const products = getProducts(state);
@@ -22,4 +22,4 @@ const mapDispatchToProps = {
     setDynamicProductsQty
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(ShoppingCart));
+export default connect(mapStateToProps, mapDispatchToProps)(toJS(Order));

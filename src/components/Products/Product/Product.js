@@ -23,7 +23,7 @@ class Product extends Component {
     render() {
         const {
             product: {
-                image: { secure_url },
+                image: { secure_url } = { },
                 title,
                 Цена,
                 slug

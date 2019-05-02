@@ -27,10 +27,17 @@ class Header extends PureComponent {
     }
 
     fetchCurrencyRateAndCatalog = async () => {
-        const { getCatalogMenu, getCurrencyRate, currencyRate, setLoadingState } = this.props;
+        const {
+            getCatalogMenu,
+            getCurrencyRate,
+            currencyRate,
+            setLoadingState,
+            getFilters
+        } = this.props;
         setLoadingState(true);
         if (!currencyRate) await getCurrencyRate();
-        getCatalogMenu();
+        await getCatalogMenu();
+        getFilters();
     }
 
     onSearchProducts = (e) => {

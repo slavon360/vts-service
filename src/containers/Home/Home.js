@@ -2,7 +2,13 @@ import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { HomePage } from '../../components';
 import { addToCart, setProductsQty } from '../../actions/cart';
-import { getCatalogMenu, switchCheckedCategory } from '../../actions/menus';
+import {
+    getCatalogMenu,
+    switchCheckedCategory,
+    setActiveFilter,
+    deleteActiveFilter,
+    //sendActiveFilter
+} from '../../actions/menus';
 import { makeProductsRequest, revertCurrentPage } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 import { getHomeBanners } from '../../actions/banners';
@@ -16,6 +22,7 @@ const mapStateToProps = ({
     return {
          catalog: menus.get('catalog'),
          activeIndex: menus.get('activeIndex'),
+         filters: menus.get('filters'),
          productsList: products.get('productsList'),
          productsLoading: products.get('productsLoading'),
          perPage: products.get('perPage'),
@@ -32,7 +39,10 @@ const mapDispatchToProps = {
     revertCurrentPage,
     getHomeBanners,
     addToCart,
-    setProductsQty
+    setProductsQty,
+    setActiveFilter,
+    deleteActiveFilter,
+    //sendActiveFilter
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(HomePage));

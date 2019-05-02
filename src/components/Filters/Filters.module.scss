@@ -1,0 +1,39 @@
+.Filters {
+    padding: 0 15px;
+    box-sizing: border-box;
+
+    h2 {
+        font-weight: 100;
+        font-size: 30px;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+
+    .LeftPart, .RightPart {
+        display: inline-block;
+        vertical-align: top;
+        text-align: center;
+    }
+    .LeftPart {
+        width: 70%;
+        padding: 0 125px 0 0;
+        box-sizing: border-box;
+    }
+    .RightPart {
+        width: 30%;
+        padding-top: 90px;
+    }
+    .MoreBtnRanges, .MoreBtnValues {
+        padding: 10px 15px;
+        border-radius: 5px;
+        border: 1px solid #ddd;
+        font-size: 14px;
+        color: #888;
+    }
+    .MoreBtnValues {
+        margin-top: 5px;
+    }
+    .MoreBtnRanges {
+        margin-top: 30px;
+    }
+}

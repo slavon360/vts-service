@@ -6,7 +6,10 @@ import _get from 'lodash/get';
 
 const MENU_TYPES = createTypes('menus', [
     'getCatalogMenu',
-    'switchCheckedCategory'
+    'switchCheckedCategory',
+    'getFilters',
+    'setActiveFilter',
+    'deleteActiveFilter'
 ]);
 const PRODUCTS_TYPES = createTypes('products', [
     'listProducts',
@@ -15,6 +18,18 @@ const PRODUCTS_TYPES = createTypes('products', [
     'changeCurrentPage',
     'clearProductsList'
 ]);
+
+export const setActiveFilter = (filterName, filterValue) => ({
+    type: MENU_TYPES.setActiveFilter,
+    filterName,
+    filterValue
+});
+
+export const deleteActiveFilter = (filterName, filterValue) => ({
+    type: MENU_TYPES.deleteActiveFilter,
+    filterName,
+    filterValue
+});
 
 export const getCatalogMenu = () => async (dispatch, getState) => {
     try {
@@ -40,6 +55,17 @@ export const getCatalogMenu = () => async (dispatch, getState) => {
         console.error(e);
     }
 };
+
+export const getFilters = () => async (dispatch, getState) => {
+    try {
+        const { selectedCategoryId } = getState().menus;
+        const json = await getFromAxios('/predefined-filters', { category: selectedCategoryId });
+        const filters = _get(json, 'data', {});
+        dispatch({ type: MENU_TYPES.getFilters, filters });
+    } catch (e) {
+        console.error(e);
+    }
+}
 
 export const switchCheckedCategory = (id, index) => (dispatch) => {
     dispatch({ type: MENU_TYPES.switchCheckedCategory, id, index });

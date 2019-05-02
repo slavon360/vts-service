@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { Header } from '../../components';
-import { switchCheckedCategory, getCatalogMenu } from '../../actions/menus';
+import { switchCheckedCategory, getCatalogMenu, getFilters } from '../../actions/menus';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 import {
     makeProductsRequest,
@@ -42,7 +42,8 @@ const mapDispatchToProps = {
     getCurrencyRate,
     getCatalogMenu,
     setLoadingState,
-    logout
+    logout,
+    getFilters
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(Header));

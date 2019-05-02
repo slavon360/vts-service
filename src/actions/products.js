@@ -12,7 +12,8 @@ const PRODUCTS_TYPES = createTypes('products', [
     'searchProducts',
     'searchProductsLoading',
     'clearSearchedProducts',
-    'toggleSearchedProductsVisibility'
+    'toggleSearchedProductsVisibility',
+    'resetProduct'
 ]);
 
 export const toggleSearchedProductsVisibility = (data) => ({
@@ -57,6 +58,10 @@ export const getProduct = (slug) => async (dispatch, getState) => {
     const updProduct = { ...product, 'Цена': currencyRate ? Math.round(currencyRate * product['Цена']) : product['Цена'] };
     dispatch({ type: PRODUCTS_TYPES.getProduct, product: updProduct });
 }
+
+export const resetProduct = () => ({
+    type: PRODUCTS_TYPES.resetProduct
+})
 
 export const revertCurrentPage = () => ({
     type: PRODUCTS_TYPES.revertCurrentPage

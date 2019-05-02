@@ -20,17 +20,25 @@ class HomePage extends Component{
             perPage,
             homeBanners,
             addToCart,
-            setProductsQty
+            setProductsQty,
+            filters,
+            setActiveFilter,
+            deleteActiveFilter,
+            sendActiveFilter
         } = this.props;
         return(
             <div className={styles.HomePage}>
                 <HomeBanners homeBanners={homeBanners} />
                 {catalog && catalog.length ?
                     <CategoryMenu
+                        filters={filters}
                         categories={catalog}
                         activeIndex={activeIndex}
                         switchCheckedCategory={switchCheckedCategory}
                         makeProductsRequest={makeProductsRequest}
+                        setActiveFilter={setActiveFilter}
+                        deleteActiveFilter={deleteActiveFilter}
+                        sendActiveFilter={sendActiveFilter}
                 /> : <div />
                 }
                 <Products

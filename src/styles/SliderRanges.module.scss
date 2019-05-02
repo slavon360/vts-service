@@ -1,0 +1,64 @@
+.InputRange{
+    height: 1rem;
+    position: relative;
+    width: 100%;
+    font-size: 14px;
+}
+.MinLabel {
+    left: 0;
+}
+.MaxLabel {
+    right: 0;
+}
+.MinLabel, .MaxLabel {
+    bottom: -1.4rem;
+    position: absolute;
+}
+.Track {
+    background-color: #ddd;
+    left: 0;
+    margin-top: -0.15rem;
+    position: absolute;
+    right: 0;
+    top: 50%;
+    border-radius: 0.3rem;
+    cursor: pointer;
+    display: block;
+    height: 0.3rem;
+    transition: left 0.3s ease-out, width 0.3s ease-out;
+}
+.Track .ActiveTrack {
+    background-color: #ff115f;
+    position: relative;
+    height: 100%;
+    transition: left 0.3s ease-out, width 0.3s ease-out;
+}
+.SliderContainer {
+    transition: left 0.3s ease-out;
+}
+.ValueLabel {
+    position: absolute;
+    top: -2.3rem;
+    font-size: 17px;
+}
+.Slider {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background: #fff;
+    border: 1px solid #eee;
+    border-radius: 100%;
+    box-shadow: 0 0 5px #999;
+    cursor: pointer;
+    display: block;
+    height: 1rem;
+    margin-left: -0.5rem;
+    margin-top: -0.6rem;
+    outline: none;
+    position: absolute;
+    top: 50%;
+    transition: box-shadow 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, -webkit-transform 0.3s ease-out;
+    width: 1rem;
+}

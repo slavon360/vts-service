@@ -3,7 +3,7 @@ import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
 import { addToCart, setProductsQty } from '../../actions/cart';
 import { setLoadingState } from '../../actions/site';
-import { getProduct } from '../../actions/products';
+import { getProduct, resetProduct } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 
 const mapStateToProps = ({
@@ -23,7 +23,8 @@ const mapDispatchToProps = {
     addToCart,
     getCurrencyRate,
     setLoadingState,
-    setProductsQty
+    setProductsQty,
+    resetProduct
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

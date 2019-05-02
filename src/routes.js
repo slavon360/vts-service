@@ -5,5 +5,6 @@ export const routes = {
     LOGIN: '/client-login',
     DASHBOARD: '/dashboard',
     LOGOUT: '/logout',
-    SHOPPING_CART: '/shopping-cart'
+    SHOPPING_CART: '/shopping-cart',
+    ORDER: '/order'
 }

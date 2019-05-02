@@ -62,6 +62,10 @@ function getProduct(state, { product }) {
     return state.set('product', fromJS(product));
 }
 
+function resetProduct(state) {
+    return state.set('product', null);
+}
+
 export default composeReducer(
     'products',
     {
@@ -76,7 +80,8 @@ export default composeReducer(
         searchProducts,
         searchProductsLoading,
         clearSearchedProducts,
-        toggleSearchedProductsVisibility
+        toggleSearchedProductsVisibility,
+        resetProduct
     },
     initialState
 );

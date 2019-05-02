@@ -1,5 +1,7 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
+import { shouldUpdate } from 'recompose'
+import _isEqual from 'lodash/isEqual';
 
 import styles from './HomeBanners.module.scss';
 import "react-responsive-carousel/lib/styles/carousel.min.css";
@@ -8,6 +10,7 @@ const HomeBanners = ({ homeBanners }) => {
     if (!homeBanners) {
         return <div />
     }
+    console.log('homeBanners', homeBanners)
     return (<Carousel
         showThumbs={false}
         showStatus={false}
@@ -30,4 +33,6 @@ const HomeBanners = ({ homeBanners }) => {
         </Carousel>)
 };
 
-export default HomeBanners;
+export default shouldUpdate(
+    (props, nextProps) => !_isEqual(props.homeBanners, nextProps.homeBanners)
+    )(HomeBanners);

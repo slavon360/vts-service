@@ -21,7 +21,6 @@ class ProductPage extends Component {
     }
     shouldComponentUpdate(nextProps, nextState){
         const { product, match: { params: { productSlug } }, currencyRate } = this.props;
-        console.log(this.props, nextProps);
         if (currencyRate !== nextProps.currencyRate) this.getProductInfo();
         return !product || productSlug !== nextProps.match.params.productSlug || product.title !== nextProps.product.title;
     }
@@ -30,6 +29,9 @@ class ProductPage extends Component {
         if (productSlug !== prevProps.match.params.productSlug) {
             this.props.getProduct(productSlug);
         }
+    }
+    componentWillUnmount(){
+        this.props.resetProduct();
     }
     getProductInfo = async () => {
         const { getProduct } = this.props;

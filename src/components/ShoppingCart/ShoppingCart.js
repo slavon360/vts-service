@@ -1,6 +1,8 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
+import { Link } from 'react-router-dom';
 import { Product, Tax, ProductHeader } from './components';
+import { routes as routNames } from '../../routes';
 
 import styles from './ShoppingCart.module.scss';
 
@@ -31,13 +33,16 @@ const ShoppingCart = ({ products, totalSum, removeFromCart, setQty, setProductsQ
                     }
                 </tbody>
             </table>
-            <div>Total Sum: 
+            <div>Total Sum: &nbsp;
                 <CurrencyFormat
                     value={totalSum}
                     displayType={'text'}
                     thousandSeparator={true}
                     prefix={'₴ '}
                 />
+            </div>
+            <div className={styles.Order}>
+                    <Link to={routNames.ORDER}>Оформить Заказ</Link>
             </div>
         </div>
     )

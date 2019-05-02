@@ -1,22 +1,10 @@
 import React, { Component } from 'react';
 import Slider from 'react-input-range';
+import WithSliderClasses from '../../../HOC/withSliderClasses';
 
 import styles from './Prices.module.scss';
-import 'react-input-range/lib/css/index.css';
 
-const sliderClasses = {
-    activeTrack: styles.ActiveTrack,
-    disabledInputRange: styles.DisabledInputRange,
-    inputRange: styles.InputRange,
-    labelContainer: styles.LabelContainer,
-    maxLabel: styles.MaxLabel,
-    minLabel: styles.MinLabel,
-    slider: styles.Slider,
-    sliderContainer: styles.SliderContainer,
-    track: styles.Track,
-    valueLabel: styles.ValueLabel,
-}
-const maxPrice = 10000;
+const maxPrice = 100000;
 
 class Prices extends Component {
     state = {
@@ -26,23 +14,26 @@ class Prices extends Component {
         }
     }
     handleChange = (value) => {
-        console.log(value);
         this.setState({ value });
     }
     render() {
+        const { sliderClasses } = this.props;
         const { value } = this.state;
         return (
             <div className={styles.Prices}>
+                <h2>Цена</h2>
                 <Slider
                     minValue={0}
                     maxValue={maxPrice}
                     value={value}
                     onChange={this.handleChange}
-                    step={10}
+                    step={50}
+                    classNames={sliderClasses}
+                    formatLabel={(val) => `₴${val}`}
                 />
             </div>
         );
     }
 }
 
-export default Prices;
+export default WithSliderClasses(Prices);
