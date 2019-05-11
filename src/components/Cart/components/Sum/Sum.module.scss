@@ -1,0 +1,11 @@
+.SumWrp {
+    display: flex;
+    margin-top: 15px;
+    .TotalKey {
+        flex-grow: 7;
+        text-align: right;
+    }
+    .TotalValue {
+        flex-grow: 2;
+    }
+}

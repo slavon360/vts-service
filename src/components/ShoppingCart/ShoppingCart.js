@@ -7,7 +7,6 @@ import { routes as routNames } from '../../routes';
 import styles from './ShoppingCart.module.scss';
 
 const ShoppingCart = ({ products, totalSum, removeFromCart, setQty, setProductsQty, setDynamicProductsQty }) => {
-    console.log(products);
     return (
         <div className={styles.ShoppingCart}>
             <Tax />

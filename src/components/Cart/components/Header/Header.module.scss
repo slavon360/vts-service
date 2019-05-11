@@ -1,0 +1,36 @@
+.HeaderWrp {
+    display: inline-flex;
+    border-bottom: 1px solid #dbdbdb;
+    margin-top: 10px;
+    padding: 0 0 20px;
+
+    .Photo, .Price, .Qty, .Sum, .Delete {
+        flex-grow: 1;
+        align-content: center;
+    }
+    .Name {
+        flex-grow: 4;
+        align-content: center;
+    }
+    .Delete {
+        transform: scale(1.5);
+    }
+    @media screen and (min-width: 768px) {
+        .Photo {
+            width: 80px;
+        }
+        .Name {
+            width: 350px;
+        }
+        .Price, .Sum {
+            width: 110px;
+        }
+        .Qty {
+            text-align: center;
+            width: 90px;
+        }
+        .Delete {
+            width: 20px;
+        }
+    }
+}

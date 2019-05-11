@@ -1,4 +1,5 @@
 import React from 'react';
+import WasteBasket from '../../../Icons/WasteBasket';
 import styles from './Header.module.scss';
 
 const Header = () => {
@@ -9,7 +10,9 @@ const Header = () => {
             <div className={styles.Price}>Цена</div>
             <div className={styles.Qty}>К-во</div>
             <div className={styles.Sum}>Всего</div>
-            <div className={styles.Delete}>icn</div>
+            <div className={styles.Delete}>
+                <WasteBasket color="#333" />
+            </div>
         </div>
     );
 };

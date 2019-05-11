@@ -5,3 +5,4 @@ export SignIn from './SignIn';
 export Login from './Login';
 export Dashboard from './Dashboard';
 export ShoppingCart from './ShoppingCart';
+export Order from './Order';

@@ -10,3 +10,4 @@ export UserNavbar from './UserNavbar';
 export Dashboard from './Dashboard';
 export ShoppingCart from './ShoppingCart';
 export Filters from './Filters';
+export Order from './Order';

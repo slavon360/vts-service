@@ -18,12 +18,12 @@ class Product extends Component {
     onRemoveFromCart = () => {
         const { removeFromCart, _id, qty, setProductsQty } = this.props;
         removeFromCart(_id);
-        setProductsQty(-qty)
+        setProductsQty(-qty);
     }
     onSetQty = ({ target: { value }}) => {
         const { setQty, _id, setDynamicProductsQty } = this.props;
         setQty(_id, value);
-        setDynamicProductsQty()
+        setDynamicProductsQty();
     }
     onDecreaseQty = () => {
         const { setQty, _id, setProductsQty, qty } = this.props;

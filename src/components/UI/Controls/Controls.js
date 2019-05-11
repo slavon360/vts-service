@@ -1,6 +1,6 @@
 import React from 'react';
-import Button from '../../../UI/Button';
-import Input from '../../../UI/Input';
+import Button from '../Button';
+import Input from '../Input';
 
 import styles from './Controls.module.scss';
 
