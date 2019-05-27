@@ -25,7 +25,6 @@ const makeSubmit = ({ firstName='', lastName='', email='' }) => {
     }
 }
 const renderField = ({ label, input, meta: { error, touched }, type }) => {
-    console.log(input);
     return (
         <div className="input-row">
             <label>{label}</label>

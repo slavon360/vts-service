@@ -10,7 +10,6 @@ const axios = Axios.create({
 });
 
 axios.interceptors.request.use((config) => {
-    console.log(config);
     return config;
   });
 

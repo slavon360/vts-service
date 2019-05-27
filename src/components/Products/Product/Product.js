@@ -34,7 +34,6 @@ class Product extends Component {
             makeProductsRequest
         } = this.props;
         const briefInfo = showAdditionalInfo(this.props.product);
-        //console.log(title, productIndex, ' productsLenght: ', productsLength, ' perPage: ', this.props.perPage);
         return (
             <li className={styles.Product}>
                 <Link to={`${routeNames.PRODUCT_DETAILS}/${slug}`}>

@@ -6,7 +6,6 @@ function checkAuth({ getState }) {
     return next => action => {
         const { userData: { email } } = getState().user;
         const isPersist = _get(action, 'type', '').indexOf('persist') >= 0;
-        console.log(action);
         
         if (!isPersist &&
             localStorage.isAuthenticated &&

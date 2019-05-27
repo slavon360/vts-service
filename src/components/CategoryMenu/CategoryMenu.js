@@ -1,5 +1,5 @@
 import React from 'react';
-import { shouldUpdate } from 'recompose'
+import { shouldUpdate } from 'recompose';
 import _isEmpty from 'lodash/isEmpty';
 import _isEqual from 'lodash/isEqual';
 import PropTypes from 'prop-types';

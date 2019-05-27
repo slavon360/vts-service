@@ -9,6 +9,10 @@ function setUserData(state, { client }) {
     return state.set('userData', Map(client));
 }
 
+function createUserData(state, { formData }) {
+    return state.set('userData', Map(formData));
+}
+
 function syncUserData(state, {userInfo}) {
     return state.set('userData', Map(userInfo));
 }
@@ -22,7 +26,8 @@ export default composeReducer(
     {
         setUserData,
         syncUserData,
-        deleteUserData
+        deleteUserData,
+        createUserData
     },
     initialState
 );

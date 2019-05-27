@@ -1,13 +1,28 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
-import { Backdrop } from '../UI';
+import Modal from 'react-modal';
+import { Backdrop, Button } from '../UI';
 import Preloader from '../Preloader';
 import { toJS } from '../../components/HOC/toJS';
 import { toggleSearchedProductsVisibility } from '../../actions/products';
+import { setModalState } from '../../actions/site';
 
 import styles from './Layer.module.scss';
 
 export const LayerContext = React.createContext();
+
+const customStyles = {
+    content : {
+      top                   : '50%',
+      left                  : '50%',
+      right                 : 'auto',
+      bottom                : 'auto',
+      marginRight           : '-50%',
+      transform             : 'translate(-50%, -50%)'
+    }
+  };
+
+Modal.setAppElement('#root');
 
 class Layer extends PureComponent {
     state = {
@@ -23,10 +38,15 @@ class Layer extends PureComponent {
             this.setState((prevState) => ({ isCatalogOpen: !prevState.isCatalogOpen }));
         }
     }
+    closeModal = () => {
+        const isOpen = false;
+        this.props.setModalState(isOpen);
+    }
 
     render () {
         const { closeCatalog } = this.state;
-        const { loading } = this.props;
+        const { loading, modalIsOpen, modalTemplate } = this.props;
+        console.log(modalIsOpen, loading)
         return (
             <LayerContext.Provider value={this.state}>
                 <div
@@ -41,6 +61,16 @@ class Layer extends PureComponent {
                         </div> :
                         <div />
                     }
+                    <Modal
+                        isOpen={modalIsOpen}
+                        onAfterOpen={this.afterOpenModal}
+                        onRequestClose={this.closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                        >
+                        <div dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
+                        <Button clickHandler={this.closeModal}>Ok</Button>
+                    </Modal>
                 </div>
             </LayerContext.Provider>
         );
@@ -48,14 +78,18 @@ class Layer extends PureComponent {
 }
 
 const mapStateToProps = ({
-    site: { loading },
+    site: { loading, modalIsOpen, modalTemplate },
     products
 }) => ({
+    loading,
+    modalIsOpen,
+    modalTemplate,
     showSearchedProducts: products.get('showSearchedProducts')
 })
 
 const mapDispatchToProps = {
-    toggleSearchedProductsVisibility
+    toggleSearchedProductsVisibility,
+    setModalState
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(Layer));

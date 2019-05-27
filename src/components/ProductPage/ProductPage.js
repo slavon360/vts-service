@@ -63,7 +63,6 @@ class ProductPage extends Component {
     }
 
     render() {
-        console.log('productPage render', this.props.product)
         return this.renderComponent();
     }
 }

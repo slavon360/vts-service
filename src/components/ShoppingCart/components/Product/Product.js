@@ -37,7 +37,6 @@ class Product extends Component {
     }
     render() {
         const { title, img, price, qty, total } = this.props;
-        console.log(title);
         return (
             <tr className={styles.Product}>
                     <td>

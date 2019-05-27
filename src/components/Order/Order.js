@@ -9,6 +9,16 @@ class Order extends Component {
     static proptypes = {
         products: PropTypes.array
     }
+    submitOrder = (e) => {
+        e.preventDefault();
+        const {
+            form: {
+                order_form: { values } = {}
+            },
+            totalSum
+        } = this.props;
+        this.props.sendOrderData(values, totalSum);
+    }
     render() {
         const {
             products,
@@ -16,7 +26,8 @@ class Order extends Component {
             setQty,
             setProductsQty,
             setDynamicProductsQty,
-            totalSum
+            totalSum,
+            form
         } = this.props;
         return (
             <div className={styles.OrderWrp}>
@@ -28,7 +39,8 @@ class Order extends Component {
                     setDynamicProductsQty={setDynamicProductsQty}
                     totalSum={totalSum}
                 />
-                <OrderForm />
+                <br />
+                <OrderForm submitOrder={this.submitOrder} clientForm={form} />
             </div>
         );
     }

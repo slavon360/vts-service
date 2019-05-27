@@ -1,11 +1,90 @@
-.Form {
-    .FirstRow, .SecondRow, .ThirdRow {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
+.OrderFormWrp {
+    text-align: left;
+    display: inline-block;
 
-        .InputArea {
-            flex-grow: 3;
+    @media screen and (min-width: 768px) {
+        width: 760px;
+    }
+
+    h2 {
+        font-weight: 400;
+        text-transform: uppercase;
+    }
+    .Form {
+        .FirstRow, .SecondRow, .ThirdRow {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 45px;
+    
+            .InputArea {
+                flex-grow: 3;
+                position: relative;
+
+                &:not(:last-child) {
+                    margin-right: 15px;
+                }
+
+                svg {
+                    position: absolute;
+                    right: 0;
+                    top: 32px;
+                    right: 10px;
+                    display: none;
+                }
+
+                .ErrorMessage {
+                    display: none;
+                    position: absolute;
+                    left: 0;
+                    top: 120%;
+                }
+
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                }
+
+                input {
+                    border: 1px solid #dbdbdb;
+                    box-sizing: border-box;
+                    padding: 5px;
+                    font-size: 18px;
+                }
+            }
+            .InputArea.Error {
+                input {
+                    border-color: red;
+                }
+                .ErrorMessage, svg {
+                    display: block;
+                    color: red;
+                }
+            }
+
+            .Comment {
+                width: 100%;
+
+                label {
+                    display: block;
+                    margin-bottom: 5px;
+                }
+                textarea {
+                    width: 100%;
+                    box-sizing: border-box;
+                }
+            }
+        }
+        .SubmitBtn, .Disabled {
+            color: #fff;
+            padding: 10px;
+            border-radius: 5px;
+        }
+        .SubmitBtn {
+            background-color: #1d9877;
+        }
+        .Disabled {
+            background-color: #ccc;
         }
     }
 }

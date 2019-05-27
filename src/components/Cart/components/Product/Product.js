@@ -43,7 +43,6 @@ class Product extends Component {
             },
             index
         } = this.props;
-        console.log(title);
         return (
             <div className={cx(styles.ProductWrp, { [styles.ProductWrpEven]: (index % 2) })}>
                 <div className={styles.Image}>

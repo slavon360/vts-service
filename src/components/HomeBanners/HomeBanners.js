@@ -10,7 +10,6 @@ const HomeBanners = ({ homeBanners }) => {
     if (!homeBanners) {
         return <div />
     }
-    console.log('homeBanners', homeBanners)
     return (<Carousel
         showThumbs={false}
         showStatus={false}
