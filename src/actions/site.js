@@ -3,7 +3,8 @@ import { createTypes } from 'redux-compose-reducer';
 export const SITE_TYPES = createTypes('site', [
     'setLoadingState',
     'setModalState',
-    'setModalTemplate'
+    'setModalTemplate',
+    'setModalWithActions'
 ]);
 
 export const setLoadingState = (loading) => ({
@@ -19,4 +20,9 @@ export const setModalState = (modalIsOpen) => ({
 export const setModalTemplate = (modalTemplate) => ({
     type: SITE_TYPES.setModalTemplate,
     modalTemplate
+});
+
+export const setModalWithActions = (modalWithActions) => ({
+    type: SITE_TYPES.setModalWithActions,
+    modalWithActions
 });

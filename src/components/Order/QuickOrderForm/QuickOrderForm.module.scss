@@ -1,0 +1,51 @@
+.Form {
+    min-width: 350px;
+    
+    .InputArea {
+        position: relative;
+        margin-bottom: 15px;
+    
+        &:nth-child(2) {
+            margin-bottom: 55px;
+        }
+    
+        svg {
+            position: absolute;
+            right: 0;
+            top: 42px;
+            right: 10px;
+            display: none;
+        }
+    
+        .ErrorMessage {
+            display: none;
+            position: absolute;
+            left: 0;
+            top: 120%;
+        }
+    
+        label {
+            display: block;
+            margin-bottom: 15px;
+        }
+    
+        input {
+            border: 1px solid #dbdbdb;
+            box-sizing: border-box;
+            padding: 5px;
+            font-size: 18px;
+        }
+    }
+    .InputArea.Error {
+        input {
+            border-color: red;
+        }
+        .ErrorMessage, svg {
+            display: block;
+            color: red;
+        }
+        & + .InputArea label {
+            opacity: 0;
+        }
+    }
+}

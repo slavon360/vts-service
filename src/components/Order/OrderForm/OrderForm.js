@@ -94,7 +94,8 @@ const makeSubmit = () => {
 
 const OrderForm = ({
     clientForm: { order_form = {} },
-    submitOrder
+    submitOrder,
+    productsQty
 }) => {
     const { syncErrors } = order_form;
     const { phoneExist, fullNameExist } = isExist;
@@ -160,8 +161,8 @@ const OrderForm = ({
                     />
                 </div>
                 <Button
-                    disabled={syncErrors || !phoneExist || !fullNameExist}
-                    clsName={syncErrors || !phoneExist || !fullNameExist ? styles.Disabled : styles.SubmitBtn}
+                    disabled={syncErrors || !phoneExist || !fullNameExist || !productsQty}
+                    clsName={syncErrors || !phoneExist || !fullNameExist || !productsQty ? styles.Disabled : styles.SubmitBtn}
                 >
                     Оформить заказ
                 </Button>

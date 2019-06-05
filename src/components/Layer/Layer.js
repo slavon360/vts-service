@@ -61,16 +61,15 @@ class Layer extends PureComponent {
                         </div> :
                         <div />
                     }
-                    <Modal
+                    {/* <Modal
                         isOpen={modalIsOpen}
-                        onAfterOpen={this.afterOpenModal}
                         onRequestClose={this.closeModal}
                         style={customStyles}
                         contentLabel="Example Modal"
-                        >
+                    >
                         <div dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
                         <Button clickHandler={this.closeModal}>Ok</Button>
-                    </Modal>
+                    </Modal> */}
                 </div>
             </LayerContext.Provider>
         );

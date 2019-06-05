@@ -4,6 +4,7 @@ import _get from 'lodash/get';
 // import _isEmpty from 'lodash/isEmpty';
 import qs from 'qs';
 import { SITE_TYPES } from './site';
+import { CART_TYPES } from './cart';
 import localStorage from '../utils/localStorage';
 import { postFromAxios } from '../utils/apiRequester';
 import { htmlCodeOrder, htmlDecode } from '../utils/dataConverter';
@@ -74,16 +75,23 @@ const serverErrorTemplate = (message, statusText) => `<div>
     <h3>${statusText}</h3>
     <p>${message}</p>
     <p>Something went wrong!</p>
-</div>`
+</div>`;
+
+const generateSentData = (formData, products, totalSum) => {
+    const html_products_string = htmlCodeOrder(products, totalSum);
+    const sentData = { form: formData, products: html_products_string };
+    return sentData;
+}
 
 export const sendOrderData = (formData, totalSum) => async (dispatch, getState) => {
     const { userData } = getState().user;
     const { products } = getState().cart;
+    const sentData = generateSentData(formData, products.toJS(), totalSum);
+
     if (userData.size === 0) {
         dispatch({ type: USER_TYPES.createUserData, formData });
     }
-    const html_products_string = htmlCodeOrder(products.toJS(), totalSum);
-    const sentData = { form: formData, products: html_products_string };
+
     try {
         const json = await postFromAxios('/make-order', qs.stringify(sentData), {
             headers: {'Content-Type': 'application/x-www-form-urlencoded' },
@@ -91,6 +99,7 @@ export const sendOrderData = (formData, totalSum) => async (dispatch, getState) 
         const modalIsOpen = true;
         const errorMessage = _get(json, 'data.error', '');
         const statusText = _get(json, 'statusText', '');
+
         if (json.status === 404) {
             const template = htmlDecode(notFoundTemplate);
             dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
@@ -99,8 +108,45 @@ export const sendOrderData = (formData, totalSum) => async (dispatch, getState) 
             const template = htmlDecode(serverErrorTemplate(errorMessage, statusText));
             dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
         } else {
-            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: successTemplate });
+            const template = htmlDecode(successTemplate);
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
+            dispatch({ type: CART_TYPES.resetCart });
         }
+
+        dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });
+        dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: null })
+    } catch (err) {
+        console.error(err);
+    }
+}
+
+export const makeQuickOrder = (totalSum) => async (dispatch, getState) => {
+    const { form: { quick_order: { values: formData } } } = getState();
+    const { products } = getState().cart;
+    const product = products.toJS().pop();
+    const sentData = generateSentData(formData, [product], totalSum);
+
+    try {
+        const json = await postFromAxios('/make-order', qs.stringify(sentData), {
+            headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+        });
+        const modalIsOpen = true;
+        const errorMessage = _get(json, 'data.error', '');
+        const statusText = _get(json, 'statusText', '');
+
+        if (json.status === 404) {
+            const template = htmlDecode(notFoundTemplate);
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
+        }
+        if (json.status === 500) {
+            const template = htmlDecode(serverErrorTemplate(errorMessage, statusText));
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
+        } else {
+            const template = htmlDecode(successTemplate);
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
+            dispatch({ type: CART_TYPES.resetCart });
+        }
+
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });
     } catch (err) {
         console.error(err);

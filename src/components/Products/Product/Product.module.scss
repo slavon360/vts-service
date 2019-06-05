@@ -6,6 +6,16 @@
     transition: box-shadow .35s ease-in,transform .3s ease-in,opacity .2s ease-in,-webkit-transform .3s ease-in;
     position: relative;
 
+    .ByOneClick {
+        position: absolute;
+        top: 40%;
+        z-index: 10;
+
+        &:hover {
+            color: #39f;
+        }
+    }
+
     &:hover {
         transform: translateY(-4px);
         box-shadow: 0 15px 20px rgba(0,0,0,.2);

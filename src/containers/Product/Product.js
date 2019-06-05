@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
-import { addToCart, setProductsQty } from '../../actions/cart';
+import { addToCart, setProductsQty, preorderModal } from '../../actions/cart';
 import { setLoadingState } from '../../actions/site';
 import { getProduct, resetProduct } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
@@ -24,7 +24,8 @@ const mapDispatchToProps = {
     getCurrencyRate,
     setLoadingState,
     setProductsQty,
-    resetProduct
+    resetProduct,
+    preorderModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

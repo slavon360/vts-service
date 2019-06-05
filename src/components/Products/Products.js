@@ -12,7 +12,10 @@ const Products = ({
     makeProductsRequest,
     perPage,
     addToCart,
-    setProductsQty
+    setProductsQty,
+    setModalState,
+    modalIsOpen,
+    preorderModal
 }) => (
         <ul className={styles.ProductsWrp}>
             {products && products.length ?
@@ -27,6 +30,9 @@ const Products = ({
                         product={product}
                         addToCart={addToCart}
                         setProductsQty={setProductsQty}
+                        setModalState={setModalState}
+                        modalIsOpen={modalIsOpen}
+                        preorderModal={preorderModal}
                     />
                 )) : <div />
             }

@@ -4,7 +4,8 @@ const initialState = {
     loading: false,
     modalIsOpen: false,
     modalTemplate: null,
-    successfullOrder: false
+    successfullOrder: false,
+    modalWithActions: false
 }
 
 function setLoadingState(state, { loading }) {
@@ -18,6 +19,13 @@ function setModalState(state, { modalIsOpen }) {
     return {
         ...state,
         modalIsOpen
+    }
+};
+
+function setModalWithActions(state, { modalWithActions }) {
+    return {
+        ...state,
+        modalWithActions
     }
 };
 
@@ -41,7 +49,8 @@ export default composeReducer(
         setLoadingState,
         setModalState,
         setModalTemplate,
-        setOrderState
+        setOrderState,
+        setModalWithActions
     },
     initialState
 );

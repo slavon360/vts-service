@@ -1,7 +1,8 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { HomePage } from '../../components';
-import { addToCart, setProductsQty } from '../../actions/cart';
+import { addToCart, setProductsQty, resetCart, preorderModal, removeLastProduct } from '../../actions/cart';
+import { setModalState, setModalTemplate, setModalWithActions } from '../../actions/site';
 import {
     getCatalogMenu,
     switchCheckedCategory,
@@ -12,13 +13,21 @@ import {
 import { makeProductsRequest, revertCurrentPage } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 import { getHomeBanners } from '../../actions/banners';
+import { makeQuickOrder } from '../../actions/user';
+import { getTotalSum } from '../../utils/selectors';
+// import from from '../../components/Products';
 
-const mapStateToProps = ({
-    menus,
-    products,
-    outerAPIdata: { currencyRate },
-    banners: { homeBanners }
-}) => {
+const mapStateToProps = (state) => {
+    const {
+        menus,
+        products,
+        outerAPIdata: { currencyRate },
+        banners: { homeBanners },
+        site: { modalIsOpen, modalTemplate, modalWithActions },
+        form,
+    } = state;
+    const totalSum = getTotalSum(state);
+
     return {
          catalog: menus.get('catalog'),
          activeIndex: menus.get('activeIndex'),
@@ -27,7 +36,12 @@ const mapStateToProps = ({
          productsLoading: products.get('productsLoading'),
          perPage: products.get('perPage'),
          currencyRate,
-         homeBanners
+         homeBanners,
+         modalIsOpen,
+         modalTemplate,
+         modalWithActions,
+         form,
+         totalSum
     }
 };
 
@@ -42,6 +56,13 @@ const mapDispatchToProps = {
     setProductsQty,
     setActiveFilter,
     deleteActiveFilter,
+    setModalState,
+    setModalTemplate,
+    setModalWithActions,
+    makeQuickOrder,
+    resetCart,
+    preorderModal,
+    removeLastProduct
     //sendActiveFilter
 }
 

@@ -2,7 +2,7 @@ import { connect } from 'react-redux';
 import { getTotalSum, getProducts, getProductsQty, onGetClientForm } from '../../utils/selectors';
 import { removeFromCart, setQty, setProductsQty, setDynamicProductsQty } from '../../actions/cart';
 import { sendOrderData } from '../../actions/user';
-import { setModalTemplate, setModalState } from '../../actions/site';
+import { setModalState } from '../../actions/site';
 import { toJS } from '../../components/HOC/toJS';
 import { Order } from '../../components';
 
@@ -11,11 +11,16 @@ const mapStateToProps = (state) => {
     const totalSum = getTotalSum(state);
     const productsQty = getProductsQty(state);
     const form = onGetClientForm(state);
+    const modalIsOpen = state.site.modalIsOpen;
+    const modalTemplate = state.site.modalTemplate;
+
     return {
         products,
         totalSum,
         productsQty,
-        form
+        form,
+        modalIsOpen,
+        modalTemplate
     }
 };
 
@@ -24,7 +29,6 @@ const mapDispatchToProps = {
     setQty,
     setProductsQty,
     setDynamicProductsQty,
-    setModalTemplate,
     setModalState,
     sendOrderData
 }
