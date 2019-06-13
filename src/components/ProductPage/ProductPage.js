@@ -1,8 +1,12 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import Modal from 'react-modal';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+import { Button } from '../UI';
 import ImageArea from './components/ImageArea';
 import Details from './components/Details';
 import Preloader from '../Preloader';
+import { modalGeneralStyles } from '../../constants/data';
 
 import styles from './ProductPage.module.scss';
 
@@ -20,9 +24,25 @@ class ProductPage extends Component {
         if (this.props.currencyRate) this.getProductInfo();
     }
     shouldComponentUpdate(nextProps, nextState){
-        const { product, match: { params: { productSlug } }, currencyRate } = this.props;
-        if (currencyRate !== nextProps.currencyRate) this.getProductInfo();
-        return !product || productSlug !== nextProps.match.params.productSlug || product.title !== nextProps.product.title;
+        const {
+            product,
+            match: {
+                params: { productSlug }
+            },
+            currencyRate,
+            modalWithActions
+        } = this.props;
+        const {
+            product: nextProduct,
+            match: {
+                params: { productSlug: nextProductSlug }
+            },
+            currencyRate: nextCurrencyRate,
+            modalWithActions: nextModalWithActions
+        } = nextProps;
+
+        if (currencyRate !== nextCurrencyRate) this.getProductInfo();
+        return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title || modalWithActions !== nextModalWithActions;
     }
     componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
@@ -40,13 +60,23 @@ class ProductPage extends Component {
         this.props.setLoadingState(false);
     }
     onAddToCart = () => {
-        const { addToCart, product, setProductsQty } = this.props;
+        const { addToCart, product, setProductsQty, preorderModal } = this.props;
+        const qty = 1;
         addToCart(product);
         // we can add only one product
-        setProductsQty(1);
+        setProductsQty(qty);
+        preorderModal();
+    }
+    closeModalWithActions = () => {
+        const modalWithActions = false;
+        const template = null;
+        const modalState = false;
+        this.props.setModalTemplate(template);
+        this.props.setModalWithActions(modalWithActions);
+        this.props.setModalState(modalState);
     }
     renderComponent = () => {
-        const { product } = this.props;
+        const { product, modalWithActions, modalTemplate } = this.props;
         if (product) {
             return (
                 <div className={styles.ProductPage}>
@@ -54,8 +84,34 @@ class ProductPage extends Component {
                         <ImageArea imgSrc={product.image.secure_url} />
                     </div>
                     <div className={styles.DetailsWrp}>
-                        <Details product={product} addToCart={this.onAddToCart} />
+                        <Details
+                            product={product}
+                            addToCart={this.onAddToCart}
+                        />
                     </div>
+
+                    <Modal
+                        isOpen={modalWithActions}
+                        onRequestClose={this.closeModalWithActions}
+                        style={modalGeneralStyles}
+                        contentLabel="Preorder Modal"
+                        portalClassName={styles.ModalProductPage}
+                    >
+                        {modalTemplate &&
+                            <Fragment>
+                                <div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
+                                <Link
+                                    onClick={this.closeModalWithActions}
+                                    className={styles.GoToOrderBtn}
+                                    to="/order"
+                                >Оформить заказ</Link>
+                                <Button
+                                    onClick={this.closeModalWithActions}
+                                    clsName={styles.ContinueShoppingBtn}
+                                >Продолжить покупки</Button>
+                            </Fragment>
+                        }
+                    </Modal>
                 </div>
             )
         }

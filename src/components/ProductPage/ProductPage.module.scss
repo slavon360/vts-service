@@ -19,4 +19,9 @@
     .DetailsWrp {
         width: 60%;
     }
+    .ModalProductPage {
+        > div {
+            z-index: 1000000000;
+        }
+    }
 }

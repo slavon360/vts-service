@@ -6,19 +6,9 @@ import Products from '../Products';
 import { Button } from '../UI';
 import HomeBanners from '../HomeBanners/HomeBanners';
 import QuickOrderForm from '../Order/QuickOrderForm';
+import { modalGeneralStyles } from '../../constants/data';
 
 import styles from './HomePage.module.scss';
-
-const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
-    }
-};
 
 class HomePage extends Component{
     componentDidMount() {
@@ -28,13 +18,14 @@ class HomePage extends Component{
         const isOpen = false;
         this.props.setModalState(isOpen);
         this.props.setModalTemplate(null);
-        this.props.removeLastProduct();
+        // this.props.removeLastProduct();
     }
     closeModalWithActions = () => {
         const isOpen = false;
         const modalWithActions = false;
+        const template = null;
         this.props.setModalState(isOpen);
-        this.props.setModalTemplate(null);
+        this.props.setModalTemplate(template);
         this.props.setModalWithActions(modalWithActions);
     }
     quickSubmit = () => {
@@ -97,7 +88,7 @@ class HomePage extends Component{
                         isOpen={modalIsOpen}
                         onAfterOpen={this.afterOpenModal}
                         onRequestClose={this.closeModal}
-                        style={customStyles}
+                        style={modalGeneralStyles}
                         contentLabel="Order Modal"
                         portalClassName={styles.ModalHomePage}
                     >
@@ -113,7 +104,7 @@ class HomePage extends Component{
                     <Modal
                         isOpen={modalIsOpen}
                         onRequestClose={this.closeModalWithActions}
-                        style={customStyles}
+                        style={modalGeneralStyles}
                         contentLabel="Preorder Modal"
                         portalClassName={styles.ModalHomePage}
                     >

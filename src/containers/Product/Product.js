@@ -2,19 +2,22 @@ import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
 import { addToCart, setProductsQty, preorderModal } from '../../actions/cart';
-import { setLoadingState } from '../../actions/site';
+import { setLoadingState, setModalTemplate, setModalWithActions, setModalState } from '../../actions/site';
 import { getProduct, resetProduct } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 
 const mapStateToProps = ({
     products,
     user,
-    outerAPIdata: { currencyRate }
+    outerAPIdata: { currencyRate },
+    site: { modalTemplate, modalWithActions }
 }) => {
     return {
          product: products.get('product'),
          cart: user.get('cart'),
-         currencyRate
+         currencyRate,
+         modalTemplate,
+         modalWithActions
     }
 };
 
@@ -25,7 +28,10 @@ const mapDispatchToProps = {
     setLoadingState,
     setProductsQty,
     resetProduct,
-    preorderModal
+    preorderModal,
+    setModalTemplate,
+    setModalWithActions,
+    setModalState
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

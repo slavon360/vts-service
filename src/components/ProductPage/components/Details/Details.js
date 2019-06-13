@@ -25,7 +25,11 @@ const Details = ({ product, addToCart }) => {
     return (
         <div className={styles.Details}>
             <h1 className={styles.Title}>{product.title}</h1>
-            <SizesShoppingCart sizes={sizes} Цена={product.Цена} addToCart={addToCart} />
+            <SizesShoppingCart
+                sizes={sizes}
+                Цена={product.Цена}
+                addToCart={addToCart}
+            />
             <Properties sizes={sizes} properties={properties} />
         </div>
     );

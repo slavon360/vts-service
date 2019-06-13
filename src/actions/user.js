@@ -114,7 +114,7 @@ export const sendOrderData = (formData, totalSum) => async (dispatch, getState) 
         }
 
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });
-        dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: null })
+        // dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: null })
     } catch (err) {
         console.error(err);
     }
@@ -144,7 +144,7 @@ export const makeQuickOrder = (totalSum) => async (dispatch, getState) => {
         } else {
             const template = htmlDecode(successTemplate);
             dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
-            dispatch({ type: CART_TYPES.resetCart });
+            dispatch({ type: CART_TYPES.removeLastProduct });
         }
 
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });

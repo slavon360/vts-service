@@ -4,19 +4,9 @@ import Modal from 'react-modal';
 import Cart from '../Cart';
 import { Button } from '../UI';
 import OrderForm from './OrderForm'
+import { modalGeneralStyles } from '../../constants/data';
 
 import styles from './Order.module.scss';
-
-const customStyles = {
-    content : {
-      top                   : '50%',
-      left                  : '50%',
-      right                 : 'auto',
-      bottom                : 'auto',
-      marginRight           : '-50%',
-      transform             : 'translate(-50%, -50%)'
-    }
-};
 
 class Order extends Component {
     static proptypes = {
@@ -44,7 +34,9 @@ class Order extends Component {
     }
     closeModal = () => {
         const isOpen = false;
+        const template = null;
         this.props.setModalState(isOpen);
+        this.props.setModalTemplate(template);
     }
     render() {
         const {
@@ -79,7 +71,7 @@ class Order extends Component {
                     isOpen={modalIsOpen}
                     onAfterOpen={this.afterOpenModal}
                     onRequestClose={this.closeModal}
-                    style={customStyles}
+                    style={modalGeneralStyles}
                     contentLabel="Order Modal"
                 >
                     <div
