@@ -40,6 +40,21 @@ function getCatalogMenu(state, { catalog, selectedCategoryId }) {
     }
 }
 
+function switchSubcategory(state, { selectedSubcategoryId }) {
+    const newState = state.set('selectedSubcategoryId', selectedSubcategoryId);
+    return newState.update('catalog', catalog => catalog.map((catal) => {
+        return catal.update('subCategNames', subCategNames => subCategNames.map((subcat) => {
+            let newSubcat;
+            if (subcat.get('id') === selectedSubcategoryId) {
+                newSubcat = subcat.set('checked', true);
+            } else {
+                newSubcat = subcat.set('checked', false);
+            }
+            return newSubcat;
+        }))
+    }))
+}
+
 function switchCheckedCategory(state, { id, index }) {
     const newState = state.merge({ activeIndex: index, selectedCategoryId: id });
     return newState.update('catalog', catalog => catalog.map(item => {
@@ -52,6 +67,10 @@ function switchCheckedCategory(state, { id, index }) {
         }  
         return newItem;
     }))
+}
+
+function resetSelectedSubcategoryId(state) {
+    return state.set('selectedSubcategoryId', null);
 }
 
 function getFilters(state, { filters }) {
@@ -80,7 +99,9 @@ export default composeReducer(
         switchCheckedCategory,
         getFilters,
         setActiveFilter,
-        deleteActiveFilter
+        deleteActiveFilter,
+        switchSubcategory,
+        resetSelectedSubcategoryId
     },
     initialState
 );

@@ -3,6 +3,7 @@ import Modal from 'react-modal';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import { Button } from '../UI';
+import AngleDown from '../Icons/AngleDown';
 import ImageArea from './components/ImageArea';
 import Details from './components/Details';
 import Preloader from '../Preloader';
@@ -30,7 +31,8 @@ class ProductPage extends Component {
                 params: { productSlug }
             },
             currencyRate,
-            modalWithActions
+            modalWithActions,
+            selectedCategoryId
         } = this.props;
         const {
             product: nextProduct,
@@ -38,11 +40,16 @@ class ProductPage extends Component {
                 params: { productSlug: nextProductSlug }
             },
             currencyRate: nextCurrencyRate,
-            modalWithActions: nextModalWithActions
+            modalWithActions: nextModalWithActions,
+            selectedCategoryId: nextSelectedCategoryId
         } = nextProps;
 
+        if (selectedCategoryId && nextSelectedCategoryId !== selectedCategoryId) {
+            this.props.history.push('/');
+        }
         if (currencyRate !== nextCurrencyRate) this.getProductInfo();
-        return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title || modalWithActions !== nextModalWithActions;
+        return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title ||
+                modalWithActions !== nextModalWithActions;
     }
     componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
@@ -81,6 +88,13 @@ class ProductPage extends Component {
             return (
                 <div className={styles.ProductPage}>
                     <div className={styles.ImageAreaWrp}>
+                        <Link
+                            to="/"
+                            className={styles.GoToProducts}
+                        >
+                            <span className={styles.IconAngle}><AngleDown /></span>
+                            <span className={styles.BackWord}>Назад к товарам</span>
+                        </Link>
                         <ImageArea imgSrc={product.image.secure_url} />
                     </div>
                     <div className={styles.DetailsWrp}>

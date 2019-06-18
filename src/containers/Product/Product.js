@@ -10,14 +10,16 @@ const mapStateToProps = ({
     products,
     user,
     outerAPIdata: { currencyRate },
-    site: { modalTemplate, modalWithActions }
+    site: { modalTemplate, modalWithActions },
+    menus
 }) => {
     return {
          product: products.get('product'),
          cart: user.get('cart'),
          currencyRate,
          modalTemplate,
-         modalWithActions
+         modalWithActions,
+         selectedCategoryId: menus.get('selectedCategoryId')
     }
 };
 

@@ -9,7 +9,9 @@ const MENU_TYPES = createTypes('menus', [
     'switchCheckedCategory',
     'getFilters',
     'setActiveFilter',
-    'deleteActiveFilter'
+    'deleteActiveFilter',
+    'switchSubcategory',
+    'resetSelectedSubcategoryId'
 ]);
 const PRODUCTS_TYPES = createTypes('products', [
     'listProducts',
@@ -65,10 +67,18 @@ export const getFilters = () => async (dispatch, getState) => {
     } catch (e) {
         console.error(e);
     }
-}
+};
 
 export const switchCheckedCategory = (id, index) => (dispatch) => {
     dispatch({ type: MENU_TYPES.switchCheckedCategory, id, index });
+    dispatch({ type: PRODUCTS_TYPES.switchNextPage, nextPage: true });
+    dispatch({ type: PRODUCTS_TYPES.changeCurrentPage, currentPage: 0 });
+    dispatch({ type: PRODUCTS_TYPES.clearProductsList });
+    dispatch({ type: MENU_TYPES.resetSelectedSubcategoryId });
+};
+
+export const switchSubcategory = (selectedSubcategoryId) => (dispatch) => {
+    dispatch({ type: MENU_TYPES.switchSubcategory, selectedSubcategoryId });
     dispatch({ type: PRODUCTS_TYPES.switchNextPage, nextPage: true });
     dispatch({ type: PRODUCTS_TYPES.changeCurrentPage, currentPage: 0 });
     dispatch({ type: PRODUCTS_TYPES.clearProductsList });

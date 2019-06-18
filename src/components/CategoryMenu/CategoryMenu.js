@@ -22,7 +22,9 @@ const CategoryMenu = ({
     filters,
     setActiveFilter,
     deleteActiveFilter,
-    sendActiveFilter
+    sendActiveFilter,
+    switchSubcategory,
+    revertCurrentPage
 }) => (
         <div className={styles.CategoryMenu}>
             <Categories
@@ -32,6 +34,9 @@ const CategoryMenu = ({
             />
             <Subcategories
                 category={categories[activeIndex]}
+                switchSubcategory={switchSubcategory}
+                makeProductsRequest={makeProductsRequest}
+                revertCurrentPage={revertCurrentPage}
             />
             {!_isEmpty(filters) ?
                 <Filters

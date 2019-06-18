@@ -4,7 +4,7 @@ import Subcategory from '../Subcategory';
 
 import styles from './Subcategories.module.scss';
 
-const Subcategories = ({ category }) => {
+const Subcategories = ({ category, switchSubcategory, makeProductsRequest, revertCurrentPage }) => {
     return (
         <div className={styles.SubcategoriesWrp}>
             <div className={styles.Head} >{category.categName}</div>
@@ -13,6 +13,9 @@ const Subcategories = ({ category }) => {
                     <Subcategory
                         key={subcateg.name}
                         subcategory={subcateg}
+                        switchSubcategory={switchSubcategory}
+                        makeProductsRequest={makeProductsRequest}
+                        revertCurrentPage={revertCurrentPage}
                     />
                 ))}
             </div>

@@ -16,9 +16,12 @@ class HomePage extends Component{
     }
     closeModal = () => {
         const isOpen = false;
-        this.props.setModalState(isOpen);
-        this.props.setModalTemplate(null);
-        // this.props.removeLastProduct();
+        const { productsInCart, setModalState, setModalTemplate, removeLastProduct } = this.props;
+        setModalState(isOpen);
+        setModalTemplate(null);
+        if (productsInCart && productsInCart.length) {
+            removeLastProduct();
+        };
     }
     closeModalWithActions = () => {
         const isOpen = false;
@@ -55,7 +58,9 @@ class HomePage extends Component{
             setModalState,
             modalWithActions,
             preorderModal,
-            form
+            form,
+            switchSubcategory,
+            revertCurrentPage
         } = this.props;
         return(
             <div className={styles.HomePage}>
@@ -70,6 +75,8 @@ class HomePage extends Component{
                         setActiveFilter={setActiveFilter}
                         deleteActiveFilter={deleteActiveFilter}
                         sendActiveFilter={sendActiveFilter}
+                        switchSubcategory={switchSubcategory}
+                        revertCurrentPage={revertCurrentPage}
                 /> : <div />
                 }
                 <Products

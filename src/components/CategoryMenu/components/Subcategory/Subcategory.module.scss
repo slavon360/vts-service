@@ -1,13 +1,19 @@
 .Subcategory {
+    margin: 10px 0;
     padding: 20px 15px;
     border-radius: 5px;
     border: 1px solid #ddd;
     font-size: 14px;
     color: #888;
+    text-align: center;
     cursor: pointer;
 
     &:hover {
         color: #ff0053;
         border-color: #ff0053;
+    }
+
+    @media screen and (min-width: 767px) {
+        min-width: 360px;
     }
 }

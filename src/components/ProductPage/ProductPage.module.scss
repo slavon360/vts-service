@@ -5,12 +5,36 @@
     .ImageAreaWrp, .DetailsWrp {
         display: inline-block;
     }
+    .GoToProducts {
+        text-decoration: none;
+
+        &:hover {
+            color: #ff115f;
+        }
+        span {
+            display: inline-block;
+        }
+        .IconAngle {
+            transform: rotate(90deg) scale(0.8);
+        }
+        .BackWord {
+            padding-left: 10px;
+        }
+        svg {
+            overflow: visible;
+        }
+    }
     .ImageAreaWrp {
         width: 40%;
         vertical-align: top;
 
-        > img {
+        @media screen and (min-width: 768px) {
+            padding: 25px 15px;
+            box-sizing: border-box;
+        }
 
+        > img {
+            display: block;
             @media only screen and (max-width: 1200px) {
                 width: 100%;
             }

@@ -8,6 +8,7 @@ import {
     switchCheckedCategory,
     setActiveFilter,
     deleteActiveFilter,
+    switchSubcategory
     //sendActiveFilter
 } from '../../actions/menus';
 import { makeProductsRequest, revertCurrentPage } from '../../actions/products';
@@ -25,6 +26,7 @@ const mapStateToProps = (state) => {
         banners: { homeBanners },
         site: { modalIsOpen, modalTemplate, modalWithActions },
         form,
+        cart
     } = state;
     const totalSum = getTotalSum(state);
 
@@ -41,7 +43,8 @@ const mapStateToProps = (state) => {
          modalTemplate,
          modalWithActions,
          form,
-         totalSum
+         totalSum,
+         productsInCart: cart.get('products')
     }
 };
 
@@ -62,7 +65,8 @@ const mapDispatchToProps = {
     makeQuickOrder,
     resetCart,
     preorderModal,
-    removeLastProduct
+    removeLastProduct,
+    switchSubcategory
     //sendActiveFilter
 }
 

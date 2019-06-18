@@ -43,7 +43,7 @@ function makeProductsRequest(state, { products, currentPage, next, perPage }) {
 }
 
 function revertCurrentPage(state) {
-    return state.set('currentPage', 1);
+    return state.set('currentPage', 0);
 }
 
 function switchNextPage(state, { nextPage }) {
