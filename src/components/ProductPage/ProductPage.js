@@ -8,6 +8,7 @@ import ImageArea from './components/ImageArea';
 import Details from './components/Details';
 import Preloader from '../Preloader';
 import { modalGeneralStyles } from '../../constants/data';
+import { imgPlaceholder } from '../../constants/paths';
 
 import styles from './ProductPage.module.scss';
 
@@ -85,6 +86,9 @@ class ProductPage extends Component {
     renderComponent = () => {
         const { product, modalWithActions, modalTemplate } = this.props;
         if (product) {
+
+            const { image: { secure_url = imgPlaceholder } = {} } = product;
+            
             return (
                 <div className={styles.ProductPage}>
                     <div className={styles.ImageAreaWrp}>
@@ -95,7 +99,7 @@ class ProductPage extends Component {
                             <span className={styles.IconAngle}><AngleDown /></span>
                             <span className={styles.BackWord}>Назад к товарам</span>
                         </Link>
-                        <ImageArea imgSrc={product.image.secure_url} />
+                        <ImageArea imgSrc={secure_url} />
                     </div>
                     <div className={styles.DetailsWrp}>
                         <Details

@@ -1,14 +1,22 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
+import Button from '../../../../UI/Button';
 
 import styles from './ProductContent.module.scss';
 
-const ProductContent = ({ title, Цена, briefInfo }) => (
+const ProductContent = ({ buyByOneClick, Цена, briefInfo }) => (
         <div
             className={styles.ProductContent}
         >
             <div className={styles.Header}>
-                <div className={styles.Title}>{title}</div>
+                <div className={styles.Title}>
+                    <Button
+                        onClick={buyByOneClick}
+                        clsName={styles.ByOneClick}
+                    >
+                        Купить в 1 клик
+                    </Button>
+                </div>
                 <div className={styles.Price}>
                     <CurrencyFormat
                         value={Цена}

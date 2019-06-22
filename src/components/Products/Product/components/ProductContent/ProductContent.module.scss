@@ -28,4 +28,12 @@
     .BriefInfo {
         color: #777;
     }
+    .ByOneClick {
+        color: #555;
+        font-size: 19px;
+
+        &:hover {
+            color: #39f;
+        }
+    }
 }

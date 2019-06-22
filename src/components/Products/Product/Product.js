@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { routes as routeNames } from '../../../routes';
+import { imgPlaceholder } from '../../../constants/paths';
 import ProductContent from './components/ProductContent';
 import ProductImage from './components/ProductImage';
 import { Button } from '../../UI';
@@ -35,7 +36,7 @@ class Product extends Component {
     render() {
         const {
             product: {
-                image: { secure_url } = { },
+                image: { secure_url = imgPlaceholder } = { },
                 title,
                 Цена,
                 slug
@@ -48,32 +49,29 @@ class Product extends Component {
         const briefInfo = showAdditionalInfo(this.props.product);
         return (
             <li className={styles.Product}>
-                <Link to={`${routeNames.PRODUCT_DETAILS}/${slug}`}>
-                    <ProductImage
-                        productsLength={productsLength}
-                        productIndex={productIndex}
-                        secure_url={secure_url}
-                        scrollPosition={scrollPosition}
-                        makeProductsRequest={makeProductsRequest}
-                    />
+                <div className={styles.ProductArea}>
+                    <Link to={`${routeNames.PRODUCT_DETAILS}/${slug}`}>
+                        <div className={styles.TitleArea}>{title}</div>
+                        <ProductImage
+                            productsLength={productsLength}
+                            productIndex={productIndex}
+                            secure_url={secure_url}
+                            scrollPosition={scrollPosition}
+                            makeProductsRequest={makeProductsRequest}
+                        />
+                    </Link>
                     <ProductContent
-                        title={title}
+                        buyByOneClick={this.buyByOneClick}
                         Цена={Цена}
                         briefInfo={briefInfo}
                     />
-                </Link>
-                <Button
-                    onClick={this.onAddToCart}
-                    clsName={styles.ShoppingCart}
-                >
+                    <Button
+                        onClick={this.onAddToCart}
+                        clsName={styles.ShoppingCart}
+                    >
                         <ShoppingCartIcon style={{ fontSize: '40px' }} />
-                </Button>
-                <Button
-                    onClick={this.buyByOneClick}
-                    clsName={styles.ByOneClick}
-                >
-                    Купить в 1 клик
-                </Button>
+                    </Button>
+                </div>
             </li>
         );
     }

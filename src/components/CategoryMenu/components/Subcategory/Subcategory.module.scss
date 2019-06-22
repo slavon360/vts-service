@@ -8,7 +8,7 @@
     text-align: center;
     cursor: pointer;
 
-    &:hover {
+    &.Checked, &:hover {
         color: #ff0053;
         border-color: #ff0053;
     }

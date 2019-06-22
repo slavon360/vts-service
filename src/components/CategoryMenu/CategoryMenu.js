@@ -11,7 +11,8 @@ import Filters from '../Filters';
 import styles from './CategoryMenu.module.scss';
 
 const updateChecker = (props, nextProps) => {
-    return !_isEmpty(nextProps.filters) && !_isEqual(props.filters, nextProps.filters) || props.activeIndex !== nextProps.activeIndex;
+    return !_isEmpty(nextProps.filters) && !_isEqual(props.filters, nextProps.filters) ||
+    props.activeIndex !== nextProps.activeIndex || !_isEqual(props.categories, nextProps.categories);
 } 
 
 const CategoryMenu = ({
@@ -38,7 +39,7 @@ const CategoryMenu = ({
                 makeProductsRequest={makeProductsRequest}
                 revertCurrentPage={revertCurrentPage}
             />
-            {!_isEmpty(filters) ?
+            {/* {!_isEmpty(filters) ?
                 <Filters
                     filters={filters}
                     setActiveFilter={setActiveFilter}
@@ -46,7 +47,7 @@ const CategoryMenu = ({
                     sendActiveFilter={sendActiveFilter}
                 /> :
                 <div/>
-            }
+            } */}
         </div>
     );
 
