@@ -11,7 +11,7 @@ import {
     switchSubcategory
     //sendActiveFilter
 } from '../../actions/menus';
-import { makeProductsRequest, revertCurrentPage } from '../../actions/products';
+import { makeProductsRequest, revertCurrentPage, switchProductsLoading } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 import { getHomeBanners } from '../../actions/banners';
 import { makeQuickOrder } from '../../actions/user';
@@ -66,7 +66,8 @@ const mapDispatchToProps = {
     resetCart,
     preorderModal,
     removeLastProduct,
-    switchSubcategory
+    switchSubcategory,
+    switchProductsLoading
     //sendActiveFilter
 }
 

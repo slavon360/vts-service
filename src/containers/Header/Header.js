@@ -43,7 +43,7 @@ const mapDispatchToProps = {
     getCatalogMenu,
     setLoadingState,
     logout,
-    getFilters
+    // getFilters
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(Header));

@@ -17,6 +17,19 @@
     .Price {
         color: #888;
     }
+    .Controls {
+        input {
+            border: 1px solid #cecece;
+        }
+        @media screen and (min-width: 768px) {
+            width: 100px;
+        }
+    }
+    .Total {
+        @media screen and (min-width: 768px) {
+            width: 70px;
+        }
+    }
     .Delete {
         background-color: #c1c1c1;
         width: 22px;

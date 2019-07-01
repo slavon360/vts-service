@@ -5,8 +5,11 @@ import styles from './ProductImage.module.scss';
 
 class ProductImage extends Component {
     imgLoadHanlder = () => {
-        const { productsLength, productIndex, makeProductsRequest } = this.props;
+        const { productsLength, productIndex, makeProductsRequest, switchProductsLoading } = this.props;
+        
         if (productIndex === productsLength - 1) {
+            const loading = false;
+            switchProductsLoading(loading);
             makeProductsRequest();
         }
     }

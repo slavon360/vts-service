@@ -1,7 +1,22 @@
 .ShoppingCart {
-    padding: 15px 30px;
+    padding: 15px 15vw;
 
     table {
         width: 100%;
+    }
+
+    .TotalSum {
+        margin-bottom: 25px;
+    }
+    .Order {
+        display: inline-block;
+        background-color: #1d9877;
+        border-radius: 5px;
+        padding: 10px;
+
+        > a {
+            color: #fff;
+            text-decoration: none;
+        }
     }
 }

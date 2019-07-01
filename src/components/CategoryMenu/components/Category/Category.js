@@ -2,6 +2,10 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import * as paths from '../../../../constants/paths';
 
+import zapchastiVodonagrevateli from '../../../../assets/images/catalog/boilery/zapchasti-k-vodonagrevatelyam.jpg';
+import zapchastiKolonki from '../../../../assets/images/catalog/kolonki/zapchasti_kolonki.jpg';
+import zapchastiElektrKotly from '../../../../assets/images/catalog/kotly/zapchasti-k-elektricheskim.jpg';
+import zapchastiGazKotlyImg from '../../../../assets/images/catalog/kotly/zapchasti-k-gazovym.jpg';
 import kotlyImg from '../../../../assets/images/catalog/kotly/kotly.jpg';
 import boileryImg from '../../../../assets/images/catalog/boilery/boilery.jpg';
 // import zapchastiImg from '../../../../assets/images/catalog/zapchasti/zapchasti.jpg';
@@ -17,6 +21,14 @@ const imgImporter = (name) => {
             return boileryImg;
         case 'zapchasti':
             return kotlyImg;
+        case 'zapchasti-gazovye-kotly':
+            return zapchastiGazKotlyImg;
+        case 'zapchasti-elektro-kotly':
+            return zapchastiElektrKotly;
+        case 'zapchasti-gazovye-kolonki':
+            return zapchastiKolonki;
+        case 'zapchasti-elektro-vodonagrevateli':
+            return zapchastiVodonagrevateli;
         default: return kotlyImg;
     }
 }

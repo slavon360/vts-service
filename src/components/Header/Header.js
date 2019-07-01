@@ -32,12 +32,12 @@ class Header extends PureComponent {
             getCurrencyRate,
             currencyRate,
             setLoadingState,
-            getFilters
+            // getFilters
         } = this.props;
         setLoadingState(true);
         if (!currencyRate) await getCurrencyRate();
         await getCatalogMenu();
-        getFilters();
+        // getFilters();
     }
 
     onSearchProducts = (e) => {

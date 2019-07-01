@@ -1,7 +1,8 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { trackWindowScroll } from 'react-lazy-load-image-component';
 import Product from './Product';
 import Preloader from '../Preloader';
+import Backdrop from '../UI/Backdrop';
 
 import styles from './Products.module.scss'
 
@@ -15,8 +16,11 @@ const Products = ({
     setProductsQty,
     setModalState,
     modalIsOpen,
-    preorderModal
-}) => (
+    preorderModal,
+    switchProductsLoading
+}) => {
+    console.log(productsLoading);
+    return (
         <ul className={styles.ProductsWrp}>
             {products && products.length ?
                 products.map((product, index) => (
@@ -33,13 +37,36 @@ const Products = ({
                         setModalState={setModalState}
                         modalIsOpen={modalIsOpen}
                         preorderModal={preorderModal}
+                        switchProductsLoading={switchProductsLoading}
                     />
                 )) : <div />
             }
             {productsLoading &&
-                <Preloader/>
+                <Fragment>
+                    <div className={styles.ProductPreloaderWrp}>
+                        <div className={styles.ProductPreloader}>
+                            <Preloader clsName={styles.ProductPreloaderSpinner} />
+                        </div>
+                    </div>
+                    <div className={styles.ProductPreloaderWrp}>
+                        <div className={styles.ProductPreloader}>
+                            <Preloader clsName={styles.ProductPreloaderSpinner} />
+                        </div>
+                    </div>
+                    <div className={styles.ProductPreloaderWrp}>
+                        <div className={styles.ProductPreloader}>
+                            <Preloader clsName={styles.ProductPreloaderSpinner} />
+                        </div>
+                    </div>
+                    <div className={styles.ProductPreloaderWrp}>
+                        <div className={styles.ProductPreloader}>
+                            <Preloader clsName={styles.ProductPreloaderSpinner} />
+                        </div>
+                    </div>
+                </Fragment>
             }
         </ul>
     );
+}
 
 export default trackWindowScroll(Products);

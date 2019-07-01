@@ -5,6 +5,7 @@ const initialState = fromJS({
     productsList: [],
     productsLoading: true,
     currentPage: 1,
+    totalPages: null,
     nextPage: true,
     product: null,
     perPage: null,
@@ -12,6 +13,10 @@ const initialState = fromJS({
     searchedProductsLoading: false,
     showSearchedProducts: false
 });
+
+function setTotalPages(state, { totalPages }) {
+    return state.set('totalPages', totalPages);
+}
 
 function toggleSearchedProductsVisibility(state, { data }) {
     return state.set('showSearchedProducts', data);
@@ -81,7 +86,8 @@ export default composeReducer(
         searchProductsLoading,
         clearSearchedProducts,
         toggleSearchedProductsVisibility,
-        resetProduct
+        resetProduct,
+        setTotalPages
     },
     initialState
 );

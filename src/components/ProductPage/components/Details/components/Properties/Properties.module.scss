@@ -17,5 +17,13 @@
             justify-content: space-between;
             padding: 5px 0;
         }
+
+        .Description {
+            margin-top: 25px;
+            
+            .Key {
+                display: none;
+            }
+        }
     }
 }

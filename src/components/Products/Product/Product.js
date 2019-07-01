@@ -44,7 +44,8 @@ class Product extends Component {
             scrollPosition,
             productsLength,
             productIndex,
-            makeProductsRequest
+            makeProductsRequest,
+            switchProductsLoading
         } = this.props;
         const briefInfo = showAdditionalInfo(this.props.product);
         return (
@@ -58,6 +59,7 @@ class Product extends Component {
                             secure_url={secure_url}
                             scrollPosition={scrollPosition}
                             makeProductsRequest={makeProductsRequest}
+                            switchProductsLoading={switchProductsLoading}
                         />
                     </Link>
                     <ProductContent

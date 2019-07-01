@@ -13,7 +13,8 @@ const PRODUCTS_TYPES = createTypes('products', [
     'searchProductsLoading',
     'clearSearchedProducts',
     'toggleSearchedProductsVisibility',
-    'resetProduct'
+    'resetProduct',
+    'setTotalPages'
 ]);
 
 export const toggleSearchedProductsVisibility = (data) => ({
@@ -68,7 +69,7 @@ export const revertCurrentPage = () => ({
 })
 
 export const makeProductsRequest = () => async (dispatch, getState) => {
-    const { currentPage, nextPage } = getState().products;
+    const { currentPage, nextPage, totalPages } = getState().products;
     const { currencyRate } = getState().outerAPIdata;
     const { selectedSubcategoryId, selectedCategoryId } = getState().menus;
     dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: true });
@@ -84,7 +85,16 @@ export const makeProductsRequest = () => async (dispatch, getState) => {
     const next = _get(json, 'data.next', false);
     const last = _get(json, 'data.last', 0);
     const first = _get(json, 'data.first', 0);
+    const totalPgs = _get(json, 'data.totalPages', null);
     const perPage = last - first + 1;
+    dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages: totalPgs });
     dispatch({ type: PRODUCTS_TYPES.makeProductsRequest, products: updProducts, currentPage: page, next, perPage });
-    dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
+    if (currentPage === totalPages || !nextPage || !updProducts.length) {
+        dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
+    }
 }
+
+export const switchProductsLoading = (productsLoading) => ({
+    type: PRODUCTS_TYPES.switchProductsLoading,
+    productsLoading
+})

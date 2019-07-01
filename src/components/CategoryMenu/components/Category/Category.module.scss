@@ -7,6 +7,7 @@
     border-radius: 8px;
     overflow: hidden;
     transition: transform .5s;
+    margin-bottom: 35px;
     cursor: pointer;
 
     &:hover {
@@ -29,6 +30,7 @@
         justify-content: center;
         min-height: inherit;
         position: relative;
+        padding: 0 15px;
 
         &::before {
             content: '';
@@ -37,7 +39,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background-color: rgba(0, 0, 0, .2);
+            background-color: rgba(0, 0, 0, .5);
         }
         .Title {
             align-self: center;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import cx from 'classnames';
 import Controls from '../../../UI/Controls';
 import Button from '../../../UI/Button';
+import { imgPlaceholder } from '../../../../constants/paths';
 
 
 import styles from './Product.module.scss';
@@ -36,7 +37,7 @@ class Product extends Component {
             product: {
                 title,
                 code,
-                image: { secure_url },
+                image: { secure_url = imgPlaceholder } = {},
                 Цена: price,
                 total,
                 quantity: qty

@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 
 import styles from './Properties.module.scss';
@@ -12,7 +13,7 @@ const Properties = ({ properties, sizes }) => (
                     return item[1] ? (
                         <div
                             key={item[0]}
-                            className={styles.KeyValueWrp}
+                            className={cx(styles.KeyValueWrp, { [styles.Description]: item[0] === 'Описание' })}
                         >
                             <div className={styles.Key}>{item[0]}</div>
                             <div className={styles.Value}>{ item[1] === true ? 'Да' : item[1]}</div>

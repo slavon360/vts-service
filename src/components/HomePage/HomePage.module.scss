@@ -1,8 +1,29 @@
 .ModalHomePage {
     > div {
         z-index: 1000000000;
+        > div {
+            padding-bottom: 40px !important;
+        }
     }
 }
 .ModalContent {
-    
+    h2 {
+        margin-bottom: 30px;
+    }
+}
+.GoToOrderBtn {
+    text-decoration: none;
+    background-color: #1d9877;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px;
+    float: left;
+}
+.ContinueShoppingBtn {
+    background-color: #ddd;
+    border-radius: 5px;
+    color: #777;
+    font-size: 16px;
+    padding: 10px;
+    float: right;
 }

@@ -1,5 +1,30 @@
 .Form {
     min-width: 350px;
+
+    .Disabled {
+        text-decoration: none;
+        background-color: #ccc;
+        border-radius: 5px;
+        color: #fff;
+        padding: 10px;
+        float: left;
+    }
+    .SubmitBtn {
+        text-decoration: none;
+        background-color: #1d9877;
+        border-radius: 5px;
+        color: #fff;
+        padding: 10px;
+        float: left;
+    }
+    .Cancel {
+        background-color: #ddd;
+        border-radius: 5px;
+        color: #777;
+        font-size: 16px;
+        padding: 10px;
+        float: right;
+    }
     
     .InputArea {
         position: relative;

@@ -50,7 +50,7 @@ class Product extends Component {
                             value={price}
                             displayType={'text'}
                             thousandSeparator={true}
-                            prefix={'₴ '}
+                            prefix={'₴'}
                         />
                     </td>
                     <td className={styles.Controls}>
@@ -66,7 +66,7 @@ class Product extends Component {
                             value={total}
                             displayType={'text'}
                             thousandSeparator={true}
-                            prefix={'₴ '}
+                            prefix={'₴'}
                         />
                     </td>
                     <td>

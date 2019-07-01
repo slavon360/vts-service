@@ -85,8 +85,8 @@ class ProductPage extends Component {
     }
     renderComponent = () => {
         const { product, modalWithActions, modalTemplate } = this.props;
+        
         if (product) {
-
             const { image: { secure_url = imgPlaceholder } = {} } = product;
             
             return (
