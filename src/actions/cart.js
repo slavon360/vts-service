@@ -9,8 +9,18 @@ export const CART_TYPES = createTypes('cart', [
     'setProductsQty',
     'setDynamicProductsQty',
     'resetCart',
-    'removeLastProduct'
+    'removeLastProduct',
+    'setInitialCartInfo',
+    'changeDynamicProductsQty'
 ]);
+
+export const setInitialCartInfo = () => (dispatch) => {
+    const cartInfo = localStorage.getInitialCartInfo();
+    dispatch({
+        type: CART_TYPES.setInitialCartInfo,
+        cartInfo
+    });
+};
 
 export const resetCart = () => ({
     type: CART_TYPES.resetCart
@@ -46,6 +56,11 @@ export const setDynamicProductsQty = () => ({
     type: CART_TYPES.setDynamicProductsQty
 })
 
+export const changeDynamicProductsQty = (productsQty) => ({
+    type: CART_TYPES.setDynamicProductsQty,
+    productsQty
+})
+
 export const preorderModal = () => (dispatch) => {
     const modalIsOpen = true;
     const modalWithActions = true;
@@ -58,6 +73,7 @@ export const preorderModal = () => (dispatch) => {
     dispatch({ type: SITE_TYPES.setModalWithActions, modalWithActions });
 }
 
-export const removeLastProduct = () => ({
-    type: CART_TYPES.removeLastProduct
-})
+export const removeLastProduct = () => (dispatch) => {
+    dispatch({ type: CART_TYPES.removeLastProduct });
+    dispatch({ type: CART_TYPES.setDynamicProductsQty });
+}

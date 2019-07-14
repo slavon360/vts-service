@@ -2,10 +2,38 @@ import { composeReducer } from 'redux-compose-reducer';
 import { fromJS, Map, List } from 'immutable';
 
 const initialState = fromJS({
-    products: [],
-    productsQty: 0,
+    products: [
+        {
+            'Цена': 1581,
+            total: 1581,
+            'Назначение котла': 'выбрать вариант',
+            quantity: 1,
+            slug: '39800960-rasshiritelnyi-bak-ferroli-divatop',
+            'Тип водонагревателя': 'выбрать вариант',
+            productCategory: '5c435236fd5a331e88e53861',
+            title: '39800960 Расширительный бак FERROLI DIVATOP',
+            _id: '5c443a2738a7300fc06b1947',
+            image: {
+              width: 500,
+              secure_url: 'https://res.cloudinary.com/dxnslfgii/image/upload/v1547975439/yxxudqfc464qjkohxpke.jpg',
+              height: 440,
+              resource_type: 'image',
+              url: 'http://res.cloudinary.com/dxnslfgii/image/upload/v1547975439/yxxudqfc464qjkohxpke.jpg',
+              public_id: 'yxxudqfc464qjkohxpke',
+              format: 'jpg',
+              signature: '911b18c152209b0008dc27927264525f7d3c3736',
+              version: 1547975439
+            },
+            'Тип котла': 'выбрать вариант'
+          }
+    ],
+    productsQty: 1,
     tax: 15
 });
+
+const setInitialCartInfo = (state, { cartInfo: { products, productsQty }}) => {
+    return state.merge({'products': List([products]), productsQty });
+}
 
 const resetCart = (state) => {
     return state.merge({'products': List([]), 'productsQty': 0});
@@ -13,11 +41,8 @@ const resetCart = (state) => {
 
 const removeLastProduct = (state) => {
     const updProducts = state.get('products').pop();
-    const qty = state.get('productsQty');
-    return state.merge({
-        'products': updProducts,
-        'productsQty': qty ? qty - 1 : qty
-    });
+
+    return state.set('products', updProducts);
 }
 
 const productWithQtyAndTotal = (prod) => {
@@ -30,12 +55,13 @@ const productWithQtyAndTotal = (prod) => {
 }
 
 function setProductsQty(state, { qty }) {
-    return state.set('productsQty', state.get('productsQty') + (+qty));
+    const updQty = state.get('productsQty') + (+qty);
+
+    return state.set('productsQty', updQty);
 }
 
-function setDynamicProductsQty(state) {
-    const qty = state.get('products').reduce((result, current) => result += current.get('quantity', 1), 0);
-    return state.set('productsQty', qty);
+function changeDynamicProductsQty(state, { productsQty }) {
+    return state.set('productsQty', productsQty);
 }
 
 function setTax(state, { tax }) {
@@ -105,9 +131,10 @@ export default composeReducer(
         setTax,
         setQty,
         setProductsQty,
-        setDynamicProductsQty,
+        changeDynamicProductsQty,
         resetCart,
-        removeLastProduct
+        removeLastProduct,
+        setInitialCartInfo
     },
     initialState
 );

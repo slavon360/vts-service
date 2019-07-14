@@ -4,8 +4,9 @@ import thunk from 'redux-thunk';
 import createDebounce from 'redux-debounced';
 import rootReducer from '../reducers';
 import checkAuth from '../middlewares/checkAuth';
+import checkCartState from '../middlewares/checkCartState';
 
-const middleware = [createDebounce(), checkAuth, thunk];
+const middleware = [createDebounce(), checkAuth, checkCartState, thunk];
 const composeEnhancers =
   typeof window === 'object' &&
   window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ ?
