@@ -5,6 +5,7 @@ import { Backdrop, Button } from '../UI';
 import Preloader from '../Preloader';
 import { toJS } from '../../components/HOC/toJS';
 import { toggleSearchedProductsVisibility } from '../../actions/products';
+import { setInitialCartInfo } from '../../actions/cart';
 import { setModalState } from '../../actions/site';
 
 import styles from './Layer.module.scss';
@@ -14,6 +15,10 @@ export const LayerContext = React.createContext();
 Modal.setAppElement('#root');
 
 class Layer extends PureComponent {
+    componentDidMount() {
+        console.log('mounted');
+        this.props.setInitialCartInfo();
+    }
     state = {
         doNotClose: false,
         isCatalogOpen: false,
@@ -35,7 +40,7 @@ class Layer extends PureComponent {
     render () {
         const { closeCatalog } = this.state;
         const { loading, modalIsOpen, modalTemplate } = this.props;
-        console.log(modalIsOpen, loading)
+        
         return (
             <LayerContext.Provider value={this.state}>
                 <div
@@ -68,7 +73,8 @@ const mapStateToProps = ({
 
 const mapDispatchToProps = {
     toggleSearchedProductsVisibility,
-    setModalState
+    setModalState,
+    setInitialCartInfo
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(Layer));

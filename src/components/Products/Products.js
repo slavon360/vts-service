@@ -17,7 +17,8 @@ const Products = ({
     setModalState,
     modalIsOpen,
     preorderModal,
-    switchProductsLoading
+    switchProductsLoading,
+    setQuickOrderProduct
 }) => {
     console.log(productsLoading);
     return (
@@ -38,6 +39,7 @@ const Products = ({
                         modalIsOpen={modalIsOpen}
                         preorderModal={preorderModal}
                         switchProductsLoading={switchProductsLoading}
+                        setQuickOrderProduct={setQuickOrderProduct}
                     />
                 )) : <div />
             }

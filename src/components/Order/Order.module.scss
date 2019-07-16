@@ -1,5 +1,31 @@
 .OrderWrp {
     text-align: center;
+    position: relative;
+
+    .GoToProducts {
+        text-decoration: none;
+        display: block;
+        margin-bottom: 25px;
+        position: absolute;
+        top: 27px;
+        left: 3%;
+
+        &:hover {
+            color: #ff115f;
+        }
+        span {
+            display: inline-block;
+        }
+        .IconAngle {
+            transform: rotate(90deg) scale(0.8);
+        }
+        .BackWord {
+            padding-left: 10px;
+        }
+        svg {
+            overflow: visible;
+        }
+    }
 }
 .ModalContent {
     

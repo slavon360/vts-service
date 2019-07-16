@@ -2,6 +2,7 @@ import { composeReducer } from 'redux-compose-reducer';
 import { fromJS, Map, List } from 'immutable';
 
 const initialState = fromJS({
+    quickOrderProduct: null,
     products: [
         {
             'Цена': 1581,
@@ -31,18 +32,20 @@ const initialState = fromJS({
     tax: 15
 });
 
+const setQuickOrderProduct = (state, { product }) => state.set('quickOrderProduct', product);
+
 const setInitialCartInfo = (state, { cartInfo: { products, productsQty }}) => {
-    return state.merge({'products': List([products]), productsQty });
+    const immutableProducts = products.map(product => Map(product));
+    return state.merge({'products': List(immutableProducts), productsQty });
 }
 
 const resetCart = (state) => {
     return state.merge({'products': List([]), 'productsQty': 0});
 }
 
-const removeLastProduct = (state) => {
-    const updProducts = state.get('products').pop();
-
-    return state.set('products', updProducts);
+const removeQuickOrderProduct = (state) => {
+    const id = state.getIn(['quickOrderProduct','_id']);
+    return state.update('products', products => products.filter(prod => prod.get('_id') !== id));
 }
 
 const productWithQtyAndTotal = (prod) => {
@@ -133,8 +136,9 @@ export default composeReducer(
         setProductsQty,
         changeDynamicProductsQty,
         resetCart,
-        removeLastProduct,
-        setInitialCartInfo
+        removeQuickOrderProduct,
+        setInitialCartInfo,
+        setQuickOrderProduct
     },
     initialState
 );

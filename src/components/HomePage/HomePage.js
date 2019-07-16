@@ -16,11 +16,11 @@ class HomePage extends Component{
     }
     closeModal = () => {
         const isOpen = false;
-        const { productsInCart, setModalState, setModalTemplate, removeLastProduct } = this.props;
+        const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
         setModalState(isOpen);
         setModalTemplate(null);
         if (productsInCart && productsInCart.length) {
-            removeLastProduct();
+            removeQuickOrderProduct();
         };
     }
     closeModalWithActions = () => {
@@ -33,8 +33,8 @@ class HomePage extends Component{
     }
     quickSubmit = () => {
         const isOpen = false;
-        const { makeQuickOrder, setModalState, totalSum } = this.props;
-        makeQuickOrder(totalSum);
+        const { makeQuickOrder, setModalState } = this.props;
+        makeQuickOrder();
         setModalState(isOpen);
     }
     render() {
@@ -61,7 +61,8 @@ class HomePage extends Component{
             form,
             switchSubcategory,
             revertCurrentPage,
-            switchProductsLoading
+            switchProductsLoading,
+            setQuickOrderProduct
         } = this.props;
         return(
             <div className={styles.HomePage}>
@@ -91,6 +92,7 @@ class HomePage extends Component{
                     modalIsOpen={modalIsOpen}
                     preorderModal={preorderModal}
                     switchProductsLoading={switchProductsLoading}
+                    setQuickOrderProduct={setQuickOrderProduct}
                 />
                 {!modalWithActions ?
                     <Modal

@@ -1,5 +1,6 @@
 .ShoppingCart {
     padding: 15px 15vw;
+    position: relative;
 
     table {
         width: 100%;
@@ -7,6 +8,13 @@
 
     .TotalSum {
         margin-bottom: 25px;
+        text-align: right;
+        font-size: 18px;
+
+        > span {
+            font-size: 20px;
+            font-weight: 500;
+        }
     }
     .Order {
         display: inline-block;
@@ -17,6 +25,31 @@
         > a {
             color: #fff;
             text-decoration: none;
+        }
+    }
+
+    .GoToProducts {
+        text-decoration: none;
+        display: block;
+        margin-bottom: 25px;
+        position: absolute;
+        top: 40px;
+        left: 3%;
+
+        &:hover {
+            color: #ff115f;
+        }
+        span {
+            display: inline-block;
+        }
+        .IconAngle {
+            transform: rotate(90deg) scale(0.8);
+        }
+        .BackWord {
+            padding-left: 10px;
+        }
+        svg {
+            overflow: visible;
         }
     }
 }

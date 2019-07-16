@@ -11,6 +11,11 @@ function checkCartState({ getState }) {
                 products,
                 productsQty: productsQty + action.qty
             });
+        } else if (action.type === CART_TYPES.resetCart) {
+            localStorage.setCartInfo({
+                products: [],
+                productsQty: 0
+            });
         } else if (action.type === CART_TYPES.setDynamicProductsQty) {
             const qty = products.reduce((result, current) => result += current.get('quantity', 1), 0);
             const updateCart = (dispatch) => {
@@ -18,7 +23,7 @@ function checkCartState({ getState }) {
                     type: CART_TYPES.changeDynamicProductsQty,
                     productsQty: qty
                 })
-            }
+            };
 
             localStorage.setCartInfo({ products, productsQty: qty });
 

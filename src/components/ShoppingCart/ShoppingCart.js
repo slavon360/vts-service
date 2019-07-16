@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Product, ProductHeader } from './components';
 import { routes as routNames } from '../../routes';
 import { imgPlaceholder } from '../../constants/paths';
+import AngleDown from '../Icons/AngleDown';
 
 import styles from './ShoppingCart.module.scss';
 
@@ -11,6 +12,13 @@ const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty,
     return (
         <div className={styles.ShoppingCart}>
             <h2>Корзина</h2>
+            <Link
+                to="/"
+                className={styles.GoToProducts}
+            >
+                <span className={styles.IconAngle}><AngleDown /></span>
+                <span className={styles.BackWord}>Назад к товарам</span>
+            </Link>
             <table>
                 <tbody>
                     <ProductHeader />

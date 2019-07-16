@@ -1,4 +1,5 @@
 import { createTypes } from 'redux-compose-reducer';
+import localStorage from '../utils/localStorage';
 import { SITE_TYPES } from './site';
 
 export const CART_TYPES = createTypes('cart', [
@@ -9,9 +10,10 @@ export const CART_TYPES = createTypes('cart', [
     'setProductsQty',
     'setDynamicProductsQty',
     'resetCart',
-    'removeLastProduct',
+    'removeQuickOrderProduct',
     'setInitialCartInfo',
-    'changeDynamicProductsQty'
+    'changeDynamicProductsQty',
+    'setQuickOrderProduct'
 ]);
 
 export const setInitialCartInfo = () => (dispatch) => {
@@ -61,6 +63,11 @@ export const changeDynamicProductsQty = (productsQty) => ({
     productsQty
 })
 
+export const setQuickOrderProduct = (product) => ({
+    type: CART_TYPES.setQuickOrderProduct,
+    product
+})
+
 export const preorderModal = () => (dispatch) => {
     const modalIsOpen = true;
     const modalWithActions = true;
@@ -73,7 +80,7 @@ export const preorderModal = () => (dispatch) => {
     dispatch({ type: SITE_TYPES.setModalWithActions, modalWithActions });
 }
 
-export const removeLastProduct = () => (dispatch) => {
-    dispatch({ type: CART_TYPES.removeLastProduct });
+export const removeQuickOrderProduct = () => (dispatch) => {
+    dispatch({ type: CART_TYPES.removeQuickOrderProduct });
     dispatch({ type: CART_TYPES.setDynamicProductsQty });
 }

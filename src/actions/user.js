@@ -120,11 +120,12 @@ export const sendOrderData = (formData, totalSum) => async (dispatch, getState) 
     }
 }
 
-export const makeQuickOrder = (totalSum) => async (dispatch, getState) => {
+export const makeQuickOrder = () => async (dispatch, getState) => {
     const { form: { quick_order: { values: formData } } } = getState();
     const { products } = getState().cart;
     const product = products.toJS().pop();
-    const sentData = generateSentData(formData, [product], totalSum);
+    const { total } = product;
+    const sentData = generateSentData(formData, [product], total);
 
     try {
         const json = await postFromAxios('/make-order', qs.stringify(sentData), {
@@ -144,7 +145,7 @@ export const makeQuickOrder = (totalSum) => async (dispatch, getState) => {
         } else {
             const template = htmlDecode(successTemplate);
             dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
-            dispatch({ type: CART_TYPES.removeLastProduct });
+            dispatch({ type: CART_TYPES.removeQuickOrderProduct });
         }
 
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });

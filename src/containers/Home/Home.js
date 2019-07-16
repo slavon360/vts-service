@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { HomePage } from '../../components';
-import { addToCart, setProductsQty, resetCart, preorderModal, removeLastProduct } from '../../actions/cart';
+import { addToCart, setProductsQty, resetCart, preorderModal, removeQuickOrderProduct, setQuickOrderProduct } from '../../actions/cart';
 import { setModalState, setModalTemplate, setModalWithActions } from '../../actions/site';
 import {
     getCatalogMenu,
@@ -28,7 +28,6 @@ const mapStateToProps = (state) => {
         form,
         cart
     } = state;
-    const totalSum = getTotalSum(state);
 
     return {
          catalog: menus.get('catalog'),
@@ -43,7 +42,6 @@ const mapStateToProps = (state) => {
          modalTemplate,
          modalWithActions,
          form,
-         totalSum,
          productsInCart: cart.get('products')
     }
 };
@@ -65,9 +63,10 @@ const mapDispatchToProps = {
     makeQuickOrder,
     resetCart,
     preorderModal,
-    removeLastProduct,
+    removeQuickOrderProduct,
     switchSubcategory,
-    switchProductsLoading
+    switchProductsLoading,
+    setQuickOrderProduct
     //sendActiveFilter
 }
 

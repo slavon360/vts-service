@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import _isempty from 'lodash/isEmpty';
 
 import styles from './SizesShoppingCart.module.scss';
 
 const SizesShoppingCart = ({ sizes, Цена, addToCart }) => (
         <div className={styles.SizesShoppingCart}>
             <div className={styles.Sizes}>
-                <h2 className={styles.Dimensions}>Размеры:</h2>
+                <h2 className={styles.Dimensions}>{_isempty(sizes) ? '' : 'Размеры:'}</h2>
                 {Object.entries(sizes).map(item => (
                     <div
                         key={item[0]}

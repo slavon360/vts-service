@@ -2,8 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Modal from 'react-modal';
 import Cart from '../Cart';
+import { Link } from 'react-router-dom';
 import { Button } from '../UI';
-import OrderForm from './OrderForm'
+import OrderForm from './OrderForm';
+import AngleDown from '../Icons/AngleDown';
 import { modalGeneralStyles } from '../../constants/data';
 
 import styles from './Order.module.scss';
@@ -53,6 +55,13 @@ class Order extends Component {
         } = this.props;
         return (
             <div className={styles.OrderWrp}>
+                <Link
+                    to="/"
+                    className={styles.GoToProducts}
+                >
+                    <span className={styles.IconAngle}><AngleDown /></span>
+                    <span className={styles.BackWord}>Назад к товарам</span>
+                </Link>
                 <Cart
                     products={products}
                     removeFromCart={removeFromCart}

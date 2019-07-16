@@ -26,9 +26,10 @@ class Product extends Component {
     }
     buyByOneClick = () => {
         const isOpen = true;
-        const { product, setModalState, addToCart, setProductsQty } = this.props;
+        const { product, setModalState, addToCart, setProductsQty, setQuickOrderProduct } = this.props;
         const qty = 1;
 
+        setQuickOrderProduct(product);
         addToCart(product);
         setProductsQty(qty);
         setModalState(isOpen);
