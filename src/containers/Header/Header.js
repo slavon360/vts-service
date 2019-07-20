@@ -12,6 +12,7 @@ import {
 } from '../../actions/products';
 import { setLoadingState } from '../../actions/site';
 import { logout } from  '../../actions/user';
+import { getContacts } from '../../actions/contacts';
 
 const mapStateToProps = ({
     cart,
@@ -43,6 +44,7 @@ const mapDispatchToProps = {
     getCatalogMenu,
     setLoadingState,
     logout,
+    getContacts
     // getFilters
 }
 

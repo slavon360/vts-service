@@ -9,6 +9,7 @@ import Details from './components/Details';
 import Preloader from '../Preloader';
 import { modalGeneralStyles } from '../../constants/data';
 import { imgPlaceholder } from '../../constants/paths';
+import Contacts from './components/Contacts';
 
 import styles from './ProductPage.module.scss';
 
@@ -84,9 +85,9 @@ class ProductPage extends Component {
         this.props.setModalState(modalState);
     }
     renderComponent = () => {
-        const { product, modalWithActions, modalTemplate } = this.props;
+        const { product, modalWithActions, modalTemplate, contacts } = this.props;
         
-        if (product) {
+        if (product && contacts) {
             const { image: { secure_url = imgPlaceholder } = {} } = product;
             
             return (
@@ -107,6 +108,7 @@ class ProductPage extends Component {
                             addToCart={this.onAddToCart}
                         />
                     </div>
+                    <Contacts contacts={contacts} />
 
                     <Modal
                         isOpen={modalWithActions}

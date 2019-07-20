@@ -1,0 +1,41 @@
+.ContactsArea {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    padding: 10px 15px 15px;
+    .ContactItem {
+        height: 35px;
+        min-width: 240px;
+        margin-bottom: 30px;
+        &:not(:first-child) {
+            // margin-left: 75px;
+        }
+        a {
+            color: #6e6ec7;
+            text-decoration: none;
+            &:hover {
+                text-decoration: underline;
+                .PhoneImg {
+                    opacity: 1;
+                }
+            }
+        }
+    }
+    .PhoneImg {
+        width: 35px;
+        margin-left: 15px;
+        transform: translateY(5px);
+        opacity: .7;
+    }
+}
+h3 {
+    font-weight: 100;
+    font-size: 30px;
+    margin-top:  40px;
+}
+@media screen and (min-height: 900px) {
+    .ContactsArea .ContactItem {
+        margin-bottom: 10px;
+    }
+}

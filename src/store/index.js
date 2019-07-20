@@ -1,7 +1,7 @@
 let configureStore = null;
 
 if (process.env.NODE_ENV === 'production') {
-  configureStore = require('./store.prod').default;
+  configureStore = require('./store.dev').default;
 } else {
   configureStore = require('./store.dev').default;
 }

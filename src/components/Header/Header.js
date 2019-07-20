@@ -24,6 +24,7 @@ class Header extends PureComponent {
 
     componentDidMount() {
         this.fetchCurrencyRateAndCatalog();
+        this.fetchContacts();
     }
 
     fetchCurrencyRateAndCatalog = async () => {
@@ -38,6 +39,10 @@ class Header extends PureComponent {
         if (!currencyRate) await getCurrencyRate();
         await getCatalogMenu();
         // getFilters();
+    }
+
+    fetchContacts = async () => {
+        await this.props.getContacts();
     }
 
     onSearchProducts = (e) => {

@@ -16,7 +16,10 @@ const Properties = ({ properties, sizes }) => (
                             className={cx(styles.KeyValueWrp, { [styles.Description]: item[0] === 'Описание' })}
                         >
                             <div className={styles.Key}>{item[0]}</div>
-                            <div className={styles.Value}>{ item[1] === true ? 'Да' : item[1]}</div>
+                            {item[0] === 'Описание' ?
+                                <div className={styles.Value} dangerouslySetInnerHTML={{ __html: item[1] }}></div> :
+                                <div className={styles.Value}>{ item[1] === true ? 'Да' : item[1]}</div>
+                            }
                         </div>
                         ) : <div key={item[0]} />
                     }
