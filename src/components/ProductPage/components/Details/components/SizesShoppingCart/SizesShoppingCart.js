@@ -1,10 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import _isempty from 'lodash/isEmpty';
+import Button from '../../../../../UI/Button';
 
 import styles from './SizesShoppingCart.module.scss';
 
-const SizesShoppingCart = ({ sizes, Цена, addToCart }) => (
+const SizesShoppingCart = ({ sizes, Цена, addToCart, buyByOneClick }) => (
         <div className={styles.SizesShoppingCart}>
             <div className={styles.Sizes}>
                 <h2 className={styles.Dimensions}>{_isempty(sizes) ? '' : 'Размеры:'}</h2>
@@ -20,10 +21,18 @@ const SizesShoppingCart = ({ sizes, Цена, addToCart }) => (
             </div>
             <div className={styles.AddToCartArea}>
                 <div className={styles.Price}>{Цена} грн.</div>
+                <Button
+                    onClick={buyByOneClick}
+                    clsName={styles.ByOneClick}
+                >
+                    Купить в 1 клик
+                </Button>
                 <button
                     onClick={addToCart}
                     className={styles.AddToCart}
-                >Купить</button>
+                >
+                    Купить
+                </button>
             </div>
         </div>
     );

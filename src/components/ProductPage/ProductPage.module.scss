@@ -3,6 +3,7 @@
     text-align: left;
 
     .ImageAreaWrp, .DetailsWrp {
+        min-height: calc(100vh - 340px);
         display: inline-block;
     }
     .GoToProducts {

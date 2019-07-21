@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
-import { addToCart, setProductsQty, preorderModal } from '../../actions/cart';
+import { addToCart, setProductsQty, preorderModal, setQuickOrderProduct, removeQuickOrderProduct } from '../../actions/cart';
 import { setLoadingState, setModalTemplate, setModalWithActions, setModalState } from '../../actions/site';
 import { getProduct, resetProduct } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
@@ -10,18 +10,23 @@ const mapStateToProps = ({
     products,
     user,
     outerAPIdata: { currencyRate },
-    site: { modalTemplate, modalWithActions },
+    site: { modalTemplate, modalWithActions, modalIsOpen },
     menus,
-    contacts: { contacts }
+    contacts: { contacts },
+    form,
+    cart
 }) => {
     return {
          product: products.get('product'),
          cart: user.get('cart'),
+         productsInCart: cart.get('products'),
          currencyRate,
          modalTemplate,
          modalWithActions,
          selectedCategoryId: menus.get('selectedCategoryId'),
-         contacts
+         contacts,
+         modalIsOpen,
+         form
     }
 };
 
@@ -35,7 +40,9 @@ const mapDispatchToProps = {
     preorderModal,
     setModalTemplate,
     setModalWithActions,
-    setModalState
+    setModalState,
+    setQuickOrderProduct,
+    removeQuickOrderProduct
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

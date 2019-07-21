@@ -10,6 +10,7 @@ import Preloader from '../Preloader';
 import { modalGeneralStyles } from '../../constants/data';
 import { imgPlaceholder } from '../../constants/paths';
 import Contacts from './components/Contacts';
+import QuickOrderForm from '../Order/QuickOrderForm';
 
 import styles from './ProductPage.module.scss';
 
@@ -33,7 +34,7 @@ class ProductPage extends Component {
                 params: { productSlug }
             },
             currencyRate,
-            modalWithActions,
+            modalIsOpen,
             selectedCategoryId
         } = this.props;
         const {
@@ -42,7 +43,7 @@ class ProductPage extends Component {
                 params: { productSlug: nextProductSlug }
             },
             currencyRate: nextCurrencyRate,
-            modalWithActions: nextModalWithActions,
+            modalIsOpen: nextModalIsOpen,
             selectedCategoryId: nextSelectedCategoryId
         } = nextProps;
 
@@ -51,7 +52,7 @@ class ProductPage extends Component {
         }
         if (currencyRate !== nextCurrencyRate) this.getProductInfo();
         return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title ||
-                modalWithActions !== nextModalWithActions;
+                modalIsOpen !== nextModalIsOpen;
     }
     componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
@@ -76,6 +77,15 @@ class ProductPage extends Component {
         setProductsQty(qty);
         preorderModal();
     }
+    closeModal = () => {
+        const isOpen = false;
+        const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
+        setModalState(isOpen);
+        setModalTemplate(null);
+        if (productsInCart && productsInCart.length) {
+            removeQuickOrderProduct();
+        };
+    }
     closeModalWithActions = () => {
         const modalWithActions = false;
         const template = null;
@@ -84,8 +94,25 @@ class ProductPage extends Component {
         this.props.setModalWithActions(modalWithActions);
         this.props.setModalState(modalState);
     }
+    buyByOneClick = () => {
+        const isOpen = true;
+        const { product, setModalState, addToCart, setProductsQty, setQuickOrderProduct } = this.props;
+        const qty = 1;
+
+        setQuickOrderProduct(product);
+        addToCart(product);
+        setProductsQty(qty);
+        setModalState(isOpen);
+    }
     renderComponent = () => {
-        const { product, modalWithActions, modalTemplate, contacts } = this.props;
+        const {
+            product,
+            modalWithActions,
+            modalTemplate,
+            contacts,
+            modalIsOpen,
+            form
+        } = this.props;
         
         if (product && contacts) {
             const { image: { secure_url = imgPlaceholder } = {} } = product;
@@ -106,32 +133,52 @@ class ProductPage extends Component {
                         <Details
                             product={product}
                             addToCart={this.onAddToCart}
+                            buyByOneClick={this.buyByOneClick}
                         />
                     </div>
                     <Contacts contacts={contacts} />
 
-                    <Modal
-                        isOpen={modalWithActions}
-                        onRequestClose={this.closeModalWithActions}
-                        style={modalGeneralStyles}
-                        contentLabel="Preorder Modal"
-                        portalClassName={styles.ModalProductPage}
-                    >
-                        {modalTemplate &&
-                            <Fragment>
-                                <div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
-                                <Link
-                                    onClick={this.closeModalWithActions}
-                                    className={styles.GoToOrderBtn}
-                                    to="/order"
-                                >Оформить заказ</Link>
-                                <Button
-                                    onClick={this.closeModalWithActions}
-                                    clsName={styles.ContinueShoppingBtn}
-                                >Продолжить покупки</Button>
-                            </Fragment>
-                        }
-                    </Modal>
+                    {!modalWithActions ?
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onAfterOpen={this.afterOpenModal}
+                            onRequestClose={this.closeModal}
+                            style={modalGeneralStyles}
+                            contentLabel="Order Modal"
+                            portalClassName={styles.ModalHomePage}
+                        >
+                            {modalTemplate ?
+                                <div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div> :
+                                <QuickOrderForm
+                                    clientForm={form}
+                                    closeModal={this.closeModal}
+                                    quickSubmit={this.quickSubmit}
+                                />
+                            }
+                        </Modal> :
+                        <Modal
+                            isOpen={modalIsOpen}
+                            onRequestClose={this.closeModalWithActions}
+                            style={modalGeneralStyles}
+                            contentLabel="Preorder Modal"
+                            portalClassName={styles.ModalHomePage}
+                        >
+                            {modalTemplate &&
+                                <Fragment>
+                                    <div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
+                                    <Link
+                                        onClick={this.closeModalWithActions}
+                                        className={styles.GoToOrderBtn}
+                                        to="/order"
+                                    >Оформить заказ</Link>
+                                    <Button
+                                        onClick={this.closeModalWithActions}
+                                        clsName={styles.ContinueShoppingBtn}
+                                    >Продолжить покупки</Button>
+                                </Fragment>
+                            }
+                        </Modal>
+                    }
                 </div>
             )
         }

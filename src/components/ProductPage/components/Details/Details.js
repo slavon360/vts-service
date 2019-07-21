@@ -19,7 +19,7 @@ const makeSizesObject = (obj) => {
     return sizes;
 }
 
-const Details = ({ product, addToCart }) => {
+const Details = ({ product, addToCart, buyByOneClick }) => {
     const sizes = makeSizesObject(product);
     const properties = showAdditionalInfo(product);
     return (
@@ -29,6 +29,7 @@ const Details = ({ product, addToCart }) => {
                 sizes={sizes}
                 Цена={product.Цена}
                 addToCart={addToCart}
+                buyByOneClick={buyByOneClick}
             />
             <Properties sizes={sizes} properties={properties} />
         </div>

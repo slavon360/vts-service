@@ -9,5 +9,6 @@ export Registration from './Registration';
 export UserNavbar from './UserNavbar';
 export Dashboard from './Dashboard';
 export ShoppingCart from './ShoppingCart';
+export ShoppingCartLazy from './ShoppingCartLazy';
 export Filters from './Filters';
 export Order from './Order';
