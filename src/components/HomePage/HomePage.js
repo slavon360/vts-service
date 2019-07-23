@@ -31,7 +31,8 @@ class HomePage extends Component{
         this.props.setModalTemplate(template);
         this.props.setModalWithActions(modalWithActions);
     }
-    quickSubmit = () => {
+    quickSubmit = (event) => {
+        event.preventDefault();
         const isOpen = false;
         const { makeQuickOrder, setModalState } = this.props;
         makeQuickOrder();

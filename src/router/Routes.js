@@ -11,8 +11,6 @@ import {
     Order
 } from '../containers';
 
-// import { VtsServices } from '../components';
-
 const routes = [
     {
         path: '/',

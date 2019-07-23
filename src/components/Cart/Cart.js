@@ -29,7 +29,7 @@ const Cart = ({ products, removeFromCart, setQty, setProductsQty, setDynamicProd
     );
 };
 
-Cart.proptypes = {
+Cart.propTypes = {
     products: PropTypes.array
 };
 Cart.defaultProps = {

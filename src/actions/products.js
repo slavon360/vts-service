@@ -54,7 +54,7 @@ export const searchProducts = (product) => {
 
 export const getProduct = (slug) => async (dispatch, getState) => {
     const { currencyRate } = getState().outerAPIdata;
-    const data = await getFromAxios(`${routeNames.PRODUCT_DETAILS}/${slug}`);
+    const data = await getFromAxios(`/api${routeNames.PRODUCT_DETAILS}/${slug}`);
     const product = _get(data, 'data', {});
     const updProduct = { ...product, 'Цена': currencyRate ? Math.round(currencyRate * product['Цена']) : product['Цена'] };
     dispatch({ type: PRODUCTS_TYPES.getProduct, product: updProduct });

@@ -7,7 +7,7 @@ const initialState = {
 function getCurrencyRate(state, { rate }) {
     return {
         ...state,
-        currencyRate: rate
+        currencyRate: rate || 29
     };
 }
 

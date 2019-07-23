@@ -104,6 +104,13 @@ class ProductPage extends Component {
         setProductsQty(qty);
         setModalState(isOpen);
     }
+    quickSubmit = (event) => {
+        event.preventDefault();
+        const isOpen = false;
+        const { makeQuickOrder, setModalState } = this.props;
+        makeQuickOrder();
+        setModalState(isOpen);
+    }
     renderComponent = () => {
         const {
             product,

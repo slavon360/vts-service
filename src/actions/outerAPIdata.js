@@ -9,10 +9,10 @@ const API_DATA_TYPES = createTypes('apiData', [
 
 export const getCurrencyRate = () => async (dispatch) => {
     try {
-        const response = await getFromAxiosCurrency('/json.gp', { base_currency: 'EUR' });
-        const rate = _get(response, 'data.geoplugin_currencyConverter', null);
-        dispatch({ type: API_DATA_TYPES.getCurrencyRate, rate });
-        return rate;
+        // const response = await getFromAxiosCurrency('/json.gp', { base_currency: 'EUR' });
+        // const rate = _get(response, 'data.geoplugin_currencyConverter', null);
+        dispatch({ type: API_DATA_TYPES.getCurrencyRate, rate: 29 });
+        return 29;
     } catch (error) {
         console.error(error);
     }

@@ -11,7 +11,7 @@ import { modalGeneralStyles } from '../../constants/data';
 import styles from './Order.module.scss';
 
 class Order extends Component {
-    static proptypes = {
+    static propTypes = {
         products: PropTypes.array
     }
     // static getDerivedStateFromProps(nextProps) {

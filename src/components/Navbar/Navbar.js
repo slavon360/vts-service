@@ -1,5 +1,4 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import { routes as routeNames } from '../../routes';
 import CatalogNav from './components/CatalogNav';
 
@@ -14,7 +13,7 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
                 switchCheckedCategory={switchCheckedCategory}
                 makeProductsRequest={makeProductsRequest}
             />
-            <Link className={styles.Services} to={routeNames.SERVICES}>Услуги</Link>
+            <a className={styles.Services} href={routeNames.SERVICES}>Услуги</a>
         </div>
     );
 };
