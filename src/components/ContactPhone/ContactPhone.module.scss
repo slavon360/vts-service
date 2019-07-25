@@ -1,0 +1,17 @@
+
+a {
+    color: #6e6ec7;
+    text-decoration: none;
+    &:hover {
+        text-decoration: underline;
+        .PhoneImg {
+            opacity: 1;
+        }
+    }
+    .PhoneImg {
+        width: 35px;
+        margin-left: 15px;
+        transform: translateY(5px);
+        opacity: .7;
+    }
+}

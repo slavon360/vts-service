@@ -4,7 +4,7 @@ import RequireAuth from '../components/HOC/RequireAuth';
 import {
     Home,
     Product,
-    SignIn,
+    // SignIn,
     Login,
     Dashboard,
     ShoppingCart,
@@ -21,10 +21,10 @@ const routes = [
         path: `${routeNames.PRODUCT_DETAILS}/:productSlug`,
         component: Product
     },
-    {
-        path: `${routeNames.SIGN_IN}`,
-        component: SignIn
-    },
+    // {
+    //     path: `${routeNames.SIGN_IN}`,
+    //     component: SignIn
+    // },
     {
         path: `${routeNames.LOGIN}`,
         component: Login

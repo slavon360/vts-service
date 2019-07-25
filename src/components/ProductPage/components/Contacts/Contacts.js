@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './Contacts.module.scss';
-import PhoneIcon from '../../../Icons/Phone';
+import ContactPhone from '../../../ContactPhone';
 
 const Contacts = ({ contacts }) => (
         <div className={styles.ContactsWrp}>
@@ -12,13 +12,7 @@ const Contacts = ({ contacts }) => (
                         className={styles.ContactItem}
                     >
                         {телефон &&
-                            <a href={`tel:${телефон}`}>
-                                <PhoneIcon color="#444" style={{ height: '30px', width: '25px', transform: 'translate(-10px, -3px)' }} />
-                                <span>{телефон}</span>
-                                {secure_url &&
-                                    <img className={styles.PhoneImg} src={secure_url} alt="phone number" />
-                                }
-                            </a>
+                            <ContactPhone телефон={телефон} secure_url={secure_url} />
                         }
                     </div>
                 ))}

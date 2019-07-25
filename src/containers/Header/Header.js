@@ -19,7 +19,8 @@ const mapStateToProps = ({
     user,
     menus,
     products,
-    site: { loading }
+    site: { loading },
+    contacts: { contacts }
 }) => {
     return {
         userData: user.get('userData'),
@@ -29,7 +30,8 @@ const mapStateToProps = ({
         searchedProducts: products.get('searchedProducts'),
         searchedProductsLoading: products.get('searchedProductsLoading'),
         showSearchedProducts: products.get('showSearchedProducts'),
-        loading
+        loading,
+        contacts
     }
 };
 

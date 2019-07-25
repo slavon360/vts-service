@@ -50,6 +50,12 @@
     }
 }
 
+@media screen and (max-width: 767px) {
+    .Category {
+        margin-right: 0;
+    }
+}
+
 .Checked {
     transform: scale(1.15);
 }

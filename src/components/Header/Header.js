@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import Search from '../Search';
 import CartButton from '../CartButton';
 import Navbar from '../Navbar';
-import UserNavbar from '../UserNavbar';
+// import UserNavbar from '../UserNavbar';
 import HomeIcon from '../Icons/HomeIcon';
 
 import styles from './Header.module.scss';
@@ -72,7 +72,8 @@ class Header extends PureComponent {
             showSearchedProducts,
             userData,
             loading,
-            logout
+            logout,
+            contacts
         } = this.props;
         return (
             <div className={styles.Header}>
@@ -96,10 +97,11 @@ class Header extends PureComponent {
                                 activeIndex={activeIndex}
                                 switchCheckedCategory={switchCheckedCategory}
                                 makeProductsRequest={makeProductsRequest}
+                                contacts={contacts}
                             />
                         </div>
                         <div className={styles.RightSide}>
-                            <UserNavbar logout={logout} userData={userData} />
+                            {/* <UserNavbar logout={logout} userData={userData} /> */}
                             <CartButton productsQty={productsQty} />
                         </div>
                     </Fragment> : <div />
