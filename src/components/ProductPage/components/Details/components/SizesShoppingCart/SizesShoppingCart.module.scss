@@ -50,4 +50,19 @@
             color: #39f;
         }
     }
+    @media screen and (max-width: 767px) {
+        .AddToCartArea {
+            width: 100%;
+            .Price {
+                padding-bottom: 30px;
+            }
+            .ByOneClick {
+                float: left;
+                transform: translateY(5px);
+            }
+            .AddToCart {
+                float: right;
+            }
+        }
+    }
 }
