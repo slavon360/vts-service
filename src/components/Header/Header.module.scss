@@ -22,3 +22,13 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Header {
+        height: 95px;
+        .HomeLink {
+            height: 32px;
+            padding-top: 9px;
+        }
+    }
+}

@@ -46,3 +46,14 @@
         width: 0;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Search {
+        margin-left: 15px;
+        margin-bottom: 5px;
+        height: 41px;
+        .Active {
+            width: 225px;
+        }
+    }
+}

@@ -38,3 +38,12 @@
         display: block;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Categories {
+        height: auto;
+        .CategName {
+            border-top: 1px solid #e5e9ee;
+        }
+    }
+} 

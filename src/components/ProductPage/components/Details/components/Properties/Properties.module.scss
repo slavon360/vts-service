@@ -26,11 +26,18 @@
             }
         }
     }
-    @media screen and (max-width: 767px) {
-        .KeyValueWrp:not(.Description) {
-            div:last-child {
-                font-weight: 700;
-            }
+}
+
+@media screen and (max-width: 768px) {
+    .Properties {
+        padding: 40px 0 0;
+    }
+    .KeyValueWrp:not(.Description) {
+        div:last-child {
+            font-weight: 700;
         }
+    }
+    .Description {
+        line-height: 1.6;
     }
 }

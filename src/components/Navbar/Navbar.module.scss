@@ -29,3 +29,12 @@
         display: none;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Navbar {
+        height: auto;
+        .Services {
+            border-top: 1px solid #e5e9ee;
+        }
+    }
+}
