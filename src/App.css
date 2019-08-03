@@ -1,3 +1,10 @@
 .AppWrapper {
   padding-top: 50px;
 }
+
+
+@media screen and (max-width: 768px) {
+  .AppWrapper {
+    padding-top: 90px;
+  }
+}

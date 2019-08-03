@@ -47,6 +47,13 @@
     }
 }
 
+@media screen and (max-width: 830px) {
+    .Search {
+        .Active {
+            width: 300px;
+        }
+    }
+}
 @media screen and (max-width: 768px) {
     .Search {
         margin-left: 15px;
@@ -54,6 +61,14 @@
         height: 41px;
         .Active {
             width: 225px;
+        }
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .Search {
+        .Active {
+            width: 185px;
         }
     }
 }

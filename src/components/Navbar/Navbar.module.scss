@@ -33,8 +33,16 @@
 @media screen and (max-width: 768px) {
     .Navbar {
         height: auto;
+        position: relative;
+        left: -25px;
+        display: flex;
+        width: calc(100vw - 50px);
+        justify-content: space-between;
+        padding: 0 25px;
+        color: #6e6ec7;
         .Services {
-            border-top: 1px solid #e5e9ee;
+            border: none;
+            margin-right: 0;
         }
     }
 }

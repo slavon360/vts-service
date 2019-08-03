@@ -43,7 +43,16 @@
     .Categories {
         height: auto;
         .CategName {
-            border-top: 1px solid #e5e9ee;
+            border: none;
         }
     }
-} 
+}
+
+@media screen and (max-width: 440px) {
+    .CategName {
+        max-width: 205px;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+}

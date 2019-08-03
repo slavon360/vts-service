@@ -32,3 +32,10 @@
         }
     }
 }
+
+@media screen and (max-width: 400px) {
+    .Header {
+        font-size: 14px;
+        height: 89px;
+    }
+}
