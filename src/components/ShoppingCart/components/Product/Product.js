@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import PropTypes from 'prop-types';
 import CurrencyFormat from 'react-currency-format';
 import Button from '../../../UI/Button';
@@ -38,7 +38,11 @@ class Product extends Component {
     render() {
         const { title, img, price, qty, total } = this.props;
         return (
-            <tr className={styles.Product}>
+            <Fragment>
+                <tr className={styles.MobileTitle}>
+                    <td className={styles.MobileTitleCell} colSpan="6">{title}</td>
+                </tr>
+                <tr className={styles.Product}>
                     <td>
                         <div className={styles.ProductImage}>
                             <img src={img} />
@@ -76,7 +80,8 @@ class Product extends Component {
                             aria-label="Close Account Info Modal Box"
                     >&times;</Button>
                     </td>
-            </tr>
+                </tr>
+            </Fragment>
         );
     }
 }

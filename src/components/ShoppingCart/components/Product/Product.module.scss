@@ -39,4 +39,67 @@
         color: #fff;
         border-radius: 50%;
     }
+
+    @media screen and (max-width: 767px) {
+        .Title {
+            display: none;
+        }
+        .Price {
+            position: relative;
+            &::before {
+                content: 'Цена';
+                position: absolute;
+                top: -5px;
+                font-size: 14px;
+            }
+        }
+        .Controls {
+            max-width: 60px;
+            > div {
+                position: relative;
+                padding-left: 0;
+                padding-right: 0;
+                margin-right: 10px;
+                &::before {
+                    content: 'Кол-во';
+                    color: #888;
+                    position: absolute;
+                    top: -31px;
+                    left: 10px;
+                    font-size: 14px;
+                }
+            }
+            input {
+                max-width: inherit;
+            }
+            button {
+                display: none;
+            }
+        }
+        .Total {
+            position: relative;
+            &::before {
+                content: 'Сумма';
+                color: #888;
+                position: absolute;
+                top: -5px;
+                left: 0;
+                font-size: 14px;
+            }
+        }
+    }
+}
+
+.MobileTitle {
+    display: none;
+}
+
+@media screen and (max-width: 767px) {
+    .MobileTitle {
+        display: table-row;
+        .MobileTitleCell {
+            color: #2e2eec;
+            padding-bottom: 20px;
+        }
+    }
 }

@@ -52,4 +52,16 @@
             overflow: visible;
         }
     }
+    @media screen and (max-width: 767px) {
+        padding: 15px 25px;
+
+        .GoToProducts {
+            width: 100%;
+            left: 0;
+            text-align: center;
+        }
+        h2 {
+            margin-top: 65px;
+        }
+    }
 }
