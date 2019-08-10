@@ -60,7 +60,7 @@ const productWithQtyAndTotal = (prod) => {
 function setProductsQty(state, { qty }) {
     const updQty = state.get('productsQty') + (+qty);
 
-    return state.set('productsQty', updQty);
+    return updQty >= 0 ? state.set('productsQty', updQty) : state;
 }
 
 function changeDynamicProductsQty(state, { productsQty }) {

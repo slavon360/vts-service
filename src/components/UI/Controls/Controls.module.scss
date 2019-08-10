@@ -6,5 +6,17 @@
 
     input {
         border: 1px solid #ddd;
+        text-align: center;
+    }
+    .SetQuantity {
+        font-size: 22px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .Controls {
+        input {
+            min-width: 70px;
+        }
     }
 }

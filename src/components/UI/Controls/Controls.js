@@ -9,8 +9,11 @@ const Controls = ({ setQty, qty, decreaseQty, increaseQty }) => (
             <Button
                 clsName={styles.SetQuantity}
                 clickHandler={decreaseQty}
+                disabled={qty <= 1}
             >-</Button>
             <Input
+                type="number"
+                min="1"
                 changeValue={setQty}
                 value={qty}
             />

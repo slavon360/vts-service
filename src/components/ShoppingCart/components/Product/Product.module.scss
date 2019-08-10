@@ -54,7 +54,7 @@
             }
         }
         .Controls {
-            max-width: 60px;
+            max-width: 65px;
             > div {
                 position: relative;
                 padding-left: 0;
@@ -65,8 +65,9 @@
                     color: #888;
                     position: absolute;
                     top: -31px;
-                    left: 10px;
+                    left: 0;
                     font-size: 14px;
+                    min-width: 50px;
                 }
             }
             input {
@@ -88,6 +89,20 @@
             }
         }
     }
+    @media screen and (max-width: 340px) {
+        .Controls {
+            > div {
+                &::before {
+                    font-size: 12px;
+                }
+            }
+        }
+        .Total, .Price {
+            &::before {
+                font-size: 12px;
+            }
+        }
+    }
 }
 
 .MobileTitle {
@@ -95,6 +110,11 @@
 }
 
 @media screen and (max-width: 767px) {
+    .Product:last-child {
+        td {
+            padding-bottom: 10px;
+        }
+    }
     .MobileTitle {
         display: table-row;
         .MobileTitleCell {

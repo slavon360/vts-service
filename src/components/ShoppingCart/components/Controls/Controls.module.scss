@@ -4,7 +4,18 @@
     padding: 0 10px;
     box-sizing: border-box;
 
+    .SetQuantity {
+        font-size: 22px;
+    }
     input {
         text-align: center;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .Controls {
+        input {
+            min-width: 85px;
+        }
     }
 }
