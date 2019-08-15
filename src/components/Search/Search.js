@@ -5,6 +5,7 @@ import { SearchResults } from './components';
 import PreloaderBar from '../PreloaderBar';
 
 import styles from './Search.module.scss';
+import '../../App.css'
 
 const Search = ({
     toggleSearch,
@@ -15,14 +16,18 @@ const Search = ({
     searchedProductsLoading,
     showSearchedProducts
 }) => (
-        <div className={styles.Search}>
+        <div className={cx(
+            styles.Search,
+            { ['SearchActive']: searchActive, [styles.Inactive]: !searchActive })}>
             <button
                 onClick={toggleSearch}
                 className={styles.SearchIcon}
             >
                 <SearchIcon style={{ fontSize: '20px' }}/>
             </button>
-            <div className={cx(styles.SearchInputContainer, { [styles.Active]: searchActive, [styles.Inactive]: !searchActive })}>
+            <div className={cx(
+            styles.SearchInputContainer,
+            { [styles.Active]: searchActive, [styles.Inactive]: !searchActive })}>
                 <input
                     className={styles.SearchInput}
                     value={searchedText}

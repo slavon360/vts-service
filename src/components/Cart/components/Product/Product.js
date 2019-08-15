@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import Controls from '../../../UI/Controls';
 import Button from '../../../UI/Button';
@@ -40,35 +41,43 @@ class Product extends Component {
                 image: { secure_url = imgPlaceholder } = {},
                 Цена: price,
                 total,
-                quantity: qty
+                quantity: qty,
+                slug
             },
             index
         } = this.props;
         return (
-            <div className={cx(styles.ProductWrp, { [styles.ProductWrpEven]: (index % 2) })}>
-                <div className={styles.Image}>
-                    <img src={secure_url} />
+            <Fragment>
+                <div className={styles.NameWrpMobile}>
+                    <div className={styles.Name}>
+                        <Link to={`/product-details/${slug}`}>{title}</Link>
+                    </div>
                 </div>
-                <div className={styles.NameWrp}>
-                    <div className={styles.Name}>{ title }</div>
-                    <div className={styles.Code}>Код товара: <span>{ code }</span></div>
+                <div className={cx(styles.ProductWrp, { [styles.ProductWrpEven]: (index % 2) })}>
+                    <div className={styles.Image}>
+                        <img src={secure_url} />
+                    </div>
+                    <div className={styles.NameWrp}>
+                        <Link to={`/product-details/${slug}`}>{title}</Link>
+                        <div className={styles.Code}>Код товара: <span>{ code }</span></div>
+                    </div>
+                    <div className={styles.Price}><span>{price}</span> грн</div>
+                    <div className={styles.Quantity}>
+                        <Controls
+                            qty={qty}
+                            setQty={this.onSetQty}
+                            decreaseQty={this.onDecreaseQty}
+                            increaseQty={this.onIncreaseQty}
+                        />
+                    </div>
+                    <div className={styles.Total}>{ total } грн</div>
+                    <div className={styles.DeleteWrp}>
+                        <Button
+                            clickHandler={this.onRemoveFromCart}
+                        >&#10005;</Button>
+                    </div>
                 </div>
-                <div className={styles.Price}><span>{price}</span> грн</div>
-                <div className={styles.Quantity}>
-                    <Controls
-                        qty={qty}
-                        setQty={this.onSetQty}
-                        decreaseQty={this.onDecreaseQty}
-                        increaseQty={this.onIncreaseQty}
-                    />
-                </div>
-                <div className={styles.Total}>{ total } грн</div>
-                <div className={styles.DeleteWrp}>
-                    <Button
-                        clickHandler={this.onRemoveFromCart}
-                    >&#10005;</Button>
-                </div>
-            </div>
+            </Fragment>
         );
     }
 };

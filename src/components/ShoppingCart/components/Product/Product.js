@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react';
+import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import CurrencyFormat from 'react-currency-format';
 import Button from '../../../UI/Button';
@@ -36,11 +37,13 @@ class Product extends Component {
         setProductsQty(1);
     }
     render() {
-        const { title, img, price, qty, total } = this.props;
+        const { title, img, price, qty, total, slug } = this.props;
         return (
             <Fragment>
                 <tr className={styles.MobileTitle}>
-                    <td className={styles.MobileTitleCell} colSpan="6">{title}</td>
+                    <td className={styles.MobileTitleCell} colSpan="6">
+                        <Link to={`/product-details/${slug}`}>{title}</Link>
+                    </td>
                 </tr>
                 <tr className={styles.Product}>
                     <td>
@@ -48,7 +51,9 @@ class Product extends Component {
                             <img src={img} />
                         </div>
                     </td>
-                    <td className={styles.Title}>{title}</td>
+                    <td className={styles.Title}>
+                        <Link to={`/product-details/${slug}`}>{title}</Link>
+                    </td>
                     <td className={styles.Price}>
                         <CurrencyFormat
                             value={price}

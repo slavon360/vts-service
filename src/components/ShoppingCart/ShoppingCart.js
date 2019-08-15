@@ -35,6 +35,7 @@ const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty,
                                     price={product.Цена}
                                     total={product.total}
                                     img={secure_url}
+                                    slug={product.slug}
                                     removeFromCart={removeFromCart}
                                     setProductsQty={setProductsQty}
                                     setDynamicProductsQty={setDynamicProductsQty}
