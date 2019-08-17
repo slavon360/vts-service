@@ -88,3 +88,40 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+    .OrderFormWrp {
+        h2 {
+            text-align: center;
+        }
+        .Form {
+            padding: 0 20px 30px;
+            .FirstRow {
+                display: block;
+                margin-bottom: 10px;
+                .InputArea {
+                    .ErrorMessage {
+                        top: 110%;
+                    }
+                    &:not(:last-child) {
+                        margin: 0 0 30px;
+                    }
+                    margin: 0 0 30px;
+                }
+            }
+            .SecondRow {
+                display: block;
+                margin-bottom: 10px;
+                .InputArea {
+                    &:not(:last-child) {
+                        margin: 0 0 30px;
+                    }
+                    margin: 0 0 30px;
+                }
+            }
+            .ThirdRow {
+                margin-bottom: 30px;
+            }
+        }
+    }
+}

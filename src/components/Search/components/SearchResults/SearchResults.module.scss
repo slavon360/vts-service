@@ -11,3 +11,12 @@
 .SearchResults.Shown {
     display: block;
 }
+
+@media screen and (max-width: 767px) {
+    .SearchResults {
+        z-index: 1;
+        min-height: auto;
+        height: calc(100vh - 45px);
+        overflow-y: auto;
+    }
+}

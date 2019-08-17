@@ -32,3 +32,21 @@
         }
     }
 }
+
+@media screen and (max-width: 767px) {
+    .HomeBanners {
+        .BannerContent {
+            .BannerTitle {
+                font-size: 21px;
+                margin-bottom: 10px;
+            }
+            .BannerDescription {
+                font-size: 17px;
+                margin-bottom: 15px;
+            }
+            .BannerOptionalDescription {
+                font-size: 14px;
+            }
+        }
+    }
+}

@@ -49,6 +49,7 @@
         }
     }
     @media screen and (max-width: 767px) {
+        padding-top: 15px;
         font-size: 12px;
         .Image {
             width: 72px;
@@ -113,6 +114,7 @@
     .NameWrpMobile {
         font-size: 14px;
         margin-top: 15px;
+        padding: 0 20px;
     }
     .ProductWrpEven {
         background-color: transparent;

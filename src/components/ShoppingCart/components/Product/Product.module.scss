@@ -110,6 +110,11 @@
 }
 
 @media screen and (max-width: 767px) {
+    .Product {
+        td {
+            padding-bottom: 35px;
+        }
+    }
     .Product:last-child {
         td {
             padding-bottom: 10px;

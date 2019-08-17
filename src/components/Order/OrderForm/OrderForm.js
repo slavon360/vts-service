@@ -73,7 +73,7 @@ const isExist = {
 const required = (val) => {
     if (!val || val.trim() === '') {
         isExist.fullNameExist = null;
-        return 'This FormField is required';
+        return 'Введите Ваше имя';
     }
     isExist.fullNameExist = true;
     return null;
@@ -82,7 +82,7 @@ const required = (val) => {
 const phoneValidation = (phone) => {
     if (phone && phone.indexOf('_') > 0) {
         isExist.phoneExist = null;
-        return 'Please, fill phone number';
+        return 'Введите Ваш номер телефона';
     }
     isExist.phoneExist = phone ? true : null;
     return null;
