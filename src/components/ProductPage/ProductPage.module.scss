@@ -66,3 +66,9 @@
     padding: 10px;
     float: right;
 }
+
+@media screen and (max-width: 767px) {
+    .GoToOrderBtn, .ContinueShoppingBtn {
+        font-size: 14px;
+    }
+}

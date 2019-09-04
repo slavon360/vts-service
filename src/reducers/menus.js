@@ -1,5 +1,5 @@
 import { composeReducer } from 'redux-compose-reducer';
-import { fromJS } from 'immutable';
+import { fromJS, List, Map } from 'immutable';
 
 
 const initialState = fromJS({
@@ -70,7 +70,15 @@ function switchCheckedCategory(state, { id, index }) {
 }
 
 function resetSelectedSubcategoryId(state) {
-    return state.set('selectedSubcategoryId', null);
+    const activeIndex = state.get('activeIndex');
+    const updCatalog = state.get('catalog').update(activeIndex, (catalog) => {
+        return catalog.update('subCategNames', subcatNames => subcatNames.map(subcat => subcat.set('checked', false)));
+    });
+    return state.merge({
+        selectedSubcategoryId: null,
+        activeIndex,
+        catalog: updCatalog
+    });
 }
 
 function getFilters(state, { filters }) {

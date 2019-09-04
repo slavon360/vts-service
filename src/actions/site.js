@@ -1,11 +1,17 @@
 import { createTypes } from 'redux-compose-reducer';
 
 export const SITE_TYPES = createTypes('site', [
+    'setWindowWidth',
     'setLoadingState',
     'setModalState',
     'setModalTemplate',
     'setModalWithActions'
 ]);
+
+export const setWindowWidth = (windowWidth) => ({
+    type: SITE_TYPES.setWindowWidth,
+    windowWidth
+})
 
 export const setLoadingState = (loading) => ({
     type: SITE_TYPES.setLoadingState,

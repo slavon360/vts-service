@@ -10,7 +10,17 @@ import { showAdditionalInfo } from '../../../utils/dataConverter';
 
 import styles from './Product.module.scss';
 
+const searched_url_word = '/upload';
+const word_length = searched_url_word.length;
+
 class Product extends Component {
+    state = {
+        imgSource: null
+    }
+
+    componentWillMount() {
+        this.setImgSource();
+    }
     shouldComponentUpdate(nextProps) {
         const { perPage, productsLength, productIndex } = this.props;
         return (productsLength - perPage) < productIndex && productsLength < nextProps.productsLength;
@@ -23,6 +33,19 @@ class Product extends Component {
         // we can add only one product
         setProductsQty(qty);
         preorderModal();
+    }
+    buildImgUrl = (url, i) => {
+        const { windowWidth } = this.props;
+        const newUrl = windowWidth < 992 ? `${url.slice(0, i)}/w_${windowWidth - 60},c_limit/${url.slice(i)}` : url;
+        return newUrl;
+    }
+    setImgSource = () => {
+        const { product: { image: { secure_url = imgPlaceholder } = { } } } = this.props;
+        const index = secure_url.indexOf(searched_url_word);
+
+        this.setState({
+            imgSource: index > 0 ? this.buildImgUrl(secure_url, index + word_length) : secure_url
+        })
     }
     buyByOneClick = () => {
         const isOpen = true;
@@ -37,7 +60,6 @@ class Product extends Component {
     render() {
         const {
             product: {
-                image: { secure_url = imgPlaceholder } = { },
                 title,
                 Цена,
                 slug
@@ -48,6 +70,8 @@ class Product extends Component {
             makeProductsRequest,
             switchProductsLoading
         } = this.props;
+        const { imgSource } = this.state;
+        console.log(imgSource);
         const briefInfo = showAdditionalInfo(this.props.product);
         return (
             <li className={styles.Product}>
@@ -57,7 +81,7 @@ class Product extends Component {
                         <ProductImage
                             productsLength={productsLength}
                             productIndex={productIndex}
-                            secure_url={secure_url}
+                            secure_url={imgSource}
                             scrollPosition={scrollPosition}
                             makeProductsRequest={makeProductsRequest}
                             switchProductsLoading={switchProductsLoading}

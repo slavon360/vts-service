@@ -5,8 +5,16 @@ const initialState = {
     modalIsOpen: false,
     modalTemplate: null,
     successfullOrder: false,
-    modalWithActions: false
+    modalWithActions: false,
+    windowWidth: null
 }
+
+function setWindowWidth(state, { windowWidth }) {
+    return {
+        ...state,
+        windowWidth
+    }
+};
 
 function setLoadingState(state, { loading }) {
     return {
@@ -50,7 +58,8 @@ export default composeReducer(
         setModalState,
         setModalTemplate,
         setOrderState,
-        setModalWithActions
+        setModalWithActions,
+        setWindowWidth
     },
     initialState
 );

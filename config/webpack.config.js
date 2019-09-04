@@ -41,7 +41,7 @@ const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
 const env = process.env.NODE_ENV || 'development';
-const BASE_URL = process.env.BASE_URL || 'http://localhost:3000';
+const BASE_URL = env === 'development' ? 'http://localhost:3000' : process.env.BASE_URL;
 const CURRENCY_API_URL = process.env.CURRENCY_API_URL;
 const CURRENCY_API_KEY = process.env.CURRENCY_API_KEY;
 const GLOBALS = {

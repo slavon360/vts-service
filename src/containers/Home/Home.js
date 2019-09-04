@@ -24,7 +24,7 @@ const mapStateToProps = (state) => {
         products,
         outerAPIdata: { currencyRate },
         banners: { homeBanners },
-        site: { modalIsOpen, modalTemplate, modalWithActions },
+        site: { modalIsOpen, modalTemplate, modalWithActions, windowWidth },
         form,
         cart
     } = state;
@@ -41,6 +41,7 @@ const mapStateToProps = (state) => {
          modalIsOpen,
          modalTemplate,
          modalWithActions,
+         windowWidth,
          form,
          productsInCart: cart.get('products')
     }

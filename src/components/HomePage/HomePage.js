@@ -63,7 +63,8 @@ class HomePage extends Component{
             switchSubcategory,
             revertCurrentPage,
             switchProductsLoading,
-            setQuickOrderProduct
+            setQuickOrderProduct,
+            windowWidth
         } = this.props;
         return(
             <div className={styles.HomePage}>
@@ -94,6 +95,7 @@ class HomePage extends Component{
                     preorderModal={preorderModal}
                     switchProductsLoading={switchProductsLoading}
                     setQuickOrderProduct={setQuickOrderProduct}
+                    windowWidth={windowWidth}
                 />
                 {!modalWithActions ?
                     <Modal

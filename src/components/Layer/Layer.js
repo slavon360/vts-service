@@ -6,7 +6,7 @@ import Preloader from '../Preloader';
 import { toJS } from '../../components/HOC/toJS';
 import { toggleSearchedProductsVisibility } from '../../actions/products';
 import { setInitialCartInfo } from '../../actions/cart';
-import { setModalState } from '../../actions/site';
+import { setModalState, setWindowWidth } from '../../actions/site';
 
 import styles from './Layer.module.scss';
 
@@ -17,6 +17,9 @@ Modal.setAppElement('#root');
 class Layer extends PureComponent {
     componentDidMount() {
         console.log('mounted');
+        const windowWidth = window.innerWidth;
+        
+        this.props.setWindowWidth(windowWidth);
         this.props.setInitialCartInfo();
     }
     state = {
@@ -62,7 +65,11 @@ class Layer extends PureComponent {
 }
 
 const mapStateToProps = ({
-    site: { loading, modalIsOpen, modalTemplate },
+    site: {
+        loading,
+        modalIsOpen,
+        modalTemplate
+    },
     products
 }) => ({
     loading,
@@ -74,7 +81,8 @@ const mapStateToProps = ({
 const mapDispatchToProps = {
     toggleSearchedProductsVisibility,
     setModalState,
-    setInitialCartInfo
+    setInitialCartInfo,
+    setWindowWidth
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(Layer));

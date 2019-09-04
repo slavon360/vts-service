@@ -51,6 +51,10 @@
     @media screen and (max-width: 767px) {
         padding-top: 15px;
         font-size: 12px;
+        border-bottom: none;
+        .DeleteWrp {
+            padding-left: 15px;
+        }
         .Image {
             width: 72px;
             height: 72px;

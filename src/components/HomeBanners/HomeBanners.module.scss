@@ -1,5 +1,6 @@
 .HomeBanners {
     position: relative;
+    height: 40vh;
     &::before {
         content: '';
         position: absolute;
