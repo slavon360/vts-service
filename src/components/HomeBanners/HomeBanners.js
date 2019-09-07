@@ -20,7 +20,7 @@ const HomeBanners = ({ homeBanners }) => {
             {
                 homeBanners.map(banner => (
                     <div className={styles.HomeBanners} key={banner._id}>
-                        <img src={banner.image.secure_url} />
+                        <img className={styles.ImgBanner} src={banner.image.secure_url} />
                         <div className={styles.BannerContent}>
                             <div className={styles.BannerTitle}>{banner['название']}</div>
                             <div className={styles.BannerDescription}>{banner['описание']}</div>

@@ -4,11 +4,22 @@ import cx from 'classnames';
 import Controls from '../../../UI/Controls';
 import Button from '../../../UI/Button';
 import { imgPlaceholder } from '../../../../constants/paths';
+import { names } from '../../../../constants/data';
+import { giveUrl } from '../../../../utils/dataConverter';
 
 
 import styles from './Product.module.scss';
 
+const { searched_url_word } = names;
+const word_length = searched_url_word.length;
+
 class Product extends Component {
+    state = {
+        imgSource: null
+    }
+    componentWillMount() {
+        this.setImgSource();
+    }
     shouldComponentUpdate (nextProps) {
         return this.props.product.quantity !== nextProps.product.quantity;
     }
@@ -32,13 +43,27 @@ class Product extends Component {
         setQty(_id, '+');
         setProductsQty(1);
     }
+    buildImgUrl = (url, i) => {
+        const { windowWidth } = this.props;
+        const urlHandler = (width) => `${url.slice(0, i)}/w_${width},c_limit/${url.slice(i)}`;
+        const newUrl = giveUrl(windowWidth, urlHandler);
+        return newUrl;
+    }
+    setImgSource = () => {
+        const { product: { image: { secure_url = imgPlaceholder } = { } } } = this.props;
+        const index = secure_url.indexOf(searched_url_word);
+
+        this.setState({
+            imgSource: index > 0 ? this.buildImgUrl(secure_url, index + word_length) : secure_url
+        })
+    }
 
     render () {
         const {
             product: {
                 title,
                 code,
-                image: { secure_url = imgPlaceholder } = {},
+                // image: { secure_url = imgPlaceholder } = {},
                 Цена: price,
                 total,
                 quantity: qty,
@@ -46,6 +71,7 @@ class Product extends Component {
             },
             index
         } = this.props;
+        const { imgSource } = this.state;
         return (
             <Fragment>
                 <div className={styles.NameWrpMobile}>
@@ -55,7 +81,7 @@ class Product extends Component {
                 </div>
                 <div className={cx(styles.ProductWrp, { [styles.ProductWrpEven]: (index % 2) })}>
                     <div className={styles.Image}>
-                        <img src={secure_url} />
+                        <img src={imgSource} />
                     </div>
                     <div className={styles.NameWrp}>
                         <Link to={`/product-details/${slug}`}>{title}</Link>

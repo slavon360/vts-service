@@ -14,8 +14,6 @@ export function getFromJSONPCurrency(url) {
   jsonp(url, null, (err, data) => {
     if (err) {
       console.error(err.message);
-    } else {
-      console.log(data);
     }
   });
 }

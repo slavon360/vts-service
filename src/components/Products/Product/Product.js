@@ -2,15 +2,16 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { routes as routeNames } from '../../../routes';
 import { imgPlaceholder } from '../../../constants/paths';
+import { names } from '../../../constants/data';
 import ProductContent from './components/ProductContent';
 import ProductImage from './components/ProductImage';
 import { Button } from '../../UI';
 import ShoppingCartIcon from '../../Icons/ShoppingCart';
-import { showAdditionalInfo } from '../../../utils/dataConverter';
+import { showAdditionalInfo, giveUrl } from '../../../utils/dataConverter';
 
 import styles from './Product.module.scss';
 
-const searched_url_word = '/upload';
+const { searched_url_word } = names;
 const word_length = searched_url_word.length;
 
 class Product extends Component {
@@ -36,7 +37,8 @@ class Product extends Component {
     }
     buildImgUrl = (url, i) => {
         const { windowWidth } = this.props;
-        const newUrl = windowWidth < 992 ? `${url.slice(0, i)}/w_${windowWidth - 60},c_limit/${url.slice(i)}` : url;
+        const urlHandler = (width) => `${url.slice(0, i)}/w_${width},c_limit/${url.slice(i)}`;
+        const newUrl = giveUrl(windowWidth, urlHandler);
         return newUrl;
     }
     setImgSource = () => {
@@ -71,7 +73,6 @@ class Product extends Component {
             switchProductsLoading
         } = this.props;
         const { imgSource } = this.state;
-        console.log(imgSource);
         const briefInfo = showAdditionalInfo(this.props.product);
         return (
             <li className={styles.Product}>

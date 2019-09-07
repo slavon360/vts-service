@@ -1,5 +1,6 @@
 export const names = {
-    price: 'Цена'
+    price: 'Цена',
+    searched_url_word: '/upload'
 };
 export const modalGeneralStyles = {
     content : {

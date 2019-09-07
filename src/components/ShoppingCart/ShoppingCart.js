@@ -8,7 +8,7 @@ import AngleDown from '../Icons/AngleDown';
 
 import styles from './ShoppingCart.module.scss';
 
-const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty, setProductsQty, setDynamicProductsQty }) => {
+const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty, setProductsQty, setDynamicProductsQty, windowWidth }) => {
     return (
         <div className={styles.ShoppingCart}>
             <h2>Корзина</h2>
@@ -39,6 +39,7 @@ const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty,
                                     removeFromCart={removeFromCart}
                                     setProductsQty={setProductsQty}
                                     setDynamicProductsQty={setDynamicProductsQty}
+                                    windowWidth={windowWidth}
                                 />
                             )
                         }) : <tr />

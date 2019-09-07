@@ -1,6 +1,5 @@
 .HomeBanners {
     position: relative;
-    height: 40vh;
     &::before {
         content: '';
         position: absolute;
@@ -10,6 +9,12 @@
         right: 0;
         background-color: rgba(0, 0, 0, .2);
     }
+    @media screen and (min-width: 1366px) {
+        height: 40vh;
+        .ImgBanner {
+            transform: translateY(-100px) !important;
+        }   
+    }
 
     .BannerContent {
         position: absolute;
@@ -17,6 +22,8 @@
         top: 50%;
         transform: translate(-50%,-50%);
         color: #eee;
+        background-color: rgba(0, 0, 0, 0.15);
+        padding: 5px 10px;
         font-family: monospace;
 
         .BannerTitle {
@@ -36,6 +43,7 @@
 
 @media screen and (max-width: 767px) {
     .HomeBanners {
+        height: 32vh;
         .BannerContent {
             .BannerTitle {
                 font-size: 21px;
@@ -49,5 +57,15 @@
                 font-size: 14px;
             }
         }
+    }
+}
+@media screen and (max-width: 500px) {
+    .HomeBanners {
+        height: 22vh;
+    }
+}
+@media screen and (max-width: 500px) and (min-height: 811px) {
+    .HomeBanners {
+        height: 18vh;
     }
 }

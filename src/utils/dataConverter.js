@@ -40,4 +40,31 @@ export const htmlCodeOrder = (prd, totalSum) => {
         </tr>
     </table>`
     return template;
+};
+
+export const giveUrl = (width, urlHandler) => {
+    let w;
+    switch (true) {
+        case (width < 400):
+            w = Math.floor(width - 110);
+            break;
+        case (width < 600):
+            w = Math.floor(width - 150);
+            break;
+        case (width < 730):
+            w = Math.floor(width / 2 - 180);
+            break;
+        case (width < 830):
+            w = Math.floor(width / 2 - 60);
+            break;
+        case (width < 992):
+            w = Math.floor(width / 2 - 100);
+            break;
+        case (width < 1366):
+            w = Math.floor(width / 3 - 80);
+            break;
+        default:
+            w = Math.floor(width / 4 - 80);
+    }
+    return urlHandler(w);
 }

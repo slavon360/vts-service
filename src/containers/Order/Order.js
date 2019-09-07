@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
     const form = onGetClientForm(state);
     const modalIsOpen = state.site.modalIsOpen;
     const modalTemplate = state.site.modalTemplate;
+    const windowWidth = state.site.windowWidth;
 
     return {
         products,
@@ -20,7 +21,8 @@ const mapStateToProps = (state) => {
         productsQty,
         form,
         modalIsOpen,
-        modalTemplate
+        modalTemplate,
+        windowWidth
     }
 };
 

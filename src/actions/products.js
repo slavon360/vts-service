@@ -58,6 +58,7 @@ export const getProduct = (slug) => async (dispatch, getState) => {
     const product = _get(data, 'data', {});
     const updProduct = { ...product, 'Цена': currencyRate ? Math.round(currencyRate * product['Цена']) : product['Цена'] };
     dispatch({ type: PRODUCTS_TYPES.getProduct, product: updProduct });
+    return updProduct;
 }
 
 export const resetProduct = () => ({

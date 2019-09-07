@@ -4,8 +4,13 @@ import PropTypes from 'prop-types';
 import CurrencyFormat from 'react-currency-format';
 import Button from '../../../UI/Button';
 import Controls from '../Controls';
+import { names } from '../../../../constants/data';
+import { giveUrl } from '../../../../utils/dataConverter';
 
 import styles from './Product.module.scss';
+
+const { searched_url_word } = names;
+const word_length = searched_url_word.length;
 
 class Product extends Component {
     static propTypes = {
@@ -13,6 +18,12 @@ class Product extends Component {
         price: PropTypes.number,
         img: PropTypes.string
     };
+    state = {
+        imgSource: null
+    }
+    componentWillMount() {
+        this.setImgSource();
+    }
     shouldComponentUpdate (nextProps) {
         return this.props.qty !== nextProps.qty;
     }
@@ -36,8 +47,23 @@ class Product extends Component {
         setQty(_id, '+');
         setProductsQty(1);
     }
+    buildImgUrl = (url, i) => {
+        const { windowWidth } = this.props;
+        const urlHandler = (width) => `${url.slice(0, i)}/w_${width},c_limit/${url.slice(i)}`;
+        const newUrl = giveUrl(windowWidth, urlHandler);
+        return newUrl;
+    }
+    setImgSource = () => {
+        const { img } = this.props;
+        const index = img.indexOf(searched_url_word);
+
+        this.setState({
+            imgSource: index > 0 ? this.buildImgUrl(img, index + word_length) : img
+        })
+    }
     render() {
-        const { title, img, price, qty, total, slug } = this.props;
+        const { title, price, qty, total, slug } = this.props;
+        const { imgSource } = this.state;
         return (
             <Fragment>
                 <tr className={styles.MobileTitle}>
@@ -48,7 +74,7 @@ class Product extends Component {
                 <tr className={styles.Product}>
                     <td>
                         <div className={styles.ProductImage}>
-                            <img src={img} />
+                            <img src={imgSource} />
                         </div>
                     </td>
                     <td className={styles.Title}>

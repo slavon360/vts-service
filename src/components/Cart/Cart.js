@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { Header, Product, Sum } from './components';
 import styles from './Cart.module.scss';
 
-const Cart = ({ products, removeFromCart, setQty, setProductsQty, setDynamicProductsQty, totalSum }) => {
+const Cart = ({ products, removeFromCart, setQty, setProductsQty, setDynamicProductsQty, totalSum, windowWidth }) => {
     return (
         <div className={styles.CartWrp}>
             <h2>ВАШ ЗАКАЗ</h2>
@@ -19,6 +19,7 @@ const Cart = ({ products, removeFromCart, setQty, setProductsQty, setDynamicProd
                             setQty={setQty}
                             setProductsQty={setProductsQty}
                             setDynamicProductsQty={setDynamicProductsQty}
+                            windowWidth={windowWidth}
                         />
                         <br />
                     </Fragment>

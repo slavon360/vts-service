@@ -20,9 +20,7 @@ const Products = ({
     switchProductsLoading,
     setQuickOrderProduct,
     windowWidth
-}) => {
-    console.log(productsLoading);
-    return (
+}) => (
         <ul className={styles.ProductsWrp}>
             {products && products.length ?
                 products.map((product, index) => (
@@ -71,6 +69,5 @@ const Products = ({
             }
         </ul>
     );
-}
 
 export default trackWindowScroll(Products);

@@ -51,7 +51,8 @@ class Order extends Component {
             form,
             productsQty,
             modalIsOpen,
-            modalTemplate
+            modalTemplate,
+            windowWidth
         } = this.props;
         return (
             <div className={styles.OrderWrp}>
@@ -69,6 +70,7 @@ class Order extends Component {
                     setProductsQty={setProductsQty}
                     setDynamicProductsQty={setDynamicProductsQty}
                     totalSum={totalSum}
+                    windowWidth={windowWidth}
                 />
                 <br />
                 <OrderForm

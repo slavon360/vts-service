@@ -7,12 +7,15 @@ import AngleDown from '../Icons/AngleDown';
 import ImageArea from './components/ImageArea';
 import Details from './components/Details';
 import Preloader from '../Preloader';
-import { modalGeneralStyles } from '../../constants/data';
+import { modalGeneralStyles, names } from '../../constants/data';
 import { imgPlaceholder } from '../../constants/paths';
 import Contacts from './components/Contacts';
 import QuickOrderForm from '../Order/QuickOrderForm';
 
 import styles from './ProductPage.module.scss';
+
+const { searched_url_word } = names;
+const word_length = searched_url_word.length;
 
 class ProductPage extends Component {
     static propTypes = {
@@ -20,6 +23,9 @@ class ProductPage extends Component {
     }
     static defaultProps = {
         product: {}
+    }
+    state = {
+        imgSource: null
     }
     componentWillMount(){
         this.props.setLoadingState(true);
@@ -37,6 +43,8 @@ class ProductPage extends Component {
             modalIsOpen,
             selectedCategoryId
         } = this.props;
+        const { imgSource } = this.state;
+        const { imgSource: nextImgSource } = nextState;
         const {
             product: nextProduct,
             match: {
@@ -52,7 +60,7 @@ class ProductPage extends Component {
         }
         if (currencyRate !== nextCurrencyRate) this.getProductInfo();
         return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title ||
-                modalIsOpen !== nextModalIsOpen;
+                modalIsOpen !== nextModalIsOpen || imgSource || nextImgSource;
     }
     componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
@@ -63,10 +71,26 @@ class ProductPage extends Component {
     componentWillUnmount(){
         this.props.resetProduct();
     }
+    buildImgUrl = (url, i) => {
+        const giveUrl = (width) => `${url.slice(0, i)}/w_${width},c_limit/${url.slice(i)}`;
+        const { windowWidth } = this.props;
+        const newUrl = windowWidth < 500 ? giveUrl(windowWidth - 80) : giveUrl(500);
+        return newUrl;
+    }
+    setImgSource = (productData) => {
+        const { image: { secure_url = imgPlaceholder } = { } } = productData;
+        const index = secure_url.indexOf(searched_url_word);
+
+        this.setState({
+            imgSource: index > 0 ? this.buildImgUrl(secure_url, index + word_length) : secure_url
+        })
+    }
     getProductInfo = async () => {
         const { getProduct } = this.props;
         const { productSlug } = this.props.match.params;
-        await getProduct(productSlug);
+        const productData = await getProduct(productSlug);
+        console.trace(productData);
+        this.setImgSource(productData);
         this.props.setLoadingState(false);
     }
     onAddToCart = () => {
@@ -122,7 +146,7 @@ class ProductPage extends Component {
         } = this.props;
         
         if (product && contacts) {
-            const { image: { secure_url = imgPlaceholder } = {} } = product;
+            const { imgSource } = this.state;
             
             return (
                 <div className={styles.ProductPage}>
@@ -134,7 +158,7 @@ class ProductPage extends Component {
                             <span className={styles.IconAngle}><AngleDown /></span>
                             <span className={styles.BackWord}>Назад к товарам</span>
                         </Link>
-                        <ImageArea imgSrc={secure_url} />
+                        <ImageArea imgSrc={imgSource} />
                     </div>
                     <div className={styles.DetailsWrp}>
                         <Details

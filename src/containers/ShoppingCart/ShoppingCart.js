@@ -8,10 +8,12 @@ const mapStateToProps = (state) => {
     const products = getProducts(state);
     const totalSum = getTotalSum(state);
     const productsQty = getProductsQty(state);
+    const windowWidth = state.site.windowWidth;
     return {
         products,
         totalSum,
-        productsQty    
+        productsQty,
+        windowWidth
     }
 };
 

@@ -11,7 +11,7 @@ const mapStateToProps = ({
     products,
     user,
     outerAPIdata: { currencyRate },
-    site: { modalTemplate, modalWithActions, modalIsOpen },
+    site: { modalTemplate, modalWithActions, modalIsOpen, windowWidth },
     menus,
     contacts: { contacts },
     form,
@@ -27,6 +27,7 @@ const mapStateToProps = ({
          selectedCategoryId: menus.get('selectedCategoryId'),
          contacts,
          modalIsOpen,
+         windowWidth,
          form
     }
 };
