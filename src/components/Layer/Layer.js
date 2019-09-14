@@ -16,7 +16,6 @@ Modal.setAppElement('#root');
 
 class Layer extends PureComponent {
     componentDidMount() {
-        console.log('mounted');
         const windowWidth = window.innerWidth;
         
         this.props.setWindowWidth(windowWidth);

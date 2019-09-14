@@ -19,9 +19,10 @@ const Products = ({
     preorderModal,
     switchProductsLoading,
     setQuickOrderProduct,
-    windowWidth
+    windowWidth,
+    setRef
 }) => (
-        <ul className={styles.ProductsWrp}>
+        <ul className={styles.ProductsWrp} ref={setRef}>
             {products && products.length ?
                 products.map((product, index) => (
                     <Product

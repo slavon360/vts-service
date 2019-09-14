@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
-import { addToCart, setProductsQty, preorderModal, setQuickOrderProduct, removeQuickOrderProduct } from '../../actions/cart';
+import { addToCart, setProductsQty, preorderModal, setQuickOrderProduct, removeQuickOrderProduct, removeFromCart } from '../../actions/cart';
 import { makeQuickOrder } from '../../actions/user';
 import { setLoadingState, setModalTemplate, setModalWithActions, setModalState } from '../../actions/site';
 import { getProduct, resetProduct } from '../../actions/products';
@@ -45,7 +45,8 @@ const mapDispatchToProps = {
     setModalState,
     setQuickOrderProduct,
     removeQuickOrderProduct,
-    makeQuickOrder
+    makeQuickOrder,
+    removeFromCart
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

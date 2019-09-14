@@ -34,7 +34,7 @@ export const searchProductsLoading = (data) => ({
 export const searchProducts = (product) => {
     const thunk = async (dispatch, getState) => {
         const { selectedCategoryId } = getState().menus;
-        const json = await getFromAxios('/search?', { product, categid: selectedCategoryId });
+        const json = await getFromAxios('/search?', { product });
         const searchedProducts = _get(json, 'data', []);
         dispatch({
             type: PRODUCTS_TYPES.searchProducts,

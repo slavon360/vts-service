@@ -13,9 +13,15 @@ class Subcategories extends Component {
     }
 
     componentDidUpdate() {
-        const { CategoryName } = this.refs;
+        this.scrollToCategName();
+    }
+
+    scrollToCategName() {
+        if (window.innerWidth >= 992) {
+            const { CategoryName } = this.refs;
         
-        window.scroll({ top: CategoryName.offsetTop - CategoryName.offsetHeight * 2, behavior: 'smooth' });
+            window.scroll({ top: CategoryName.offsetTop - CategoryName.offsetHeight * 2, behavior: 'smooth' });
+        }
     }
 
     render() {

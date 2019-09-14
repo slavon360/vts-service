@@ -3,36 +3,16 @@ import { fromJS, Map, List } from 'immutable';
 
 const initialState = fromJS({
     quickOrderProduct: null,
-    products: [
-        {
-            'Цена': 1581,
-            total: 1581,
-            'Назначение котла': 'выбрать вариант',
-            quantity: 1,
-            slug: '39800960-rasshiritelnyi-bak-ferroli-divatop',
-            'Тип водонагревателя': 'выбрать вариант',
-            productCategory: '5c435236fd5a331e88e53861',
-            title: '39800960 Расширительный бак FERROLI DIVATOP',
-            _id: '5c443a2738a7300fc06b1947',
-            image: {
-              width: 500,
-              secure_url: 'https://res.cloudinary.com/dxnslfgii/image/upload/v1547975439/yxxudqfc464qjkohxpke.jpg',
-              height: 440,
-              resource_type: 'image',
-              url: 'http://res.cloudinary.com/dxnslfgii/image/upload/v1547975439/yxxudqfc464qjkohxpke.jpg',
-              public_id: 'yxxudqfc464qjkohxpke',
-              format: 'jpg',
-              signature: '911b18c152209b0008dc27927264525f7d3c3736',
-              version: 1547975439
-            },
-            'Тип котла': 'выбрать вариант'
-          }
-    ],
+    products: [],
     productsQty: 1,
     tax: 15
 });
 
-const setQuickOrderProduct = (state, { product }) => state.set('quickOrderProduct', product);
+const setQuickOrderProduct = (state, { product }) => state.set('quickOrderProduct', {
+        ...product,
+        quantity: 1,
+        total: 1 * product['Цена']
+    });
 
 const setInitialCartInfo = (state, { cartInfo: { products, productsQty }}) => {
     const immutableProducts = products.map(product => Map(product));

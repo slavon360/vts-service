@@ -106,9 +106,9 @@ class ProductPage extends Component {
         const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
         setModalState(isOpen);
         setModalTemplate(null);
-        if (productsInCart && productsInCart.length) {
-            removeQuickOrderProduct();
-        };
+        // if (productsInCart && productsInCart.length) {
+        //     removeQuickOrderProduct();
+        // };
     }
     closeModalWithActions = () => {
         const modalWithActions = false;
@@ -121,18 +121,23 @@ class ProductPage extends Component {
     buyByOneClick = () => {
         const isOpen = true;
         const { product, setModalState, addToCart, setProductsQty, setQuickOrderProduct } = this.props;
-        const qty = 1;
+        // const qty = 1;
 
         setQuickOrderProduct(product);
-        addToCart(product);
-        setProductsQty(qty);
+        // addToCart(product);
+        // setProductsQty(qty);
         setModalState(isOpen);
     }
     quickSubmit = (event) => {
         event.preventDefault();
         const isOpen = false;
-        const { makeQuickOrder, setModalState } = this.props;
+        const { makeQuickOrder, setModalState, addToCart, setProductsQty, product, removeFromCart } = this.props;
+        // const qty = 1;
+        // addToCart(product);
+        // setProductsQty(qty);
         makeQuickOrder();
+        // setProductsQty(0);
+        // removeFromCart(product._id);
         setModalState(isOpen);
     }
     renderComponent = () => {

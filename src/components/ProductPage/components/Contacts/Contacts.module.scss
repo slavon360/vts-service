@@ -1,13 +1,14 @@
 .ContactsArea {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    flex-wrap: wrap;
+    // display: flex;
+    // justify-content: space-between;
+    // align-items: baseline;
+    // flex-wrap: wrap;
     padding: 10px 15px 15px;
     .ContactItem {
         height: 35px;
         min-width: 240px;
         margin-bottom: 30px;
+        display: inline-block;
     }
 }
 h3 {
@@ -27,7 +28,7 @@ h3 {
         text-align: center;
 
         .ContactItem {
-            display: inline-block;
+            
             &:last-child {
                 margin-bottom: 0;
             }

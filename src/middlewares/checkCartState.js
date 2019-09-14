@@ -17,17 +17,18 @@ function checkCartState({ getState }) {
                 productsQty: 0
             });
         } else if (action.type === CART_TYPES.setDynamicProductsQty) {
-            const qty = products.reduce((result, current) => result += current.get('quantity', 1), 0);
-            const updateCart = (dispatch) => {
-                dispatch({
-                    type: CART_TYPES.changeDynamicProductsQty,
-                    productsQty: qty
-                })
-            };
+            console.log(products);
+            // const qty = products.reduce((result, current) => result += current.get('quantity', 1), 0);
+            // const updateCart = (dispatch) => {
+            //     dispatch({
+            //         type: CART_TYPES.changeDynamicProductsQty,
+            //         productsQty: qty
+            //     })
+            // };
 
-            localStorage.setCartInfo({ products, productsQty: qty });
+            // localStorage.setCartInfo({ products, productsQty: qty });
 
-            return next(updateCart);
+            // return next(updateCart);
         }
 
         return next(action);

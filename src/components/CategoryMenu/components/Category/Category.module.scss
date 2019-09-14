@@ -14,6 +14,9 @@
         .CategoryImg {
             transform: scale(1.1)
         }
+        .TitleWrp .Title {
+            text-decoration: underline;
+        }
     }
     .CategoryImg {
         position: absolute;
@@ -57,5 +60,13 @@
 }
 
 .Checked {
-    transform: scale(1.15);
+    box-shadow: 0 8px 7px 1px rgba(0,0,0,.19);
+    .TitleWrp {
+        &::before {
+            background-color: rgba(0, 0, 0, 0.6);
+        }
+        .Title {
+            text-decoration: underline;
+        }
+    }
 }

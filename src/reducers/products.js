@@ -9,7 +9,7 @@ const initialState = fromJS({
     nextPage: true,
     product: null,
     perPage: null,
-    searchedProducts: [],
+    searchedProducts: null,
     searchedProductsLoading: false,
     showSearchedProducts: false
 });
@@ -23,7 +23,7 @@ function toggleSearchedProductsVisibility(state, { data }) {
 }
 
 function clearSearchedProducts(state) {
-    return state.set('searchedProducts', []);
+    return state.set('searchedProducts', null);
 }
 
 function searchProductsLoading(state, { data }) {

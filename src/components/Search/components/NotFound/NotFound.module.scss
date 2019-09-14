@@ -1,0 +1,15 @@
+.NotFoundWrp {
+    position: absolute;
+    top: 100%;
+    border: 1px solid #e6e6e6;
+    background-color: #fff;
+    padding: 20px;
+    box-sizing: border-box;
+    width: 100%;
+}
+.Shown {
+    display: block;
+}
+.Hidden {
+    display: none;
+}

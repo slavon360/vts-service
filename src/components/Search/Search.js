@@ -1,13 +1,14 @@
 import React from 'react';
 import cx from 'classnames';
 import SearchIcon from '../Icons/SearchIcon';
-import { SearchResults } from './components';
+import { SearchResults, NotFound } from './components';
 import PreloaderBar from '../PreloaderBar';
 
 import styles from './Search.module.scss';
 import '../../App.css'
 
 const Search = ({
+    contacts,
     toggleSearch,
     searchActive,
     searchProducts,
@@ -41,7 +42,7 @@ const Search = ({
                     results={searchedProducts}
                     showSearchedProducts={showSearchedProducts}
                 />
-                : <div />
+                : <NotFound searchedText={searchedText} searchedProducts={searchedProducts} contacts={contacts} />
             }
             {searchedProductsLoading ? <PreloaderBar /> : <div />}
         </div>

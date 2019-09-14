@@ -49,10 +49,14 @@ export const setQty = (id, qty) => ({
     qty
 })
 
-export const setProductsQty = (qty) => ({
-    type: CART_TYPES.setProductsQty,
-    qty
-})
+export const setProductsQty = (qty) => (dispatch, getState) => {
+    const { products } = getState().cart;
+    console.log(products);
+    dispatch({
+        type: CART_TYPES.setProductsQty,
+        qty
+    });
+}
 
 export const setDynamicProductsQty = () => ({
     type: CART_TYPES.setDynamicProductsQty

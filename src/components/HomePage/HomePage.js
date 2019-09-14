@@ -14,14 +14,18 @@ class HomePage extends Component{
     componentDidMount() {
         this.props.getHomeBanners();
     }
+    componentDidUpdate(prevProp) {
+        console.log(prevProp);
+        this.scrollToProducts();
+    }
     closeModal = () => {
         const isOpen = false;
         const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
         setModalState(isOpen);
         setModalTemplate(null);
-        if (productsInCart && productsInCart.length) {
-            removeQuickOrderProduct();
-        };
+        // if (productsInCart && productsInCart.length) {
+        //     removeQuickOrderProduct();
+        // };
     }
     closeModalWithActions = () => {
         const isOpen = false;
@@ -34,9 +38,22 @@ class HomePage extends Component{
     quickSubmit = (event) => {
         event.preventDefault();
         const isOpen = false;
-        const { makeQuickOrder, setModalState } = this.props;
+        const { makeQuickOrder, setModalState, addToCart, setProductsQty, product } = this.props;
+        // const qty = 1;
+        // addToCart(product);
+        // setProductsQty(qty);
         makeQuickOrder();
         setModalState(isOpen);
+    }
+    setRef = (ref) => {
+        this.productsWrpRef = ref;
+        console.log(this.productsWrpRef);
+    }
+    scrollToProducts() {
+        if (window.innerWidth < 992) {
+        
+            window.scroll({ top: this.productsWrpRef.offsetTop - 110, behavior: 'smooth' });
+        }
     }
     render() {
         const {
@@ -96,6 +113,7 @@ class HomePage extends Component{
                     switchProductsLoading={switchProductsLoading}
                     setQuickOrderProduct={setQuickOrderProduct}
                     windowWidth={windowWidth}
+                    setRef={this.setRef}
                 />
                 {!modalWithActions ?
                     <Modal

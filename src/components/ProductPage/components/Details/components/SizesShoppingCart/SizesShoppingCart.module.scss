@@ -45,7 +45,20 @@
         color: #555;
         font-size: 19px;
         margin-right: 25px;
-
+        font-size: 14px;
+        border-radius: 23px;
+        box-shadow: none;
+        font-weight: 400;
+        line-height: 36px;
+        padding: 0 30px;
+        color: #fff;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        outline: none;
+        color: #000;
+        border: 1px solid;
+    
         &:hover {
             color: #39f;
         }

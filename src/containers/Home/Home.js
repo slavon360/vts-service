@@ -43,7 +43,8 @@ const mapStateToProps = (state) => {
          modalWithActions,
          windowWidth,
          form,
-         productsInCart: cart.get('products')
+         productsInCart: cart.get('products'),
+         
     }
 };
 

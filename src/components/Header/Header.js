@@ -51,7 +51,7 @@ class Header extends PureComponent {
         this.setState({ searchedText: value }, async () => {
             this.props.searchProductsLoading(true);
             if (!showSearchedProducts) toggleSearchedProductsVisibility(true);
-            if (value) await this.props.searchProducts(value);
+            if (value.length > 1) await this.props.searchProducts(value);
             if (!value) this.props.clearSearchedProducts();
             this.props.searchProductsLoading(false);
         });
@@ -84,6 +84,7 @@ class Header extends PureComponent {
                                 <HomeIcon style={{ fontSize: '25px' }} />
                             </Link>
                             <Search
+                                contacts={contacts}
                                 showSearchedProducts={showSearchedProducts}
                                 toggleSearch={this.onToggleSearch}
                                 searchActive={searchActive}

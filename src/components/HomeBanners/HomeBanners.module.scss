@@ -9,12 +9,6 @@
         right: 0;
         background-color: rgba(0, 0, 0, .2);
     }
-    @media screen and (min-width: 1366px) {
-        height: 40vh;
-        .ImgBanner {
-            transform: translateY(-100px) !important;
-        }   
-    }
 
     .BannerContent {
         position: absolute;
