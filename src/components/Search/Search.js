@@ -19,7 +19,11 @@ const Search = ({
 }) => (
         <div className={cx(
             styles.Search,
-            { ['SearchActive']: searchActive, [styles.Inactive]: !searchActive })}>
+            {
+                ['SearchActive']: searchActive,
+                [styles.Inactive]: !searchActive,
+                ['SearchInactive']: !searchActive
+            })}>
             <button
                 onClick={toggleSearch}
                 className={styles.SearchIcon}
@@ -34,6 +38,7 @@ const Search = ({
                     value={searchedText}
                     type="text"
                     placeholder="Поиск..."
+                    autoComplete="off"
                     onChange={searchProducts}
                 />
             </div>

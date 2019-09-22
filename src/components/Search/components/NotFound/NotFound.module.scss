@@ -6,6 +6,16 @@
     padding: 20px;
     box-sizing: border-box;
     width: 100%;
+    .NoResults {
+        color: #999;
+        margin-bottom: 15px;
+    }
+    .Contact {
+        display: block;
+        &:not(:last-child) {
+            padding-bottom: 10px;
+        }
+    }
 }
 .Shown {
     display: block;

@@ -22,6 +22,7 @@ const renderField = ({
                 {...input}
                 type={type}
                 placeholder={placeholder}
+                autoComplete="off"
             />
             <span className={styles.ErrorMessage}>{error}</span>
             <WarningIcon color="#a11" />

@@ -16,7 +16,8 @@
 }
 
 @media screen and (max-width: 1600px) {
-  .SearchActive ~ .NavbarWrp .NavbarPhoneNumber {
+  .SearchActive ~ .NavbarWrp .NavbarPhoneNumber,
+  .SearchInactive .NotFoundWrp {
     display: none;
   }
 }

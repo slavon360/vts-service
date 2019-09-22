@@ -30,20 +30,22 @@ const mapStateToProps = (state) => {
     } = state;
 
     return {
-         catalog: menus.get('catalog'),
-         activeIndex: menus.get('activeIndex'),
-         filters: menus.get('filters'),
-         productsList: products.get('productsList'),
-         productsLoading: products.get('productsLoading'),
-         perPage: products.get('perPage'),
-         currencyRate,
-         homeBanners,
-         modalIsOpen,
-         modalTemplate,
-         modalWithActions,
-         windowWidth,
-         form,
-         productsInCart: cart.get('products'),
+        selectedCategoryId: menus.get('selectedCategoryId'),
+        selectedSubcategoryId: menus.get('selectedSubcategoryId'),
+        catalog: menus.get('catalog'),
+        activeIndex: menus.get('activeIndex'),
+        filters: menus.get('filters'),
+        productsList: products.get('productsList'),
+        productsLoading: products.get('productsLoading'),
+        perPage: products.get('perPage'),
+        currencyRate,
+        homeBanners,
+        modalIsOpen,
+        modalTemplate,
+        modalWithActions,
+        windowWidth,
+        form,
+        productsInCart: cart.get('products'),
          
     }
 };

@@ -50,8 +50,6 @@ export const setQty = (id, qty) => ({
 })
 
 export const setProductsQty = (qty) => (dispatch, getState) => {
-    const { products } = getState().cart;
-    console.log(products);
     dispatch({
         type: CART_TYPES.setProductsQty,
         qty

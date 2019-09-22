@@ -65,7 +65,7 @@ class ProductPage extends Component {
     componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
         if (productSlug !== prevProps.match.params.productSlug) {
-            this.props.getProduct(productSlug);
+            this.getProductInfo();
         }
     }
     componentWillUnmount(){
@@ -89,7 +89,6 @@ class ProductPage extends Component {
         const { getProduct } = this.props;
         const { productSlug } = this.props.match.params;
         const productData = await getProduct(productSlug);
-        console.trace(productData);
         this.setImgSource(productData);
         this.props.setLoadingState(false);
     }

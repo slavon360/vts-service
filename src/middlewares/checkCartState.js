@@ -17,7 +17,7 @@ function checkCartState({ getState }) {
                 productsQty: 0
             });
         } else if (action.type === CART_TYPES.setDynamicProductsQty) {
-            console.log(products);
+            // console.log(products);
             // const qty = products.reduce((result, current) => result += current.get('quantity', 1), 0);
             // const updateCart = (dispatch) => {
             //     dispatch({

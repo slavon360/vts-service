@@ -15,8 +15,14 @@ class HomePage extends Component{
         this.props.getHomeBanners();
     }
     componentDidUpdate(prevProp) {
-        console.log(prevProp);
-        this.scrollToProducts();
+        const { selectedCategoryId, selectedSubcategoryId } = this.props;
+        const { selectedCategoryId: prevSelectedCategoryId, selectedSubcategoryId: prevSelectedSubcategoryId } = prevProp;
+
+        const changedCategory = prevSelectedCategoryId && selectedCategoryId !== prevSelectedCategoryId;
+        const changedSubcategory = selectedSubcategoryId !== prevSelectedSubcategoryId;
+        if (changedCategory || changedSubcategory) {
+            this.scrollToProducts();
+        }
     }
     closeModal = () => {
         const isOpen = false;
@@ -47,7 +53,6 @@ class HomePage extends Component{
     }
     setRef = (ref) => {
         this.productsWrpRef = ref;
-        console.log(this.productsWrpRef);
     }
     scrollToProducts() {
         if (window.innerWidth < 992) {
