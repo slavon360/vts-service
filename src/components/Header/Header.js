@@ -1,6 +1,7 @@
 import React, { PureComponent, Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import cx from 'classnames';
 import Search from '../Search';
 import CartButton from '../CartButton';
 import Navbar from '../Navbar';
@@ -19,12 +20,31 @@ class Header extends PureComponent {
     }
     state = {
         searchActive: false,
-        searchedText: ''
+        searchedText: '',
+        prevScrollpos: window.pageYOffset,
+        visible: true
     }
 
     componentDidMount() {
         this.fetchCurrencyRateAndCatalog();
         this.fetchContacts();
+        window.addEventListener('scroll', this.handleScroll);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('scroll', this.handleScroll);
+    }
+
+    handleScroll = (event) => {
+        const { prevScrollpos } = this.state;
+
+        const currentScrollPos = window.pageYOffset;
+        const visible = prevScrollpos > currentScrollPos;
+
+        this.setState({
+            prevScrollpos: currentScrollPos,
+            visible
+        });
     }
 
     fetchCurrencyRateAndCatalog = async () => {
@@ -60,7 +80,7 @@ class Header extends PureComponent {
     onToggleSearch = () => this.setState((prevState) => ({ searchActive: !prevState.searchActive }));
 
     render() {
-        const { searchActive, searchedText } = this.state;
+        const { searchActive, searchedText, visible } = this.state;
         const {
             productsQty,
             catalog,
@@ -76,7 +96,11 @@ class Header extends PureComponent {
             contacts
         } = this.props;
         return (
-            <div className={styles.Header}>
+            <div className={cx(styles.Header, {
+                [styles.Visible]: visible,
+                [styles.Hidden]: !visible
+            })}
+            >
                 {!loading && catalog.length ?
                     <Fragment>
                         <div className={styles.LeftSide}>
@@ -100,6 +124,19 @@ class Header extends PureComponent {
                                 makeProductsRequest={makeProductsRequest}
                                 contacts={contacts}
                             />
+                            <div className={styles.PhonesWrp}>
+                                {
+                                    contacts.slice(0, 4).map(({ телефон }, index) => (
+                                        <a
+                                            key={телефон + index}
+                                            className={styles.Phone}
+                                            href={`tel:${телефон}`}
+                                        >
+                                            {телефон}
+                                        </a>
+                                    ))
+                                }
+                            </div>
                         </div>
                         <div className={styles.RightSide}>
                             {/* <UserNavbar logout={logout} userData={userData} /> */}
