@@ -3,6 +3,7 @@ export const names = {
     searched_url_word: '/upload'
 };
 export const modalGeneralStyles = {
+    'z-index': '110',
     content : {
       top                   : '50%',
       left                  : '50%',

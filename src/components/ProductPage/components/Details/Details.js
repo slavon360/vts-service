@@ -26,6 +26,7 @@ const Details = ({ product, addToCart, buyByOneClick }) => {
         <div className={styles.Details}>
             <h1 className={styles.Title}>{product.title}</h1>
             <SizesShoppingCart
+                available={product['В наличии']}
                 sizes={sizes}
                 Цена={product.Цена}
                 addToCart={addToCart}

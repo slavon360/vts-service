@@ -180,7 +180,7 @@ class ProductPage extends Component {
                             onRequestClose={this.closeModal}
                             style={modalGeneralStyles}
                             contentLabel="Order Modal"
-                            portalClassName={styles.ModalHomePage}
+                            portalClassName={styles.ModalProductPage}
                         >
                             {modalTemplate ?
                                 <div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div> :
@@ -196,7 +196,7 @@ class ProductPage extends Component {
                             onRequestClose={this.closeModalWithActions}
                             style={modalGeneralStyles}
                             contentLabel="Preorder Modal"
-                            portalClassName={styles.ModalHomePage}
+                            portalClassName={styles.ModalProductPage}
                         >
                             {modalTemplate &&
                                 <Fragment>

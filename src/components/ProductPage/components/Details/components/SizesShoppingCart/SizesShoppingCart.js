@@ -5,7 +5,7 @@ import Button from '../../../../../UI/Button';
 
 import styles from './SizesShoppingCart.module.scss';
 
-const SizesShoppingCart = ({ sizes, Цена, addToCart, buyByOneClick }) => (
+const SizesShoppingCart = ({ available, sizes, Цена, addToCart, buyByOneClick }) => (
         <div className={styles.SizesShoppingCart}>
             <div className={styles.Sizes}>
                 <h2 className={styles.Dimensions}>{_isempty(sizes) ? '' : 'Размеры:'}</h2>
@@ -33,6 +33,12 @@ const SizesShoppingCart = ({ sizes, Цена, addToCart, buyByOneClick }) => (
                 >
                     Купить
                 </button>
+                <div className={styles.AvailibilityArea}>
+                        {available ?
+                            <span className={styles.Available}>есть в наличии</span> :
+                            <span className={styles.NotAvailable}>под заказ</span>
+                        }
+                </div>
             </div>
         </div>
     );

@@ -6,21 +6,23 @@ import zapchastiVodonagrevateli from '../../../../assets/images/catalog/boilery/
 import zapchastiKolonki from '../../../../assets/images/catalog/kolonki/zapchasti_kolonki.jpg';
 import zapchastiElektrKotly from '../../../../assets/images/catalog/kotly/zapchasti-k-elektricheskim.jpg';
 import zapchastiGazKotlyImg from '../../../../assets/images/catalog/kotly/zapchasti-k-gazovym.jpg';
-import kotlyImg from '../../../../assets/images/catalog/kotly/kotly.jpg';
+import kotlyGazovye from '../../../../assets/images/catalog/kotly/kotly-gazovye.jpg';
+import kotlyElektricheskie from '../../../../assets/images/catalog/kotly/elektrokotly.jpg';
 import boileryImg from '../../../../assets/images/catalog/boilery/boilery.jpg';
 // import zapchastiImg from '../../../../assets/images/catalog/zapchasti/zapchasti.jpg';
 
 import styles from './Category.module.scss';
 
 const imgImporter = (name) => {
-    const path = paths.imgCategoriesPath;
     switch (name) {
-        case 'kotly':
-            return kotlyImg;
+        case 'kotly-gazovye':
+            return kotlyGazovye;
+        case 'kotly-elektricheskie':
+            return kotlyElektricheskie;
         case 'boilery':
             return boileryImg;
         case 'zapchasti':
-            return kotlyImg;
+            return zapchastiVodonagrevateli;
         case 'zapchasti-gazovye-kotly':
             return zapchastiGazKotlyImg;
         case 'zapchasti-elektro-kotly':
@@ -29,7 +31,7 @@ const imgImporter = (name) => {
             return zapchastiKolonki;
         case 'zapchasti-elektro-vodonagrevateli':
             return zapchastiVodonagrevateli;
-        default: return kotlyImg;
+        default: return kotlyGazovye;
     }
 }
 
