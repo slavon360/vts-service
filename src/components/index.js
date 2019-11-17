@@ -13,3 +13,4 @@ export ShoppingCartLazy from './ShoppingCartLazy';
 export Filters from './Filters';
 export Order from './Order';
 export ContactPhone from './ContactPhone';
+export CountDownDate from './CountDownDate';

@@ -35,10 +35,27 @@
             display: inline-block;
         }
     }
+    .AddToCartArea .PricesWrp {
+        text-align: right;
+    }
     .AddToCartArea .Price {
+        display: inline-block;
         font-size: 24px;
         padding-bottom: 20px;
         text-align: right;
+    }
+    .AddToCartArea .PriceCrossed {
+        margin-right: 25px;
+        position: relative;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 16px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #fb515d;
+        }
     }
     .AddToCartArea .AddToCart {
         font-size: 14px;
@@ -74,6 +91,11 @@
         &:hover {
             color: #39f;
         }
+    }
+    .CountDownArea {
+        display: inline-block;
+        transform: translateY(15px);
+        margin-left: 20px;
     }
     @media screen and (max-width: 767px) {
         .AvailibilityArea {

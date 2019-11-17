@@ -31,6 +31,8 @@ const Details = ({ product, addToCart, buyByOneClick }) => {
                 Цена={product.Цена}
                 addToCart={addToCart}
                 buyByOneClick={buyByOneClick}
+                discountPrice={product['Акционная цена']}
+                discountEndDate={product['Конец акции']}
             />
             <Properties sizes={sizes} properties={properties} />
         </div>

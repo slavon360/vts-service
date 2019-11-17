@@ -1,11 +1,21 @@
-import React from 'react';
+import React, { Fragment } from 'react';
+import cx from 'classnames';
 import PropTypes from 'prop-types';
 import _isempty from 'lodash/isEmpty';
 import Button from '../../../../../UI/Button';
+import CountDownDate from '../../../../../CountDownDate';
 
 import styles from './SizesShoppingCart.module.scss';
 
-const SizesShoppingCart = ({ available, sizes, Цена, addToCart, buyByOneClick }) => (
+const SizesShoppingCart = ({
+    available,
+    sizes,
+    Цена,
+    addToCart,
+    buyByOneClick,
+    discountPrice,
+    discountEndDate
+}) => (
         <div className={styles.SizesShoppingCart}>
             <div className={styles.Sizes}>
                 <h2 className={styles.Dimensions}>{_isempty(sizes) ? '' : 'Размеры:'}</h2>
@@ -20,7 +30,15 @@ const SizesShoppingCart = ({ available, sizes, Цена, addToCart, buyByOneClic
                 ))}
             </div>
             <div className={styles.AddToCartArea}>
-                <div className={styles.Price}>{Цена} грн.</div>
+                <div className={styles.PricesWrp}>
+                    <div className={cx(styles.Price, { [styles.PriceCrossed]: discountPrice })}>{Цена} грн.</div>
+                    {discountPrice &&
+                        <Fragment>
+                            <div className={styles.Price}>{discountPrice} грн.</div>
+                            <br />
+                        </Fragment>
+                    }
+                </div>
                 <Button
                     onClick={buyByOneClick}
                     clsName={styles.ByOneClick}
@@ -33,6 +51,11 @@ const SizesShoppingCart = ({ available, sizes, Цена, addToCart, buyByOneClic
                 >
                     Купить
                 </button>
+                <div className={styles.CountDownArea}>
+                    {discountEndDate &&
+                        <CountDownDate endDate={discountEndDate} />
+                    }
+                </div>
                 <div className={styles.AvailibilityArea}>
                         {available ?
                             <span className={styles.Available}>есть в наличии</span> :

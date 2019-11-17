@@ -52,11 +52,17 @@ export const searchProducts = (product) => {
     return thunk;
 }
 
+const updatePriceValue = (key, currencyRate, product) => currencyRate ? Math.round(currencyRate * product[key]) : product[key];
+
 export const getProduct = (slug) => async (dispatch, getState) => {
     const { currencyRate } = getState().outerAPIdata;
     const data = await getFromAxios(`/api${routeNames.PRODUCT_DETAILS}/${slug}`);
     const product = _get(data, 'data', {});
-    const updProduct = { ...product, 'Цена': currencyRate ? Math.round(currencyRate * product['Цена']) : product['Цена'] };
+    const updProduct = {
+        ...product,
+        'Цена': updatePriceValue('Цена', currencyRate, product),
+        'Акционная цена': updatePriceValue('Акционная цена', currencyRate, product) || null
+    };
     dispatch({ type: PRODUCTS_TYPES.getProduct, product: updProduct });
     return updProduct;
 }
