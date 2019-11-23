@@ -25,7 +25,8 @@ class ProductPage extends Component {
         product: {}
     }
     state = {
-        imgSource: null
+        imgSource: null,
+        currentTime: new Date().getTime()
     }
     componentWillMount(){
         this.props.setLoadingState(true);
@@ -150,7 +151,7 @@ class ProductPage extends Component {
         } = this.props;
         
         if (product && contacts) {
-            const { imgSource } = this.state;
+            const { imgSource, currentTime } = this.state;
             
             return (
                 <div className={styles.ProductPage}>
@@ -169,6 +170,7 @@ class ProductPage extends Component {
                             product={product}
                             addToCart={this.onAddToCart}
                             buyByOneClick={this.buyByOneClick}
+                            currentTime={currentTime}
                         />
                     </div>
                     <Contacts contacts={contacts} />

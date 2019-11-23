@@ -8,7 +8,8 @@ export const showAdditionalInfo = (object) => {
 export const updateProductPrices = (products, rate) => {
     const updProducts = products.map(product => ({
         ...product,
-        'Цена': rate ? Math.round(rate * product['Цена']) : product['Цена']
+        'Цена': rate ? Math.round(rate * product['Цена']) : product['Цена'],
+        'Акционная цена': rate && product['Акционная цена'] ? Math.round(rate * product['Акционная цена']) : null
     }));
     return updProducts;
 };

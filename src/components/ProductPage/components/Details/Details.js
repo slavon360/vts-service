@@ -19,9 +19,15 @@ const makeSizesObject = (obj) => {
     return sizes;
 }
 
-const Details = ({ product, addToCart, buyByOneClick }) => {
+
+const showDiscount = (endDate, currentTime) => (new Date(endDate).getTime() - currentTime) > 120000;
+
+const Details = ({ product, addToCart, buyByOneClick, currentTime }) => {
     const sizes = makeSizesObject(product);
     const properties = showAdditionalInfo(product);
+    const endDate = product['Конец акции'];
+    const show_discount = showDiscount(endDate, currentTime);
+    
     return (
         <div className={styles.Details}>
             <h1 className={styles.Title}>{product.title}</h1>
@@ -31,8 +37,8 @@ const Details = ({ product, addToCart, buyByOneClick }) => {
                 Цена={product.Цена}
                 addToCart={addToCart}
                 buyByOneClick={buyByOneClick}
-                discountPrice={product['Акционная цена']}
-                discountEndDate={product['Конец акции']}
+                discountPrice={show_discount ? product['Акционная цена'] : null}
+                discountEndDate={show_discount ? product['Конец акции'] : null}
             />
             <Properties sizes={sizes} properties={properties} />
         </div>

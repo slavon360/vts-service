@@ -22,6 +22,19 @@
     .Price {
         color: #333;
     }
+    .DiscountPrice + .Price {
+        position: relative;
+        color: #777;
+        &::before {
+            content: '';
+            position: absolute;
+            top: 12px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: #fb515d;
+        }
+    }
     .Key {
         text-align: left;
     }

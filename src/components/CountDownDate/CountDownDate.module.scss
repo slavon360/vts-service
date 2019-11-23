@@ -32,3 +32,19 @@
         }
     }
 }
+
+@media screen and (max-width: 600px) {
+    .CountDownDate {
+        .PromoTitle {
+            overflow: auto;
+            float: none;
+            margin: 10px 0 25px;
+            display: block;
+            &::before {
+                content: "";
+                clear: both;
+                display: table;
+            }
+        }
+    }
+}

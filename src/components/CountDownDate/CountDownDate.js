@@ -4,7 +4,8 @@ import styles from './CountDownDate.module.scss';
 
 class CountDownDate extends Component {
     state = {
-        timeCountdown: { }
+        timeCountdown: { },
+        intervalInstance: null
     }
     componentWillMount() {
         const { endDate } = this.props;
@@ -12,6 +13,9 @@ class CountDownDate extends Component {
         if (endDate) {
             this.countdown(endDate);
         }
+    }
+    componentWillUnmount() {
+        clearInterval(this.state.intervalInstance);
     }
     countdown = (endDate) => {
         let days, hours, minutes, seconds;
@@ -27,34 +31,31 @@ class CountDownDate extends Component {
             let timeRemaining = parseInt((parsedEndDate - startDate) / 1000);
             
             if (timeRemaining >= 0) {
-            days = parseInt(timeRemaining / 86400);
-            timeRemaining = (timeRemaining % 86400);
-            
-            hours = parseInt(timeRemaining / 3600);
-            timeRemaining = (timeRemaining % 3600);
-            
-            minutes = parseInt(timeRemaining / 60);
-            timeRemaining = (timeRemaining % 60);
-            
-            seconds = parseInt(timeRemaining);
+                days = parseInt(timeRemaining / 86400);
+                timeRemaining = (timeRemaining % 86400);
+                
+                hours = parseInt(timeRemaining / 3600);
+                timeRemaining = (timeRemaining % 3600);
+                
+                minutes = parseInt(timeRemaining / 60);
+                timeRemaining = (timeRemaining % 60);
+                
+                seconds = parseInt(timeRemaining);
 
-            this.setState({ timeCountdown: {
-                days,
-                hours,
-                minutes,
-                seconds
-            }})
-            
-            // document.getElementById("days").innerHTML = parseInt(days, 10);
-            // document.getElementById("hours").innerHTML = hours < 10 ? "0" + hours : hours;
-            // document.getElementById("minutes").innerHTML = minutes < 10 ? "0" + minutes : minutes;
-            // document.getElementById("seconds").innerHTML = seconds < 10 ? "0" + seconds : seconds;
+                this.setState({ timeCountdown: {
+                    days,
+                    hours,
+                    minutes,
+                    seconds
+                }});            
             } else {
-            return;
+                return false;
             }
         };
 
-        setInterval(calculate, 1000);
+        const intervalInstance = setInterval(calculate, 1000);
+
+        this.setState({ intervalInstance });
     }
     render () {
         const { timeCountdown: {

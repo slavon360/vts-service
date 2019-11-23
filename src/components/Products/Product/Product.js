@@ -16,16 +16,25 @@ const word_length = searched_url_word.length;
 
 class Product extends Component {
     state = {
-        imgSource: null
+        imgSource: null,
+        show_discount: false
     }
 
     componentWillMount() {
+        const currentTime = new Date().getTime();
+        const endDate = this.props.product['Конец акции'];
+        const show_discount = this.showDiscount(endDate, currentTime);
+
+        if (show_discount) {
+            this.setState({ show_discount: true });
+        }
         this.setImgSource();
     }
     shouldComponentUpdate(nextProps) {
         const { perPage, productsLength, productIndex } = this.props;
         return (productsLength - perPage) < productIndex && productsLength < nextProps.productsLength;
     }
+    showDiscount = (endDate, currentTime) => (new Date(endDate).getTime() - currentTime) > 120000;
     onAddToCart = () => {
         const { product, addToCart, setProductsQty, preorderModal } = this.props;
         const qty = 1;
@@ -72,7 +81,7 @@ class Product extends Component {
             makeProductsRequest,
             switchProductsLoading
         } = this.props;
-        const { imgSource } = this.state;
+        const { imgSource, show_discount } = this.state;
         const briefInfo = showAdditionalInfo(this.props.product);
         return (
             <li className={styles.Product}>
@@ -92,6 +101,8 @@ class Product extends Component {
                         buyByOneClick={this.buyByOneClick}
                         Цена={Цена}
                         briefInfo={briefInfo}
+                        showDiscount={show_discount}
+                        discountPrice={this.props.product['Акционная цена']}
                     />
                     <Button
                         onClick={this.onAddToCart}

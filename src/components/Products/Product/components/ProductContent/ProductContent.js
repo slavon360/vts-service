@@ -4,7 +4,7 @@ import Button from '../../../../UI/Button';
 
 import styles from './ProductContent.module.scss';
 
-const ProductContent = ({ buyByOneClick, Цена, briefInfo }) => (
+const ProductContent = ({ buyByOneClick, Цена, briefInfo, showDiscount, discountPrice }) => (
         <div
             className={styles.ProductContent}
         >
@@ -17,12 +17,22 @@ const ProductContent = ({ buyByOneClick, Цена, briefInfo }) => (
                         Купить в 1 клик
                     </Button>
                 </div>
+                {showDiscount &&
+                    <div className={styles.DiscountPrice}>
+                        <CurrencyFormat
+                            value={discountPrice}
+                            displayType={'text'}
+                            thousandSeparator={true}
+                            suffix={' грн.'}
+                        />
+                    </div>
+                }
                 <div className={styles.Price}>
                     <CurrencyFormat
                         value={Цена}
                         displayType={'text'}
                         thousandSeparator={true}
-                        prefix={'₴'}
+                        suffix={' грн.'}
                     />
                 </div>
             </div>
