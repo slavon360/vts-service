@@ -30,7 +30,6 @@ function checkCartState({ getState }) {
 
             // return next(updateCart);
         }
-
         return next(action);
     }
 }

@@ -8,11 +8,19 @@ const initialState = fromJS({
     tax: 15
 });
 
-const setQuickOrderProduct = (state, { product }) => state.set('quickOrderProduct', {
+const currentTime = new Date().getTime();
+const showDiscount = (endDate, currentTime) => (new Date(endDate).getTime() - currentTime) > 10000;
+
+const setQuickOrderProduct = (state, { product }) => {
+    const show_discount = showDiscount(product['Конец акции'], currentTime);
+
+    return state.set('quickOrderProduct', {
         ...product,
         quantity: 1,
-        total: 1 * product['Цена']
-    });
+        'Цена': show_discount ? product['Акционная цена'] : product['Цена'],
+        total: 1 * (show_discount ? product['Акционная цена'] : product['Цена'])
+    });  
+};
 
 const setInitialCartInfo = (state, { cartInfo: { products, productsQty }}) => {
     const immutableProducts = products.map(product => Map(product));
@@ -29,10 +37,13 @@ const removeQuickOrderProduct = (state) => {
 }
 
 const productWithQtyAndTotal = (prod) => {
+    const show_discount = showDiscount(prod.get('Конец акции'), currentTime);
     const oldQty = prod.get('quantity', 1);
+    const price = show_discount ? prod.get('Акционная цена') : prod.get('Цена');
     const newProd = prod.merge({
+        'Цена': price,
         'quantity': oldQty + 1,
-        'total': (oldQty + 1) * prod.get('Цена')
+        'total': (oldQty + 1) * price
     });
     return newProd;
 }
@@ -56,6 +67,7 @@ function removeFromCart(state, { id }) {
 }
 
 function addToCart(state, { product }) {
+    const show_discount = showDiscount(product['Конец акции'], currentTime);
     const products = state.get('products');
     const founded = products.find((pr) => {
         if (pr.get('_id') === product._id) {
@@ -65,10 +77,13 @@ function addToCart(state, { product }) {
         return false;
     });
     if (!founded) {
+        const price = show_discount ? product['Акционная цена'] : product['Цена'];
+
         return state.update('products', products => products.push(Map({
             ...product,
             quantity: 1,
-            total: product['Цена']
+            'Цена': price,
+            total: price
         })));
     }
     return state.update('products', products => {

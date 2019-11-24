@@ -1,5 +1,6 @@
 import React from 'react';
 import CurrencyFormat from 'react-currency-format';
+import cx from 'classnames';
 import Button from '../../../../UI/Button';
 
 import styles from './ProductContent.module.scss';
@@ -8,7 +9,7 @@ const ProductContent = ({ buyByOneClick, Цена, briefInfo, showDiscount, disc
         <div
             className={styles.ProductContent}
         >
-            <div className={styles.Header}>
+            <div className={cx(styles.Header, {[styles.HeaderWithDiscount]: showDiscount})}>
                 <div className={styles.Title}>
                     <Button
                         onClick={buyByOneClick}

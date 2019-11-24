@@ -13,6 +13,23 @@
         display: flex;
         justify-content: space-between;
     }
+    .Header.HeaderWithDiscount {
+        display: block;
+        justify-content: none;
+        .Title {
+            float: left;
+        }
+        .DiscountPrice {
+            text-align: right;
+        }
+        .Price {
+            text-align: right;
+            clear: both;
+            &::before {
+                max-width: 110px;
+            }
+        }
+    }
     .Title {
         text-overflow: ellipsis;
         overflow: hidden;
@@ -29,7 +46,7 @@
             content: '';
             position: absolute;
             top: 12px;
-            left: 0;
+            right: 0;
             width: 100%;
             height: 3px;
             background: #fb515d;
