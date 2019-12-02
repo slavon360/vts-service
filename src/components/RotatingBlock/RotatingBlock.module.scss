@@ -1,0 +1,83 @@
+.RotatingContainer {
+    position: relative;
+    color: #eee;
+    margin: 2%;
+    padding-top: 10%;
+    box-sizing: border-box;
+    transform-style: preserve-3d;
+    perspective: 1000px;
+    cursor: pointer;
+    transition: transform 1s;
+    line-height: 4vh;
+    text-align: center;
+    &:hover .FrontSide {
+        transform: rotateY(-180deg);
+    }
+    &:hover .BackSide {
+        transform: rotateY(0deg);
+    }
+}
+
+.FrontSide {
+    transform: rotateY(0deg);
+}
+
+.BackSide, .FrontSide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+    transition: transform .85s;
+    transform-style: preserve-3d;
+
+    &::before {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        width: 100%;
+        background-image: linear-gradient(180deg,#000,#000);
+        opacity: .6;
+    }
+    .InfoWrp {
+        margin-top: 25%;
+        position: relative;
+        z-index: 2;
+        perspective: inherit;
+        transform: translateZ(60px) scale(.85);
+        
+        .ServiceTitle {
+            font-size: 1.4em;
+            font-weight: 600;
+        }
+        .ServiceInfo {
+            font-size: 1.2em;
+        }
+        .ServiceInfo, .ServiceTitle {
+            position: relative;
+            z-index: 1;
+        }
+    }
+}
+
+.BackSide {
+    transform: rotateY(180deg);
+}
+
+@media screen and (max-width: 1500px) {
+    .BackSide, .FrontSide {
+        .InfoWrp {
+            .ServiceTitle {
+                font-size: 1.3em;
+            }
+            .ServiceInfo {
+                font-size: 1.05em;
+            }
+        }
+    }
+}

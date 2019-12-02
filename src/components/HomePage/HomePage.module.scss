@@ -27,3 +27,17 @@
     padding: 10px;
     float: right;
 }
+.BlocksAndBanner {
+    display: flex;
+    justify-content: space-between;
+    .RotatingBlock {
+        box-sizing: border-box;
+        width: 20%;
+        height: 50vh;
+    }
+    .BannersWrp {
+        align-self: center;
+        box-sizing: border-box;
+        width: 52%;
+    }
+}

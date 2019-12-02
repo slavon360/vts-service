@@ -59,7 +59,7 @@
         }
     }
     .AddToCartArea .AddToCart {
-        font-size: 14px;
+        font-size: 18px;
         border-radius: 23px;
         box-shadow: none;
         font-weight: 400;
@@ -73,9 +73,8 @@
     }
     .ByOneClick {
         color: #555;
-        font-size: 19px;
         margin-right: 25px;
-        font-size: 14px;
+        font-size: 18px;
         border-radius: 23px;
         box-shadow: none;
         font-weight: 400;
@@ -115,9 +114,11 @@
             }
             .ByOneClick {
                 float: left;
+                font-size: 15px;
             }
             .AddToCart {
                 float: right;
+                font-size: 15px;
             }
         }
     }

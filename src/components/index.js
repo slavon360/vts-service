@@ -14,3 +14,5 @@ export Filters from './Filters';
 export Order from './Order';
 export ContactPhone from './ContactPhone';
 export CountDownDate from './CountDownDate';
+export GeneralBanner from './GeneralBanner';
+export RotatingBlock from './RotatingBlock';
