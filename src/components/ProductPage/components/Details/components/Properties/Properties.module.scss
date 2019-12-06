@@ -32,6 +32,9 @@
 @media screen and (max-width: 768px) {
     .Properties {
         padding: 40px 0 0;
+        .PropertiesContent {
+            padding: 25px 0 0;
+        }
     }
     .KeyValueWrp:not(.Description) {
         div:last-child {

@@ -60,5 +60,19 @@
         text-overflow: ellipsis;
         overflow: hidden;
         white-space: nowrap;
+        > span {
+            max-width: 199px;
+            display: inline-block;
+        }
+    }
+}
+
+
+@media screen and (max-width: 365px) {
+    .CategName {
+        max-width: 178px;
+        > span {
+            max-width: 172px;
+        } 
     }
 }
