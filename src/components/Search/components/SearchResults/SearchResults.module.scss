@@ -16,7 +16,7 @@
     .SearchResults {
         z-index: 1;
         min-height: auto;
-        height: calc(100vh - 45px);
+        max-height: calc(100vh - 85px);
         overflow-y: auto;
     }
 }

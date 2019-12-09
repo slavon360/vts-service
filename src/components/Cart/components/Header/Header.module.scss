@@ -40,3 +40,10 @@
         display: none;
     }
 }
+
+@media screen and (min-width: 768px) and (max-width: 800px) {
+    .HeaderWrp {
+        width: 100%;
+        margin-top: 50px;
+    }
+}

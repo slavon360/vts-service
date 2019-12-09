@@ -61,7 +61,7 @@ class Order extends Component {
                     className={styles.GoToProducts}
                 >
                     <span className={styles.IconAngle}><AngleDown /></span>
-                    <span className={styles.BackWord}>Назад к товарам</span>
+                    <span className={styles.BackWord}>Назад</span>
                 </Link>
                 <Cart
                     products={products}

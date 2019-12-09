@@ -17,7 +17,7 @@ const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty,
                 className={styles.GoToProducts}
             >
                 <span className={styles.IconAngle}><AngleDown /></span>
-                <span className={styles.BackWord}>Назад к товарам</span>
+                <span className={styles.BackWord}>Назад</span>
             </Link>
             <table>
                 <tbody>

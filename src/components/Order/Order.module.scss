@@ -31,7 +31,21 @@
     
 }
 @media screen and (max-width: 767px) {
-    .GoToProducts {
-        margin-top: 10px;
+    .OrderWrp {
+        .GoToProducts {
+            display: block;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+    }
+}
+@media screen and (min-width: 768px) and (max-width: 800px) {
+    .OrderWrp {
+        padding: 0 30px;
+        .GoToProducts {
+            top: 55px;
+            left: 4%;
+        }
     }
 }

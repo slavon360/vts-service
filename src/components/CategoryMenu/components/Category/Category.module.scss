@@ -70,3 +70,13 @@
         }
     }
 }
+
+@media screen and (max-width: 330px) {
+    .Category {
+        .TitleWrp {
+            .Title {
+                font-size: 1.2em;
+            }
+        }
+    }
+}
