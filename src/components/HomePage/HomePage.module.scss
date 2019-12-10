@@ -47,3 +47,9 @@
         font-size: 12px;
     }
 }
+
+@media screen and (max-width: 370px) {
+    .GoToOrderBtn, .ContinueShoppingBtn {
+        font-size: 13px;
+    }
+}

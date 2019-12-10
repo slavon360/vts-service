@@ -59,11 +59,23 @@
         color: #777;
     }
     .ByOneClick {
-        color: #555;
+        color: #6e6ec7;
         font-size: 19px;
 
         &:hover {
             color: #39f;
+        }
+    }
+    .AddToCart {
+        color: #ff0053;
+        display: block;
+        font-size: 19px;
+        float: left;
+    }
+
+    @media screen and (max-width: 1024px) {
+        .ByOneClick {
+            margin-bottom: 15px;
         }
     }
 }

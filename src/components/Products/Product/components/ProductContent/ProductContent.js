@@ -5,7 +5,15 @@ import Button from '../../../../UI/Button';
 
 import styles from './ProductContent.module.scss';
 
-const ProductContent = ({ buyByOneClick, Цена, briefInfo, showDiscount, discountPrice }) => (
+const ProductContent = ({
+    buyByOneClick,
+    Цена,
+    briefInfo,
+    showDiscount,
+    discountPrice,
+    windowWidth,
+    addToCart
+}) => (
         <div
             className={styles.ProductContent}
         >
@@ -17,6 +25,14 @@ const ProductContent = ({ buyByOneClick, Цена, briefInfo, showDiscount, disc
                     >
                         Купить в 1 клик
                     </Button>
+                    {!showDiscount && windowWidth <= 1024 &&
+                        <Button
+                            onClick={addToCart}
+                            clsName={styles.AddToCart}
+                        >
+                            В корзину
+                        </Button>
+                    }
                 </div>
                 {showDiscount &&
                     <div className={styles.DiscountPrice}>
@@ -24,16 +40,26 @@ const ProductContent = ({ buyByOneClick, Цена, briefInfo, showDiscount, disc
                             value={discountPrice}
                             displayType={'text'}
                             thousandSeparator={true}
-                            suffix={' грн.'}
+                            suffix={'грн.'}
+                            renderText={value => <span>{value}&nbsp;</span>}
                         />
                     </div>
                 }
                 <div className={styles.Price}>
+                    {showDiscount && windowWidth <= 1024 &&
+                        <Button
+                            onClick={addToCart}
+                            clsName={styles.AddToCart}
+                        >
+                            В корзину
+                        </Button>
+                    }
                     <CurrencyFormat
                         value={Цена}
                         displayType={'text'}
                         thousandSeparator={true}
-                        suffix={' грн.'}
+                        suffix={'грн.'}
+                        renderText={value => <span>{value}&nbsp;</span>}
                     />
                 </div>
             </div>

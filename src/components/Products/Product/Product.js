@@ -79,7 +79,8 @@ class Product extends Component {
             productsLength,
             productIndex,
             makeProductsRequest,
-            switchProductsLoading
+            switchProductsLoading,
+            windowWidth
         } = this.props;
         const { imgSource, show_discount } = this.state;
         const briefInfo = showAdditionalInfo(this.props.product);
@@ -103,13 +104,17 @@ class Product extends Component {
                         briefInfo={briefInfo}
                         showDiscount={show_discount}
                         discountPrice={this.props.product['Акционная цена']}
+                        windowWidth={windowWidth}
+                        addToCart={this.onAddToCart}
                     />
-                    <Button
-                        onClick={this.onAddToCart}
-                        clsName={styles.ShoppingCart}
-                    >
-                        <ShoppingCartIcon style={{ fontSize: '40px' }} />
-                    </Button>
+                    {windowWidth > 1024 &&
+                        <Button
+                            onClick={this.onAddToCart}
+                            clsName={styles.ShoppingCart}
+                        >
+                            <ShoppingCartIcon style={{ fontSize: '40px' }} />
+                        </Button>
+                    }
                 </div>
             </li>
         );

@@ -68,7 +68,7 @@
     @media screen and (max-width: 767px) {
         max-width: 340px;
         .ShoppingCart {
-            z-index: -1;
+            z-index: -10;
         }
     }
 }

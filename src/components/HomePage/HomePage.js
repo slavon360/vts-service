@@ -126,9 +126,6 @@ class HomePage extends Component{
                     }
                 </div>
                 {/* <GeneralBanner banners={homeBanners} /> */}
-                <div className={styles.BlackFriday}>
-                    Успей приобрести товары по самым низким ценам в Черную Пятницу!
-                </div>
                 {catalog && catalog.length ?
                     <CategoryMenu
                         filters={filters}
