@@ -16,20 +16,26 @@ import detailsImg from '../../assets/images/other/details1.5a1fd390.jpg';
 import styles from './HomePage.module.scss';
 
 class HomePage extends Component{
+    state = {
+        alreadyScrolled: false
+    }
     componentDidMount() {
         this.props.getHomeBanners();
     }
     // shouldComponentUpdate (nextProps) {
     //     return !this.props.homeBanners && nextProps.homeBanners && nextProps.homeBanners.length;
     // }
-    componentDidUpdate(prevProp) {
+    componentDidUpdate(prevProp, prevState) {
         const { selectedCategoryId, selectedSubcategoryId } = this.props;
         const { selectedCategoryId: prevSelectedCategoryId, selectedSubcategoryId: prevSelectedSubcategoryId } = prevProp;
 
         const changedCategory = prevSelectedCategoryId && selectedCategoryId !== prevSelectedCategoryId;
-        const changedSubcategory = selectedSubcategoryId !== prevSelectedSubcategoryId;
-        if (changedCategory || changedSubcategory) {
-            this.scrollToProducts();
+        // const changedSubcategory = selectedSubcategoryId !== prevSelectedSubcategoryId;
+        if (changedCategory && !this.state.alreadyScrolled) {
+            window.setTimeout(this.scrollToProducts, 500);
+        }
+        if (this.state.alreadyScrolled) {
+            this.setState({ alreadyScrolled: false });
         }
     }
     closeModal = () => {
@@ -62,11 +68,14 @@ class HomePage extends Component{
     setRef = (ref) => {
         this.productsWrpRef = ref;
     }
-    scrollToProducts() {
-        if (window.innerWidth < 992) {
-        
-            window.scroll({ top: this.productsWrpRef.offsetTop - 110, behavior: 'smooth' });
-        }
+    scrollToProducts = () => {
+        console.trace('scrollToProducts');
+        window.scroll({ top: this.productsWrpRef.offsetTop - 110, behavior: 'smooth' });
+    }
+    onMakeProductsRequest = () => {
+        this.props.makeProductsRequest();
+        window.setTimeout(this.scrollToProducts, 500);
+        this.setState({ alreadyScrolled: true });
     }
     render() {
         const {
@@ -132,7 +141,7 @@ class HomePage extends Component{
                         categories={catalog}
                         activeIndex={activeIndex}
                         switchCheckedCategory={switchCheckedCategory}
-                        makeProductsRequest={makeProductsRequest}
+                        makeProductsRequest={this.onMakeProductsRequest}
                         setActiveFilter={setActiveFilter}
                         deleteActiveFilter={deleteActiveFilter}
                         sendActiveFilter={sendActiveFilter}

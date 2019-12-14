@@ -12,9 +12,9 @@ class Subcategories extends Component {
         category: {}
     }
 
-    componentDidUpdate() {
-        this.scrollToCategName();
-    }
+    // componentDidUpdate() {
+    //     this.scrollToCategName();
+    // }
 
     scrollToCategName() {
         if (window.innerWidth >= 992) {

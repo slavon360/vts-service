@@ -11,6 +11,10 @@
         line-height: 3;
         cursor: pointer;
 
+        > span {
+            vertical-align: top;
+        }
+
         &:hover, > svg {
             color: #ff115f;
             fill: #ff115f;
@@ -33,6 +37,7 @@
         background-color: #fff;
         padding: 20px;
         display: none;
+        z-index: 1;
     }
     .CategList.Shown {
         display: block;
@@ -61,8 +66,13 @@
         overflow: hidden;
         white-space: nowrap;
         > span {
-            max-width: 199px;
             display: inline-block;
+        }
+        > .Text {
+            text-overflow: ellipsis;
+            overflow: hidden;
+            white-space: nowrap;
+            max-width: 190px;
         }
     }
 }
@@ -71,7 +81,7 @@
 @media screen and (max-width: 365px) {
     .CategName {
         max-width: 178px;
-        > span {
+        > .Text {
             max-width: 172px;
         } 
     }

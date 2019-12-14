@@ -68,7 +68,7 @@ class CountDownDate extends Component {
             <div className={styles.CountDownDate}>
                 <span className={styles.PromoTitle}>До конца осталось:</span>
                 <div className={styles.PromoTimer}>
-                    <span className={styles.PromoTimerDigit}>{ parseInt(days) || '' }</span>
+                    <span className={styles.PromoTimerDigit}>{ parseInt(days) || '0' }</span>
                     <span className={styles.PromoTimerWord}>дни</span>
                 </div>
                 <div className={styles.PromoTimer}>
