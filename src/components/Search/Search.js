@@ -9,7 +9,7 @@ import '../../App.css'
 
 class Search extends Component {
     onToggleSearch = () => {
-        console.log(this.refs.SearchField.focus());
+        this.refs.SearchField.focus();
         this.props.toggleSearch();
     }
     keyPressHandling = (event) => {
