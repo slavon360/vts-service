@@ -25,10 +25,10 @@ class Subcategories extends Component {
     }
 
     render() {
-        const { category, switchSubcategory, makeProductsRequest, revertCurrentPage } = this.props;
+        const { category, switchSubcategory, makeProductsRequest, revertCurrentPage, setRefSubcategories } = this.props;
 
         return (
-            <div className={styles.SubcategoriesWrp}>
+            <div className={styles.SubcategoriesWrp} ref={setRefSubcategories}>
                 <div ref="CategoryName" className={styles.Head} >{category.categName}</div>
                 <div className={styles.Subcategories}>
                     {category.subCategNames.map(subcateg => (

@@ -1,6 +1,21 @@
 import { composeReducer } from 'redux-compose-reducer';
 
+const defineMobileChrome = () => {
+    const user_agent = window.navigator.userAgent;
+
+    if(/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini|Mobile|mobile|CriOS/i.test(user_agent)) {
+        if (user_agent.includes('Chrome')) {
+            return true;
+        }
+        return false;
+    } else {
+        return false;
+    }
+}
+const mobileChrome = defineMobileChrome();
+
 const initialState = {
+    mobileChrome,
     loading: false,
     modalIsOpen: false,
     modalTemplate: null,

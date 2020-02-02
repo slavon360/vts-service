@@ -24,7 +24,7 @@ const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty,
                     <ProductHeader />
                     {products && products.length ?
                         products.map(product => {
-                            const { image: { secure_url = imgPlaceholder } = {} } = product;
+                            const {  secure_url = imgPlaceholder } = product.image[0];
                             return (
                                 <Product
                                     key={product._id}

@@ -51,7 +51,7 @@ class Product extends Component {
         return newUrl;
     }
     setImgSource = () => {
-        const { product: { image: { secure_url = imgPlaceholder } = { } } } = this.props;
+        const { secure_url = imgPlaceholder } = this.props.product.image[0];
         const index = secure_url.indexOf(searched_url_word);
 
         this.setState({

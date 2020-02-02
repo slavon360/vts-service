@@ -17,7 +17,9 @@ import styles from './HomePage.module.scss';
 
 class HomePage extends Component{
     state = {
-        alreadyScrolled: false
+        alreadyScrolled: false,
+        subcategRefCoords: null,
+        productsRefCoords: null
     }
     componentDidMount() {
         this.props.getHomeBanners();
@@ -65,12 +67,49 @@ class HomePage extends Component{
         makeQuickOrder();
         setModalState(isOpen);
     }
-    setRef = (ref) => {
+    setRefProducts = (ref) => {
         this.productsWrpRef = ref;
+        // console.log(ref);
+        // window.setTimeout(() => {
+        //     this.setState({ productsRefCoords: ref.getBoundingClientRect() });
+        // }, 1500);
     }
+    setRefSubcategories = (ref) => {
+        this.subcategoriesWrpRef = ref;
+    }
+    setSubcategRefCoords = () => {
+        this.setState({ subcategRefCoords: this.subcategoriesWrpRef.getBoundingClientRect() }, () => {
+            console.log(this.state.subcategRefCoords.top)
+            window.scroll({ top: this.state.subcategRefCoords.top, behavior: 'smooth' });
+        });
+    }
+    // setProductsRefCoords = () => {
+    //     this.setState({ productsRefCoords: this.productsWrpRef.getBoundingClientRect() }, () => {
+    //         window.scroll({ top: this.state.productsRefCoords.top, behavior: 'smooth' });
+    //     });
+    // }
     scrollToProducts = () => {
-        console.trace('scrollToProducts');
-        window.scroll({ top: this.productsWrpRef.offsetTop - 110, behavior: 'smooth' });
+        if (this.props.mobileChrome) {
+            this.productsWrpRef.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        } else {
+            if (this.props.windowWidth >= 1024) {
+                // if (!this.state.subcategRefCoords) {
+                //     this.setSubcategRefCoords();
+                // } else {
+                    window.scroll({ top: this.subcategoriesWrpRef.offsetTop - 100, behavior: 'smooth' });
+                // }
+            } else {
+                // console.log(this.state.productsRefCoords);
+                // if (!this.state.productsRefCoords) {
+                //     this.setProductsRefCoords();
+                // } else {
+                    window.scroll({ top: this.productsWrpRef.offsetTop, behavior: 'smooth' });
+                // }
+            }
+        }
     }
     onMakeProductsRequest = () => {
         this.props.makeProductsRequest();
@@ -147,6 +186,7 @@ class HomePage extends Component{
                         sendActiveFilter={sendActiveFilter}
                         switchSubcategory={switchSubcategory}
                         revertCurrentPage={revertCurrentPage}
+                        setRefSubcategories={this.setRefSubcategories}
                 /> : <div />
                 }
                 <Products
@@ -162,7 +202,7 @@ class HomePage extends Component{
                     switchProductsLoading={switchProductsLoading}
                     setQuickOrderProduct={setQuickOrderProduct}
                     windowWidth={windowWidth}
-                    setRef={this.setRef}
+                    setRef={this.setRefProducts}
                 />
                 {!modalWithActions ?
                     <Modal

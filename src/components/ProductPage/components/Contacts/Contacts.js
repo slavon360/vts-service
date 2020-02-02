@@ -4,7 +4,7 @@ import ContactPhone from '../../../ContactPhone';
 
 const Contacts = ({ contacts }) => (
         <div className={styles.ContactsWrp}>
-            <h3>Наши контакты:</h3>
+            <h3>Контакты:</h3>
             <div className={styles.ContactsArea}>
                 {contacts.map(({ email, телефон, image: { secure_url } = {}, _id }) => {
                         if (телефон) {

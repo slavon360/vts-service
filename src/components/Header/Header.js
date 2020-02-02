@@ -19,7 +19,8 @@ class Header extends PureComponent {
         catalog: []
     }
     state = {
-        searchActive: false,
+        // switched to 'true' and removed click handler
+        searchActive: true,
         searchedText: '',
         prevScrollpos: window.pageYOffset,
         visible: true

@@ -8,6 +8,7 @@ import styles from './Search.module.scss';
 import '../../App.css'
 
 class Search extends Component {
+    // switched to 'true' and removed click handler
     onToggleSearch = () => {
         this.refs.SearchField.focus();
         this.props.toggleSearch();
@@ -39,7 +40,6 @@ class Search extends Component {
                     ['SearchInactive']: !searchActive
                 })}>
                 <button
-                    onClick={this.onToggleSearch}
                     className={styles.SearchIcon}
                 >
                     <SearchIcon style={{ fontSize: '20px' }}/>

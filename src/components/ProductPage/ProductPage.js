@@ -25,7 +25,7 @@ class ProductPage extends Component {
         product: {}
     }
     state = {
-        imgSource: null,
+        imgSources: null,
         currentTime: new Date().getTime()
     }
     componentWillMount(){
@@ -44,8 +44,8 @@ class ProductPage extends Component {
             modalIsOpen,
             selectedCategoryId
         } = this.props;
-        const { imgSource } = this.state;
-        const { imgSource: nextImgSource } = nextState;
+        const { imgSources } = this.state;
+        const { imgSources: nextImgSource } = nextState;
         const {
             product: nextProduct,
             match: {
@@ -61,7 +61,7 @@ class ProductPage extends Component {
         }
         if (currencyRate !== nextCurrencyRate) this.getProductInfo();
         return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title ||
-                modalIsOpen !== nextModalIsOpen || imgSource || nextImgSource;
+                modalIsOpen !== nextModalIsOpen || imgSources || nextImgSource;
     }
     componentDidUpdate(prevProps, prevState, snapshot){
         const { productSlug } = this.props.match.params;
@@ -78,12 +78,25 @@ class ProductPage extends Component {
         const newUrl = windowWidth < 500 ? giveUrl(windowWidth - 80) : giveUrl(500);
         return newUrl;
     }
+    unpackImgSources = (images) => {
+        
+        let imgPlaceholder = imgPlaceholder;
+        
+        const sources = images.map((img) => {
+            const { secure_url = imgPlaceholder = { } } = img;
+            const index = secure_url.indexOf(searched_url_word);
+            const url = index > 0 ? this.buildImgUrl(secure_url, index + word_length) : secure_url;
+            return url;
+        });
+        
+        return sources;
+    }
     setImgSource = (productData) => {
-        const { image: { secure_url = imgPlaceholder } = { } } = productData;
-        const index = secure_url.indexOf(searched_url_word);
+        const { image } = productData;
+        const sources = this.unpackImgSources(image);
 
         this.setState({
-            imgSource: index > 0 ? this.buildImgUrl(secure_url, index + word_length) : secure_url
+            imgSources: sources
         })
     }
     getProductInfo = async () => {
@@ -150,9 +163,9 @@ class ProductPage extends Component {
             form
         } = this.props;
         
-        if (product && contacts) {
-            const { imgSource, currentTime } = this.state;
-            
+        if (product && contacts && this.state.imgSources) {
+            const { imgSources, currentTime } = this.state;
+
             return (
                 <div className={styles.ProductPage}>
                     <div className={styles.ImageAreaWrp}>
@@ -163,7 +176,7 @@ class ProductPage extends Component {
                             <span className={styles.IconAngle}><AngleDown /></span>
                             <span className={styles.BackWord}>Назад</span>
                         </Link>
-                        <ImageArea imgSrc={imgSource} />
+                        <ImageArea imgSources={imgSources} />
                     </div>
                     <div className={styles.DetailsWrp}>
                         <Details
