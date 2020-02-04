@@ -137,6 +137,9 @@ class Header extends PureComponent {
                                         </a>
                                     ))
                                 }
+                                <div className={styles.Email}>
+                                    <a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
+                                </div>
                             </div>
                         </div>
                         <div className={styles.RightSide}>

@@ -20,9 +20,36 @@
     }
 }
 
-.Phone {
-    border-right: none;
-    padding-left: 30px;
+.NavbarPhonesWrp {
+    vertical-align: top;
+    padding-top: 4px;
+    display: inline-block;
+    .Phone {
+        display: block;
+        line-height: 1;
+        height: auto;
+        border-right: none;
+        padding: 3px 15px;
+        a {
+            svg {
+                height: 17px !important;
+                transform: translate(-10px, -1px) !important;
+            }
+            span {
+                font-size: 16px;
+            }
+        }
+    }
+}
+
+.Email {
+    display: inline-block;
+}
+
+@media screen and (max-width: 1240px) {
+    .Email {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 1040px) {

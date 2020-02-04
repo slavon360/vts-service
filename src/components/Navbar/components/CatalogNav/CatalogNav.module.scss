@@ -45,8 +45,13 @@
 }
 
 @media screen and (max-width: 830px) {
-    .Categories .CategList {
-        top: 69px;
+    .Categories {
+        .CategName {
+            border: none;
+        }
+        .CategList {
+            top: 74px;
+        }
     }
 }
 

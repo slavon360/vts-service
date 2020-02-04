@@ -36,6 +36,10 @@
 @media screen and (max-width: 767px) {
     .HomeBanners {
         height: 32vh;
+
+        &::before {
+            background-color: transparent;
+        }
         .BannerContent {
             .BannerTitle {
                 font-size: 21px;

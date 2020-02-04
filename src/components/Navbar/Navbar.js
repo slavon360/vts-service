@@ -16,15 +16,20 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
                 makeProductsRequest={makeProductsRequest}
             />
             <a className={styles.Services} href={routeNames.SERVICES}>Услуги</a>
-            {contacts &&
-                contacts.slice(0, 4).map(({ телефон }, index) => (
-                    <div
-                        key={телефон + index}
-                        className={`${styles.Phone} NavbarPhoneNumber`}>
-                        <ContactPhone телефон={телефон} />
-                    </div>
-                ))
-            }
+            <div className={styles.NavbarPhonesWrp}>
+                {contacts &&
+                    contacts.slice(0, 2).map(({ телефон }, index) => (
+                        <div
+                            key={телефон + index}
+                            className={`${styles.Phone} NavbarPhoneNumber`}>
+                            <ContactPhone телефон={телефон} />
+                        </div>
+                    ))
+                }
+            </div>
+            <div className={styles.Email}>
+                <a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
+            </div>
         </div>
     );
 };
