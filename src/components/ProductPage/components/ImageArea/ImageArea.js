@@ -23,7 +23,7 @@ const ImageArea = ({ imgSources }) => {
                     </Zoom>
                 ))
             }
-        </Carousel> : <Zoom><img width={200} height={200} className={styles.ImgArea} src={src} /></Zoom>
+        </Carousel> : <Zoom><img className={styles.ImgArea} src={src} /></Zoom>
 
     return endElement;
 };
