@@ -64,6 +64,14 @@
     }
 }
 
+@media screen and (max-width: 485px) {
+    .Categories {
+        .CategList {
+            top: 96px;
+        }
+    }
+}
+
 @media screen and (max-width: 440px) {
     .CategName {
         max-width: 205px;

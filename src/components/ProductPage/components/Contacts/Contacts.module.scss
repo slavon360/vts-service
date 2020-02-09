@@ -10,6 +10,9 @@
         margin-bottom: 30px;
         display: inline-block;
     }
+    .Mail {
+        padding-left: 15px;
+    }
 }
 h3 {
     font-weight: 100;
@@ -31,6 +34,11 @@ h3 {
             
             &:last-child {
                 margin-bottom: 0;
+            }
+        }
+        .Mail {
+            svg {
+                display: none;
             }
         }
     }

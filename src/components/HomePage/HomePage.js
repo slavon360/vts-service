@@ -79,7 +79,6 @@ class HomePage extends Component{
     }
     setSubcategRefCoords = () => {
         this.setState({ subcategRefCoords: this.subcategoriesWrpRef.getBoundingClientRect() }, () => {
-            console.log(this.state.subcategRefCoords.top)
             window.scroll({ top: this.state.subcategRefCoords.top, behavior: 'smooth' });
         });
     }
@@ -88,7 +87,7 @@ class HomePage extends Component{
     //         window.scroll({ top: this.state.productsRefCoords.top, behavior: 'smooth' });
     //     });
     // }
-    scrollToProducts = () => {
+    scrollToProducts = (subcategChanged) => {
         if (this.props.mobileChrome) {
             this.productsWrpRef.scrollIntoView({
                 behavior: 'smooth',
@@ -96,24 +95,20 @@ class HomePage extends Component{
             });
         } else {
             if (this.props.windowWidth >= 1024) {
-                // if (!this.state.subcategRefCoords) {
-                //     this.setSubcategRefCoords();
-                // } else {
-                    window.scroll({ top: this.subcategoriesWrpRef.offsetTop - 100, behavior: 'smooth' });
-                // }
-            } else {
-                // console.log(this.state.productsRefCoords);
-                // if (!this.state.productsRefCoords) {
-                //     this.setProductsRefCoords();
-                // } else {
+                if (subcategChanged) {
                     window.scroll({ top: this.productsWrpRef.offsetTop, behavior: 'smooth' });
-                // }
+                } else {
+                    window.scroll({ top: this.subcategoriesWrpRef.offsetTop - 100, behavior: 'smooth' });
+                }
+            } else {
+                window.scroll({ top: this.productsWrpRef.offsetTop, behavior: 'smooth' });
             }
         }
     }
-    onMakeProductsRequest = () => {
-        this.props.makeProductsRequest();
-        window.setTimeout(this.scrollToProducts, 500);
+    onMakeProductsRequest = async () => {
+        await this.props.makeProductsRequest();
+        const subcategChanged = this.props.selectedSubcategoryId;
+        window.setTimeout(() => this.scrollToProducts(subcategChanged), 500);
         this.setState({ alreadyScrolled: true });
     }
     render() {

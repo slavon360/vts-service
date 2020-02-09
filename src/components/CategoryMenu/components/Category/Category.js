@@ -9,6 +9,7 @@ import zapchastiGazKotlyImg from '../../../../assets/images/catalog/kotly/zapcha
 import kotlyGazovye from '../../../../assets/images/catalog/kotly/kotly-gazovye.jpg';
 import kotlyElektricheskie from '../../../../assets/images/catalog/kotly/elektrokotly.jpg';
 import boileryImg from '../../../../assets/images/catalog/boilery/boilery.jpg';
+import programmatory from '../../../../assets/images/catalog/programmatory/programmatory.jpg';
 // import zapchastiImg from '../../../../assets/images/catalog/zapchasti/zapchasti.jpg';
 
 import styles from './Category.module.scss';
@@ -31,6 +32,8 @@ const imgImporter = (name) => {
             return zapchastiKolonki;
         case 'zapchasti-elektro-vodonagrevateli':
             return zapchastiVodonagrevateli;
+        case 'programmatory-termoregulyatory':
+            return programmatory;
         default: return kotlyGazovye;
     }
 }

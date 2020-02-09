@@ -1,6 +1,7 @@
 import React from 'react';
 import styles from './Contacts.module.scss';
 import ContactPhone from '../../../ContactPhone';
+import MailIcon from '../../../Icons/MailIcon';
 
 const Contacts = ({ contacts }) => (
         <div className={styles.ContactsWrp}>
@@ -18,6 +19,9 @@ const Contacts = ({ contacts }) => (
                         }
                         return null;
                     })}
+                <a className={styles.Mail} href="mailto:vts.07@ukr.net">
+                    <MailIcon color="#6e6ec7" style={{ transform: 'scale(1.7) translate(-10px, -2px)'}} /> vts.07@ukr.net
+                </a>
             </div>
         </div>
     );
