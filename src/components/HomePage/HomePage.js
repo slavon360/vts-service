@@ -18,9 +18,9 @@ class HomePage extends Component{
         subcategRefCoords: null,
         productsRefCoords: null
     }
-    componentDidMount() {
-        this.props.getHomeBanners();
-    }
+    // componentDidMount() {
+    //     // this.props.getHomeBanners();
+    // }
     // shouldComponentUpdate (nextProps) {
     //     return !this.props.homeBanners && nextProps.homeBanners && nextProps.homeBanners.length;
     // }

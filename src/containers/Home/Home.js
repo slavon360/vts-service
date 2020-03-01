@@ -13,7 +13,7 @@ import {
 } from '../../actions/menus';
 import { makeProductsRequest, revertCurrentPage, switchProductsLoading } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
-import { getHomeBanners } from '../../actions/banners';
+// import { getHomeBanners } from '../../actions/banners';
 import { makeQuickOrder } from '../../actions/user';
 import { getTotalSum } from '../../utils/selectors';
 // import from from '../../components/Products';
@@ -57,7 +57,7 @@ const mapDispatchToProps = {
     makeProductsRequest,
     getCurrencyRate,
     revertCurrentPage,
-    getHomeBanners,
+    // getHomeBanners,
     addToCart,
     setProductsQty,
     setActiveFilter,
