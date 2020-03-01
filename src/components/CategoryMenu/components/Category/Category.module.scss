@@ -3,7 +3,7 @@
     display: inline-block;
     min-width: 150px;
     margin-right: 45px;
-    min-height: 190px;
+    min-height: 50px;
     border-radius: 8px;
     overflow: hidden;
     transition: transform .5s;
@@ -11,9 +11,10 @@
     cursor: pointer;
 
     &:hover {
-        .CategoryImg {
-            transform: scale(1.1)
-        }
+        box-shadow: 0 8px 7px 1px rgba(0,0,0,.19);
+        // .CategoryImg {
+        //     transform: scale(1.1)
+        // }
         .TitleWrp .Title {
             text-decoration: underline;
         }
@@ -34,21 +35,21 @@
         min-height: inherit;
         position: relative;
         padding: 0 15px;
-
-        &::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background-color: rgba(0, 0, 0, .5);
-        }
+        background-color: #658fab;
+        // &::before {
+        //     content: '';
+        //     position: absolute;
+        //     top: 0;
+        //     left: 0;
+        //     right: 0;
+        //     bottom: 0;
+        //     background-color: rgba(0, 0, 0, .5);
+        // }
         .Title {
             align-self: center;
             position: relative;
             color: #eee;
-            font-size: 1.5em;
+            font-size: 1.2em;
         }
     }
 }
@@ -56,6 +57,7 @@
 @media screen and (max-width: 767px) {
     .Category {
         margin-right: 0;
+        min-height: 70px;
     }
 }
 

@@ -33,7 +33,11 @@ export const searchProductsLoading = (data) => ({
 
 export const searchProducts = (product) => {
     const thunk = async (dispatch, getState) => {
-        const { selectedCategoryId } = getState().menus;
+        // const { selectedCategoryId } = getState().menus;
+        // dispatch({
+        //     type: PRODUCTS_TYPES.searchProducts,
+        //     searchedProducts: []
+        // });
         const json = await getFromAxios('/search?', { product });
         const searchedProducts = _get(json, 'data', []);
         dispatch({
@@ -52,7 +56,11 @@ export const searchProducts = (product) => {
     return thunk;
 }
 
-const updatePriceValue = (key, currencyRate, product) => currencyRate ? Math.round(currencyRate * product[key]) : product[key];
+const updatePriceValue = (key, currencyRate, product) => {
+    const finalRate = product['Отображать цену в грн'] ? 1 : currencyRate;
+
+    return finalRate ? Math.round(finalRate * product[key]) : product[key];
+};
 
 export const getProduct = (slug) => async (dispatch, getState) => {
     const { currencyRate } = getState().outerAPIdata;

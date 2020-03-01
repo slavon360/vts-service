@@ -1,16 +1,19 @@
 export const showAdditionalInfo = (object) => {
     const entries = Object.entries(object);
-    const finalEntries = entries.filter(item => /^(?!Цена)(?!Акционная цена)(?!Конец акции)(?!Отображать на сайте)[а-яА-ЯЁё]/.test(item[0]) &&
+    const finalEntries = entries.filter(item => /^(?!Цена)(?!Цена \(грн\))(?!Акционная цена)(?!Конец акции)(?!Отображать на сайте)[а-яА-ЯЁё]/.test(item[0]) &&
     /^(?!выбрать вариант)/.test(item[1]) && /^(?!В наличии)/.test(item[0]));
     return finalEntries;
 };
 
 export const updateProductPrices = (products, rate) => {
-    const updProducts = products.map(product => ({
-        ...product,
-        'Цена': rate ? Math.round(rate * product['Цена']) : product['Цена'],
-        'Акционная цена': rate && product['Акционная цена'] ? Math.round(rate * product['Акционная цена']) : null
-    }));
+    const updProducts = products.map(product => {
+        const finalRate = product['Отображать цену в грн'] ? 1 : rate;
+        return {
+            ...product,
+            'Цена': finalRate ? Math.round(finalRate * product['Цена']) : product['Цена'],
+            'Акционная цена': finalRate && product['Акционная цена'] ? Math.round(finalRate * product['Акционная цена']) : null
+        };
+    });
     return updProducts;
 };
 

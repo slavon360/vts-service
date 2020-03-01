@@ -97,6 +97,12 @@
         transform: translateY(15px);
         margin-left: 20px;
     }
+    @media screen and (max-width: 1260px) {
+        flex-direction: column-reverse;
+        .Sizes {
+            margin-top: 25px;
+        }
+    }
     @media screen and (max-width: 600px) {
         .CountDownArea {
             margin-left: 0;

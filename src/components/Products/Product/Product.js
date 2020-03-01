@@ -5,8 +5,8 @@ import { imgPlaceholder } from '../../../constants/paths';
 import { names } from '../../../constants/data';
 import ProductContent from './components/ProductContent';
 import ProductImage from './components/ProductImage';
-import { Button } from '../../UI';
-import ShoppingCartIcon from '../../Icons/ShoppingCart';
+// import { Button } from '../../UI';
+// import ShoppingCartIcon from '../../Icons/ShoppingCart';
 import { showAdditionalInfo, giveUrl } from '../../../utils/dataConverter';
 
 import styles from './Product.module.scss';
@@ -104,17 +104,16 @@ class Product extends Component {
                         briefInfo={briefInfo}
                         showDiscount={show_discount}
                         discountPrice={this.props.product['Акционная цена']}
-                        windowWidth={windowWidth}
                         addToCart={this.onAddToCart}
                     />
-                    {windowWidth > 1024 &&
+                    {/* {windowWidth > 1024 &&
                         <Button
                             onClick={this.onAddToCart}
                             clsName={styles.ShoppingCart}
                         >
                             <ShoppingCartIcon style={{ fontSize: '40px' }} />
                         </Button>
-                    }
+                    } */}
                 </div>
             </li>
         );

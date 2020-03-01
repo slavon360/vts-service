@@ -62,7 +62,7 @@
     "react-medium-image-zoom": "^4.0.1",
     "react-modal": "^3.8.1",
     "react-redux": "^6.0.0",
-    "react-responsive-carousel": "^3.1.46",
+    "react-responsive-carousel": "^3.1.51",
     "react-router-config": "^4.4.0-beta.6",
     "react-router-dom": "^4.3.1",
     "recompose": "^0.30.0",

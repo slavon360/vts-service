@@ -1,6 +1,7 @@
 import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
+import CheckIcon from '../../../../../Icons/CheckIcon';
 
 import styles from './Properties.module.scss';
 
@@ -18,7 +19,7 @@ const Properties = ({ properties, sizes }) => (
                             <div className={styles.Key}>{item[0]}</div>
                             {item[0] === 'Описание' ?
                                 <div className={styles.Value} dangerouslySetInnerHTML={{ __html: item[1] }}></div> :
-                                <div className={styles.Value}>{ item[1] === true ? 'Да' : item[1]}</div>
+                                <div className={styles.Value}>{ item[1] === true ? <CheckIcon /> : item[1]}</div>
                             }
                         </div>
                         ) : <div key={item[0]} />

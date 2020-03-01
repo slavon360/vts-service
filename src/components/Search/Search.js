@@ -58,12 +58,18 @@ class Search extends Component {
                         onKeyPress={this.keyPressHandling}
                     />
                 </div>
-                {searchedProducts && searchedProducts.length ?
+                {searchedProducts && searchedProducts.length && !searchedProductsLoading ?
                     <SearchResults
                         results={searchedProducts}
                         showSearchedProducts={showSearchedProducts}
                     />
-                    : <NotFound searchedText={searchedText} searchedProducts={searchedProducts} contacts={contacts} />
+                    : !searchedProductsLoading &&
+                    <NotFound
+                        searchedText={searchedText}
+                        searchedProducts={searchedProducts}
+                        showSearchedProducts={showSearchedProducts}
+                        contacts={contacts}
+                    />
                 }
                 {searchedProductsLoading ? <PreloaderBar /> : <div />}
             </div>

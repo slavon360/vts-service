@@ -9,8 +9,10 @@ import 'react-medium-image-zoom/dist/styles.css';
 
 const ImageArea = ({ imgSources }) => {
     const src = imgSources[0];
+    const stringifiedImgs = JSON.stringify(imgSources);
     const endElement = imgSources.length > 1 ?
         <Carousel
+            key={stringifiedImgs}
             showThumbs
             showStatus={false}
             showArrows={false}
@@ -18,12 +20,12 @@ const ImageArea = ({ imgSources }) => {
         >
             {
                 imgSources.map((source, index) => (
-                    <Zoom key={`${source}-${index}`}>
+                    <Zoom key={`${source}-${index}`} wrapStyle={{ display: 'block' }}>
                         <img className={styles.ImgArea} src={source} />
                     </Zoom>
                 ))
             }
-        </Carousel> : <Zoom><img className={styles.ImgArea} src={src} /></Zoom>
+        </Carousel> : <Zoom wrapStyle={{ display: 'block' }}><img className={styles.ImgArea} src={src} /></Zoom>
 
     return endElement;
 };

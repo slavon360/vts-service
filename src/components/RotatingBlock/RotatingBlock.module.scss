@@ -45,18 +45,18 @@
         opacity: .6;
     }
     .InfoWrp {
-        margin-top: 25%;
+        margin-top: 20%;
         position: relative;
         z-index: 2;
         perspective: inherit;
         transform: translateZ(60px) scale(.85);
         
         .ServiceTitle {
-            font-size: 1.4em;
+            font-size: 1.3em;
             font-weight: 600;
         }
         .ServiceInfo {
-            font-size: 1.2em;
+            font-size: 1em;
         }
         .ServiceInfo, .ServiceTitle {
             position: relative;
@@ -67,16 +67,19 @@
 
 .BackSide {
     transform: rotateY(180deg);
+    .InfoWrp {
+        margin-top: 5%;
+    }
 }
 
 @media screen and (max-width: 1500px) {
     .BackSide, .FrontSide {
         .InfoWrp {
             .ServiceTitle {
-                font-size: 1.3em;
+                font-size: 1.2em;
             }
             .ServiceInfo {
-                font-size: 1.05em;
+                font-size: 0.95em;
             }
         }
     }

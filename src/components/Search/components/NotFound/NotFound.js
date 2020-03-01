@@ -3,10 +3,13 @@ import cx from 'classnames';
 
 import styles from './NotFound.module.scss';
 
-const NotFound = ({ contacts, searchedProducts, searchedText }) => {
+const NotFound = ({ contacts, searchedProducts, searchedText, showSearchedProducts }) => {
     const showNotification = searchedProducts && !searchedProducts.length && searchedText.length;
     return (
-        <div className={cx(styles.NotFoundWrp, 'NotFoundWrp', { [styles.Shown]: showNotification, [styles.Hidden]: !showNotification })}>
+        <div className={cx(styles.NotFoundWrp, 'NotFoundWrp', {
+            [styles.Shown]: showNotification,
+            [styles.Hidden]: !showNotification || !showSearchedProducts
+        })}>
             { showNotification ?
                 <Fragment>
                     <div className={styles.NoResults}>Поиск не дал результатов. Свяжитесь с нами для уточнения информации:</div>

@@ -25,7 +25,7 @@ const ProductContent = ({
                     >
                         Купить в 1 клик
                     </Button>
-                    {!showDiscount && windowWidth <= 1024 &&
+                    {!showDiscount &&
                         <Button
                             onClick={addToCart}
                             clsName={styles.AddToCart}
@@ -46,7 +46,7 @@ const ProductContent = ({
                     </div>
                 }
                 <div className={styles.Price}>
-                    {showDiscount && windowWidth <= 1024 &&
+                    {showDiscount &&
                         <Button
                             onClick={addToCart}
                             clsName={styles.AddToCart}
@@ -68,7 +68,7 @@ const ProductContent = ({
                     <div
                         key={info[0]}
                         className={styles.Stats}>
-                            <div className={styles.Key}>{info[0]}</div>
+                            <div className={styles.Key}>{info[0]}</div>&nbsp;
                             <div className={styles.Value}>{info[1]}</div>
                     </div>
                 ))}

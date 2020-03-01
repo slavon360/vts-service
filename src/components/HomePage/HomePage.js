@@ -4,14 +4,11 @@ import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import Products from '../Products';
 import { Button } from '../UI';
-import HomeBanners from '../HomeBanners/HomeBanners';
+// import HomeBanners from '../HomeBanners/HomeBanners';
 import QuickOrderForm from '../Order/QuickOrderForm';
 // import GeneralBanner from '../GeneralBanner/GeneralBanner';
-import RotatingBlock from '../RotatingBlock';
 import { modalGeneralStyles } from '../../constants/data';
 
-import boilerRepairImg from '../../assets/images/other/boiler1.b87a7cb2.jpg';
-import detailsImg from '../../assets/images/other/details1.5a1fd390.jpg';
 
 import styles from './HomePage.module.scss';
 
@@ -141,33 +138,6 @@ class HomePage extends Component{
         } = this.props;
         return(
             <div className={styles.HomePage}>
-                <div className={styles.BlocksAndBanner}>
-                    {windowWidth >= 1366 ?
-                        <Fragment>
-                            <RotatingBlock
-                                outerClassName={styles.RotatingBlock}
-                                headTitle={'Ремонт'}
-                                preface={'Ремонт котлов, насосов, газовых колонок и водонагревателей'}
-                                description={`Качественный ремонт газовых котлов и водонагревателей. Наши специалисты выполняют диагностику
-                                и ремонт котлов, газовых колонок, насосов и водонегравателей ведущих европейских производителей.`}
-                                imgSrc={boilerRepairImg}
-                            />
-                            <div className={styles.BannersWrp}>
-                                <HomeBanners homeBanners={homeBanners} />
-                            </div>
-                            <RotatingBlock
-                                outerClassName={styles.RotatingBlock}
-                                headTitle={'Продажа запчастей и комплектующих'}
-                                preface={'Огромный выбор запчастей и комплектующих'}
-                                description={`У нас Вы можете заказать все необходимые детали и запчасти ведущих европейских
-                                производителей для интересующей Вас модели.
-                                Звоните, и мы ответим на все интересующие Вас вопросы.`}
-                                imgSrc={detailsImg}
-                            />
-                        </Fragment> :
-                        <HomeBanners homeBanners={homeBanners} />                
-                    }
-                </div>
                 {/* <GeneralBanner banners={homeBanners} /> */}
                 {catalog && catalog.length ?
                     <CategoryMenu
@@ -182,6 +152,7 @@ class HomePage extends Component{
                         switchSubcategory={switchSubcategory}
                         revertCurrentPage={revertCurrentPage}
                         setRefSubcategories={this.setRefSubcategories}
+                        windowWidth={windowWidth}
                 /> : <div />
                 }
                 <Products
