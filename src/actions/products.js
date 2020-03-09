@@ -83,17 +83,20 @@ export const revertCurrentPage = () => ({
     type: PRODUCTS_TYPES.revertCurrentPage
 })
 
-export const makeProductsRequest = () => async (dispatch, getState) => {
+export const makeProductsRequest = (selectedPage) => async (dispatch, getState) => {
     const { currentPage, nextPage, totalPages } = getState().products;
     const { currencyRate } = getState().outerAPIdata;
     const { selectedSubcategoryId, selectedCategoryId } = getState().menus;
     dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: true });
-    const page = nextPage ? currentPage + 1 : currentPage;
+    let page = nextPage ? currentPage + 1 : currentPage;
     let json;
+    if (selectedPage) {
+        page = selectedPage;
+    }
     if (selectedSubcategoryId) {
-        if (nextPage) json = await getFromAxios('/list-products', { subcategid: selectedSubcategoryId, page });
+        if (nextPage || selectedPage) json = await getFromAxios('/list-products', { subcategid: selectedSubcategoryId, page });
     } else {
-        if (nextPage) json = await getFromAxios('/list-products', { categid: selectedCategoryId, page });
+        if (nextPage || selectedPage) json = await getFromAxios('/list-products', { categid: selectedCategoryId, page });
     }
     const products = _get(json, 'data.results', []);
     const updProducts = updateProductPrices(products, currencyRate);
@@ -103,10 +106,17 @@ export const makeProductsRequest = () => async (dispatch, getState) => {
     const totalPgs = _get(json, 'data.totalPages', null);
     const perPage = last - first + 1;
     dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages: totalPgs });
-    dispatch({ type: PRODUCTS_TYPES.makeProductsRequest, products: updProducts, currentPage: page, next, perPage });
-    if (currentPage === totalPages || !nextPage || !updProducts.length) {
+    dispatch({
+        type: PRODUCTS_TYPES.makeProductsRequest,
+        products: updProducts,
+        currentPage: page,
+        next,
+        perPage,
+        enabledPaginator: selectedPage
+    });
+    // if (currentPage === totalPages || !nextPage || !updProducts.length || selectedPage) {
         dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
-    }
+    // }
 }
 
 export const switchProductsLoading = (productsLoading) => ({

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import cx from 'classnames';
 import Controls from '../../../UI/Controls';
 import Button from '../../../UI/Button';
-import { imgPlaceholder } from '../../../../constants/paths';
+import imgPlaceholder from '../../../../assets/images/other/img-placeholder.jpg';
 import { names } from '../../../../constants/data';
 import { giveUrl } from '../../../../utils/dataConverter';
 
@@ -50,7 +50,8 @@ class Product extends Component {
         return newUrl;
     }
     setImgSource = () => {
-        const { secure_url = imgPlaceholder } = this.props.product.image[0];
+        const [ mainImg ] = this.props.product.image;
+        const { secure_url = imgPlaceholder } = mainImg || { };
         const index = secure_url.indexOf(searched_url_word);
 
         this.setState({

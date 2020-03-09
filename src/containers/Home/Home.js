@@ -38,6 +38,8 @@ const mapStateToProps = (state) => {
         productsList: products.get('productsList'),
         productsLoading: products.get('productsLoading'),
         perPage: products.get('perPage'),
+        totalPages: products.get('totalPages'),
+        currentPage: products.get('currentPage'),
         currencyRate,
         homeBanners,
         modalIsOpen,

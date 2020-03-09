@@ -1,8 +1,10 @@
 import React, { Component, Fragment } from 'react';
+import { trackWindowScroll } from 'react-lazy-load-image-component';
 import CategoryMenu from '../CategoryMenu';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import Products from '../Products';
+import Paginator from '../Paginator';
 import { Button } from '../UI';
 // import HomeBanners from '../HomeBanners/HomeBanners';
 import QuickOrderForm from '../Order/QuickOrderForm';
@@ -11,6 +13,8 @@ import { modalGeneralStyles } from '../../constants/data';
 
 
 import styles from './HomePage.module.scss';
+
+const LazyProducts = trackWindowScroll(Products);
 
 class HomePage extends Component{
     state = {
@@ -102,12 +106,66 @@ class HomePage extends Component{
             }
         }
     }
-    onMakeProductsRequest = async () => {
-        await this.props.makeProductsRequest();
+    onMakeProductsRequest = async (page) => {
+        await this.props.makeProductsRequest(page);
         const subcategChanged = this.props.selectedSubcategoryId;
         window.setTimeout(() => this.scrollToProducts(subcategChanged), 500);
         this.setState({ alreadyScrolled: true });
     }
+    onPageChange = ({ selected }) => {
+        this.onMakeProductsRequest(selected + 1);
+        // this.props.makeProductsRequest(selected + 1);
+    }
+    renderPaginator = () => {
+        const {
+            totalPages,
+            currentPage,
+            perPage,
+            productsLoading,
+            productsList,
+            makeProductsRequest,
+            addToCart,
+            setProductsQty,
+            setModalState,
+            modalIsOpen,
+            preorderModal,
+            switchProductsLoading,
+            setQuickOrderProduct,
+            windowWidth
+        } = this.props;
+        if (productsList && productsList.length > 0) {
+            const adjustedCurrentPage = currentPage - 1;
+            return <Paginator
+                        pageCount={totalPages}
+                        pageRangeDisplayed={3}
+                        marginPagesDisplayed={3}
+                        initialPage={adjustedCurrentPage}
+                        disableInitialCallback={true}
+                        onPageChange={this.onPageChange}
+                        paginatorClassName={styles.PaginatorWrp}
+                        disabledClassName={styles.DisabledPage}
+                        activeLinkClassName={styles.ActivePage}
+                    >
+                        <Products
+                            perPage={perPage}
+                            productsLoading={productsLoading}
+                            products={productsList}
+                            makeProductsRequest={makeProductsRequest}
+                            addToCart={addToCart}
+                            setProductsQty={setProductsQty}
+                            setModalState={setModalState}
+                            modalIsOpen={modalIsOpen}
+                            preorderModal={preorderModal}
+                            switchProductsLoading={switchProductsLoading}
+                            setQuickOrderProduct={setQuickOrderProduct}
+                            windowWidth={windowWidth}
+                            setRef={this.setRefProducts}
+                        />
+                    </Paginator>
+        }
+        return null;
+    }
+
     render() {
         const {
             catalog,
@@ -117,7 +175,7 @@ class HomePage extends Component{
             productsLoading,
             makeProductsRequest,
             perPage,
-            homeBanners,
+            // homeBanners,
             addToCart,
             setProductsQty,
             filters,
@@ -136,7 +194,7 @@ class HomePage extends Component{
             setQuickOrderProduct,
             windowWidth
         } = this.props;
-        return(
+        return (
             <div className={styles.HomePage}>
                 {/* <GeneralBanner banners={homeBanners} /> */}
                 {catalog && catalog.length ?
@@ -155,21 +213,24 @@ class HomePage extends Component{
                         windowWidth={windowWidth}
                 /> : <div />
                 }
-                <Products
-                    perPage={perPage}
-                    productsLoading={productsLoading}
-                    products={productsList}
-                    makeProductsRequest={makeProductsRequest}
-                    addToCart={addToCart}
-                    setProductsQty={setProductsQty}
-                    setModalState={setModalState}
-                    modalIsOpen={modalIsOpen}
-                    preorderModal={preorderModal}
-                    switchProductsLoading={switchProductsLoading}
-                    setQuickOrderProduct={setQuickOrderProduct}
-                    windowWidth={windowWidth}
-                    setRef={this.setRefProducts}
-                />
+                {windowWidth < 1024 ? 
+                    <LazyProducts
+                        perPage={perPage}
+                        productsLoading={productsLoading}
+                        products={productsList}
+                        makeProductsRequest={makeProductsRequest}
+                        addToCart={addToCart}
+                        setProductsQty={setProductsQty}
+                        setModalState={setModalState}
+                        modalIsOpen={modalIsOpen}
+                        preorderModal={preorderModal}
+                        switchProductsLoading={switchProductsLoading}
+                        setQuickOrderProduct={setQuickOrderProduct}
+                        windowWidth={windowWidth}
+                        setRef={this.setRefProducts}
+                    /> :
+                    this.renderPaginator()
+                }
                 {!modalWithActions ?
                     <Modal
                         isOpen={modalIsOpen}

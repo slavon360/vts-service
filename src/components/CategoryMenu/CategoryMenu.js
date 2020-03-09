@@ -6,7 +6,7 @@ import PropTypes from 'prop-types';
 import Categories from './components/Categories';
 import Subcategories from './components/Subcategories';
 import RotatingBlock from '../RotatingBlock';
-import Filters from '../Filters';
+// import Filters from '../Filters';
 import boilerRepairImg from '../../assets/images/other/boiler1.b87a7cb2.jpg';
 import detailsImg from '../../assets/images/other/details1.5a1fd390.jpg';
 import installingImg from '../../assets/images/other/installing.54615328.jpg';
@@ -24,10 +24,10 @@ const CategoryMenu = ({
     switchCheckedCategory,
     activeIndex,
     makeProductsRequest,
-    filters,
-    setActiveFilter,
-    deleteActiveFilter,
-    sendActiveFilter,
+    // filters,
+    // setActiveFilter,
+    // deleteActiveFilter,
+    // sendActiveFilter,
     switchSubcategory,
     revertCurrentPage,
     setRefSubcategories,

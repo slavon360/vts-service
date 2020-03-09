@@ -4,6 +4,7 @@ import PropTypes from 'prop-types';
 import CurrencyFormat from 'react-currency-format';
 import Button from '../../../UI/Button';
 import Controls from '../Controls';
+import imgPlaceholder from '../../../../assets/images/other/img-placeholder.jpg';
 import { names } from '../../../../constants/data';
 import { giveUrl } from '../../../../utils/dataConverter';
 
@@ -54,7 +55,7 @@ class Product extends Component {
         return newUrl;
     }
     setImgSource = () => {
-        const { img } = this.props;
+        const { img = imgPlaceholder } = this.props;
         const index = img.indexOf(searched_url_word);
 
         this.setState({

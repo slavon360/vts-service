@@ -10,7 +10,7 @@ const Properties = ({ properties, sizes }) => (
             <div className={styles.Head}>Характеристики</div>
             <div className={styles.PropertiesContent}>
                 {properties.map(item => {
-                    if (sizes[item[0]] === item[1]) return <div key={item[0]} />;
+                    if (sizes[item[0]] === item[1]) return null;
                     return item[1] ? (
                         <div
                             key={item[0]}
@@ -22,7 +22,7 @@ const Properties = ({ properties, sizes }) => (
                                 <div className={styles.Value}>{ item[1] === true ? <CheckIcon /> : item[1]}</div>
                             }
                         </div>
-                        ) : <div key={item[0]} />
+                        ) : null
                     }
                 )}
             </div>

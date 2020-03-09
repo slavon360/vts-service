@@ -1,8 +1,7 @@
 import React, { Fragment } from 'react';
-import { trackWindowScroll } from 'react-lazy-load-image-component';
 import Product from './Product';
 import Preloader from '../Preloader';
-import Backdrop from '../UI/Backdrop';
+// import Backdrop from '../UI/Backdrop';
 
 import styles from './Products.module.scss'
 
@@ -71,4 +70,4 @@ const Products = ({
         </ul>
     );
 
-export default trackWindowScroll(Products);
+export default Products;

@@ -18,7 +18,8 @@ const PRODUCTS_TYPES = createTypes('products', [
     'switchProductsLoading',
     'switchNextPage',
     'changeCurrentPage',
-    'clearProductsList'
+    'clearProductsList',
+    'setTotalPages'
 ]);
 
 export const setActiveFilter = (filterName, filterValue) => ({
@@ -47,7 +48,9 @@ export const getCatalogMenu = () => async (dispatch, getState) => {
             const updProducts = updateProductPrices(products, currencyRate);
             const last = _get(jsonProducts, 'data.last', 0);
             const first = _get(jsonProducts, 'data.first', 0);
+            const totalPages = _get(jsonProducts, 'data.totalPages', null);
             const perPage = last - first + 1;
+            dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages });
             dispatch({ type: PRODUCTS_TYPES.listProducts, products: updProducts, perPage });
         }
         dispatch({ type: MENU_TYPES.getCatalogMenu, catalog, selectedCategoryId: categid });

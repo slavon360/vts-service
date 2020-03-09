@@ -8,7 +8,7 @@ import ImageArea from './components/ImageArea';
 import Details from './components/Details';
 import Preloader from '../Preloader';
 import { modalGeneralStyles, names } from '../../constants/data';
-import { imgPlaceholder } from '../../constants/paths';
+import { imgPlaceholder } from '../../assets/images/other/img-placeholder.jpg';
 import Contacts from './components/Contacts';
 import QuickOrderForm from '../Order/QuickOrderForm';
 

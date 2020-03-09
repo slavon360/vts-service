@@ -2,13 +2,14 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import Zoom from 'react-medium-image-zoom'
 
+import imgPlaceholder from '../../../../assets/images/other/img-placeholder.jpg';
 import styles from './ImageArea.module.scss';
 
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import 'react-medium-image-zoom/dist/styles.css';
 
 const ImageArea = ({ imgSources }) => {
-    const src = imgSources[0];
+    const [ mainImg ] = imgSources;
     const stringifiedImgs = JSON.stringify(imgSources);
     const endElement = imgSources.length > 1 ?
         <Carousel
@@ -25,7 +26,7 @@ const ImageArea = ({ imgSources }) => {
                     </Zoom>
                 ))
             }
-        </Carousel> : <Zoom wrapStyle={{ display: 'block' }}><img className={styles.ImgArea} src={src} /></Zoom>
+        </Carousel> : <Zoom wrapStyle={{ display: 'block' }}><img className={styles.ImgArea} src={mainImg || imgPlaceholder} /></Zoom>
 
     return endElement;
 };

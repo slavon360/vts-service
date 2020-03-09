@@ -16,7 +16,10 @@
         .KeyValueWrp {
             display: flex;
             justify-content: space-between;
-            padding: 5px 0;
+            padding: 5px;
+            &:nth-of-type(even) {
+                background-color: #eaeaea;
+            }
         }
 
         .Description {

@@ -3,7 +3,7 @@ import CurrencyFormat from 'react-currency-format';
 import { Link } from 'react-router-dom';
 import { Product, ProductHeader } from './components';
 import { routes as routNames } from '../../routes';
-import { imgPlaceholder } from '../../constants/paths';
+import { imgPlaceholder } from '../../assets/images/other/img-placeholder.jpg';
 import AngleDown from '../Icons/AngleDown';
 
 import styles from './ShoppingCart.module.scss';
@@ -24,7 +24,8 @@ const ShoppingCart = ({ products, productsQty, totalSum, removeFromCart, setQty,
                     <ProductHeader />
                     {products && products.length ?
                         products.map(product => {
-                            const {  secure_url = imgPlaceholder } = product.image[0];
+                            const [ mainImg ] = product.image;
+                            const {  secure_url = imgPlaceholder } = mainImg || { };
                             return (
                                 <Product
                                     key={product._id}

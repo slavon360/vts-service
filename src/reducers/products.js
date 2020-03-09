@@ -42,8 +42,9 @@ function switchProductsLoading(state, { productsLoading }) {
     return state.setIn(['productsLoading'], productsLoading);
 }
 
-function makeProductsRequest(state, { products, currentPage, next, perPage }) {
-    const newState = state.update('productsList', productsList => productsList.concat(fromJS(products)));
+function makeProductsRequest(state, { products, currentPage, next, perPage, enabledPaginator }) {
+    const newState = !enabledPaginator ? state.update('productsList', productsList => productsList.concat(fromJS(products)))
+    : state.set('productsList', List(products));
     return newState.merge({ 'currentPage': currentPage, 'nextPage': next, 'perPage': perPage });
 }
 

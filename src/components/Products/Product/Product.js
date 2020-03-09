@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { routes as routeNames } from '../../../routes';
-import { imgPlaceholder } from '../../../constants/paths';
+import imgPlaceholder from '../../../assets/images/other/img-placeholder.jpg';
 import { names } from '../../../constants/data';
 import ProductContent from './components/ProductContent';
 import ProductImage from './components/ProductImage';
@@ -29,6 +29,7 @@ class Product extends Component {
             this.setState({ show_discount: true });
         }
         this.setImgSource();
+        // console.log(this.props.scrollPosition);
     }
     shouldComponentUpdate(nextProps) {
         const { perPage, productsLength, productIndex } = this.props;
@@ -51,7 +52,8 @@ class Product extends Component {
         return newUrl;
     }
     setImgSource = () => {
-        const { secure_url = imgPlaceholder } = this.props.product.image[0];
+        const [ mainImg ] = this.props.product.image;
+        const { secure_url = imgPlaceholder } = mainImg || { };
         const index = secure_url.indexOf(searched_url_word);
 
         this.setState({
@@ -90,6 +92,7 @@ class Product extends Component {
                     <Link to={`${routeNames.PRODUCT_DETAILS}/${slug}`}>
                         <div className={styles.TitleArea}>{title}</div>
                         <ProductImage
+                            windowWidth={windowWidth}
                             productsLength={productsLength}
                             productIndex={productIndex}
                             secure_url={imgSource}
