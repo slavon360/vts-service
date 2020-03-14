@@ -10,6 +10,9 @@
         margin-bottom: 30px;
         display: inline-block;
     }
+    .Address {
+        margin: 0 20px;
+    }
     .Mail {
         padding-left: 15px;
     }
@@ -37,6 +40,8 @@ h3 {
             }
         }
         .Mail {
+            display: block;
+            margin-bottom: 30px;
             svg {
                 display: none;
             }

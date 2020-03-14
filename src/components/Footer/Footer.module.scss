@@ -1,0 +1,23 @@
+.FooterWrp {
+    text-align: center;
+    padding: 25px 0 40px;
+    .Contact {
+        display: block;
+        color: #555;
+        font-size: 18px;
+        margin: 0 0 5px;
+    }
+    .Rights {
+        margin-top: 20px;
+        opacity: 0.8;
+    }
+    .SocialMedia {
+        margin-top: 6px;
+        svg {
+            transform: translate(-5px, -2px);
+            vertical-align: middle;
+            color: #3c3cec;
+            font-size: 23px;
+        }
+    }
+}

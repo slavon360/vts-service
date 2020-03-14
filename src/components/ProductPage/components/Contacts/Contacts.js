@@ -1,4 +1,5 @@
 import React from 'react';
+import cx from 'classnames';
 import styles from './Contacts.module.scss';
 import ContactPhone from '../../../ContactPhone';
 import MailIcon from '../../../Icons/MailIcon';
@@ -21,6 +22,13 @@ const Contacts = ({ contacts }) => (
                     })}
                 <a className={styles.Mail} href="mailto:vts.07@ukr.net">
                     <MailIcon color="#6e6ec7" style={{ transform: 'scale(1.7) translate(-10px, -2px)'}} /> vts.07@ukr.net
+                </a>
+                <a
+                    className={cx(styles.ContactItem, styles.Address)}
+                    target="_blank"
+                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
+                >
+                ул. Краснопольская 9, Днипро.
                 </a>
             </div>
         </div>

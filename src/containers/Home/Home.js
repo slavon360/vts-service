@@ -26,7 +26,8 @@ const mapStateToProps = (state) => {
         banners: { homeBanners },
         site: { modalIsOpen, modalTemplate, modalWithActions, windowWidth, mobileChrome },
         form,
-        cart
+        cart,
+        contacts: { contacts }
     } = state;
 
     return {
@@ -49,7 +50,7 @@ const mapStateToProps = (state) => {
         mobileChrome,
         form,
         productsInCart: cart.get('products'),
-         
+        contacts
     }
 };
 

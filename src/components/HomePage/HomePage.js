@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import Products from '../Products';
 import Paginator from '../Paginator';
 import { Button } from '../UI';
+import Footer from '../Footer';
 // import HomeBanners from '../HomeBanners/HomeBanners';
 import QuickOrderForm from '../Order/QuickOrderForm';
 // import GeneralBanner from '../GeneralBanner/GeneralBanner';
@@ -192,7 +193,8 @@ class HomePage extends Component{
             revertCurrentPage,
             switchProductsLoading,
             setQuickOrderProduct,
-            windowWidth
+            windowWidth,
+            contacts
         } = this.props;
         return (
             <div className={styles.HomePage}>
@@ -271,6 +273,9 @@ class HomePage extends Component{
                             </Fragment>
                         }
                     </Modal>
+                }
+                {contacts && contacts.length &&
+                    <Footer phones={contacts}/>
                 }
             </div>
         )

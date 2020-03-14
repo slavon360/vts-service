@@ -16,3 +16,4 @@ export ContactPhone from './ContactPhone';
 export CountDownDate from './CountDownDate';
 export GeneralBanner from './GeneralBanner';
 export RotatingBlock from './RotatingBlock';
+export Footer from './Footer';

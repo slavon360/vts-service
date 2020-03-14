@@ -51,6 +51,8 @@
         }
         .CategList {
             top: 74px;
+            max-height: 48vh;
+            overflow: auto;
         }
     }
 }
