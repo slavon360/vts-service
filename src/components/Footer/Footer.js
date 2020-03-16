@@ -2,6 +2,7 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './Footer.module.scss';
 import FacebookIcon from '../Icons/FacebookIcon';
+import { address } from '../../constants/data';
 
 const Footer = ({ phones }) => {
     return (
@@ -28,7 +29,7 @@ const Footer = ({ phones }) => {
                 target="_blank"
                 href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
             >
-            ул. Краснопольская 9, Днипро.
+            { address }
             </a>
             <div className={cx(styles.Contact, styles.Rights)}>VTS Service. Все права защищены.</div>
         </div>

@@ -23,6 +23,7 @@ const getClientEnvironment = require('./env');
 const ModuleNotFoundPlugin = require('react-dev-utils/ModuleNotFoundPlugin');
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin-alt');
 const typescriptFormatter = require('react-dev-utils/typescriptFormatter');
+const HtmlCriticalWebpackPlugin = require("html-critical-webpack-plugin");
 
 
 // Source maps are resource heavy and can cause out of memory issue for large source files.
@@ -607,6 +608,19 @@ module.exports = function(webpackEnv) {
           watch: paths.appSrc,
           silent: true,
           formatter: typescriptFormatter,
+        }),
+        isEnvProduction && new HtmlCriticalWebpackPlugin({
+          base: paths.appBuild,
+          src: 'index.html',
+          dest: 'index.html',
+          inline: true,
+          minify: true,
+          extract: true,
+          width: 1920,
+          height: 768,
+          penthouse: {
+            blockJSRequests: false,
+          }
         }),
     ].filter(Boolean),
     // Some libraries import Node modules but don't use them in the browser.

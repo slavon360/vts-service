@@ -3,6 +3,7 @@ import cx from 'classnames';
 import styles from './Contacts.module.scss';
 import ContactPhone from '../../../ContactPhone';
 import MailIcon from '../../../Icons/MailIcon';
+import { address } from '../../../../constants/data';
 
 const Contacts = ({ contacts }) => (
         <div className={styles.ContactsWrp}>
@@ -28,7 +29,7 @@ const Contacts = ({ contacts }) => (
                     target="_blank"
                     href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
                 >
-                ул. Краснопольская 9, Днипро.
+                { address }
                 </a>
             </div>
         </div>
