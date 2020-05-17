@@ -42,7 +42,7 @@
     "jsonp": "^0.2.1",
     "lodash": "^4.17.11",
     "mini-css-extract-plugin": "0.4.3",
-    "node-sass": "^4.13.1",
+    "node-sass": "^4.14.1",
     "optimize-css-assets-webpack-plugin": "5.0.1",
     "pnp-webpack-plugin": "1.1.0",
     "postcss-flexbugs-fixes": "4.1.0",
@@ -79,12 +79,12 @@
     "terser-webpack-plugin": "1.1.0",
     "url-loader": "1.1.1",
     "webpack": "^4.41.5",
-    "webpack-dev-server": "3.1.14",
+    "webpack-dev-server": "^3.11.0",
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
   "scripts": {
-    "start": "PORT=5000 node scripts/start.js",
+    "start": "SET PORT=5000&& node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js"
   },

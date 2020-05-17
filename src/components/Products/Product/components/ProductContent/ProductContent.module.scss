@@ -21,12 +21,12 @@
         }
         .DiscountPrice {
             text-align: right;
-            font-size: 18px;
+            font-size: 17px;
         }
         .Price {
             text-align: right;
             clear: both;
-            font-size: 18px;
+            font-size: 17px;
             &::before {
                 max-width: 110px;
             }
@@ -58,13 +58,15 @@
     }
     .Key {
         text-align: left;
+        font-weight: 700;
     }
     .BriefInfo {
         color: #777;
+        font-size: 13px;
     }
     .ByOneClick {
         color: #6e6ec7;
-        font-size: 18px;
+        font-size: 17px;
         display: block;
 
         &:hover {
@@ -74,7 +76,7 @@
     .AddToCart {
         color: #ff0053;
         display: block;
-        font-size: 19px;
+        font-size: 18px;
         float: left;
     }
 
