@@ -21,8 +21,16 @@ const initialState = {
     modalTemplate: null,
     successfullOrder: false,
     modalWithActions: false,
-    windowWidth: null
+    windowWidth: null,
+    submitReviewModal: false
 }
+
+function setSubmitReviewModal(state, { submitReviewModal }) {
+    return {
+        ...state,
+        submitReviewModal
+    }
+};
 
 function setWindowWidth(state, { windowWidth }) {
     return {
@@ -74,7 +82,8 @@ export default composeReducer(
         setModalTemplate,
         setOrderState,
         setModalWithActions,
-        setWindowWidth
+        setWindowWidth,
+        setSubmitReviewModal
     },
     initialState
 );

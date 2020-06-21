@@ -176,7 +176,8 @@ export const makeReview = (sentData) => async (dispatch) => {
         const json = await postFromAxios('/make-review', qs.stringify({ review: sentData }), {
             headers: {'Content-Type': 'application/x-www-form-urlencoded' },
         });
-
+        dispatch({ type: SITE_TYPES.setSubmitReviewModal, submitReviewModal: true });
+        return new Promise(resolve => resolve());
     } catch (error) {
         console.log(error);
     }

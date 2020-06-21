@@ -1,9 +1,16 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
-import { addToCart, setProductsQty, preorderModal, setQuickOrderProduct, removeQuickOrderProduct, removeFromCart } from '../../actions/cart';
+import {
+    addToCart,
+    setProductsQty,
+    preorderModal,
+    setQuickOrderProduct,
+    removeQuickOrderProduct,
+    removeFromCart
+} from '../../actions/cart';
 import { makeQuickOrder, makeReview } from '../../actions/user';
-import { setLoadingState, setModalTemplate, setModalWithActions, setModalState } from '../../actions/site';
+import { setLoadingState, setModalTemplate, setModalWithActions, setModalState, setSubmitReviewModal } from '../../actions/site';
 import { getProduct, resetProduct } from '../../actions/products';
 import { makeReviewsRequest } from '../../actions/reviews';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
@@ -12,7 +19,7 @@ const mapStateToProps = ({
     products,
     user,
     outerAPIdata: { currencyRate },
-    site: { modalTemplate, modalWithActions, modalIsOpen, windowWidth },
+    site: { modalTemplate, modalWithActions, modalIsOpen, windowWidth, submitReviewModal },
     menus,
     contacts: { contacts },
     form,
@@ -31,7 +38,8 @@ const mapStateToProps = ({
          modalIsOpen,
          windowWidth,
          form,
-         reviews
+         reviews,
+         submitReviewModal
     }
 };
 
@@ -51,7 +59,8 @@ const mapDispatchToProps = {
     makeQuickOrder,
     removeFromCart,
     makeReview,
-    makeReviewsRequest
+    makeReviewsRequest,
+    setSubmitReviewModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

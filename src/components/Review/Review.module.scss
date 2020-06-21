@@ -27,6 +27,7 @@
 
 		.Star {
 			cursor: pointer;
+			margin-right: 5px;
 
 			&:hover, &:hover ~ .Star,
 			&.Active, &.Active ~ .Star {
@@ -74,14 +75,14 @@
 	}
 }
 
-.SubmitButton {
+.SubmitButton, .CancelButton {
 	align-items: center;
     background-color: #e95d2a;
     border: 0;
     border-radius: 4px;
     color: #fff;
 	cursor: pointer;
-	display: flex;
+	display: inline-block;
 	font-size: 14px;
     font-weight: 500;
     line-height: 16px;
@@ -95,6 +96,15 @@
 
 	&:hover {
 		background-color: #d5410b;
+	}
+}
+
+.CancelButton {
+	float: right;
+	background-color: #bbb;
+
+	&:hover {
+		background-color: #aaa;
 	}
 }
 
@@ -113,6 +123,10 @@
 		color: rgba(12, 6, 26, 0.8);
 		border-radius: 4px;
 		font-size: 16px;
+	}
+
+	.Error {
+		top: 100%;
 	}
 }
 

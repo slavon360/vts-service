@@ -5,7 +5,8 @@ export const SITE_TYPES = createTypes('site', [
     'setLoadingState',
     'setModalState',
     'setModalTemplate',
-    'setModalWithActions'
+    'setModalWithActions',
+    'setSubmitReviewModal'
 ]);
 
 export const setWindowWidth = (windowWidth) => ({
@@ -32,3 +33,8 @@ export const setModalWithActions = (modalWithActions) => ({
     type: SITE_TYPES.setModalWithActions,
     modalWithActions
 });
+
+export const setSubmitReviewModal = (submitReviewModal) => ({
+    type: SITE_TYPES.setSubmitReviewModal,
+    submitReviewModal
+})

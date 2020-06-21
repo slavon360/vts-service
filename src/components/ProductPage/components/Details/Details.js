@@ -50,6 +50,11 @@ class Details extends Component {
 		this.setState({ show_reviews: false });
 	}
 
+	onMakeReview = async (review_data) => {
+		await this.props.makeReview(review_data);
+		this.hideReviewForm();
+	}
+
 	render () {
 		const { product, addToCart, buyByOneClick, makeReview, reviewsList } = this.props;
 		const { sizes, properties, show_discount, show_reviews } = this.state;
@@ -83,7 +88,7 @@ class Details extends Component {
 						</button>
 					</div>
 					{show_reviews &&
-						<ReviewForm product_id={product._id} makeReview={makeReview} hideReviewForm={this.hideReviewForm} />
+						<ReviewForm product_id={product._id} makeReview={this.onMakeReview} hideReviewForm={this.hideReviewForm} />
 					}
 					<Properties
 						key={product._id}

@@ -156,6 +156,13 @@ class Review extends Component{
 					>
 						Отправить
 					</Button>
+					<Button
+						clsName={styles.CancelButton}
+						type="button"
+						onClick={this.props.hideReviewForm}
+					>
+						Отмена
+					</Button>
 				</form>
 			</div>
 		);
