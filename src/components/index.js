@@ -17,3 +17,5 @@ export CountDownDate from './CountDownDate';
 export GeneralBanner from './GeneralBanner';
 export RotatingBlock from './RotatingBlock';
 export Footer from './Footer';
+export Review from './Review';
+export StarsAndTotalReviews from './StarsAndTotalReviews';

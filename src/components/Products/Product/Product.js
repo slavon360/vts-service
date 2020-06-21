@@ -75,7 +75,9 @@ class Product extends Component {
             product: {
                 title,
                 Цена,
-                slug
+                slug,
+                reviewRates,
+                totalRate
             },
             scrollPosition,
             productsLength,
@@ -108,6 +110,8 @@ class Product extends Component {
                         showDiscount={show_discount}
                         discountPrice={this.props.product['Акционная цена']}
                         addToCart={this.onAddToCart}
+                        totalRate={totalRate}
+                        reviewRates={reviewRates}
                     />
                     {/* {windowWidth > 1024 &&
                         <Button

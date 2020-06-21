@@ -1,0 +1,36 @@
+.KeyValueWrp {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    &:nth-of-type(even) {
+        background-color: #eaeaea;
+    }
+}
+.Description {
+    margin-top: 25px;
+    background-color: transparent !important;
+    .Key {
+        display: none;
+    }
+    * {
+        font-family: Montserrat Alternates,sans-serif !important;
+        font-size: 18px !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Properties {
+        padding: 40px 0 0;
+        .PropertiesContent {
+            padding: 25px 0 0;
+        }
+    }
+    .KeyValueWrp:not(.Description) {
+        div:first-child {
+            font-weight: 700;
+        }
+    }
+    .Description {
+        line-height: 1.6;
+    }
+}

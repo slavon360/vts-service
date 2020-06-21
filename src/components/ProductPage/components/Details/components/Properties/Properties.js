@@ -1,53 +1,81 @@
-import React from 'react';
+import React, { Component } from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
-import CheckIcon from '../../../../../Icons/CheckIcon';
+import { PropertiesTab, ReviewsTab } from './components';
 
 import styles from './Properties.module.scss';
 
-const moveDescriptionToEnd = properties => {
-	let descr_item;
+class Properties extends Component {
+	state = {
+		tabs: {
+			reviews_tab: false,
+			properties_tab: true
+		},
+		upd_properties: null
+	};
+
+	moveDescriptionToEnd = properties => {
+		let descr_item;
+		
+		const upd_properties = properties.reduce((result, current, index) => {
+			if (current[0] !== 'Описание') {
+				result.push(current);
+			} else {
+				descr_item = properties.splice(index, 1);
+			}
+			return result;
+		}, []);
 	
-	const upd_properties = properties.reduce((result, current, index) => {
-		if (current[0] !== 'Описание') {
-			result.push(current);
-		} else {
-			descr_item = properties.splice(index, 1);
-		}
-		return result;
-	}, []);
+		upd_properties.push(...descr_item);
+	
+		return upd_properties;
+	};
 
-	upd_properties.push(...descr_item);
+	componentDidMount() {
+		const upd_properties = this.moveDescriptionToEnd(this.props.properties);
 
-	return upd_properties;
-}
+		this.setState({ upd_properties });
+	};
 
-const Properties = ({ properties, sizes }) => {
-	const upd_properties = moveDescriptionToEnd(properties);
+	setActivePropertiesTab = () => {
+		this.setState({ tabs: { reviews_tab: false, properties_tab: true }});
+	};
 
-	return (
-		<div className={styles.Properties}>
-			<div className={styles.Head}>Характеристики</div>
-			<div className={styles.PropertiesContent}>
-				{upd_properties.map(item => {
-					if (sizes[item[0]] === item[1]) return null;
-					return item[1] ? (
+	setActiveReviewsTab = () => {
+		this.setState({ tabs: { reviews_tab: true, properties_tab: false }});
+	}
+
+	render () {
+		const { sizes, reviews = [] } = this.props;
+		const { tabs: { properties_tab, reviews_tab }, upd_properties } = this.state;
+
+		return (
+			upd_properties && upd_properties.length ?
+				(<div className={styles.Properties}>
+					<div className={styles.Tabs}>
 						<div
-							key={item[0]}
-							className={cx(styles.KeyValueWrp, { [styles.Description]: item[0] === 'Описание' })}
+							className={cx(styles.Tab, { [styles.ActiveTab]: properties_tab })}
+							onClick={this.setActivePropertiesTab}
 						>
-							<div className={styles.Key}>{item[0]}</div>
-							{item[0] === 'Описание' ?
-								<div className={styles.Value} dangerouslySetInnerHTML={{ __html: item[1] }}></div> :
-								<div className={styles.Value}>{ item[1] === true ? <CheckIcon /> : item[1]}</div>
-							}
+							Характеристики
 						</div>
-						) : null
-					}
-				)}
-			</div>
-		</div>
-	);
+						<div
+							className={cx(styles.Tab, { [styles.ActiveTab]: reviews_tab })}
+							onClick={this.setActiveReviewsTab}
+						>
+							Отзывы
+						</div>
+					</div>
+					<div className={styles.PropertiesContent}>
+						{ properties_tab ?
+							<PropertiesTab properties={upd_properties} sizes={sizes} /> :
+							<ReviewsTab reviews={reviews} />
+						}
+					</div>
+				</div>) :
+				null
+		)
+	}
 }
 
 export default Properties;

@@ -1,38 +1,21 @@
 .Properties {
     padding: 40px 0;
 
-    .Head {
-        background-color: #212125;
-        color: #dde3ea;
+    .Tab {
+        color: #6e6ec7;
         padding: 5px 10px;
         display: inline-block;
         text-align: center;
         font-size: 18px;
+        cursor: pointer;
+        &.ActiveTab {
+            color: #dde3ea;
+            background-color: #212125;
+        }
     }
     .PropertiesContent {
         padding: 15px 40px 0 0;
         font-size: 18px;
-
-        .KeyValueWrp {
-            display: flex;
-            justify-content: space-between;
-            padding: 5px;
-            &:nth-of-type(even) {
-                background-color: #eaeaea;
-            }
-        }
-
-        .Description {
-            margin-top: 25px;
-            background-color: transparent !important;
-            .Key {
-                display: none;
-            }
-            * {
-                font-family: Montserrat Alternates,sans-serif !important;
-                font-size: 18px !important;
-            }
-        }
     }
 }
 
@@ -42,13 +25,5 @@
         .PropertiesContent {
             padding: 25px 0 0;
         }
-    }
-    .KeyValueWrp:not(.Description) {
-        div:first-child {
-            font-weight: 700;
-        }
-    }
-    .Description {
-        line-height: 1.6;
     }
 }

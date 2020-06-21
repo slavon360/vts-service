@@ -14,12 +14,30 @@ export const USER_TYPES = createTypes('user', [
     'setUserData',
     'syncUserData',
     'deleteUserData',
-    'createUserData'
+    'createUserData',
+    'sendReview'
 ]);
 
 export const syncUserData = (userData, isChecked) => (dispatch) => {
     dispatch({ type: USER_TYPES.syncUserData, userData, isChecked });
-}
+};
+
+export const sendReview = (review) => async (dispatch) => {
+    try {
+        const json = await postFromAxios('/make-review', qs.stringify(review), {
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
+        });
+        const errorMessage = _get(json, 'data.error', '');
+    
+        if (errorMessage) {
+            console.log(errorMessage);
+        } else {
+            console.log(json);
+        }
+    } catch (error) {
+        console.warn(error);
+    }
+};
 
 export const signInNewUser = (user) => async (dispatch) => {
     const json = await postFromAxios('/client-sign-in', qs.stringify(user), {
@@ -59,7 +77,7 @@ export const login = (user) => async (dispatch) => {
 export const logout = () => (dispatch) => {
     dispatch({ type: USER_TYPES.deleteUserData });
     localStorage.deleteUserInfoStore();
-}
+};
 
 const notFoundTemplate = `<div>
     <h3>Not found</h3>
@@ -81,7 +99,7 @@ const generateSentData = (formData, products, totalSum) => {
     const html_products_string = htmlCodeOrder(products, totalSum);
     const sentData = { form: formData, products: html_products_string };
     return sentData;
-}
+};
 
 export const sendOrderData = (formData, totalSum) => async (dispatch, getState) => {
     const { userData } = getState().user;
@@ -118,7 +136,7 @@ export const sendOrderData = (formData, totalSum) => async (dispatch, getState) 
     } catch (err) {
         console.error(err);
     }
-}
+};
 
 export const makeQuickOrder = () => async (dispatch, getState) => {
     const { form: { quick_order: { values: formData } } } = getState();
@@ -150,5 +168,16 @@ export const makeQuickOrder = () => async (dispatch, getState) => {
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });
     } catch (err) {
         console.error(err);
+    }
+};
+
+export const makeReview = (sentData) => async (dispatch) => {
+    try {
+        const json = await postFromAxios('/make-review', qs.stringify({ review: sentData }), {
+            headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+        });
+
+    } catch (error) {
+        console.log(error);
     }
 }

@@ -100,9 +100,10 @@ class ProductPage extends Component {
         })
     }
     getProductInfo = async () => {
-        const { getProduct } = this.props;
+        const { getProduct, makeReviewsRequest } = this.props;
         const { productSlug } = this.props.match.params;
         const productData = await getProduct(productSlug);
+        await makeReviewsRequest(productData._id);
         this.setImgSource(productData);
         this.props.setLoadingState(false);
     }
@@ -160,7 +161,9 @@ class ProductPage extends Component {
             modalTemplate,
             contacts,
             modalIsOpen,
-            form
+            form,
+            makeReview,
+            reviews: { reviewsList }
         } = this.props;
         
         if (product && contacts && this.state.imgSources) {
@@ -180,10 +183,13 @@ class ProductPage extends Component {
                     </div>
                     <div className={styles.DetailsWrp}>
                         <Details
+                            key={product._id}
                             product={product}
                             addToCart={this.onAddToCart}
                             buyByOneClick={this.buyByOneClick}
                             currentTime={currentTime}
+                            makeReview={makeReview}
+                            reviewsList={reviewsList}
                         />
                     </div>
                     <Contacts contacts={contacts} />

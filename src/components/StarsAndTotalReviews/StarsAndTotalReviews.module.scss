@@ -1,0 +1,29 @@
+.RateWrp {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px 10px;
+
+    .StarsWrp {
+        svg {
+            margin-right: 5px;
+            fill: inherit;
+            path {
+                fill: inherit;
+            }
+        }
+    }
+
+    .ReviewWrp {
+        .ReviewIcon {
+            padding-right: 10px;
+            svg {
+                transform: scale(1.2) translateY(-2px);
+            }
+        }
+    }
+
+    .Date {
+        color: #bbb;
+        font-size: 16px;
+    }
+}

@@ -2,9 +2,10 @@ import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { ProductPage } from '../../components';
 import { addToCart, setProductsQty, preorderModal, setQuickOrderProduct, removeQuickOrderProduct, removeFromCart } from '../../actions/cart';
-import { makeQuickOrder } from '../../actions/user';
+import { makeQuickOrder, makeReview } from '../../actions/user';
 import { setLoadingState, setModalTemplate, setModalWithActions, setModalState } from '../../actions/site';
 import { getProduct, resetProduct } from '../../actions/products';
+import { makeReviewsRequest } from '../../actions/reviews';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 
 const mapStateToProps = ({
@@ -15,7 +16,8 @@ const mapStateToProps = ({
     menus,
     contacts: { contacts },
     form,
-    cart
+    cart,
+    reviews
 }) => {
     return {
          product: products.get('product'),
@@ -28,7 +30,8 @@ const mapStateToProps = ({
          contacts,
          modalIsOpen,
          windowWidth,
-         form
+         form,
+         reviews
     }
 };
 
@@ -46,7 +49,9 @@ const mapDispatchToProps = {
     setQuickOrderProduct,
     removeQuickOrderProduct,
     makeQuickOrder,
-    removeFromCart
+    removeFromCart,
+    makeReview,
+    makeReviewsRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

@@ -1,0 +1,32 @@
+.ReviewsWrp {
+	padding: 15px 40px 0 0;
+    font-size: 18px;
+}
+.ReviewItem {
+	padding: 15px 0;
+	&:not(:first-child) {
+		border-top: 1px solid #f2f3f5;
+	}
+	.Author {
+		width: 100%;
+		line-height: 1.3;
+		color: #0c061a;
+		font-weight: 500;
+		margin-bottom: 15px;
+	}
+	.ReviewStarsDate, .Comment {
+		margin-bottom: 15px;
+	}
+	.Pros, .Cons {
+		.Key {
+			color: #666;
+			font-size: 16px;
+		}
+	}
+	.Pros .Key {
+		padding-right: 15px;
+	}
+	.Cons .Key {
+		padding-right: 20px;
+	}
+}

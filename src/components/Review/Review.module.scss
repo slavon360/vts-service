@@ -1,0 +1,128 @@
+.Review {
+	border-bottom: 1px solid #dde3ea;
+	padding-bottom: 35px;
+}
+
+.Form {
+    width: 100%;
+}
+
+.StarsWrp {
+	width: 100%;
+	display: flex;
+	align-items: center;
+	margin-bottom: 25px;
+
+	p {
+		font-size: 24px;
+		line-height: 1;
+		color: #bebebe;
+		margin: 0 15px 0 0;
+		width: auto;
+	}
+
+	.RatingStars {
+		display: flex;
+		list-style: none;
+
+		.Star {
+			cursor: pointer;
+
+			&:hover, &:hover ~ .Star,
+			&.Active, &.Active ~ .Star {
+				color: #e95d2a;
+				fill: #e95d2a;
+			}
+			fill: #ddd;
+			svg {
+				color: inherit;
+				font-size: 24px;
+				fill: inherit;
+				path {
+					fill: inherit;
+				}
+			}
+		}
+	}
+}
+
+.NameEmailWrp {
+	display: flex;
+	justify-content: space-between;
+	
+	> div {
+		width: 48%;
+	}
+}
+
+.InputWrp {
+	display: flex;
+	width: 100%;
+	margin-bottom: 25px;
+	position: relative;
+
+	.InputContent {
+		font-weight: 400;
+		font-size: 14px;
+		background: #f2f3f5;
+		border: 1px solid #f2f3f5;
+		color: rgba(12,6,26,.8);
+		border-radius: 4px;
+		width: 100%;
+		outline: 0;
+		padding: 10px 5px;
+	}
+}
+
+.SubmitButton {
+	align-items: center;
+    background-color: #e95d2a;
+    border: 0;
+    border-radius: 4px;
+    color: #fff;
+	cursor: pointer;
+	display: flex;
+	font-size: 14px;
+    font-weight: 500;
+    line-height: 16px;
+    min-height: 46px;
+    padding: 5px 15px;
+    text-align: center;
+    text-transform: uppercase;
+	text-decoration: none;
+	transition: .2s;
+	margin-top: 25px;
+
+	&:hover {
+		background-color: #d5410b;
+	}
+}
+
+.TeaxtareaWrp {
+	max-width: 100%;
+	position: relative;
+
+	textarea {
+		max-width: 100%;
+		min-width: 100%;
+		min-height: 150px;
+		box-sizing: border-box;
+		background-color: #f2f3f5;
+		outline: none;
+		border: 1px solid #f2f3f5;
+		color: rgba(12, 6, 26, 0.8);
+		border-radius: 4px;
+		font-size: 16px;
+	}
+}
+
+.Error {
+	position: absolute;
+    top: 105%;
+    font-size: 13px;
+    color: #d44;
+}
+
+.Error + * {
+	border-color: #d44 !important;
+}
