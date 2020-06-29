@@ -177,8 +177,9 @@ export const makeReview = (sentData) => async (dispatch) => {
             headers: {'Content-Type': 'application/x-www-form-urlencoded' },
         });
         dispatch({ type: SITE_TYPES.setSubmitReviewModal, submitReviewModal: true });
-        return new Promise(resolve => resolve());
+        // return new Promise(resolve => resolve());
     } catch (error) {
-        console.log(error);
+        dispatch({ type: SITE_TYPES.setServerErrorMessage, serverErrorMessage: error });
+        console.log('error makeReview: ', error);
     }
 }

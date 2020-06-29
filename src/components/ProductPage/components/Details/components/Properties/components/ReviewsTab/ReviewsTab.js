@@ -16,14 +16,18 @@ const ReviewsTab = ({ reviews = [] }) => (
 						<StarsAndTotalReviews totalRate={review['оценка']} date={dumbDateFormat(review['дата'])}/>
 					</div>
 					<div className={styles.Comment}>{review['комментарий']}</div>
-					<div className={styles.Pros}>
-						<span className={styles.Key}>Достоинства: </span>
-						<span className={styles.Value}>{review['достоинства']}</span>
-					</div>
-					<div className={styles.Cons}>
-						<span className={styles.Key}>Недостатки: </span>
-						<span className={styles.Value}>{review['недостатки']}</span>
-					</div>
+					{review['достоинства'] && review['достоинства'].trim() &&
+						<div className={styles.Pros}>
+							<span className={styles.Key}>Достоинства: </span>
+							<span className={styles.Value}>{review['достоинства']}</span>
+						</div>
+					}
+					{review['недостатки'] && review['недостатки'].trim() &&
+						<div className={styles.Cons}>
+							<span className={styles.Key}>Недостатки: </span>
+							<span className={styles.Value}>{review['недостатки']}</span>
+						</div>
+					}
 				</div>
 			) :
 			null;

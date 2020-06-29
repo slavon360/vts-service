@@ -1,0 +1,45 @@
+.NotifierWrp {
+    text-align: left;
+    position: fixed;
+    top: 40px;
+    right: -380px;
+    opacity: 0;
+    width: 320px;
+    font-family: Helvetica;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.1) 1px 1px 3px;
+    padding: 20px 17px;
+    margin: 20px;
+    border-radius: 10px;
+    background: rgb(245, 245, 245);
+    transition: all 1s;
+    animation-name: notifier;
+    animation-duration: .65s;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
+}
+
+.Error {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    p {
+        width: 280px;
+        margin: 0;
+    }
+}
+
+.NotifierError {
+    opacity: 1;
+    border: 1px solid #bd3f1d;
+    border-bottom: 2px solid #bd3f1d;
+}
+
+.ErrorText {
+    color: #c73030;
+}
+
+@keyframes notifier {
+    from {right: -380px;}
+    to {right: 30px;}
+}

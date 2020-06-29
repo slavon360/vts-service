@@ -22,8 +22,16 @@ const initialState = {
     successfullOrder: false,
     modalWithActions: false,
     windowWidth: null,
-    submitReviewModal: false
+    submitReviewModal: false,
+    serverErrorMessage: null
 }
+
+function setServerErrorMessage(state, { serverErrorMessage }) {
+    return {
+        ...state,
+        serverErrorMessage
+    }
+};
 
 function setSubmitReviewModal(state, { submitReviewModal }) {
     return {
@@ -83,7 +91,8 @@ export default composeReducer(
         setOrderState,
         setModalWithActions,
         setWindowWidth,
-        setSubmitReviewModal
+        setSubmitReviewModal,
+        setServerErrorMessage
     },
     initialState
 );

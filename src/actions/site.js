@@ -6,7 +6,8 @@ export const SITE_TYPES = createTypes('site', [
     'setModalState',
     'setModalTemplate',
     'setModalWithActions',
-    'setSubmitReviewModal'
+    'setSubmitReviewModal',
+    'setServerErrorMessage'
 ]);
 
 export const setWindowWidth = (windowWidth) => ({
@@ -37,4 +38,9 @@ export const setModalWithActions = (modalWithActions) => ({
 export const setSubmitReviewModal = (submitReviewModal) => ({
     type: SITE_TYPES.setSubmitReviewModal,
     submitReviewModal
-})
+});
+
+export const setServerErrorMessage = (serverErrorMessage) => ({
+    type: SITE_TYPES.setServerErrorMessage,
+    serverErrorMessage
+});

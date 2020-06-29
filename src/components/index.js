@@ -19,3 +19,5 @@ export RotatingBlock from './RotatingBlock';
 export Footer from './Footer';
 export Review from './Review';
 export StarsAndTotalReviews from './StarsAndTotalReviews';
+export Notifier from './Notifier';
+export Preloader from './Preloader';
