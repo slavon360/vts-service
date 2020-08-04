@@ -25,6 +25,12 @@
             &:not(:last-child) {
                 padding-right: 20px;
             }
+            .PhoneImg {
+                width: 15px;
+                margin-left: 15px;
+                transform: translateY(2px) scale(1.2);
+                opacity: .7;
+            }
         }
         .Email {
             display: inline-block;
@@ -65,6 +71,13 @@
     .Header {
         font-size: 14px;
         height: 89px;
+        .PhonesWrp {
+            .Phone {
+                &:not(:last-child) {
+                    padding-right: 15px;
+                }
+            }
+        }
     }
 }
 

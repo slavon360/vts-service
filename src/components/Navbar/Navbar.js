@@ -18,11 +18,15 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
             <a className={styles.Services} href={routeNames.SERVICES}>Услуги</a>
             <div className={styles.NavbarPhonesWrp}>
                 {contacts &&
-                    contacts.slice(0, 2).map(({ телефон }, index) => (
+                    contacts.slice(0, 2).map(({ телефон, image: { secure_url } = {} }, index) => (
                         <div
                             key={телефон + index}
                             className={`${styles.Phone} NavbarPhoneNumber`}>
-                            <ContactPhone телефон={телефон} />
+                            <ContactPhone
+                                outerClass={styles.ContactPhone}
+                                телефон={телефон}
+                                secure_url={телефон === '068 40 20 821' ? secure_url : null}
+                            />
                         </div>
                     ))
                 }

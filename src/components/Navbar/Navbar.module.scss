@@ -3,6 +3,12 @@
     display: inline-block;
     color: #555;
     background-color: hsla(0,0%,100%,.95);
+    .ContactPhone {
+        img {
+            width: 15px;
+            transform: translateY(0px) scale(1.2);
+        }
+    }
 }
 .Services, .Phone {
     height: 100%;
