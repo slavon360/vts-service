@@ -1,0 +1,17 @@
+.NavSubmenuItem {
+    background-color: #ededed;
+    list-style: none;
+    cursor: pointer;
+    &:not(:last-child) {
+        border-bottom: 1px solid #ccc;
+    }
+    .NavSubmenuLink {
+        display: block;
+        padding: 1rem 0.7rem;
+        padding-left: 1.5rem;
+        color: #222;
+        &:hover {
+            color: #ff115f;
+        }
+    }
+}

@@ -84,15 +84,20 @@ class Product extends Component {
             productIndex,
             makeProductsRequest,
             switchProductsLoading,
-            windowWidth
+            windowWidth,
+            setQuickOrderProduct,
+            addToCart
         } = this.props;
         const { imgSource, show_discount } = this.state;
         const briefInfo = showAdditionalInfo(this.props.product);
+        const buyByOneClickHandler = setQuickOrderProduct ? this.buyByOneClick : null;
+        const addToCartHandler = addToCart ? this.onAddToCart : null;
+
         return (
             <li className={styles.Product}>
                 <div className={styles.ProductArea}>
                     <Link to={`${routeNames.PRODUCT_DETAILS}/${slug}`}>
-                        <div className={styles.TitleArea}>{title}</div>
+                        <div className={styles.TitleArea} title={title}>{title}</div>
                         <ProductImage
                             windowWidth={windowWidth}
                             productsLength={productsLength}
@@ -104,12 +109,12 @@ class Product extends Component {
                         />
                     </Link>
                     <ProductContent
-                        buyByOneClick={this.buyByOneClick}
+                        buyByOneClick={buyByOneClickHandler}
                         Цена={Цена}
                         briefInfo={briefInfo}
                         showDiscount={show_discount}
                         discountPrice={this.props.product['Акционная цена']}
-                        addToCart={this.onAddToCart}
+                        addToCart={addToCartHandler}
                         totalRate={totalRate}
                         reviewRates={reviewRates}
                     />

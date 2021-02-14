@@ -9,9 +9,10 @@ import {
     removeQuickOrderProduct,
     removeFromCart
 } from '../../actions/cart';
+import { switchCheckedCategory } from '../../actions/menus';
 import { makeQuickOrder, makeReview } from '../../actions/user';
 import { setLoadingState, setModalTemplate, setModalWithActions, setModalState, setSubmitReviewModal } from '../../actions/site';
-import { getProduct, resetProduct } from '../../actions/products';
+import { getProduct, resetProduct, searchProducts, switchProductsLoading, makeProductsRequest } from '../../actions/products';
 import { makeReviewsRequest } from '../../actions/reviews';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 
@@ -34,6 +35,7 @@ const mapStateToProps = ({
          modalTemplate,
          modalWithActions,
          selectedCategoryId: menus.get('selectedCategoryId'),
+         categNames: menus.get('categNames'),
          contacts,
          modalIsOpen,
          windowWidth,
@@ -60,7 +62,11 @@ const mapDispatchToProps = {
     removeFromCart,
     makeReview,
     makeReviewsRequest,
-    setSubmitReviewModal
+    setSubmitReviewModal,
+    searchProducts,
+    switchProductsLoading,
+    switchCheckedCategory,
+    makeProductsRequest
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));

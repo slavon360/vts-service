@@ -76,9 +76,18 @@
     float: right;
 }
 
+@media screen and (max-width: 1140px) {
+    .ProductPage {
+        padding-top: 45px;
+    }
+}
+
 @media screen and (max-width: 767px) {
     .GoToOrderBtn, .ContinueShoppingBtn {
         font-size: 14px;
+    }
+    .ProductPage {
+        padding-top: 65px;
     }
 }
 

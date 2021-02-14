@@ -1,0 +1,40 @@
+.Head {
+    font-weight: 100;
+    text-align: center;
+    margin: 0 0 35px;
+}
+.RelativeProduct {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    > * {
+        width: 75%;
+        margin: 0;
+        display: inline-block;
+        > *:hover {
+            transform: none !important;
+            // box-shadow: none !important;
+        }
+        a {
+            height: 250px;
+            > div:nth-child(2) {
+                height: 80%;
+                text-align: center;
+                img {
+                    max-width: 65%;
+                    max-height: 100%;
+                }
+            }
+            * {
+                font-size: 18px !important;
+            }
+        }
+        a + div {
+            height: 65px;
+            > * {
+                border-bottom: none !important;
+            }
+        }
+    }
+}

@@ -2,8 +2,9 @@ import React from 'react';
 import cx from 'classnames';
 import styles from './RotatingBlock.module.scss';
 
-const RotatingBlock = ({ outerClassName, imgSrc, headTitle, preface, description }) => (
-    <div
+const RotatingBlock = ({ outerClassName, imgSrc, headTitle, preface, description, link }) => (
+    <a
+        href={link}
         className={cx(styles.RotatingContainer, outerClassName)}
     >
         <div
@@ -34,7 +35,7 @@ const RotatingBlock = ({ outerClassName, imgSrc, headTitle, preface, description
                 </p>
             </div>
         </div>
-    </div>
+    </a>
 );
 
 export default RotatingBlock;

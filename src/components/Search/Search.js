@@ -71,7 +71,7 @@ class Search extends Component {
                         contacts={contacts}
                     />
                 }
-                {searchedProductsLoading ? <PreloaderBar /> : <div />}
+                {searchedProductsLoading ? <PreloaderBar /> : null }
             </div>
         )
     }

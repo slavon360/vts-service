@@ -26,13 +26,16 @@ const ProductContent = ({
 			}
 			<div className={cx(styles.Header, {[styles.HeaderWithDiscount]: showDiscount})}>
 				<div className={styles.Title}>
-					<Button
-						onClick={buyByOneClick}
-						clsName={styles.ByOneClick}
-					>
-						Купить в 1 клик
-					</Button>
-					{!showDiscount &&
+					{buyByOneClick ?
+						<Button
+							onClick={buyByOneClick}
+							clsName={styles.ByOneClick}
+						>
+							Купить в 1 клик
+						</Button> :
+						<span className={styles.OptionalPrice}>Цена</span>
+					}
+					{!showDiscount && addToCart &&
 						<Button
 							onClick={addToCart}
 							clsName={styles.AddToCart}

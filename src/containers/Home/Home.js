@@ -34,6 +34,7 @@ const mapStateToProps = (state) => {
         selectedCategoryId: menus.get('selectedCategoryId'),
         selectedSubcategoryId: menus.get('selectedSubcategoryId'),
         catalog: menus.get('catalog'),
+        categNames: menus.get('categNames'),
         activeIndex: menus.get('activeIndex'),
         filters: menus.get('filters'),
         productsList: products.get('productsList'),

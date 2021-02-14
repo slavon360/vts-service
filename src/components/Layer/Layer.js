@@ -10,7 +10,6 @@ import { setInitialCartInfo } from '../../actions/cart';
 import { setModalState, setWindowWidth, setServerErrorMessage } from '../../actions/site';
 
 import styles from './Layer.module.scss';
-import from from '../Preloader';
 
 export const LayerContext = React.createContext();
 

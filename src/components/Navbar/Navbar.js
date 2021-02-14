@@ -1,6 +1,6 @@
 import React from 'react';
-import { routes as routeNames } from '../../routes';
-import CatalogNav from './components/CatalogNav';
+// import { routes as routeNames } from '../../routes';
+// import CatalogNav from './components/CatalogNav';
 import ContactPhone from '../ContactPhone';
 
 import styles from './Navbar.module.scss';
@@ -9,13 +9,13 @@ import '../../App.css';
 const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsRequest, contacts }) => { 
     return (
         <div className={`${styles.Navbar} NavbarWrp`}>
-            <CatalogNav
+            {/* <CatalogNav
                 catalog={catalog}
                 activeIndex={activeIndex}
                 switchCheckedCategory={switchCheckedCategory}
                 makeProductsRequest={makeProductsRequest}
-            />
-            <a className={styles.Services} href={routeNames.SERVICES}>Услуги</a>
+            /> */}
+            {/* <a className={styles.Services} href={routeNames.SERVICES}>Услуги</a> */}
             <div className={styles.NavbarPhonesWrp}>
                 {contacts &&
                     contacts.slice(0, 2).map(({ телефон, image: { secure_url } = {} }, index) => (
@@ -31,8 +31,9 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
                     ))
                 }
             </div>
-            <div className={styles.Email}>
+            <div className={styles.ContactsInfo}>
                 <a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
+                <div className={styles.City}>г. Днипро</div>
             </div>
         </div>
     );

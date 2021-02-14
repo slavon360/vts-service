@@ -22,19 +22,12 @@ class HomePage extends Component{
         alreadyScrolled: false,
         subcategRefCoords: null,
         productsRefCoords: null
-    }
-    // componentDidMount() {
-    //     // this.props.getHomeBanners();
-    // }
-    // shouldComponentUpdate (nextProps) {
-    //     return !this.props.homeBanners && nextProps.homeBanners && nextProps.homeBanners.length;
-    // }
+    };
     componentDidUpdate(prevProp, prevState) {
         const { selectedCategoryId, selectedSubcategoryId } = this.props;
         const { selectedCategoryId: prevSelectedCategoryId, selectedSubcategoryId: prevSelectedSubcategoryId } = prevProp;
-
         const changedCategory = prevSelectedCategoryId && selectedCategoryId !== prevSelectedCategoryId;
-        // const changedSubcategory = selectedSubcategoryId !== prevSelectedSubcategoryId;
+
         if (changedCategory && !this.state.alreadyScrolled) {
             window.setTimeout(this.scrollToProducts, 500);
         }
@@ -47,9 +40,6 @@ class HomePage extends Component{
         const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
         setModalState(isOpen);
         setModalTemplate(null);
-        // if (productsInCart && productsInCart.length) {
-        //     removeQuickOrderProduct();
-        // };
     }
     closeModalWithActions = () => {
         const isOpen = false;
@@ -63,18 +53,11 @@ class HomePage extends Component{
         event.preventDefault();
         const isOpen = false;
         const { makeQuickOrder, setModalState, addToCart, setProductsQty, product } = this.props;
-        // const qty = 1;
-        // addToCart(product);
-        // setProductsQty(qty);
         makeQuickOrder();
         setModalState(isOpen);
     }
     setRefProducts = (ref) => {
         this.productsWrpRef = ref;
-        // console.log(ref);
-        // window.setTimeout(() => {
-        //     this.setState({ productsRefCoords: ref.getBoundingClientRect() });
-        // }, 1500);
     }
     setRefSubcategories = (ref) => {
         this.subcategoriesWrpRef = ref;
@@ -84,11 +67,6 @@ class HomePage extends Component{
             window.scroll({ top: this.state.subcategRefCoords.top, behavior: 'smooth' });
         });
     }
-    // setProductsRefCoords = () => {
-    //     this.setState({ productsRefCoords: this.productsWrpRef.getBoundingClientRect() }, () => {
-    //         window.scroll({ top: this.state.productsRefCoords.top, behavior: 'smooth' });
-    //     });
-    // }
     scrollToProducts = (subcategChanged) => {
         if (this.props.mobileChrome) {
             this.productsWrpRef.scrollIntoView({
@@ -97,13 +75,11 @@ class HomePage extends Component{
             });
         } else {
             if (this.props.windowWidth >= 1024) {
-                if (subcategChanged) {
-                    window.scroll({ top: this.productsWrpRef.offsetTop, behavior: 'smooth' });
-                } else {
-                    window.scroll({ top: this.subcategoriesWrpRef.offsetTop - 100, behavior: 'smooth' });
+                if (subcategChanged && this.productsWrpRef) {
+                    window.scroll({ top: this.productsWrpRef.offsetTop - 100, behavior: 'smooth' });
                 }
             } else {
-                window.scroll({ top: this.productsWrpRef.offsetTop, behavior: 'smooth' });
+                window.scroll({ top: this.productsWrpRef.offsetTop - 100, behavior: 'smooth' });
             }
         }
     }
@@ -194,14 +170,16 @@ class HomePage extends Component{
             switchProductsLoading,
             setQuickOrderProduct,
             windowWidth,
-            contacts
+            contacts,
+            categNames
         } = this.props;
+
         return (
             <div className={styles.HomePage}>
-                {/* <GeneralBanner banners={homeBanners} /> */}
-                {catalog && catalog.length ?
+                {categNames && categNames.length && catalog && catalog.length ?
                     <CategoryMenu
                         filters={filters}
+                        categNames={categNames}
                         categories={catalog}
                         activeIndex={activeIndex}
                         switchCheckedCategory={switchCheckedCategory}

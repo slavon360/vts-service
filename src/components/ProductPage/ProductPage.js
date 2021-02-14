@@ -11,6 +11,8 @@ import { modalGeneralStyles, names } from '../../constants/data';
 import { imgPlaceholder } from '../../assets/images/other/img-placeholder.jpg';
 import Contacts from './components/Contacts';
 import QuickOrderForm from '../Order/QuickOrderForm';
+import RelativeProducts from './components/RelativeProducts';
+import Categories from '../../components/CategoryMenu/components/Categories2';
 
 import styles from './ProductPage.module.scss';
 
@@ -26,7 +28,8 @@ class ProductPage extends Component {
 	}
 	state = {
 		imgSources: null,
-		currentTime: new Date().getTime()
+		currentTime: new Date().getTime(),
+		relevant_products: []
 	}
 	componentWillMount(){
 		this.props.setLoadingState(true);
@@ -103,9 +106,19 @@ class ProductPage extends Component {
 		const { getProduct, makeReviewsRequest } = this.props;
 		const { productSlug } = this.props.match.params;
 		const productData = await getProduct(productSlug);
+
+		window.scrollTo(0, 0);
+		this.getRelevantProducts(productData);
 		await makeReviewsRequest(productData._id);
 		this.setImgSource(productData);
 		this.props.setLoadingState(false);
+	}
+	getRelevantProducts = async (productData) => {
+		const searchedWord = productData.title.match(/[a-zA-Z-а-яА-Я]+/)[0];
+		const relevant_product_id = productData._id;
+		const products = await this.props.searchProducts(searchedWord, relevant_product_id);
+
+		this.setState({ relevant_products: products });
 	}
 	onAddToCart = () => {
 		const { addToCart, product, setProductsQty, preorderModal } = this.props;
@@ -158,6 +171,7 @@ class ProductPage extends Component {
 		setModalState(isOpen);
 	}
 	renderComponent = () => {
+		const { relevant_products } = this.state;
 		const {
 			product,
 			modalWithActions,
@@ -167,90 +181,109 @@ class ProductPage extends Component {
 			form,
 			makeReview,
 			reviews: { reviewsList },
-			submitReviewModal
+			submitReviewModal,
+			windowWidth,
+			switchProductsLoading,
+			categNames,
+			switchCheckedCategory,
+			makeProductsRequest
 		} = this.props;
 		
 		if (product && contacts && this.state.imgSources) {
 			const { imgSources, currentTime } = this.state;
 
 			return (
-				<div className={styles.ProductPage}>
-					<div className={styles.ImageAreaWrp}>
-						<Link
-							to="/"
-							className={styles.GoToProducts}
-						>
-							<span className={styles.IconAngle}><AngleDown /></span>
-							<span className={styles.BackWord}>Назад</span>
-						</Link>
-						<ImageArea imgSources={imgSources} />
-					</div>
-					<div className={styles.DetailsWrp}>
-						<Details
-							key={product._id}
-							product={product}
-							addToCart={this.onAddToCart}
-							buyByOneClick={this.buyByOneClick}
-							currentTime={currentTime}
-							makeReview={makeReview}
-							reviewsList={reviewsList}
-						/>
-					</div>
-					<Contacts contacts={contacts} />
+				<Fragment>
+					<Categories
+						categories={categNames}
+						switchCheckedCategory={switchCheckedCategory}
+						makeProductsRequest={makeProductsRequest}
+					/>
+					<div className={styles.ProductPage}>
+						<div className={styles.ImageAreaWrp}>
+							<Link
+								to="/"
+								className={styles.GoToProducts}
+							>
+								<span className={styles.IconAngle}><AngleDown /></span>
+								<span className={styles.BackWord}>Назад</span>
+							</Link>
+							<ImageArea imgSources={imgSources} />
+						</div>
+						<div className={styles.DetailsWrp}>
+							<Details
+								key={product._id}
+								product={product}
+								addToCart={this.onAddToCart}
+								buyByOneClick={this.buyByOneClick}
+								currentTime={currentTime}
+								makeReview={makeReview}
+								reviewsList={reviewsList}
+							/>
+						</div>
+						{relevant_products && relevant_products.length ?
+							<RelativeProducts
+								products={relevant_products}
+								windowWidth={windowWidth}
+								switchProductsLoading={switchProductsLoading}
+							/> : null
+						}
+						<Contacts contacts={contacts} />
 
-					{!modalWithActions ?
-						<Modal
-							isOpen={modalIsOpen}
-							onAfterOpen={this.afterOpenModal}
-							onRequestClose={this.closeModal}
-							style={modalGeneralStyles}
-							contentLabel="Order Modal"
-							portalClassName={styles.ModalProductPage}
-						>
-							{modalTemplate ?
-								<div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div> :
-								<QuickOrderForm
-									clientForm={form}
-									closeModal={this.closeModal}
-									quickSubmit={this.quickSubmit}
-								/>
-							}
-						</Modal> :
-						<Modal
-							isOpen={modalIsOpen}
-							onRequestClose={this.closeModalWithActions}
-							style={modalGeneralStyles}
-							contentLabel="Preorder Modal"
-							portalClassName={styles.ModalProductPage}
-						>
-							{modalTemplate &&
-								<Fragment>
-									<div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
-									<Link
-										onClick={this.closeModalWithActions}
-										className={styles.GoToOrderBtn}
-										to="/order"
-									>Оформить заказ</Link>
-									<Button
-										onClick={this.closeModalWithActions}
-										clsName={styles.ContinueShoppingBtn}
-									>Продолжить покупки</Button>
-								</Fragment>
-							}
-						</Modal>
-					}
-					{submitReviewModal &&
-						<Modal
-							isOpen={submitReviewModal}
-							onRequestClose={this.closeSubmitReviewModal}
-							style={modalGeneralStyles}
-							contentLabel="Submit Review Modal"
-							portalClassName={styles.ModalProductPage}
-						>
-							<div className={styles.ReviewSentMessage}>Ваш комментарий отправлен на модерацию.</div>
-						</Modal>
-					}
-				</div>
+						{!modalWithActions ?
+							<Modal
+								isOpen={modalIsOpen}
+								onAfterOpen={this.afterOpenModal}
+								onRequestClose={this.closeModal}
+								style={modalGeneralStyles}
+								contentLabel="Order Modal"
+								portalClassName={styles.ModalProductPage}
+							>
+								{modalTemplate ?
+									<div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div> :
+									<QuickOrderForm
+										clientForm={form}
+										closeModal={this.closeModal}
+										quickSubmit={this.quickSubmit}
+									/>
+								}
+							</Modal> :
+							<Modal
+								isOpen={modalIsOpen}
+								onRequestClose={this.closeModalWithActions}
+								style={modalGeneralStyles}
+								contentLabel="Preorder Modal"
+								portalClassName={styles.ModalProductPage}
+							>
+								{modalTemplate &&
+									<Fragment>
+										<div className={styles.ModalContent} dangerouslySetInnerHTML={{ __html: modalTemplate }}></div>
+										<Link
+											onClick={this.closeModalWithActions}
+											className={styles.GoToOrderBtn}
+											to="/order"
+										>Оформить заказ</Link>
+										<Button
+											onClick={this.closeModalWithActions}
+											clsName={styles.ContinueShoppingBtn}
+										>Продолжить покупки</Button>
+									</Fragment>
+								}
+							</Modal>
+						}
+						{submitReviewModal &&
+							<Modal
+								isOpen={submitReviewModal}
+								onRequestClose={this.closeSubmitReviewModal}
+								style={modalGeneralStyles}
+								contentLabel="Submit Review Modal"
+								portalClassName={styles.ModalProductPage}
+							>
+								<div className={styles.ReviewSentMessage}>Ваш комментарий отправлен на модерацию.</div>
+							</Modal>
+						}
+					</div>
+				</Fragment>
 			)
 		}
 		return <Preloader />

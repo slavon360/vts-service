@@ -1,5 +1,4 @@
 .Navbar {
-    height: 100%;
     display: inline-block;
     color: #555;
     background-color: hsla(0,0%,100%,.95);
@@ -48,12 +47,18 @@
     }
 }
 
-.Email {
+.ContactsInfo {
+    vertical-align: top;
+    padding-top: 4px;
     display: inline-block;
+    > * {
+        padding: 3px 0;
+        color: #6e6ec7;
+    }
 }
 
-@media screen and (max-width: 1240px) {
-    .Email {
+@media screen and (max-width: 1140px) {
+    .ContactsInfo {
         display: none;
     }
 }

@@ -31,14 +31,14 @@ export const searchProductsLoading = (data) => ({
     data
 })
 
-export const searchProducts = (product) => {
+export const searchProducts = (product, relevant_product_id) => {
     const thunk = async (dispatch, getState) => {
         // const { selectedCategoryId } = getState().menus;
         // dispatch({
         //     type: PRODUCTS_TYPES.searchProducts,
         //     searchedProducts: []
         // });
-        const json = await getFromAxios('/search?', { product });
+        const json = await getFromAxios('/search?', { product, relevant_product_id });
         const searchedProducts = _get(json, 'data', []);
         dispatch({
             type: PRODUCTS_TYPES.searchProducts,
@@ -59,7 +59,7 @@ export const searchProducts = (product) => {
 const updatePriceValue = (key, currencyRate, product) => {
     const finalRate = product['Отображать цену в грн'] ? 1 : currencyRate;
 
-    return finalRate ? Math.round(finalRate * product[key]) : product[key];
+    return finalRate ? Math.ceil(finalRate * product[key]) : product[key];
 };
 
 export const getProduct = (slug) => async (dispatch, getState) => {

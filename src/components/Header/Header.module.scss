@@ -1,6 +1,6 @@
 .Header {
     background-color: hsla(0, 0%, 100%, 0.95);
-    height: 50px;
+    height: 56px;
     position: fixed;
     display: flex;
     justify-content: space-between;
@@ -34,23 +34,35 @@
         }
         .Email {
             display: inline-block;
+            .City {
+                padding-left: 10px;
+                color: #6e6ec7;
+            }
         }
     }
 
     .HomeLink {
         display: inline-block;
         margin: 0 8px;
-        transform: translateY(-2px);
+        color: #141488;
+        text-decoration: none;
+        vertical-align: bottom;
+        font-size: 25px;
+        padding-bottom: 14px;
 
-        &:hover > svg {
-            fill: #ff115f;
-        }
+    }
+}
+
+@media screen and (max-width: 1141px) {
+    .Header {
+        top: 50px;
     }
 }
 
 @media screen and (max-width: 830px) {
     .Header {
-        height: 95px;
+        top: 50px;
+        height: 152px;
         .HomeLink {
             height: 32px;
             padding-top: 9px;
@@ -70,7 +82,6 @@
 @media screen and (max-width: 400px) {
     .Header {
         font-size: 14px;
-        height: 89px;
         .PhonesWrp {
             .Phone {
                 &:not(:last-child) {

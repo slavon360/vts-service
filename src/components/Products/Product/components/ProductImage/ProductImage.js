@@ -6,19 +6,19 @@ import styles from './ProductImage.module.scss';
 class ProductImage extends Component {
     imgLoadHanlder = () => {
         const { productsLength, productIndex, makeProductsRequest, switchProductsLoading, windowWidth } = this.props;
-        
-        if (productIndex === productsLength - 1 && windowWidth < 1024) {
+
+        if (productIndex === productsLength - 1 && windowWidth < 1024 && makeProductsRequest) {
             const loading = false;
             switchProductsLoading(loading);
             makeProductsRequest();
         }
     }
     render() {
-        const { secure_url, scrollPosition, windowWidth } = this.props;
+        const { secure_url, scrollPosition, windowWidth, makeProductsRequest } = this.props;
         return (
             <div className={styles.ProductImage}>
                 <LazyLoadImage
-                    visibleByDefault={windowWidth >= 1024}
+                    visibleByDefault={windowWidth >= 1024 || !makeProductsRequest}
                     src={secure_url}
                     scrollPosition={scrollPosition}
                     onLoad={this.imgLoadHanlder}

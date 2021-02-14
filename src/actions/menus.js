@@ -41,7 +41,7 @@ export const getCatalogMenu = () => async (dispatch, getState) => {
         const { currencyRate } = getState().outerAPIdata;
         const json = await getFromAxios('/getCatalog');
         const catalog = _get(json, 'data', []);
-        const categid = selectedCategoryId || catalog[0]._id;
+        const categid = selectedCategoryId || catalog[0] && catalog[0]._id;
         if (!productsList.size && productsList.getIn([0, 'productCategory']) !== selectedCategoryId) {
             const jsonProducts = await getFromAxios('/list-products', { categid });
             const products = _get(jsonProducts, 'data.results', []);

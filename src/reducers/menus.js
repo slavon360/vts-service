@@ -4,6 +4,7 @@ import { fromJS, List, Map } from 'immutable';
 
 const initialState = fromJS({
     catalog: [],
+    categNames: [],
     activeIndex: 0,
     selectedSubcategoryId: null,
     selectedCategoryId: null,
@@ -17,6 +18,47 @@ function setActiveFilter(state, { filterName, filterValue }) {
 
 function deleteActiveFilter(state, { filterName, filterValue }) {
     return state.updateIn(['activeFilters', filterName], (filters) => filters.filter(item => item !== filterValue));
+}
+
+function setCategNames(catalog) {
+    const names = ['запчасти', 'водонагреватели', 'котлы', 'программаторы, терморегуляторы'];
+    const categNames = names.reduce((result, currentName) => {
+        const uniqueSubcategory = catalog.find(({categName}) => categName.toLowerCase() === currentName);
+        const categ = {
+            name: currentName,
+            id: uniqueSubcategory && uniqueSubcategory._id,
+            index: uniqueSubcategory && uniqueSubcategory.index,
+            subcategories: catalog.filter(({categName}) => categName.toLowerCase().includes(currentName) && categName.toLowerCase() !== currentName)
+        };
+        return result = [...result, categ];
+    }, []);
+
+    console.log(categNames);
+    return [...categNames, {
+        name: 'ремонт',
+        subcategories: [
+            {
+                _id: '012',
+                categName: 'Ремонт газовых и электрических котлов',
+                isLink: true
+            },
+            {
+                _id: '013',
+                categName: 'Ремонт газовых колонок',
+                isLink: true
+            },
+            {
+                _id: '014',
+                categName: 'Ремонт бойлеров и проточных электроводонагревателей',
+                isLink: true
+            },
+            {
+                _id: '015',
+                categName: 'Ремонт насосов',
+                isLink: true
+            }
+        ]
+    }];
 }
 
 function getCatalogMenu(state, { catalog, selectedCategoryId }) {
@@ -36,7 +78,10 @@ function getCatalogMenu(state, { catalog, selectedCategoryId }) {
         item.checked = item._id === selectedCategoryId;
         return item;
     });
-    return state.merge({ catalog: fromJS(updatedCatalog), selectedCategoryId });
+    return state.merge({
+        catalog: fromJS(updatedCatalog), selectedCategoryId,
+        categNames: setCategNames(catalog)
+    });
     }
 }
 

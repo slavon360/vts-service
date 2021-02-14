@@ -106,7 +106,7 @@ class Header extends PureComponent {
 					<Fragment>
 						<div className={styles.LeftSide}>
 							<Link className={styles.HomeLink} to="/">
-								<HomeIcon style={{ fontSize: '25px' }} />
+								Вода Тепло Сервис
 							</Link>
 							<Search
 								contacts={contacts}
@@ -142,6 +142,7 @@ class Header extends PureComponent {
 								}
 								<div className={styles.Email}>
 									<a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
+									<span className={styles.City}>г. Днипро</span>
 								</div>
 							</div>
 						</div>

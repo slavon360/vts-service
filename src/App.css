@@ -1,5 +1,5 @@
 .AppWrapper {
-  padding-top: 50px;
+  padding-top: 56px;
 }
 
 .SearchActive {
@@ -19,6 +19,21 @@
 }
 .carousel .thumbs-wrapper .thumb {
   cursor: pointer;
+}
+
+.carousel.carousel-slider .control-arrow:hover {
+  background: rgba(0, 0, 0, .03);
+}
+
+.carousel.carousel-slider .control-arrow.control-next::before {
+  border-left: 40px solid #999;
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
+}
+.carousel.carousel-slider .control-arrow.control-prev::before {
+  border-right: 40px solid #999;
+  border-top: 40px solid transparent;
+  border-bottom: 40px solid transparent;
 }
 
 @media screen and (max-width: 830px) {
