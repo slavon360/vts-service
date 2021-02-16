@@ -37,16 +37,16 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
                 <a
                     className={styles.City}
                     target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
+                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днепр,+Днепропетровская+область"
                 >
                     {address}
                 </a>
                 <a
                     className={styles.CityPhoneResponsive}
                     target="_blank"
-                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
+                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днепр,+Днепропетровская+область"
                 >
-                    г. Днипро
+                    г. Днепр
                 </a>
             </div>
         </div>

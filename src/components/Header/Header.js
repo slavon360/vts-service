@@ -143,7 +143,7 @@ class Header extends PureComponent {
 								}
 								<div className={styles.Email}>
 									<a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
-									<span className={styles.City}>г. Днипро</span>
+									<span className={styles.City}>г. Днепр</span>
 								</div>
 							</div>
 						</div>
