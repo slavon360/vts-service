@@ -49,7 +49,7 @@ const productWithQtyAndTotal = (prod) => {
 }
 
 function setProductsQty(state, { qty }) {
-    const updQty = state.get('productsQty') + (+qty);
+    const updQty = state.get('products').reduce((result, current) => result += current.get('quantity'), 0);
 
     return updQty >= 0 ? state.set('productsQty', updQty) : state;
 }

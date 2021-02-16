@@ -34,31 +34,34 @@ function setCategNames(catalog) {
     }, []);
 
     console.log(categNames);
-    return [...categNames, {
-        name: 'ремонт',
-        subcategories: [
-            {
-                _id: '012',
-                categName: 'Ремонт газовых и электрических котлов',
-                isLink: true
-            },
-            {
-                _id: '013',
-                categName: 'Ремонт газовых колонок',
-                isLink: true
-            },
-            {
-                _id: '014',
-                categName: 'Ремонт бойлеров и проточных электроводонагревателей',
-                isLink: true
-            },
-            {
-                _id: '015',
-                categName: 'Ремонт насосов',
-                isLink: true
-            }
-        ]
-    }];
+    return [
+        {
+            name: 'ремонт',
+            subcategories: [
+                {
+                    _id: '012',
+                    categName: 'Ремонт газовых и электрических котлов',
+                    isLink: true
+                },
+                {
+                    _id: '013',
+                    categName: 'Ремонт газовых колонок',
+                    isLink: true
+                },
+                {
+                    _id: '014',
+                    categName: 'Ремонт бойлеров и проточных электроводонагревателей',
+                    isLink: true
+                },
+                {
+                    _id: '015',
+                    categName: 'Ремонт насосов',
+                    isLink: true
+                }
+            ]
+        },
+        ...categNames
+    ];
 }
 
 function getCatalogMenu(state, { catalog, selectedCategoryId }) {

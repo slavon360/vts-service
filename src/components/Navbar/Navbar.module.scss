@@ -57,15 +57,31 @@
     }
 }
 
+.City {
+    display: block;
+    font-size: 15px;
+    padding-top: 8px;
+}
+
+.CityPhoneResponsive {
+    display: none;
+}
+
 @media screen and (max-width: 1140px) {
     .ContactsInfo {
-        display: none;
+        // display: none;
     }
 }
 
 @media screen and (max-width: 1040px) {
     .Phone {
         display: none;
+    }
+}
+
+@media screen and (max-width: 935px) {
+    .Phone {
+        margin-right: 0;
     }
 }
 
@@ -83,5 +99,20 @@
             border: none;
             margin-right: 0;
         }
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .City {
+        display: none;
+    }
+    .CityPhoneResponsive {
+        display: block;
+    }
+}
+
+@media screen and (max-width: 467px) {
+    .CityPhoneResponsive {
+        padding-top: 7px;
     }
 }

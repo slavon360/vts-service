@@ -2,6 +2,7 @@ import React from 'react';
 // import { routes as routeNames } from '../../routes';
 // import CatalogNav from './components/CatalogNav';
 import ContactPhone from '../ContactPhone';
+import { address } from '../../constants/data';
 
 import styles from './Navbar.module.scss';
 import '../../App.css';
@@ -33,7 +34,20 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
             </div>
             <div className={styles.ContactsInfo}>
                 <a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
-                <div className={styles.City}>г. Днипро</div>
+                <a
+                    className={styles.City}
+                    target="_blank"
+                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
+                >
+                    {address}
+                </a>
+                <a
+                    className={styles.CityPhoneResponsive}
+                    target="_blank"
+                    href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днипро,+Днепропетровская+область"
+                >
+                    г. Днипро
+                </a>
             </div>
         </div>
     );

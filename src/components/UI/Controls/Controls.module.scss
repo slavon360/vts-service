@@ -10,6 +10,9 @@
     }
     .SetQuantity {
         font-size: 22px;
+        &:hover {
+            color: #6e6ec7;
+        }
     }
 }
 

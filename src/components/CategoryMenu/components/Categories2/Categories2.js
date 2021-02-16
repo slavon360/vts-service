@@ -29,6 +29,10 @@ class Categories extends Component {
             menuOpened: !prevState.menuOpened
         }));
     }
+    closeMenu = () => {
+        console.log('closeMenu');
+        this.setState({ menuOpened: false });
+    }
 
     render () {
         const { categories, switchCheckedCategory, makeProductsRequest } = this.props;
@@ -39,7 +43,7 @@ class Categories extends Component {
                 <div className={styles.NavWrapper}>
                     <div className={styles.NavMenu}>
                         <span>
-                            <a onClick={this.onToggleMenu} className={styles.NavMenuLink} title="Open Menu">☰</a>
+                            <a onClick={this.onToggleMenu} onBlur={this.closeMenu} className={styles.NavMenuLink} title="Open Menu">☰</a>
                         </span>
                     </div>
                 </div>

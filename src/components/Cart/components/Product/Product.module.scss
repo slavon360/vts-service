@@ -11,6 +11,9 @@
         flex-grow: 1;
         align-content: center;
     }
+    .Quantity {
+        z-index: 1;
+    }
     .DeleteWrp {
         button {
             transform: scale(2);

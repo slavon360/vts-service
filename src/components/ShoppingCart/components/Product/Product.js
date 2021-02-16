@@ -34,9 +34,10 @@ class Product extends Component {
         setProductsQty(-qty);
     }
     onSetQty = ({ target: { value }}) => {
-        const { setQty, _id, setDynamicProductsQty } = this.props;
+        const { setQty, _id, setProductsQty } = this.props;
         setQty(_id, value);
-        setDynamicProductsQty();
+        setProductsQty();
+        // setDynamicProductsQty();
     }
     onDecreaseQty = () => {
         const { setQty, _id, setProductsQty, qty } = this.props;

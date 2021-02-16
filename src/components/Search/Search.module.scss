@@ -49,10 +49,27 @@
     }
 }
 
-@media screen and (max-width: 920px) {
+@media screen and (max-width: 1320px) {
     .Search {
         .Active {
-            width: 220px;
+            width: 235px;
+        }
+    }   
+}
+
+
+@media screen and (max-width: 1125px) {
+    .Search {
+        .Active {
+            width: 200px;
+        }
+    }
+}
+
+@media screen and (max-width: 910px) {
+    .Search {
+        .Active {
+            width: 145px;
         }
     }
 }

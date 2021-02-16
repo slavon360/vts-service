@@ -50,6 +50,17 @@
         font-size: 25px;
         padding-bottom: 14px;
 
+        .HomeIcon {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 1320px) {
+    .Header {
+        .HomeLink {
+            font-size: 19px;
+        }
     }
 }
 
@@ -59,16 +70,45 @@
     }
 }
 
-@media screen and (max-width: 830px) {
+@media screen and (max-width: 1100px) {
+    .Header {
+        .HomeLink {
+            font-size: 16px;
+        }
+    }
+}
+
+@media screen and (max-width: 1070px) {
+    .Header {
+        .HomeLink {
+            .HomeLinkText {
+                display: none;
+            }
+            .HomeIcon {
+                display: block;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 855px) {
+    .Header {
+        .PhonesWrp {
+            display: none;
+        }
+    }
+}
+
+@media screen and (max-width: 846px) {
     .Header {
         top: 50px;
-        height: 152px;
+        height: 110px;
         .HomeLink {
-            height: 32px;
-            padding-top: 9px;
+            // height: 32px;
+            // padding-top: 9px;
         }
         .PhonesWrp {
-            display: block;
+            // display: block;
         }
     }
     .Header.Visible {

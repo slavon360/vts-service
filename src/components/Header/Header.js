@@ -106,7 +106,8 @@ class Header extends PureComponent {
 					<Fragment>
 						<div className={styles.LeftSide}>
 							<Link className={styles.HomeLink} to="/">
-								Вода Тепло Сервис
+								<span className={styles.HomeLinkText}>Вода Тепло Сервис</span>
+								<HomeIcon className={styles.HomeIcon} style={{ fontSize: '25px' }} />
 							</Link>
 							<Search
 								contacts={contacts}
