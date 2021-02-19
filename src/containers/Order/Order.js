@@ -3,6 +3,8 @@ import { getTotalSum, getProducts, getProductsQty, onGetClientForm } from '../..
 import { removeFromCart, setQty, setProductsQty, setDynamicProductsQty } from '../../actions/cart';
 import { sendOrderData } from '../../actions/user';
 import { setModalState, setModalTemplate } from '../../actions/site';
+import { switchCheckedCategory } from '../../actions/menus';
+import { makeProductsRequest } from '../../actions/products';
 import { toJS } from '../../components/HOC/toJS';
 import { Order } from '../../components';
 
@@ -14,9 +16,11 @@ const mapStateToProps = (state) => {
     const modalIsOpen = state.site.modalIsOpen;
     const modalTemplate = state.site.modalTemplate;
     const windowWidth = state.site.windowWidth;
+    const categNames = state.menus.get('categNames');
 
     return {
         products,
+        categNames,
         totalSum,
         productsQty,
         form,
@@ -33,7 +37,9 @@ const mapDispatchToProps = {
     setDynamicProductsQty,
     setModalState,
     sendOrderData,
-    setModalTemplate
+    setModalTemplate,
+    makeProductsRequest,
+    switchCheckedCategory
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(toJS(Order));

@@ -97,7 +97,15 @@ const serverErrorTemplate = (message, statusText) => `<div>
 
 const generateSentData = (formData, products, totalSum) => {
     const html_products_string = htmlCodeOrder(products, totalSum);
-    const sentData = { form: formData, products: html_products_string };
+    const sentData = {
+        form: formData,
+        products: html_products_string,
+        browserInfo: {
+            userAgent: window.navigator.userAgent,
+            windowWidth: window.innerWidth
+        }
+    };
+
     return sentData;
 };
 
