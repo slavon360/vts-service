@@ -59,9 +59,9 @@ class ProductPage extends Component {
 			selectedCategoryId: nextSelectedCategoryId
 		} = nextProps;
 
-		if (selectedCategoryId && nextSelectedCategoryId !== selectedCategoryId) {
-			this.props.history.push('/');
-		}
+		// if (selectedCategoryId && nextSelectedCategoryId !== selectedCategoryId) {
+		// 	this.props.history.push('/');
+		// }
 		if (currencyRate !== nextCurrencyRate) this.getProductInfo();
 		return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title ||
 				modalIsOpen !== nextModalIsOpen || imgSources || nextImgSource;
@@ -170,6 +170,10 @@ class ProductPage extends Component {
 		// removeFromCart(product._id);
 		setModalState(isOpen);
 	}
+	onMakeProductsRequest = () => {
+		this.props.makeProductsRequest();
+		this.props.history.push('/');
+	}
 	renderComponent = () => {
 		const { relevant_products } = this.state;
 		const {
@@ -185,8 +189,7 @@ class ProductPage extends Component {
 			windowWidth,
 			switchProductsLoading,
 			categNames,
-			switchCheckedCategory,
-			makeProductsRequest
+			switchCheckedCategory
 		} = this.props;
 		
 		if (product && contacts && this.state.imgSources) {
@@ -197,7 +200,7 @@ class ProductPage extends Component {
 					<Categories
 						categories={categNames}
 						switchCheckedCategory={switchCheckedCategory}
-						makeProductsRequest={makeProductsRequest}
+						makeProductsRequest={this.onMakeProductsRequest}
 					/>
 					<div className={styles.ProductPage}>
 						<div className={styles.ImageAreaWrp}>

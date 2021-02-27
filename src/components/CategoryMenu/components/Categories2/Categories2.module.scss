@@ -10,6 +10,7 @@
 
     * {
         font-size: 18px;
+        user-select: none;
     }
 
     .NavWrapper {
@@ -21,8 +22,14 @@
         .NavMenu {
             position: absolute;
             display: block;
-            margin-left: 1rem;
+            right: 15px;
 
+            span {
+                color: #eee;
+                position: relative;
+                bottom: 5px;
+                right: 5px;
+            }
             .NavMenuLink {
                 color: #fff;
                 font-size: 2rem;
@@ -43,7 +50,7 @@
             background-color: #658fab;
             position: relative;
             
-            &:hover {
+            &.NavListItemOpened {
                 .NavListLink {
                     color: #ff115f;
                 }
@@ -123,6 +130,19 @@
             overflow-y: auto;
             &.NavListOpened {
                 max-height: 600px;
+            }
+            .NavListItem {
+                &:hover {
+                    .NavListLink {
+                        color: #ff115f;
+                    }
+                    .NavSubMenu {
+                        display: block;
+                        visibility: visible;
+                        opacity: 1;
+                        transition-delay: 0s, 0s, 0.3s;
+                    }
+                }
             }
         }
     }

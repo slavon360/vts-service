@@ -43,7 +43,14 @@ class Category extends Component {
         return nextProps.category.checked !== this.props.category.checked;
     }
     makeCheckedCategory = () => {
-        const { category: { _id, index }, switchCheckedCategory, makeProductsRequest, toggleMenu } = this.props;
+        const {
+            category: { _id, index },
+            switchCheckedCategory,
+            makeProductsRequest,
+            toggleMenu,
+            dropCategoriesOpenedName
+        } = this.props;
+        dropCategoriesOpenedName();
         switchCheckedCategory(_id, index);
         makeProductsRequest();
 
