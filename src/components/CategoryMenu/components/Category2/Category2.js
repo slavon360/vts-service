@@ -42,7 +42,7 @@ class Category extends Component {
     shouldComponentUpdate(nextProps) {
         return nextProps.category.checked !== this.props.category.checked;
     }
-    makeCheckedCategory = () => {
+    makeCheckedCategory = event => {
         const {
             category: { _id, index },
             switchCheckedCategory,
@@ -55,7 +55,7 @@ class Category extends Component {
         makeProductsRequest();
 
         if (window.innerWidth <= 768) {
-            toggleMenu();
+            toggleMenu(event);
         }
     }
     render() {

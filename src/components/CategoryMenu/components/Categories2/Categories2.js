@@ -29,6 +29,7 @@ class Categories extends Component {
         this.dropCategoriesOpenedName();
     }
     onChangeCategory = event => {
+        event.stopPropagation();
         const catId = event.currentTarget.getAttribute('cat-id');
         const index = event.currentTarget.getAttribute('data-index');
 
@@ -41,7 +42,8 @@ class Categories extends Component {
             }
         }
     }
-    onToggleMenu = () => {
+    onToggleMenu = event => {
+        event.stopPropagation();
         this.setState(prevState => ({
             ...prevState,
             menuOpened: !prevState.menuOpened
@@ -49,6 +51,14 @@ class Categories extends Component {
     }
     closeMenu = () => {
         this.setState({ menuOpened: false });
+    }
+
+    componentDidMount() {
+        window.addEventListener('click', this.closeMenu);
+    }
+
+    componentWillUnmount() {
+        window.removeEventListener('click', this.closeMenu);
     }
 
     render () {
@@ -59,7 +69,7 @@ class Categories extends Component {
             <nav className={styles.Nav}>
                 <div className={styles.NavWrapper}>
                     <div className={styles.NavMenu}>
-                        <a onClick={this.onToggleMenu} onBlur={this.closeMenu} title="Open Menu" className={styles.NavMenuLink}>
+                        <a onClick={this.onToggleMenu} title="Open Menu" className={styles.NavMenuLink}>
                             <span className={styles.NavMenuLinkWord}>
                                 каталог
                             </span>
