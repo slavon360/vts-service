@@ -24,16 +24,19 @@
             display: block;
             right: 15px;
 
-            span {
-                color: #eee;
-                position: relative;
-                bottom: 5px;
-                right: 5px;
-            }
             .NavMenuLink {
-                color: #fff;
-                font-size: 2rem;
                 text-decoration: none;
+
+                .NavMenuLinkIcon {
+                    color: #fff;
+                    font-size: 2rem;
+                }
+                .NavMenuLinkWord {
+                    color: #eee;
+                    position: relative;
+                    bottom: 5px;
+                    right: 5px;
+                }
             }
         }
     }

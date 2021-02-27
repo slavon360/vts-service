@@ -59,10 +59,14 @@ class Categories extends Component {
             <nav className={styles.Nav}>
                 <div className={styles.NavWrapper}>
                     <div className={styles.NavMenu}>
-                        <span>
-                            каталог
-                        </span>
-                        <a onClick={this.onToggleMenu} onBlur={this.closeMenu} className={styles.NavMenuLink} title="Open Menu">☰</a>
+                        <a onClick={this.onToggleMenu} onBlur={this.closeMenu} title="Open Menu" className={styles.NavMenuLink}>
+                            <span className={styles.NavMenuLinkWord}>
+                                каталог
+                            </span>
+                            <span className={styles.NavMenuLinkIcon}>
+                                ☰
+                            </span>
+                        </a>
                     </div>
                 </div>
                 <ul className={cx(styles.NavList, { [styles.NavListOpened]: menuOpened })}>
