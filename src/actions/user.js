@@ -186,7 +186,6 @@ export const makeQuickOrder = () => async (dispatch, getState) => {
 
 export const leavePhoneNumber = note => async (dispatch, getState) => {
     const { form: { phone_number_form: { values: formData } } } = getState();
-    console.log(formData)
     const sentData = {
         form: {
             ...formData,

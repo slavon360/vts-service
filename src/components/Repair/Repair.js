@@ -51,7 +51,7 @@ const renderField = ({
                 {...input}
                 type={type}
                 placeholder={placeholder}
-                autoComplete="off"
+                autoComplete="nope"
             />
             {error && touched &&
 				<Fragment>
@@ -138,7 +138,11 @@ const Repair = ({
 			</div>
 			<div className={styles.MiddleSection}>
 				<div className={styles.FormWrp}>
-					<form className={styles.Form} onSubmit={event => onleavePhoneNumber(event, leavePhoneNumber)}>
+					<form
+						className={styles.Form}
+						onSubmit={event => onleavePhoneNumber(event, leavePhoneNumber)}
+						autoComplete="off"
+					>
 						<div className={styles.Head}>Заполните форму и мы Вам перезвоним</div>
 						<div className={styles.ClientName}>
 							<Field
