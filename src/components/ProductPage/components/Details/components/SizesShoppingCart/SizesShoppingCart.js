@@ -43,7 +43,7 @@ const SizesShoppingCart = ({
                     onClick={buyByOneClick}
                     clsName={styles.ByOneClick}
                 >
-                    Купить в 1 клик
+                    Заказать звонок
                 </Button>
                 <button
                     onClick={addToCart}

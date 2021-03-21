@@ -33,7 +33,6 @@ function setCategNames(catalog) {
         return result = [...result, categ];
     }, []);
 
-    console.log(categNames);
     return [
         {
             name: 'ремонт',
@@ -72,7 +71,8 @@ function getCatalogMenu(state, { catalog, selectedCategoryId }) {
                 name: current,
                 checked: false,
                 link: item.subCategSlug[index],
-                id: item.subCategIds[index]
+                id: item.subCategIds[index],
+                image_url: item.subCategImages[index] && item.subCategImages[index].secure_url
             }
             result.push(obj);
             return result;

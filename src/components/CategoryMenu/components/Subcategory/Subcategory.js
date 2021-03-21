@@ -5,19 +5,33 @@ import styles from './Subcategory.module.scss';
 
 class Subcategory extends Component {
     onSwitchSubcategory = () => {
-        const { subcategory: { id }, switchSubcategory, makeProductsRequest, revertCurrentPage } = this.props;
+        const {
+            subcategory: { id },
+            switchSubcategory,
+            makeProductsRequest,
+            revertCurrentPage
+        } = this.props;
         switchSubcategory(id);
         revertCurrentPage();
         makeProductsRequest();
     }
     render() {
-        const { subcategory: { name, checked } } = this.props;
+        const { subcategory: { name, checked, image_url } } = this.props;
         return (
             <div
-                className={cx(styles.Subcategory, { [styles.Checked]: checked })}
+                className={cx(styles.Subcategory, {
+                    [styles.Checked]: checked,
+                    [styles.SubcategoryWithImage]: image_url
+                })}
                 onClick={this.onSwitchSubcategory}
             >
-                <div className={styles.Title}>{ name }</div>
+                {image_url ?
+                    <div className={styles.SubcategImageContainer}>
+                        <img src={image_url} alt={name} />
+                    </div>
+                    :
+                    <div className={styles.Title}>{ name }</div>
+                }
             </div>
         );
     }

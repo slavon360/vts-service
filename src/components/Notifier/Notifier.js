@@ -7,13 +7,12 @@ import styles from './Notifier.module.scss';
 class Notifier extends Component {
 	componentDidMount() {
 		const { autoHide = 6000 } = this.props;
-		console.log('didMount');
+
 		setTimeout(this.hideHandler, autoHide);
 	}
 
 	componentWillUnmount() {
 		clearTimeout(this.hideHandler);
-		console.log('willunmount');
 	}
 
 	hideHandler = () => {

@@ -1,42 +1,8 @@
 import React, { Component, Fragment } from 'react';
-import cx from 'classnames';
-import * as paths from '../../../../constants/paths';
-
-// import zapchastiVodonagrevateli from '../../../../assets/images/catalog/boilery/zapchasti-k-vodonagrevatelyam.jpg';
-// import zapchastiKolonki from '../../../../assets/images/catalog/kolonki/zapchasti_kolonki.jpg';
-// import zapchastiElektrKotly from '../../../../assets/images/catalog/kotly/zapchasti-k-elektricheskim.jpg';
-// import zapchastiGazKotlyImg from '../../../../assets/images/catalog/kotly/zapchasti-k-gazovym.jpg';
-// import kotlyGazovye from '../../../../assets/images/catalog/kotly/kotly-gazovye.jpg';
-// import kotlyElektricheskie from '../../../../assets/images/catalog/kotly/elektrokotly.jpg';
-// import boileryImg from '../../../../assets/images/catalog/boilery/boilery.jpg';
-// import programmatory from '../../../../assets/images/catalog/programmatory/programmatory.jpg';
-// import zapchastiImg from '../../../../assets/images/catalog/zapchasti/zapchasti.jpg';
+import { Link } from 'react-router-dom';
+import { routes } from '../../../../routes';
 
 import styles from './Category2.module.scss';
-
-// const imgImporter = (name) => {
-//     switch (name) {
-//         case 'kotly-gazovye':
-//             return kotlyGazovye;
-//         case 'kotly-elektricheskie':
-//             return kotlyElektricheskie;
-//         case 'boilery':
-//             return boileryImg;
-//         case 'zapchasti':
-//             return zapchastiVodonagrevateli;
-//         case 'zapchasti-gazovye-kotly':
-//             return zapchastiGazKotlyImg;
-//         case 'zapchasti-elektro-kotly':
-//             return zapchastiElektrKotly;
-//         case 'zapchasti-gazovye-kolonki':
-//             return zapchastiKolonki;
-//         case 'zapchasti-elektro-vodonagrevateli':
-//             return zapchastiVodonagrevateli;
-//         case 'programmatory-termoregulyatory':
-//             return programmatory;
-//         default: return kotlyGazovye;
-//     }
-// }
 
 class Category extends Component {
     shouldComponentUpdate(nextProps) {
@@ -67,9 +33,9 @@ class Category extends Component {
                         
                         className={styles.NavSubmenuItem}
                     >
-                        <a href="/services" className={styles.NavSubmenuLink}>
+                        <Link to={routes.REPAIR} className={styles.NavSubmenuLink}>
                             {categName}
-                        </a>
+                        </Link>
                     </li>
                 :
                 <li

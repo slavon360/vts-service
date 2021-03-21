@@ -6,5 +6,6 @@ export const routes = {
     DASHBOARD: '/dashboard',
     LOGOUT: '/logout',
     SHOPPING_CART: '/shopping-cart',
-    ORDER: '/order'
+    ORDER: '/order',
+    REPAIR: '/repair'
 }

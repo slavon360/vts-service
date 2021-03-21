@@ -161,11 +161,11 @@ class ProductPage extends Component {
 	quickSubmit = (event) => {
 		event.preventDefault();
 		const isOpen = false;
-		const { makeQuickOrder, setModalState, addToCart, setProductsQty, product, removeFromCart } = this.props;
+		const { leavePhoneNumber, setModalState, addToCart, setProductsQty, product, removeFromCart } = this.props;
 		// const qty = 1;
 		// addToCart(product);
 		// setProductsQty(qty);
-		makeQuickOrder();
+		leavePhoneNumber('купівля');
 		// setProductsQty(0);
 		// removeFromCart(product._id);
 		setModalState(isOpen);

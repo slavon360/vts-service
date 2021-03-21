@@ -52,8 +52,8 @@ class HomePage extends Component{
     quickSubmit = (event) => {
         event.preventDefault();
         const isOpen = false;
-        const { makeQuickOrder, setModalState, addToCart, setProductsQty, product } = this.props;
-        makeQuickOrder();
+        const { leavePhoneNumber, setModalState, addToCart, setProductsQty, product } = this.props;
+        leavePhoneNumber('купівля');
         setModalState(isOpen);
     }
     setRefProducts = (ref) => {

@@ -77,11 +77,11 @@ const phoneValidation = (phone) => {
 }
 
 const OrderForm = ({
-    clientForm: { quick_order = {} },
+    clientForm: { phone_number_form = {} },
     quickSubmit,
     closeModal
 }) => {
-    const { syncErrors } = quick_order;
+    const { syncErrors } = phone_number_form;
     const { phoneExist, fullNameExist } = isExist;
     return (
             <form
@@ -115,5 +115,5 @@ const OrderForm = ({
 };
 
 export default reduxForm({
-    form: 'quick_order'
+    form: 'phone_number_form'
 })(OrderForm);

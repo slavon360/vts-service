@@ -24,11 +24,11 @@ export const htmlDecode = (input) => {
 };
 
 export const htmlCodeOrder = (prd, totalSum) => {
-    const products = prd.map(p => {
-        return `<tr><td style="border:1px solid #000;padding:3px 5px;">${p.title}</td>
-        <td style="border:1px solid #000;padding:3px 5px;">${p['Цена']}</td>
-        <td style="border:1px solid #000;padding:3px 5px;">${p.quantity}</td>
-        <td style="border:1px solid #000;padding:3px 5px;">${p.total}</td></tr>
+    const products = prd && prd.map(p => {
+        return `<tr><td style="border:1px solid #000;padding:3px 5px;">${p && p.title}</td>
+        <td style="border:1px solid #000;padding:3px 5px;">${p && p['Цена']}</td>
+        <td style="border:1px solid #000;padding:3px 5px;">${p && p.quantity}</td>
+        <td style="border:1px solid #000;padding:3px 5px;">${p && p.total}</td></tr>
         `;
     });
     const template = `<table style="border:1px solid #000">

@@ -9,6 +9,7 @@ import Navbar from '../Navbar';
 import HomeIcon from '../Icons/HomeIcon';
 
 import styles from './Header.module.scss';
+import { routes } from '../../routes';
 
 class Header extends PureComponent {
 	static propTypes = {
@@ -54,12 +55,20 @@ class Header extends PureComponent {
 			getCurrencyRate,
 			currencyRate,
 			setLoadingState,
+			makeProductsRequest
 			// getFilters
 		} = this.props;
 		setLoadingState(true);
 		if (!currencyRate) await getCurrencyRate();
+
 		await getCatalogMenu();
-		// getFilters();
+
+		if (window.location.pathname !== routes.REPAIR) {
+			makeProductsRequest();
+			// getFilters();
+		} else {
+			setLoadingState(false);
+		}
 	}
 
 	fetchContacts = async () => {

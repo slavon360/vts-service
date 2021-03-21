@@ -8,8 +8,11 @@ import {
     Login,
     Dashboard,
     ShoppingCart,
-    Order
+    Order,
+    Repair
 } from '../containers';
+
+// import { Repair } from '../components';
 
 const routes = [
     {
@@ -40,6 +43,10 @@ const routes = [
     {
         path: `${routeNames.ORDER}`,
         component: Order
+    },
+    {
+        path: routeNames.REPAIR,
+        component: Repair
     }
 ]
 

@@ -1,0 +1,143 @@
+.ModalRepairPage {
+    > div {
+        z-index: 1000000000;
+        > div {
+            padding-bottom: 40px !important;
+        }
+    }
+}
+.ModalContent {
+    h2 {
+        margin-bottom: 30px;
+    }
+}
+.RepairModuleWrp {
+    .TopSection {
+        height: 480px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        .LeftSide {
+            display: inline-block;
+            position: relative;
+            z-index: 1;
+            background-color: transparent;
+            @media screen and (min-width: 1024px) {
+                width: 40%;
+                left: 8%;
+            }
+            .MainTitle {
+                color: #658fab;
+            }
+            .DescriptionInfo {
+                margin: 30px 0 30px;
+                line-height: 1.5;
+            }
+        }
+        .RightSide {
+            display: inline-block;
+            position: relative;
+            @media screen and (min-width: 1024px){
+                width: 60%;
+            }
+            &::before {
+                content: '';
+                display: block;
+                background: white;
+                width: 400px;
+                height: 140%;
+                position: absolute;
+                top: -35%;
+                left: -170px;
+                transform: rotate(26deg);
+            }
+            &.ImageContainer {
+                height: 100%;
+                vertical-align: top;
+                background-position: center;
+                overflow: hidden;
+            }
+        }
+
+        @media screen and (max-width: 1150px) {
+            margin-top: 35px;
+            height: auto;
+            .LeftSide {
+                display: block;
+                width: 100%;
+                left: 0;
+            }
+            .RightSide {
+                display: none;
+            }
+            .LeftSide {
+                margin-bottom: 20px;
+                .MainTitle {
+                    text-align: center;
+                }
+                .DescriptionInfo {
+                    padding: 0 8%;
+                    line-height: 1.5;
+                }
+            }
+            .RightSide {
+                &::before {
+                    display: none;
+                }
+            }
+        }
+    }
+    .MiddleSection {
+        line-height: 1.5;
+        margin-bottom: 25px;
+        padding: 10px 8% 0;
+
+        .FormWrp {
+            text-align: center;
+            margin-bottom: 20px;
+            .Form {
+                text-align: left;
+                display: inline-block;
+                border: 4px solid #658fab;
+                background-color: #658fab;
+                border-radius: 5px;
+                color: #fff;
+                max-width: 450px;
+
+                .Head {
+                    margin-bottom: 15px;
+                }
+                .ClientName, .Phone, .Address, .Comment {
+                    width: 100%;
+                    margin-bottom: 5px;
+                }
+                .ClientName, .Phone, .SubmitBtn, .DisabledBtn, .Address, .Comment {
+                    vertical-align: top;
+                    input {
+                        height: 24px;
+                        margin-bottom: 5px;
+                        width: 100%;
+                    }
+                }
+                .SubmitBtn {
+                    background-color: #ff115f;
+                }
+                .DisabledBtn {
+                    background-color: #ccc;
+                }
+                .SubmitBtn, .DisabledBtn {
+                    color: #fff;
+                    height: 28px;
+                    transform: translateY(-1px);
+                }
+
+                padding: 20px;
+            }
+        }
+        @media screen and (min-width: 1024px) {
+            
+        }
+        h2 {
+            text-align: center;
+        }
+    }
+}

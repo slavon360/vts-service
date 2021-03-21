@@ -8,6 +8,20 @@
     text-align: center;
     cursor: pointer;
 
+    &.SubcategoryWithImage {
+        padding: 6px 5px 0;
+        margin: 10px 15px;
+        min-width: initial;
+    }
+
+    .SubcategImageContainer {
+        display: inline-block;
+
+        img {
+            width: 110px;
+        }
+    }
+
     &.Checked, &:hover {
         color: #ff0053;
         border-color: #ff0053;

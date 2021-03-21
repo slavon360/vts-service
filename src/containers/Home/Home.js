@@ -4,7 +4,7 @@ import { HomePage } from '../../components';
 import { addToCart, setProductsQty, resetCart, preorderModal, removeQuickOrderProduct, setQuickOrderProduct } from '../../actions/cart';
 import { setModalState, setModalTemplate, setModalWithActions } from '../../actions/site';
 import {
-    getCatalogMenu,
+    // getCatalogMenu,
     switchCheckedCategory,
     setActiveFilter,
     deleteActiveFilter,
@@ -14,7 +14,7 @@ import {
 import { makeProductsRequest, revertCurrentPage, switchProductsLoading } from '../../actions/products';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 // import { getHomeBanners } from '../../actions/banners';
-import { makeQuickOrder } from '../../actions/user';
+import { leavePhoneNumber } from '../../actions/user';
 import { getTotalSum } from '../../utils/selectors';
 // import from from '../../components/Products';
 
@@ -56,7 +56,7 @@ const mapStateToProps = (state) => {
 };
 
 const mapDispatchToProps = {
-    getCatalogMenu,
+    // getCatalogMenu,
     switchCheckedCategory,
     makeProductsRequest,
     getCurrencyRate,
@@ -69,7 +69,7 @@ const mapDispatchToProps = {
     setModalState,
     setModalTemplate,
     setModalWithActions,
-    makeQuickOrder,
+    leavePhoneNumber,
     resetCart,
     preorderModal,
     removeQuickOrderProduct,

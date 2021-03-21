@@ -31,7 +31,7 @@ const ProductContent = ({
 							onClick={buyByOneClick}
 							clsName={styles.ByOneClick}
 						>
-							Купить в 1 клик
+							Заказать звонок
 						</Button> :
 						<span className={styles.OptionalPrice}>Цена</span>
 					}

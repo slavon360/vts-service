@@ -21,4 +21,5 @@ export Review from './Review';
 export StarsAndTotalReviews from './StarsAndTotalReviews';
 export Notifier from './Notifier';
 export Preloader from './Preloader';
+export Repair from './Repair';
 // export Product from './Products/Product';

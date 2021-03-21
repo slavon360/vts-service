@@ -42,19 +42,19 @@ export const getCatalogMenu = () => async (dispatch, getState) => {
         const json = await getFromAxios('/getCatalog');
         const catalog = _get(json, 'data', []);
         const categid = selectedCategoryId || catalog[0] && catalog[0]._id;
-        if (!productsList.size && productsList.getIn([0, 'productCategory']) !== selectedCategoryId) {
-            const jsonProducts = await getFromAxios('/list-products', { categid });
-            const products = _get(jsonProducts, 'data.results', []);
-            const updProducts = updateProductPrices(products, currencyRate);
-            const last = _get(jsonProducts, 'data.last', 0);
-            const first = _get(jsonProducts, 'data.first', 0);
-            const totalPages = _get(jsonProducts, 'data.totalPages', null);
-            const perPage = last - first + 1;
-            dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages });
-            dispatch({ type: PRODUCTS_TYPES.listProducts, products: updProducts, perPage });
-        }
+        // if (!productsList.size && productsList.getIn([0, 'productCategory']) !== selectedCategoryId) {
+        //     const jsonProducts = await getFromAxios('/list-products', { categid });
+        //     const products = _get(jsonProducts, 'data.results', []);
+        //     const updProducts = updateProductPrices(products, currencyRate);
+        //     const last = _get(jsonProducts, 'data.last', 0);
+        //     const first = _get(jsonProducts, 'data.first', 0);
+        //     const totalPages = _get(jsonProducts, 'data.totalPages', null);
+        //     const perPage = last - first + 1;
+        //     dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages });
+        //     dispatch({ type: PRODUCTS_TYPES.listProducts, products: updProducts, perPage });
+        // }
         dispatch({ type: MENU_TYPES.getCatalogMenu, catalog, selectedCategoryId: categid });
-        dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
+        // dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });
         dispatch({ type: SITE_TYPES.setLoadingState, loading: false });
     } catch (e) {
         console.error(e);

@@ -89,6 +89,11 @@ const successTemplate = `<div>
     <p>Наши консультанты свяжутся с Вами в кратчайшие сроки</p>
 </div>`;
 
+const successLeavePhoneTemplate = `<div>
+    <h3>ВАША ЗАЯВКА ПРИНЯТА</h3>
+    <p>Наши консультанты свяжутся с Вами в кратчайшие сроки</p>
+</div>`;
+
 const serverErrorTemplate = (message, statusText) => `<div>
     <h3>${statusText}</h3>
     <p>${message}</p>
@@ -149,7 +154,7 @@ export const sendOrderData = (formData, totalSum) => async (dispatch, getState) 
 export const makeQuickOrder = () => async (dispatch, getState) => {
     const { form: { quick_order: { values: formData } } } = getState();
     const { quickOrderProduct } = getState().cart;
-    const { total } = quickOrderProduct;
+    const total = quickOrderProduct && quickOrderProduct.total;
     const sentData = generateSentData(formData, [quickOrderProduct], total);
 
     try {
@@ -171,6 +176,46 @@ export const makeQuickOrder = () => async (dispatch, getState) => {
             const template = htmlDecode(successTemplate);
             dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
             // dispatch({ type: CART_TYPES.removeQuickOrderProduct });
+        }
+
+        dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });
+    } catch (err) {
+        console.error(err);
+    }
+};
+
+export const leavePhoneNumber = note => async (dispatch, getState) => {
+    const { form: { phone_number_form: { values: formData } } } = getState();
+    console.log(formData)
+    const sentData = {
+        form: {
+            ...formData,
+            customer_full_name: `${formData.customer_full_name} (${note})`
+        },
+        browserInfo: {
+            userAgent: window.navigator.userAgent,
+            windowWidth: window.innerWidth
+        }
+    };
+
+    try {
+        const json = await postFromAxios('/leave-phone-number', qs.stringify(sentData), {
+            headers: {'Content-Type': 'application/x-www-form-urlencoded' },
+        });
+        const modalIsOpen = true;
+        const errorMessage = _get(json, 'data.error', '');
+        const statusText = _get(json, 'statusText', '');
+
+        if (json.status === 404) {
+            const template = htmlDecode(notFoundTemplate);
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
+        }
+        if (json.status === 500) {
+            const template = htmlDecode(serverErrorTemplate(errorMessage, statusText));
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
+        } else {
+            const template = htmlDecode(successLeavePhoneTemplate);
+            dispatch({ type: SITE_TYPES.setModalTemplate, modalTemplate: template });
         }
 
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });

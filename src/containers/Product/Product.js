@@ -10,7 +10,7 @@ import {
     removeFromCart
 } from '../../actions/cart';
 import { switchCheckedCategory } from '../../actions/menus';
-import { makeQuickOrder, makeReview } from '../../actions/user';
+import { leavePhoneNumber, makeReview } from '../../actions/user';
 import { setLoadingState, setModalTemplate, setModalWithActions, setModalState, setSubmitReviewModal } from '../../actions/site';
 import { getProduct, resetProduct, searchProducts, switchProductsLoading, makeProductsRequest } from '../../actions/products';
 import { makeReviewsRequest } from '../../actions/reviews';
@@ -58,7 +58,7 @@ const mapDispatchToProps = {
     setModalState,
     setQuickOrderProduct,
     removeQuickOrderProduct,
-    makeQuickOrder,
+    leavePhoneNumber,
     removeFromCart,
     makeReview,
     makeReviewsRequest,
