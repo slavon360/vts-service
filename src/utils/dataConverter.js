@@ -73,3 +73,16 @@ export const giveUrl = (width, urlHandler) => {
     }
     return urlHandler(w);
 }
+
+export const getRidOfUnnecessariesSubcategories = (categories, word) => {
+    const copyCategories = JSON.parse(JSON.stringify(categories));
+    const searchedWord = word.toLowerCase();
+
+    return copyCategories && copyCategories.map(categ => {
+        if (categ.name.toLowerCase() !== searchedWord) {
+            categ.subcategories = categ.subcategories.filter(subcat => !subcat.categName.toLowerCase().includes(searchedWord));
+        }
+
+        return categ;
+    });
+}

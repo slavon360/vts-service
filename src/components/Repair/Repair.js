@@ -6,6 +6,12 @@ import cx from 'classnames';
 
 import { Input, Button } from '../UI';
 import WarningIcon from '../Icons/WarningIcon';
+import HoursIcon from '../Icons/24HoursIcon';
+import AgreementIcon from '../Icons/AgreementIcon';
+import OperatorIcon from '../Icons/OperatorIcon';
+import FastDeliveryIcon from '../Icons/FastDeliveryIcon';
+import WarehouseIcon from '../Icons/WarehouseIcon';
+import EmployeesIcon from '../Icons/EmployeesIcon';
 import Footer from '../Footer';
 import Categories from '../../components/CategoryMenu/components/Categories2';
 import styles from './Repair.module.scss';
@@ -129,7 +135,7 @@ const Repair = ({
 					<h2 className={styles.MainTitle}>Ремонт котлов, колонок, накопительных и проточных водонагревателей</h2>
 					<div className={styles.DescriptionInfo}>
 					<p><b>Вода Тепло Сервис</b> выполняет выезд сервисного инженера для диагностики, ремонта и обслуживания газового, электрического отопительного оборудования, газовых колонок, накопительных и проточных водонагревателей.</p>
-					<p>Наши специалисты выполняют работы по вводу оборудования в эксплуатацию, гарантийный, пост гарантийный ремонты, техническое обслуживание, химическую промывку теплообменников.</p>
+					<p>Наши специалисты выполняют работы по вводу оборудования в эксплуатацию, гарантийный, пост гарантийный ремонт, техническое обслуживание, химическую промывку теплообменников.</p>
 					</div>
 				</div>
 				{windowWidth >= 768 &&
@@ -188,13 +194,13 @@ const Repair = ({
 					</form>
 				</div>
 				<h2>Наши преимущества</h2>
-				<ul>
-					<li>склад запасных частей</li>
-					<li>сертифицированные сотрудники прошедшие обучение</li>
-					<li>быстрый выезд мастера на место установки оборудования</li>
-					<li>консультативная помощь пользователя оборудования по поводу эксплуатации - по телефону</li>
-					<li>заключаем договор на гарантийное и пост гарантийное обслуживание оборудования с полным пакетом документов</li>
-					<li>в отопительный сезон работаем без выходных</li>
+				<ul className={styles.OurPros}>
+					<li><WarehouseIcon/> <span>склад запасных частей;</span></li>
+					<li><EmployeesIcon/> <span>сертифицированные сотрудники прошедшие обучение;</span></li>
+					<li><FastDeliveryIcon/> <span>быстрый выезд мастера на место установки оборудования;</span></li>
+					<li><OperatorIcon/> <span>консультативная помощь пользователя оборудования по поводу эксплуатации - по телефону;</span></li>
+					<li><AgreementIcon/> <span>заключаем договор на гарантийное и пост гарантийное обслуживание оборудования с полным пакетом документов;</span></li>
+					<li><HoursIcon/> <span>в отопительный сезон работаем без выходных;</span></li>
 				</ul>
 			</div>
 			{contacts && contacts.length &&

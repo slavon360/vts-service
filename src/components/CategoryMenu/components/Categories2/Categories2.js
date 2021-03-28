@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import cx from 'classnames';
+import { getRidOfUnnecessariesSubcategories } from '../../../../utils/dataConverter';
 import Category from '../Category2';
 
 import styles from './Categories2.module.scss';
@@ -8,7 +9,8 @@ import styles from './Categories2.module.scss';
 class Categories extends Component {
     state = {
         menuOpened: false,
-        categoriesOpenedName: null
+        categoriesOpenedName: null,
+        copyCategories: null
     };
 
     setCategoriesOpenedName = event => {
@@ -53,6 +55,16 @@ class Categories extends Component {
         this.setState({ menuOpened: false });
     }
 
+	static getDerivedStateFromProps(nextProps, prevState) {
+        if (nextProps.categories, !prevState.copyCategories) {
+            return {
+                copyCategories: getRidOfUnnecessariesSubcategories(nextProps.categories, 'запчасти')
+            }
+        }
+
+        return null;
+    }
+
     componentDidMount() {
         window.addEventListener('click', this.closeMenu);
     }
@@ -62,8 +74,8 @@ class Categories extends Component {
     }
 
     render () {
-        const { categories, switchCheckedCategory, makeProductsRequest } = this.props;
-        const { menuOpened, categoriesOpenedName } = this.state;
+        const { switchCheckedCategory, makeProductsRequest } = this.props;
+        const { menuOpened, categoriesOpenedName, copyCategories } = this.state;
 
         return (
             <nav className={styles.Nav}>
@@ -80,7 +92,7 @@ class Categories extends Component {
                     </div>
                 </div>
                 <ul className={cx(styles.NavList, { [styles.NavListOpened]: menuOpened })}>
-                    {categories.map(({ name, subcategories, id, index }, i) => (
+                    {copyCategories.map(({ name, subcategories, id, index }, i) => (
                         <li
                             className={cx(styles.NavListItem, { [styles.NavListItemOpened]: categoriesOpenedName === name })}
                             key={`${i}-${name}`}

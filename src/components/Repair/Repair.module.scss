@@ -133,6 +133,37 @@
                 padding: 20px;
             }
         }
+        .OurPros {
+            list-style: none;
+            
+            li {
+                margin: 10px 0 20px;
+                span {
+                    position: relative;
+                    display: inline-block;
+                    width: calc(100% - 64px);
+                    margin-left: -4px;
+                    vertical-align: middle;
+                    padding-left: 40px;
+                    box-sizing: border-box;
+                    &::before {
+                        content: '';
+                        border-top: 1px solid;
+                        width: 10px;
+                        height: 1px;
+                        position: absolute;
+                        top: 50%;
+                        left: 15px;
+                    }
+                }
+                svg {
+                    display: inline-block;
+                    width: 4.5em;
+                    height: 4.5em;
+                    margin-left: -10px;
+                }
+            }
+        }
         @media screen and (min-width: 1024px) {
             
         }
