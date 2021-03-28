@@ -218,6 +218,7 @@ export const leavePhoneNumber = note => async (dispatch, getState) => {
         }
 
         dispatch({ type: SITE_TYPES.setModalState, modalIsOpen });
+        return json;
     } catch (err) {
         console.error(err);
     }

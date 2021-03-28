@@ -97,10 +97,11 @@ const renderPhone = ({
       )
 }
 
-const onleavePhoneNumber = (event, leavePhoneNumber) => {
+const onleavePhoneNumber = async (event, leavePhoneNumber, resetForm) => {
 	event.preventDefault();
 
-	leavePhoneNumber('ремонт');
+	await leavePhoneNumber('ремонт');
+	resetForm();
 }
 
 const onMakeProductsRequest = (makeProductsRequest, history) => {
@@ -119,7 +120,8 @@ const Repair = ({
 	modalTemplate,
 	setModalState,
 	setModalTemplate,
-	windowWidth
+	windowWidth,
+	reset
 }) => (
 	<Fragment>
 		{categNames && categNames instanceof Array &&
@@ -146,7 +148,7 @@ const Repair = ({
 				<div className={styles.FormWrp}>
 					<form
 						className={styles.Form}
-						onSubmit={event => onleavePhoneNumber(event, leavePhoneNumber)}
+						onSubmit={event => onleavePhoneNumber(event, leavePhoneNumber, reset)}
 						autoComplete="off"
 					>
 						<div className={styles.Head}>Заполните форму и мы Вам перезвоним</div>
