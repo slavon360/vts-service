@@ -6,7 +6,7 @@ import { setModalState, setModalTemplate } from '../../actions/site';
 import { switchCheckedCategory } from '../../actions/menus';
 import { makeProductsRequest } from '../../actions/products';
 import { toJS } from '../../components/HOC/toJS';
-import { Order } from '../../components';
+import { OrderLazy } from '../../components';
 
 const mapStateToProps = (state) => {
     const products = getProducts(state);
@@ -42,4 +42,4 @@ const mapDispatchToProps = {
     switchCheckedCategory
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(Order));
+export default connect(mapStateToProps, mapDispatchToProps)(toJS(OrderLazy));

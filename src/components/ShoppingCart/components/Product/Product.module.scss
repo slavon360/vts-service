@@ -38,6 +38,9 @@
         font-size: 14px;
         color: #fff;
         border-radius: 50%;
+        &:hover {
+            background-color: rgb(243, 67, 67);
+        }
     }
 
     @media screen and (max-width: 767px) {

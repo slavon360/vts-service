@@ -19,6 +19,8 @@ import { modalGeneralStyles } from '../../constants/data';
 
 import bannerRepairImg from '../../assets/images/other/banner-repair.jpg';
 
+window.scrollTo(0, 0);
+
 let phoneExist = false;
 const isExist = {
     fullNameExist: null,

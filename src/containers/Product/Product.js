@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
-import { ProductPage } from '../../components';
+import { ProductPageLazy } from '../../components';
 import {
     addToCart,
     setProductsQty,
@@ -69,4 +69,4 @@ const mapDispatchToProps = {
     makeProductsRequest
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPage));
+export default connect(mapStateToProps, mapDispatchToProps)(toJS(ProductPageLazy));

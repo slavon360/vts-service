@@ -4,7 +4,7 @@ import { removeFromCart, setQty, setProductsQty, setDynamicProductsQty } from '.
 import { switchCheckedCategory } from '../../actions/menus';
 import { makeProductsRequest } from '../../actions/products';
 import { toJS } from '../../components/HOC/toJS';
-import { ShoppingCart } from '../../components';
+import { ShoppingCartLazy } from '../../components';
 
 const mapStateToProps = (state) => {
     const products = getProducts(state);
@@ -33,4 +33,4 @@ const mapDispatchToProps = {
     switchCheckedCategory
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(toJS(ShoppingCart));
+export default connect(mapStateToProps, mapDispatchToProps)(toJS(ShoppingCartLazy));

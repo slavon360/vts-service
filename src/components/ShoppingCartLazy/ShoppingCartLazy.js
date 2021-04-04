@@ -1,10 +1,10 @@
 import React, { Suspense } from 'react';
+import { Preloader } from '../../components';
 const ShoppingCart = React.lazy(() => import('../ShoppingCart'));
-console.log(ShoppingCart);
-const ShoppingCartLazy = () => (
-    <Suspense fallback={<div>Loading...</div>}>
-        <ShoppingCart />
-    </Suspense>
+const ShoppingCartLazy = props => (
+	<Suspense fallback={<Preloader />}>
+		<ShoppingCart { ...props } />
+	</Suspense>
 );
 
 export default ShoppingCartLazy;

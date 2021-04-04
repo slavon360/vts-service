@@ -25,6 +25,9 @@ class Order extends Component {
 	// state = {
 	//     showModal: false
 	// }
+	componentDidMount() {
+		window.scrollTo(0, 0);
+	}
 	onMakeProductsRequest = () => {
 		const { makeProductsRequest, history } = this.props;
 

@@ -15,7 +15,7 @@
 } */
 
 .carousel .slide {
-  background-color: transparent;
+  background-color: transparent !important;
 }
 .carousel .thumbs-wrapper .thumb {
   cursor: pointer;

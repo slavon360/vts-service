@@ -43,7 +43,7 @@ const Products = ({
                     />
                 )) : <div />
             }
-            {productsLoading &&
+            {productsLoading && windowWidth > 767 &&
                 <Fragment>
                     <div className={styles.ProductPreloaderWrp}>
                         <div className={styles.ProductPreloader}>
@@ -66,6 +66,13 @@ const Products = ({
                         </div>
                     </div>
                 </Fragment>
+            }
+            {productsLoading && windowWidth <= 767 &&
+                <div className={styles.ProductPreloaderWrp}>
+                    <div className={styles.ProductPreloader}>
+                        <Preloader clsName={styles.ProductPreloaderSpinner} />
+                    </div>
+                </div>
             }
         </ul>
     );

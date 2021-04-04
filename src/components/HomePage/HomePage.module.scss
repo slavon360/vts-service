@@ -34,12 +34,16 @@
     ul {
         display: inline-block;
         list-style: none;
+        padding: 0;
         li {
             cursor: pointer;
             display: inline-block;
             margin: 0 10px;
-            &:first-child, &:last-child {
-                margin: 0 25px;
+            &:first-child {
+                margin: 0 25px 0 0;
+            }
+            &:last-child {
+                margin: 0 0 0 25px;
             }
             a {
                 outline: none;
@@ -66,5 +70,11 @@
 @media screen and (max-width: 370px) {
     .GoToOrderBtn, .ContinueShoppingBtn {
         font-size: 13px;
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .PaginatorWrp {
+        padding: 0 40px;
     }
 }

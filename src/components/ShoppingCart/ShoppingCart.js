@@ -9,6 +9,8 @@ import AngleDown from '../Icons/AngleDown';
 
 import styles from './ShoppingCart.module.scss';
 
+window.scrollTo(0, 0);
+
 const ShoppingCart = ({
     products,
     productsQty,

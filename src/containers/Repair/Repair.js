@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Repair } from '../../components';
+import { RepairLazy } from '../../components';
 import { leavePhoneNumber } from '../../actions/user';
 import { switchCheckedCategory } from '../../actions/menus';
 import { makeProductsRequest } from '../../actions/products';
@@ -53,4 +53,4 @@ const mapDispatchToProps = {
     setModalTemplate
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Repair);
+export default connect(mapStateToProps, mapDispatchToProps)(RepairLazy);

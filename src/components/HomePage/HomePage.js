@@ -84,7 +84,9 @@ class HomePage extends Component{
         }
     }
     onMakeProductsRequest = async (page) => {
+        this.props.switchProductsLoading(true);
         await this.props.makeProductsRequest(page);
+        this.props.switchProductsLoading(false);
         const subcategChanged = this.props.selectedSubcategoryId;
         window.setTimeout(() => this.scrollToProducts(subcategChanged), 500);
         this.setState({ alreadyScrolled: true });
@@ -110,7 +112,7 @@ class HomePage extends Component{
             setQuickOrderProduct,
             windowWidth
         } = this.props;
-        if (productsList && productsList.length > 0) {
+        if (productsList) {
             const adjustedCurrentPage = currentPage - 1;
             return <Paginator
                         pageCount={totalPages}

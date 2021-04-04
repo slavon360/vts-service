@@ -111,6 +111,7 @@ class Product extends Component {
                             clsName={styles.Delete}
                             clickHandler={this.onRemoveFromCart}
                             aria-label="Close Account Info Modal Box"
+                            title="Удалить продукт"
                     >&times;</Button>
                     </td>
                 </tr>

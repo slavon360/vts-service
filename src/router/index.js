@@ -2,7 +2,7 @@ import React, { Component, Fragment } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { renderRoutes } from 'react-router-config';
 import { Header } from '../containers'
-import { Layer, ContactForm } from '../components';
+import { Layer } from '../components';
 import Routes from './Routes';
 
 class Router extends Component {
