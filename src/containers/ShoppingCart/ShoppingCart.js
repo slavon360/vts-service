@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { getProductsWithTotals, getTotalSum, getProducts, getProductsQty } from '../../utils/selectors';
+import { getTotalSum, getProducts, getProductsQty } from '../../utils/selectors';
 import { removeFromCart, setQty, setProductsQty, setDynamicProductsQty } from '../../actions/cart';
 import { switchCheckedCategory } from '../../actions/menus';
 import { makeProductsRequest } from '../../actions/products';

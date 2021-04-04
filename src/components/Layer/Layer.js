@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import Modal from 'react-modal';
-import { Backdrop, Button } from '../UI';
+import { Backdrop } from '../UI';
 import { Notifier, Preloader } from '../';
 // import Preloader from '../Preloader';
 import { toJS } from '../../components/HOC/toJS';
@@ -57,7 +57,7 @@ class Layer extends PureComponent {
 
 	render () {
 		const { closeCatalog, showNotifier } = this.state;
-		const { loading, modalIsOpen, modalTemplate, serverErrorMessage } = this.props;
+		const { loading, serverErrorMessage } = this.props;
 		
 		return (
 			<LayerContext.Provider value={this.state}>

@@ -40,12 +40,12 @@ class Product extends Component {
         // setDynamicProductsQty();
     }
     onDecreaseQty = () => {
-        const { setQty, _id, setProductsQty, qty } = this.props;
+        const { setQty, _id, setProductsQty } = this.props;
         setQty(_id, '-');
         setProductsQty(-1);
     }
     onIncreaseQty = () => {
-        const { setQty, _id, setProductsQty, qty } = this.props;
+        const { setQty, _id, setProductsQty } = this.props;
         setQty(_id, '+');
         setProductsQty(1);
     }
@@ -76,7 +76,7 @@ class Product extends Component {
                 <tr className={styles.Product}>
                     <td>
                         <div className={styles.ProductImage}>
-                            <img src={imgSource} />
+                            <img src={imgSource} alt={title} />
                         </div>
                     </td>
                     <td className={styles.Title}>

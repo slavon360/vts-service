@@ -12,7 +12,7 @@ const mapStateToProps = (state) => {
         // products,
         // outerAPIdata: { currencyRate },
         // banners: { homeBanners },
-        site: { modalIsOpen, modalTemplate, modalWithActions, windowWidth, mobileChrome },
+        site: { modalIsOpen, modalTemplate, windowWidth },
         // form,
         // cart,
         contacts: { contacts },

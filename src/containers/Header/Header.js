@@ -1,7 +1,7 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
 import { Header } from '../../components';
-import { switchCheckedCategory, getCatalogMenu, getFilters } from '../../actions/menus';
+import { switchCheckedCategory, getCatalogMenu } from '../../actions/menus';
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 import {
     makeProductsRequest,

@@ -89,10 +89,6 @@ const phoneValidation = (phone) => {
     return null;
 }
 
-const makeSubmit = () => {
-
-}
-
 const OrderForm = ({
     clientForm: { order_form = {} },
     submitOrder,

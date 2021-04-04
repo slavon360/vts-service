@@ -22,11 +22,11 @@ const ImageArea = ({ imgSources }) => {
             {
                 imgSources.map((source, index) => (
                     <Zoom key={`${source}-${index}`} wrapStyle={{ display: 'block' }}>
-                        <img className={styles.ImgArea} src={source} />
+                        <img className={styles.ImgArea} src={source} alt='' />
                     </Zoom>
                 ))
             }
-        </Carousel> : <Zoom wrapStyle={{ display: 'block' }}><img className={styles.ImgArea} src={mainImg || imgPlaceholder} /></Zoom>
+        </Carousel> : <Zoom wrapStyle={{ display: 'block' }}><img className={styles.ImgArea} src={mainImg || imgPlaceholder} alt='' /></Zoom>
 
     return endElement;
 };

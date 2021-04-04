@@ -55,8 +55,8 @@ class Categories extends Component {
         this.setState({ menuOpened: false });
     }
 
-	static getDerivedStateFromProps(nextProps, prevState) {
-        if (nextProps.categories, !prevState.copyCategories) {
+	static getDerivedStateFromProps(nextProps) {
+        if (nextProps.categories) {
             return {
                 copyCategories: getRidOfUnnecessariesSubcategories(nextProps.categories, 'запчасти')
             }

@@ -1,4 +1,3 @@
-import _get from 'lodash/get';
 import localStorage from '../utils/localStorage';
 import { CART_TYPES } from '../actions/cart';
 

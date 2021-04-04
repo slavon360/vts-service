@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { toJS } from '../../components/HOC/toJS';
-import { SignIn, Registration } from '../../components';
+import { Registration } from '../../components';
 import { signInNewUser } from '../../actions/user';
 
 const mapStateToProps = ({

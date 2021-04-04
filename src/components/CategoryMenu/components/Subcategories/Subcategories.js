@@ -18,18 +18,21 @@ class Subcategories extends Component {
 
     scrollToCategName() {
         if (window.innerWidth >= 992) {
-            const { CategoryName } = this.refs;
+            const CategoryName = this.CategoryName;
         
             window.scroll({ top: CategoryName.offsetTop - CategoryName.offsetHeight * 2, behavior: 'smooth' });
         }
     }
 
+    setCategNameRef = elem => {
+        this.CategoryName = elem;
+    }
     render() {
         const { category, switchSubcategory, makeProductsRequest, revertCurrentPage, setRefSubcategories } = this.props;
 
         return (
             <div className={styles.SubcategoriesWrp} ref={setRefSubcategories}>
-                <div ref="CategoryName" className={styles.Head} >{category.categName}</div>
+                <div ref={this.setCategNameRef} className={styles.Head} >{category.categName}</div>
                 <div className={styles.Subcategories}>
                     {category.subCategNames.map(subcateg => (
                         <Subcategory

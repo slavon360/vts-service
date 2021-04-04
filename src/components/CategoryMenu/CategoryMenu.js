@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import { shouldUpdate } from 'recompose';
 import _isEmpty from 'lodash/isEmpty';
 import _isEqual from 'lodash/isEqual';

@@ -24,8 +24,8 @@ class HomePage extends Component{
         productsRefCoords: null
     };
     componentDidUpdate(prevProp, prevState) {
-        const { selectedCategoryId, selectedSubcategoryId } = this.props;
-        const { selectedCategoryId: prevSelectedCategoryId, selectedSubcategoryId: prevSelectedSubcategoryId } = prevProp;
+        const { selectedCategoryId } = this.props;
+        const { selectedCategoryId: prevSelectedCategoryId } = prevProp;
         const changedCategory = prevSelectedCategoryId && selectedCategoryId !== prevSelectedCategoryId;
 
         if (changedCategory && !this.state.alreadyScrolled) {
@@ -37,7 +37,7 @@ class HomePage extends Component{
     }
     closeModal = () => {
         const isOpen = false;
-        const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
+        const { setModalState, setModalTemplate } = this.props;
         setModalState(isOpen);
         setModalTemplate(null);
     }
@@ -52,7 +52,7 @@ class HomePage extends Component{
     quickSubmit = (event) => {
         event.preventDefault();
         const isOpen = false;
-        const { leavePhoneNumber, setModalState, addToCart, setProductsQty, product } = this.props;
+        const { leavePhoneNumber, setModalState } = this.props;
         leavePhoneNumber('купівля');
         setModalState(isOpen);
     }

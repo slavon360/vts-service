@@ -25,7 +25,7 @@ class Category extends Component {
         }
     }
     render() {
-        const { category: { categSlug, categName, checked, isLink } } = this.props;
+        const { category: { categName, isLink } } = this.props;
         return (
             <Fragment>
                 {isLink ?
@@ -48,19 +48,6 @@ class Category extends Component {
                 </li>
                 }
             </Fragment>
-            // <div
-            //     onClick={this.makeCheckedCategory}
-            //     className={cx(styles.Category, { [styles.Checked]: checked })}>
-            //     <div
-            //         className={styles.CategoryImg}
-            //         // style={{ backgroundImage: `url(${imgImporter(categSlug)})` }}
-            //     ></div>
-            //     <div className={styles.TitleWrp}>
-            //         <div className={styles.Title}>
-            //             {categName}
-            //         </div>
-            //     </div>
-            // </div>
         );
     }
 }

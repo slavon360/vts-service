@@ -5,11 +5,10 @@ import styles from './Params.module.scss';
 
 class Params extends PureComponent {
     onSetFilter = ({ target: { dataset, checked } }) => {
-        const { paramName, setActiveFilter, deleteActiveFilter, sendActiveFilter } = this.props;
+        const { paramName, setActiveFilter, deleteActiveFilter } = this.props;
         const paramValue = dataset['filterName'];
         if (checked) setActiveFilter(paramName, paramValue)
         if (!checked) deleteActiveFilter(paramName, paramValue);
-        //sendActiveFilter();
     }
     render() {
         const { paramName, values } = this.props;

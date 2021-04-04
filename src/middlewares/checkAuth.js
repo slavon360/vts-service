@@ -2,9 +2,8 @@ import _get from 'lodash/get';
 import localStorage from '../utils/localStorage';
 import { USER_TYPES } from '../actions/user';
 
-function checkAuth({ getState }) {
+function checkAuth() {
     return next => action => {
-        const { userData: { email } } = getState().user;
         const isPersist = _get(action, 'type', '').indexOf('persist') >= 0;
         
         if (!isPersist &&

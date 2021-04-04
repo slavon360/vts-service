@@ -1,5 +1,5 @@
 import { composeReducer } from 'redux-compose-reducer';
-import { fromJS, List, Map } from 'immutable';
+import { fromJS } from 'immutable';
 
 
 const initialState = fromJS({

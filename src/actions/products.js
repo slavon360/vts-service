@@ -84,7 +84,7 @@ export const revertCurrentPage = () => ({
 })
 
 export const makeProductsRequest = (selectedPage) => async (dispatch, getState) => {
-    const { currentPage, nextPage, totalPages } = getState().products;
+    const { currentPage, nextPage } = getState().products;
     const { currencyRate } = getState().outerAPIdata;
     const { selectedSubcategoryId, selectedCategoryId } = getState().menus;
     dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: true });

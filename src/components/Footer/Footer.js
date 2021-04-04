@@ -19,6 +19,7 @@ const Footer = ({ phones }) => {
             <a
                 href='https://www.facebook.com/VTS.Servis'
                 target="_blank"
+                ref="noopener"
                 className={cx(styles.Contact, styles.SocialMedia)}
             >
                 <FacebookIcon />
@@ -27,6 +28,7 @@ const Footer = ({ phones }) => {
             <a
                 className={styles.Contact}
                 target="_blank"
+                ref="noopener"
                 href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днепр,+Днепропетровская+область"
             >
             { address }

@@ -82,7 +82,7 @@ class Product extends Component {
                 </div>
                 <div className={cx(styles.ProductWrp, { [styles.ProductWrpEven]: (index % 2) })}>
                     <div className={styles.Image}>
-                        <img src={imgSource} />
+                        <img src={imgSource} alt={title} />
                     </div>
                     <div className={styles.NameWrp}>
                         <Link to={`/product-details/${slug}`}>{title}</Link>

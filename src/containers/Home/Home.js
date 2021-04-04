@@ -15,7 +15,6 @@ import { makeProductsRequest, revertCurrentPage, switchProductsLoading } from '.
 import { getCurrencyRate } from '../../actions/outerAPIdata';
 // import { getHomeBanners } from '../../actions/banners';
 import { leavePhoneNumber } from '../../actions/user';
-import { getTotalSum } from '../../utils/selectors';
 // import from from '../../components/Products';
 
 const mapStateToProps = (state) => {

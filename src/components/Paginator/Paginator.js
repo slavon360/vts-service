@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import ReactPaginate from 'react-paginate';
 
 // import Pages from './components/Pages';
-import styles from './Paginator.module.scss';
 
 const Paginator = ({
     children,

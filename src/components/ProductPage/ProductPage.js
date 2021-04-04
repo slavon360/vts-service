@@ -44,8 +44,7 @@ class ProductPage extends Component {
 				params: { productSlug }
 			},
 			currencyRate,
-			modalIsOpen,
-			selectedCategoryId
+			modalIsOpen
 		} = this.props;
 		const { imgSources } = this.state;
 		const { imgSources: nextImgSource } = nextState;
@@ -55,13 +54,9 @@ class ProductPage extends Component {
 				params: { productSlug: nextProductSlug }
 			},
 			currencyRate: nextCurrencyRate,
-			modalIsOpen: nextModalIsOpen,
-			selectedCategoryId: nextSelectedCategoryId
+			modalIsOpen: nextModalIsOpen
 		} = nextProps;
 
-		// if (selectedCategoryId && nextSelectedCategoryId !== selectedCategoryId) {
-		// 	this.props.history.push('/');
-		// }
 		if (currencyRate !== nextCurrencyRate) this.getProductInfo();
 		return !product || productSlug !== nextProductSlug || product.title !== nextProduct.title ||
 				modalIsOpen !== nextModalIsOpen || imgSources || nextImgSource;
@@ -130,12 +125,9 @@ class ProductPage extends Component {
 	}
 	closeModal = () => {
 		const isOpen = false;
-		const { productsInCart, setModalState, setModalTemplate, removeQuickOrderProduct } = this.props;
+		const {setModalState, setModalTemplate } = this.props;
 		setModalState(isOpen);
 		setModalTemplate(null);
-		// if (productsInCart && productsInCart.length) {
-		//     removeQuickOrderProduct();
-		// };
 	}
 	closeSubmitReviewModal = () => {
 		this.props.setSubmitReviewModal(false);
@@ -150,7 +142,7 @@ class ProductPage extends Component {
 	}
 	buyByOneClick = () => {
 		const isOpen = true;
-		const { product, setModalState, addToCart, setProductsQty, setQuickOrderProduct } = this.props;
+		const { product, setModalState, setQuickOrderProduct } = this.props;
 		// const qty = 1;
 
 		setQuickOrderProduct(product);
@@ -161,7 +153,7 @@ class ProductPage extends Component {
 	quickSubmit = (event) => {
 		event.preventDefault();
 		const isOpen = false;
-		const { leavePhoneNumber, setModalState, addToCart, setProductsQty, product, removeFromCart } = this.props;
+		const { leavePhoneNumber, setModalState } = this.props;
 		// const qty = 1;
 		// addToCart(product);
 		// setProductsQty(qty);

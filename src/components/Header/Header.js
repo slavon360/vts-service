@@ -100,9 +100,7 @@ class Header extends PureComponent {
 			searchedProducts,
 			searchedProductsLoading,
 			showSearchedProducts,
-			userData,
 			loading,
-			logout,
 			contacts
 		} = this.props;
 		return (

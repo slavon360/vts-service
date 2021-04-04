@@ -35,9 +35,9 @@ class Search extends Component {
             <div className={cx(
                 styles.Search,
                 {
-                    ['SearchActive']: searchActive,
+                    SearchActive: searchActive,
                     [styles.Inactive]: !searchActive,
-                    ['SearchInactive']: !searchActive
+                    SearchInactive: !searchActive
                 })}>
                 <button
                     className={styles.SearchIcon}

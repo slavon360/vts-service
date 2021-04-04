@@ -56,7 +56,7 @@ class Details extends Component {
 	}
 
 	render () {
-		const { product, addToCart, buyByOneClick, makeReview, reviewsList } = this.props;
+		const { product, addToCart, buyByOneClick, reviewsList } = this.props;
 		const { sizes, properties, show_discount, show_reviews } = this.state;
 		
 		return (
