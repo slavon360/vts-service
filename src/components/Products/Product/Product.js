@@ -20,7 +20,7 @@ class Product extends Component {
         show_discount: false
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const currentTime = new Date().getTime();
         const endDate = this.props.product['Конец акции'];
         const show_discount = this.showDiscount(endDate, currentTime);

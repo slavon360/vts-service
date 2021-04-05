@@ -28,7 +28,7 @@ const Contacts = ({ contacts }) => (
                     className={cx(styles.ContactItem, styles.Address)}
                     target="_blank"
                     href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днепр,+Днепропетровская+область"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                 >
                 { address }
                 </a>

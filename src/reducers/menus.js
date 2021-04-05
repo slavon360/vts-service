@@ -72,7 +72,9 @@ function getCatalogMenu(state, { catalog, selectedCategoryId }) {
                 checked: false,
                 link: item.subCategSlug[index],
                 id: item.subCategIds[index],
-                image_url: item.subCategImages[index] && item.subCategImages[index].secure_url
+                image_url: item.subCategImages[index] && item.subCategImages[index].secure_url,
+                width: item.subCategImages[index] && item.subCategImages[index].width,
+                height: item.subCategImages[index] && item.subCategImages[index].height
             }
             result.push(obj);
             return result;

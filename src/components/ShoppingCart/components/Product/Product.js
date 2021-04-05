@@ -22,7 +22,7 @@ class Product extends Component {
     state = {
         imgSource: null
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.setImgSource();
     }
     shouldComponentUpdate (nextProps) {

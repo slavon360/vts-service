@@ -31,7 +31,7 @@ class ProductPage extends Component {
 		currentTime: new Date().getTime(),
 		relevant_products: []
 	}
-	componentWillMount(){
+	UNSAFE_componentWillMount(){
 		this.props.setLoadingState(true);
 	}
 	componentDidMount(){

@@ -5,7 +5,7 @@ const RequireAuth = (WrappedComponent) => {
 
     return class RequireAuth extends Component { 
 
-        componentWillMount() { 
+        UNSAFE_componentWillMount() { 
             const userData = localStorage.getUserInfo(); 
             if(!userData) { 
                this.props.history.replace({pathname: '/'}); 

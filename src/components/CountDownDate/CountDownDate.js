@@ -7,7 +7,7 @@ class CountDownDate extends Component {
         timeCountdown: { },
         intervalInstance: null
     }
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         const { endDate } = this.props;
 
         if (endDate) {

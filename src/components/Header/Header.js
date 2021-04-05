@@ -133,7 +133,7 @@ class Header extends PureComponent {
 								makeProductsRequest={makeProductsRequest}
 								contacts={contacts}
 							/>
-							<div className={styles.PhonesWrp}>
+							{/* <div className={styles.PhonesWrp}>
 								{
 									contacts.slice(0, 4).map(({ телефон, image: { secure_url } = {} }, index) => (
 										<a
@@ -152,7 +152,7 @@ class Header extends PureComponent {
 									<a href="mailto:vts.07@ukr.net">vts.07@ukr.net</a>
 									<span className={styles.City}>г. Днепр</span>
 								</div>
-							</div>
+							</div> */}
 						</div>
 						<div className={styles.RightSide}>
 							{/* <UserNavbar logout={logout} userData={userData} /> */}

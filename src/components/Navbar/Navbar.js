@@ -37,7 +37,7 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
                 <a
                     className={styles.City}
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днепр,+Днепропетровская+область"
                 >
                     {address}
@@ -45,7 +45,7 @@ const Navbar = ({ catalog, activeIndex, switchCheckedCategory, makeProductsReque
                 <a
                     className={styles.CityPhoneResponsive}
                     target="_blank"
-                    rel="noopener"
+                    rel="noopener noreferrer"
                     href="https://www.google.com/maps/search/?api=1&query=улица+Краснопольская,+9,+Днепр,+Днепропетровская+область"
                 >
                     г. Днепр

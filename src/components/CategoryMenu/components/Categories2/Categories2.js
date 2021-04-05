@@ -81,14 +81,14 @@ class Categories extends Component {
             <nav className={styles.Nav}>
                 <div className={styles.NavWrapper}>
                     <div className={styles.NavMenu}>
-                        <a onClick={this.onToggleMenu} title="Open Menu" className={styles.NavMenuLink}>
+                        <button type="button" onClick={this.onToggleMenu} title="Open Menu" className={styles.NavMenuLink}>
                             <span className={styles.NavMenuLinkWord}>
                                 каталог
                             </span>
                             <span className={styles.NavMenuLinkIcon}>
                                 ☰
                             </span>
-                        </a>
+                        </button>
                     </div>
                 </div>
                 <ul className={cx(styles.NavList, { [styles.NavListOpened]: menuOpened })}>

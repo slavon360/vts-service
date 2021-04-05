@@ -9,8 +9,11 @@ import '../../App.css'
 
 class Search extends Component {
     // switched to 'true' and removed click handler
+    setSearchFieldRef = elem => {
+        this.SearchField = elem;
+    }
     onToggleSearch = () => {
-        this.refs.SearchField.focus();
+        this.SearchField.focus();
         this.props.toggleSearch();
     }
     keyPressHandling = (event) => {
@@ -48,7 +51,7 @@ class Search extends Component {
                 styles.SearchInputContainer,
                 { [styles.Active]: searchActive, [styles.Inactive]: !searchActive })}>
                     <input
-                        ref="SearchField"
+                        ref={this.setSearchFieldRef}
                         className={styles.SearchInput}
                         value={searchedText}
                         type="text"

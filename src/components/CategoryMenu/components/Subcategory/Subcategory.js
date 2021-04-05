@@ -16,7 +16,7 @@ class Subcategory extends Component {
         makeProductsRequest();
     }
     render() {
-        const { subcategory: { name, checked, image_url } } = this.props;
+        const { subcategory: { name, checked, image_url, width, height } } = this.props;
         return (
             <div
                 className={cx(styles.Subcategory, {
@@ -27,7 +27,7 @@ class Subcategory extends Component {
             >
                 {image_url ?
                     <div className={styles.SubcategImageContainer}>
-                        <img src={image_url} alt={name} />
+                        <img src={image_url} alt={name} width={width} height={height} />
                     </div>
                     :
                     <div className={styles.Title}>{ name }</div>
