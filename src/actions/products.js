@@ -83,7 +83,7 @@ export const revertCurrentPage = () => ({
     type: PRODUCTS_TYPES.revertCurrentPage
 })
 
-export const makeProductsRequest = (selectedPage) => async (dispatch, getState) => {
+export const makeProductsRequest = (selectedPage, sort = '') => async (dispatch, getState) => {
     const { currentPage, nextPage } = getState().products;
     const { currencyRate } = getState().outerAPIdata;
     const { selectedSubcategoryId, selectedCategoryId } = getState().menus;
@@ -94,9 +94,17 @@ export const makeProductsRequest = (selectedPage) => async (dispatch, getState) 
         page = selectedPage;
     }
     if (selectedSubcategoryId) {
-        if (nextPage || selectedPage) json = await getFromAxios('/list-products', { subcategid: selectedSubcategoryId, page });
+        if (nextPage || selectedPage) json = await getFromAxios('/list-products', {
+            subcategid: selectedSubcategoryId,
+            page,
+            sort
+        });
     } else {
-        if (nextPage || selectedPage) json = await getFromAxios('/list-products', { categid: selectedCategoryId, page });
+        if (nextPage || selectedPage) json = await getFromAxios('/list-products', {
+            categid: selectedCategoryId,
+            page,
+            sort
+        });
     }
     const products = _get(json, 'data.results', []);
     const updProducts = updateProductPrices(products, currencyRate);
@@ -104,6 +112,7 @@ export const makeProductsRequest = (selectedPage) => async (dispatch, getState) 
     const last = _get(json, 'data.last', 0);
     const first = _get(json, 'data.first', 0);
     const totalPgs = _get(json, 'data.totalPages', null);
+    const sortsForClient = _get(json, 'data.sortsForClient', null);
     const perPage = last - first + 1;
     dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages: totalPgs });
     dispatch({
@@ -112,7 +121,8 @@ export const makeProductsRequest = (selectedPage) => async (dispatch, getState) 
         currentPage: page,
         next,
         perPage,
-        enabledPaginator: selectedPage
+        enabledPaginator: selectedPage,
+        sortsForClient
     });
     // if (currentPage === totalPages || !nextPage || !updProducts.length || selectedPage) {
         dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: false });

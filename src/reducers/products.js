@@ -3,8 +3,9 @@ import { List, fromJS } from 'immutable';
 
 const initialState = fromJS({
     productsList: [],
+    sortsForClient: [],
     productsLoading: true,
-    currentPage: 1,
+    currentPage: 0,
     totalPages: null,
     nextPage: true,
     product: null,
@@ -42,10 +43,10 @@ function switchProductsLoading(state, { productsLoading }) {
     return state.setIn(['productsLoading'], productsLoading);
 }
 
-function makeProductsRequest(state, { products, currentPage, next, perPage, enabledPaginator }) {
+function makeProductsRequest(state, { products, currentPage, next, perPage, enabledPaginator, sortsForClient }) {
     const newState = !enabledPaginator ? state.update('productsList', productsList => productsList.concat(fromJS(products)))
     : state.set('productsList', List(products));
-    return newState.merge({ 'currentPage': currentPage, 'nextPage': next, 'perPage': perPage });
+    return newState.merge({ 'currentPage': currentPage, 'nextPage': next, 'perPage': perPage, 'sortsForClient': sortsForClient });
 }
 
 function revertCurrentPage(state) {

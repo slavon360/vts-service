@@ -28,7 +28,13 @@ class Subcategories extends Component {
         this.CategoryName = elem;
     }
     render() {
-        const { category, switchSubcategory, makeProductsRequest, revertCurrentPage, setRefSubcategories } = this.props;
+        const {
+            category,
+            switchSubcategory,
+            makeProductsRequest,
+            revertCurrentPage,
+            setRefSubcategories
+        } = this.props;
 
         return (
             <div className={styles.SubcategoriesWrp} ref={setRefSubcategories}>

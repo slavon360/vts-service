@@ -22,4 +22,5 @@ export StarsAndTotalReviews from './StarsAndTotalReviews';
 export Notifier from './Notifier';
 export Preloader from './Preloader';
 export RepairLazy from './Repair';
+export Sorting from './Filters/components/Sorting/Sorting';
 // export Product from './Products/Product';

@@ -9,6 +9,7 @@ import { Button } from '../UI';
 import Footer from '../Footer';
 // import HomeBanners from '../HomeBanners/HomeBanners';
 import QuickOrderForm from '../Order/QuickOrderForm';
+import Sorting from '../Filters/components/Sorting/Sorting';
 // import GeneralBanner from '../GeneralBanner/GeneralBanner';
 import { modalGeneralStyles } from '../../constants/data';
 
@@ -21,8 +22,17 @@ class HomePage extends Component{
     state = {
         alreadyScrolled: false,
         subcategRefCoords: null,
-        productsRefCoords: null
+        productsRefCoords: null,
+        selectedSortParam: ''
     };
+    static getDerivedStateFromProps(props, state) {
+        if (props.sortsForClient && props.sortsForClient.length && !state.selectedSortParam) {
+            return {
+                selectedSortParam: props.sortsForClient.find(s => s.checked)
+            };
+        }
+        return null;
+    }
     componentDidUpdate(prevProp, prevState) {
         const { selectedCategoryId } = this.props;
         const { selectedCategoryId: prevSelectedCategoryId } = prevProp;
@@ -83,17 +93,23 @@ class HomePage extends Component{
             }
         }
     }
-    onMakeProductsRequest = async (page) => {
+    onMakeProductsRequest = async (page, sort) => {
         this.props.switchProductsLoading(true);
-        await this.props.makeProductsRequest(page);
+        await this.props.makeProductsRequest(page, sort);
         this.props.switchProductsLoading(false);
         const subcategChanged = this.props.selectedSubcategoryId;
         window.setTimeout(() => this.scrollToProducts(subcategChanged), 500);
-        this.setState({ alreadyScrolled: true });
+        this.setState({ alreadyScrolled: true, selectedSortParam: this.props.sortsForClient.find(s => s.checked) });
     }
     onPageChange = ({ selected }) => {
-        this.onMakeProductsRequest(selected + 1);
+        const { selectedSortParam: { value } = {} } = this.state;
+        this.onMakeProductsRequest(selected + 1, value);
         // this.props.makeProductsRequest(selected + 1);
+    }
+    makeSortAction = event => {
+        const { currentTarget: { value: sortValue } } = event;
+
+        this.onMakeProductsRequest(1, sortValue);
     }
     renderPaginator = () => {
         const {
@@ -113,12 +129,12 @@ class HomePage extends Component{
             windowWidth
         } = this.props;
         if (productsList) {
-            const adjustedCurrentPage = currentPage - 1;
+            // const adjustedCurrentPage = currentPage - 1;
             return <Paginator
                         pageCount={totalPages}
                         pageRangeDisplayed={3}
                         marginPagesDisplayed={3}
-                        initialPage={adjustedCurrentPage}
+                        initialPage={currentPage}
                         disableInitialCallback={true}
                         onPageChange={this.onPageChange}
                         paginatorClassName={styles.PaginatorWrp}
@@ -173,8 +189,10 @@ class HomePage extends Component{
             setQuickOrderProduct,
             windowWidth,
             contacts,
-            categNames
+            categNames,
+            sortsForClient
         } = this.props;
+        const { selectedSortParam } = this.state;
 
         return (
             <div className={styles.HomePage}>
@@ -194,6 +212,15 @@ class HomePage extends Component{
                         setRefSubcategories={this.setRefSubcategories}
                         windowWidth={windowWidth}
                 /> : <div />
+                }
+                {sortsForClient &&
+                    <div className={styles.SortingWrp}>
+                        <Sorting
+                            sortParams={sortsForClient}
+                            makeSortAction={this.makeSortAction}
+                            selectedSortParam={selectedSortParam && selectedSortParam.value}
+                        />
+                    </div>
                 }
                 {windowWidth < 1024 ? 
                     <LazyProducts

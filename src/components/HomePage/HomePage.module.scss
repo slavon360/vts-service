@@ -1,3 +1,10 @@
+.HomePage {
+    background-color: #fff;
+    .SortingWrp {
+        margin-top: 10px;
+        padding-left: 40px;
+    }
+}
 .ModalHomePage {
     > div {
         z-index: 1000000000;
@@ -74,7 +81,13 @@
 }
 
 @media screen and (max-width: 767px) {
-    .PaginatorWrp {
-        padding: 0 40px;
+    .HomePage {
+        .PaginatorWrp {
+            padding: 0 40px;
+        }
+        .SortingWrp {
+            padding: 0;
+            text-align: center;
+        }
     }
 }

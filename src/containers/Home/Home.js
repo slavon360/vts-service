@@ -37,6 +37,7 @@ const mapStateToProps = (state) => {
         activeIndex: menus.get('activeIndex'),
         filters: menus.get('filters'),
         productsList: products.get('productsList'),
+        sortsForClient: products.get('sortsForClient'),
         productsLoading: products.get('productsLoading'),
         perPage: products.get('perPage'),
         totalPages: products.get('totalPages'),
