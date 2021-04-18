@@ -4,7 +4,7 @@ import CategoryMenu from '../CategoryMenu';
 import Modal from 'react-modal';
 import { Link } from 'react-router-dom';
 import Products from '../Products';
-import Paginator from '../Paginator';
+// import Paginator from '../Paginator';
 import { Button } from '../UI';
 import Footer from '../Footer';
 // import HomeBanners from '../HomeBanners/HomeBanners';
@@ -26,7 +26,8 @@ class HomePage extends Component{
         selectedSortParam: ''
     };
     static getDerivedStateFromProps(props, state) {
-        if (props.sortsForClient && props.sortsForClient.length && !state.selectedSortParam) {
+
+        if (props.sortsForClient && props.sortsForClient.length) {
             return {
                 selectedSortParam: props.sortsForClient.find(s => s.checked)
             };
@@ -101,65 +102,65 @@ class HomePage extends Component{
         window.setTimeout(() => this.scrollToProducts(subcategChanged), 500);
         this.setState({ alreadyScrolled: true, selectedSortParam: this.props.sortsForClient.find(s => s.checked) });
     }
-    onPageChange = ({ selected }) => {
-        const { selectedSortParam: { value } = {} } = this.state;
-        this.onMakeProductsRequest(selected + 1, value);
-        // this.props.makeProductsRequest(selected + 1);
-    }
+    // onPageChange = ({ selected }) => {
+    //     const { selectedSortParam: { value } = {} } = this.state;
+    //     this.onMakeProductsRequest(selected + 1, value);
+    //     // this.props.makeProductsRequest(selected + 1);
+    // }
     makeSortAction = event => {
         const { currentTarget: { value: sortValue } } = event;
 
         this.onMakeProductsRequest(1, sortValue);
     }
-    renderPaginator = () => {
-        const {
-            totalPages,
-            currentPage,
-            perPage,
-            productsLoading,
-            productsList,
-            makeProductsRequest,
-            addToCart,
-            setProductsQty,
-            setModalState,
-            modalIsOpen,
-            preorderModal,
-            switchProductsLoading,
-            setQuickOrderProduct,
-            windowWidth
-        } = this.props;
-        if (productsList) {
-            // const adjustedCurrentPage = currentPage - 1;
-            return <Paginator
-                        pageCount={totalPages}
-                        pageRangeDisplayed={3}
-                        marginPagesDisplayed={3}
-                        initialPage={currentPage}
-                        disableInitialCallback={true}
-                        onPageChange={this.onPageChange}
-                        paginatorClassName={styles.PaginatorWrp}
-                        disabledClassName={styles.DisabledPage}
-                        activeLinkClassName={styles.ActivePage}
-                    >
-                        <Products
-                            perPage={perPage}
-                            productsLoading={productsLoading}
-                            products={productsList}
-                            makeProductsRequest={makeProductsRequest}
-                            addToCart={addToCart}
-                            setProductsQty={setProductsQty}
-                            setModalState={setModalState}
-                            modalIsOpen={modalIsOpen}
-                            preorderModal={preorderModal}
-                            switchProductsLoading={switchProductsLoading}
-                            setQuickOrderProduct={setQuickOrderProduct}
-                            windowWidth={windowWidth}
-                            setRef={this.setRefProducts}
-                        />
-                    </Paginator>
-        }
-        return null;
-    }
+    // renderPaginator = () => {
+    //     const {
+    //         totalPages,
+    //         currentPage,
+    //         perPage,
+    //         productsLoading,
+    //         productsList,
+    //         makeProductsRequest,
+    //         addToCart,
+    //         setProductsQty,
+    //         setModalState,
+    //         modalIsOpen,
+    //         preorderModal,
+    //         switchProductsLoading,
+    //         setQuickOrderProduct,
+    //         windowWidth
+    //     } = this.props;
+    //     if (productsList) {
+    //         // const adjustedCurrentPage = currentPage - 1;
+    //         return <Paginator
+    //                     pageCount={totalPages}
+    //                     pageRangeDisplayed={3}
+    //                     marginPagesDisplayed={3}
+    //                     initialPage={currentPage}
+    //                     disableInitialCallback={true}
+    //                     onPageChange={this.onPageChange}
+    //                     paginatorClassName={styles.PaginatorWrp}
+    //                     disabledClassName={styles.DisabledPage}
+    //                     activeLinkClassName={styles.ActivePage}
+    //                 >
+    //                     <Products
+    //                         perPage={perPage}
+    //                         productsLoading={productsLoading}
+    //                         products={productsList}
+    //                         makeProductsRequest={makeProductsRequest}
+    //                         addToCart={addToCart}
+    //                         setProductsQty={setProductsQty}
+    //                         setModalState={setModalState}
+    //                         modalIsOpen={modalIsOpen}
+    //                         preorderModal={preorderModal}
+    //                         switchProductsLoading={switchProductsLoading}
+    //                         setQuickOrderProduct={setQuickOrderProduct}
+    //                         windowWidth={windowWidth}
+    //                         setRef={this.setRefProducts}
+    //                     />
+    //                 </Paginator>
+    //     }
+    //     return null;
+    // }
 
     render() {
         const {
@@ -222,7 +223,7 @@ class HomePage extends Component{
                         />
                     </div>
                 }
-                {windowWidth < 1024 ? 
+                {/* {windowWidth < 1024 ?  */}
                     <LazyProducts
                         perPage={perPage}
                         productsLoading={productsLoading}
@@ -237,9 +238,10 @@ class HomePage extends Component{
                         setQuickOrderProduct={setQuickOrderProduct}
                         windowWidth={windowWidth}
                         setRef={this.setRefProducts}
-                    /> :
-                    this.renderPaginator()
-                }
+                        selectedSortParam={selectedSortParam.value}
+                    /> 
+                    {/* this.renderPaginator() */}
+                {/* } */}
                 {!modalWithActions ?
                     <Modal
                         isOpen={modalIsOpen}

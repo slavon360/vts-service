@@ -19,7 +19,8 @@ const Products = ({
     switchProductsLoading,
     setQuickOrderProduct,
     windowWidth,
-    setRef
+    setRef,
+    selectedSortParam
 }) => (
         <ul className={styles.ProductsWrp} ref={setRef}>
             {products && products.length ?
@@ -40,6 +41,7 @@ const Products = ({
                         switchProductsLoading={switchProductsLoading}
                         setQuickOrderProduct={setQuickOrderProduct}
                         windowWidth={windowWidth}
+                        selectedSortParam={selectedSortParam}
                     />
                 )) : <div />
             }

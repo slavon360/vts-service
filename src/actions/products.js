@@ -84,7 +84,7 @@ export const revertCurrentPage = () => ({
 })
 
 export const makeProductsRequest = (selectedPage, sort = '') => async (dispatch, getState) => {
-    const { currentPage, nextPage } = getState().products;
+    const { currentPage, nextPage, sortsForClient: sorts_data } = getState().products;
     const { currencyRate } = getState().outerAPIdata;
     const { selectedSubcategoryId, selectedCategoryId } = getState().menus;
     dispatch({ type: PRODUCTS_TYPES.switchProductsLoading, productsLoading: true });
@@ -112,7 +112,7 @@ export const makeProductsRequest = (selectedPage, sort = '') => async (dispatch,
     const last = _get(json, 'data.last', 0);
     const first = _get(json, 'data.first', 0);
     const totalPgs = _get(json, 'data.totalPages', null);
-    const sortsForClient = _get(json, 'data.sortsForClient', null);
+    const sortsForClient = _get(json, 'data.sortsForClient', sorts_data);
     const perPage = last - first + 1;
     dispatch({ type: PRODUCTS_TYPES.setTotalPages, totalPages: totalPgs });
     dispatch({

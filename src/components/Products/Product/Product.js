@@ -32,8 +32,9 @@ class Product extends Component {
         // console.log(this.props.scrollPosition);
     }
     shouldComponentUpdate(nextProps) {
-        const { perPage, productsLength, productIndex } = this.props;
-        return (productsLength - perPage) < productIndex && productsLength < nextProps.productsLength;
+        const { perPage, productsLength, productIndex, selectedSortParam } = this.props;
+        return (productsLength - perPage) < productIndex && productsLength < nextProps.productsLength ||
+        selectedSortParam !== nextProps.selectedSortParam;
     }
     showDiscount = (endDate, currentTime) => (new Date(endDate).getTime() - currentTime) > 120000;
     onAddToCart = () => {
@@ -86,7 +87,8 @@ class Product extends Component {
             switchProductsLoading,
             windowWidth,
             setQuickOrderProduct,
-            addToCart
+            addToCart,
+            selectedSortParam
         } = this.props;
         const { imgSource, show_discount } = this.state;
         const briefInfo = showAdditionalInfo(this.props.product);
@@ -106,6 +108,7 @@ class Product extends Component {
                             scrollPosition={scrollPosition}
                             makeProductsRequest={makeProductsRequest}
                             switchProductsLoading={switchProductsLoading}
+                            selectedSortParam={selectedSortParam}
                         />
                     </Link>
                     <ProductContent
