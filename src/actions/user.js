@@ -186,7 +186,14 @@ export const makeQuickOrder = () => async (dispatch, getState) => {
 
 export const leavePhoneNumber = note => async (dispatch, getState) => {
     const { form: { phone_number_form: { values: formData } } } = getState();
+    const { quickOrderProduct } = getState().cart;
+    const total = quickOrderProduct && quickOrderProduct.total;
+    let data = generateSentData(formData, [quickOrderProduct], total);
+
+    data = note === 'ремонт' ? {} : data;
+
     const sentData = {
+        ...data,
         form: {
             ...formData,
             customer_full_name: `${formData.customer_full_name} (${note})`

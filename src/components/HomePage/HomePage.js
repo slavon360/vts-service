@@ -64,7 +64,7 @@ class HomePage extends Component{
         event.preventDefault();
         const isOpen = false;
         const { leavePhoneNumber, setModalState } = this.props;
-        leavePhoneNumber('купівля');
+        leavePhoneNumber('запитання по купівлі');
         setModalState(isOpen);
     }
     setRefProducts = (ref) => {

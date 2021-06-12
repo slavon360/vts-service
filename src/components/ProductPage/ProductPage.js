@@ -157,7 +157,7 @@ class ProductPage extends Component {
 		// const qty = 1;
 		// addToCart(product);
 		// setProductsQty(qty);
-		leavePhoneNumber('купівля');
+		leavePhoneNumber('запитання по купівлі');
 		// setProductsQty(0);
 		// removeFromCart(product._id);
 		setModalState(isOpen);
